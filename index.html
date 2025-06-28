@@ -1,0 +1,2362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="kWpPknoJ88p_56m1OlvPAbehC-68ysIa4vlLa9Q8x6Y" />
+
+    <!-- Open Graph Tags for Facebook and Instagram -->
+    <meta property="og:title" content="Rudraksh Sharma | Performance Marketing & Video Editing">
+    <meta property="og:description" content="Boost your brand with expert Google Ads, Facebook Ads, and professional video editing services. Book a free consultation today!">
+    <meta property="og:image" content="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg">
+    <meta property="og:image:alt" content="Rudraksh Sharma Profile Image">
+    <meta property="og:url" content="https://itsboyrudra-io.pages.dev/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rudraksh Sharma">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rudraksh Sharma | Performance Marketing & Video Editing">
+    <meta name="twitter:description" content="Expert in Google Ads, Facebook Ads, and video editing to grow your brand. Schedule a consultation now!">
+    <meta name="twitter:image" content="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg">
+    <meta name="twitter:image:alt" content="Rudraksh Sharma Profile Image">
+    <meta name="twitter:site" content="@Itsboyrudra">
+    <meta name="twitter:creator" content="@Itsboyrudra">
+
+    <!-- General Meta Tags for Browser and Apple Previews -->
+    <meta name="description" content="Rudraksh Sharma offers performance marketing and video editing services, specializing in Google Ads, Facebook Ads, and creative video content.">
+    <meta name="keywords" content="performance marketing, Google Ads, Facebook Ads, video editing, Rudraksh Sharma, digital marketing">
+    <meta name="author" content="Rudraksh Sharma">
+    <meta name="robots" content="index, follow">
+
+    <!-- Apple-Specific Tags -->
+    <meta name="apple-mobile-web-app-title" content="Rudraksh Sharma">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg">
+
+    <title>Rudraksh Sharma | Performance Marketing & Video Editing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body.sidebar-open {
+            overflow: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+            animation: slideInNav 0.8s ease-out;
+        }
+
+        @keyframes slideInNav {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+            width: 48px;
+            height: 48px;
+            border-radius: 4px;
+            transition: color 0.3s, background 0.3s;
+            z-index: 1002;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent);
+            background: rgba(58, 134, 255, 0.1);
+        }
+
+        .mobile-menu-btn.active .fa-bars {
+            display: none;
+        }
+
+        .mobile-menu-btn.active .fa-times {
+            display: inline;
+        }
+
+        .mobile-menu-btn .fa-times {
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80vw;
+            max-width: 280px;
+            height: 100vh;
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 5rem 2rem 2rem;
+            transition: left 0.3s ease;
+            z-index: 1001;
+            border-right: 1px solid var(--card-border);
+            display: block;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar .nav-links {
+            flex-direction: column;
+            gap: 1.5rem;
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar .nav-links li {
+            display: block;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar .nav-links a {
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.5rem 0;
+            color: var(--text-primary) !important;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .sidebar-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+
+        .sidebar-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Side Popup */
+        .side-popup {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 350px;
+            height: 100vh;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            z-index: 1003;
+            padding: 3rem 2rem;
+            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 1px solid var(--card-border);
+            box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .side-popup.active {
+            right: 0;
+        }
+
+        .side-popup-content {
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .side-popup-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .side-popup-content p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .side-popup-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .side-popup-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+        }
+
+        .side-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .side-popup-close:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Legal Popup */
+        .legal-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1004;
+            display: none;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .legal-popup.active {
+            display: block;
+        }
+
+        .legal-popup-content {
+            color: var(--text-primary);
+        }
+
+        .legal-popup-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .legal-popup-content h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .legal-popup-content p,
+        .legal-popup-content li {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .legal-popup-content ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .legal-popup-content li::before {
+            content: '•';
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .legal-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .legal-popup-close:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Service Details Popup */
+        .service-details-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1004;
+            display: none;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-details-popup.active {
+            display: block;
+        }
+
+        .service-details-content {
+            color: var(--text-primary);
+        }
+
+        .service-details-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .service-details-content h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        .service-details-content p,
+        .service-details-content li {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-details-content ul {
+            list-style: none;
+            padding-left: 1rem;
+        }
+
+        .service-details-content li::before {
+            content: '•';
+            color: var(--accent);
+            margin-right: 0.5rem;
+        }
+
+        .service-details-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .service-details-close:hover {
+            transform: rotate(180deg);
+        }
+
+        /* Payment Popup */
+        .payment-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1005;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .payment-popup.active {
+            display: block;
+        }
+
+        .payment-popup-content {
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .payment-popup-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .payment-amount {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-gateways {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-gateway {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            border: 2px solid var(--card-border);
+        }
+
+        .payment-gateway:hover {
+            transform: scale(1.1);
+        }
+
+        .payment-gateway img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: white;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .payment-services {
+            margin-top: 1.5rem;
+            text-align: left;
+        }
+
+        .payment-services h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .payment-services ul {
+            list-style: none;
+        }
+
+        .payment-services li {
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .payment-services li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .payment-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .payment-popup-close:hover {
+            transform: rotate(180deg);
+        }
+
+        .payment-popup-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 1004;
+        }
+
+        .payment-popup-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Floating Logo */
+        .floating-logo {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            background: linear-gradient(45deg, var(--accent), #1e3a8a);
+            padding: 3px;
+            cursor: pointer;
+            z-index: 1002;
+            transition: transform 0.3s ease;
+            animation: floatLogo 3s ease-in-out infinite;
+        }
+
+        .floating-logo:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(-50%) translateY(0); }
+            50% { transform: translateY(-50%) translateY(-8px); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(14, 14, 14, 0.7), rgba(14, 14, 14, 0.9));
+            z-index: 1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInText 1.5s ease-out;
+        }
+
+        @keyframes fadeInText {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        .typed-cursor {
+            opacity: 0;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            object-fit: cover;
+            padding: 6px;
+            background: var(--bg-dark);
+            border: 2px solid var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.05);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), #1e3a8a);
+            z-index: -1;
+            animation: rotateBorder 4s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            padding: 0.5rem 1rem;
+            color: var(--text-primary);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Services Section */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            position: relative;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.05);
+            opacity: 0.7;
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: rgba(14, 14, 14, 0.7);
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 1rem;
+        }
+
+        .service-card:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            animation: pulseIcon 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .service-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .service-cta a {
+            flex: 1;
+            text-align: center;
+            padding: 0.6rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .primary-cta {
+            background: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .primary-cta:hover {
+            background: #2a75e6;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .secondary-cta {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+        }
+
+        .secondary-cta:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Portfolio Section */
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            color: var(--text-secondary);
+            border: 1px solid var(--card-border);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--text-primary);
+            box-shadow: 0 0 5px rgba(58, 134, 255, 0.3);
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: rgba(58, 134, 255, 0.1);
+            color: var(--text-primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-item img, .portfolio-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover img, .portfolio-item:hover video {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(14, 14, 14, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .portfolio-overlay p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.popular {
+            border: 1px solid var(--accent);
+            position: relative;
+        }
+
+        .popular-tag {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--text-primary);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            margin-bottom: 0.8rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .pricing-cta {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-cta:hover {
+            background: #2a75e6;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .contact-method:hover .contact-icon {
+            transform: scale(1.2);
+        }
+
+        .contact-text h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-text p,
+        .contact-text a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 2px solid var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0px 5px rgba(58, 134, 255, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #2a75e6;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .success-message,
+        .error-message {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .success-message {
+            color: #22c55e;
+        }
+
+        .error-message {
+            color: #ef4444;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1004;
+            display: none;
+            text-align: center;
+        }
+
+        .cookie-consent.active {
+            display: block;
+        }
+
+        .cookie-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .cookie-content a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .cookie-content a:hover {
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cookie-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        .cookie-btn.accept {
+            background: var(--accent);
+            color: var(--text-primary);
+        }
+
+        .cookie-btn.accept:hover {
+            background: #2a75e6;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .cookie-btn.secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--card-border);
+        }
+
+        .cookie-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { font-size: 1.4rem; }
+            .about-content { gap: 3rem; }
+            .services-container { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+            .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+            .side-popup { width: 300px; }
+            .legal-popup { max-width: 500px; }
+            .payment-popup { max-width: 450px; }
+            .service-details-popup { max-width: 500px; }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            .about-content { flex-direction: column; text-align: center; }
+            .skills { justify-content: center; }
+            .about-image { width: 300px; height: 300px; }
+            .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+            .pricing-container { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+            .contact-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn {
+                display: block;
+                position: fixed;
+                top: 1.5rem;
+                right: 5%;
+                color: #ffffff;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section { padding: 4rem 5%; }
+            .section-title { font-size: 2rem; }
+            .about-image { width: 260px; height: 260px; }
+            .services-container { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .pricing-container { grid-template-columns: 1fr; }
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+            .floating-logo {
+                top: auto;
+                bottom: 20px;
+                left: 20px;
+                transform: none;
+                width: 50px;
+                height: 50px;
+            }
+            .side-popup { width: 80%; max-width: 280px; }
+            .legal-popup { max-width: 80%; }
+            .payment-popup { max-width: 80%; }
+            .service-details-popup { max-width: 80%; }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section-title { font-size: 1.8rem; }
+            .about-image { width: 240px; height: 240px; padding: 4px; border: 1px solid var(--accent); }
+            .about-image::before { top: -4px; left: -4px; right: -4px; bottom: -4px; }
+            .service-cta { flex-direction: column; }
+            .service-image { height: 150px; }
+            .service-overlay { height: 150px; }
+            .portfolio-filter { gap: 0.8rem; }
+            .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
+            .side-popup-content h3 { font-size: 1.4rem; }
+            .side-popup-content p { font-size: 0.9rem; }
+            .side-popup-cta { padding: 0.6rem 1.5rem; }
+            .legal-popup-content h2 { font-size: 1.4rem; }
+            .legal-popup-content h3 { font-size: 1.2rem; }
+            .legal-popup-content p, .legal-popup-content li { font-size: 0.9rem; }
+            .service-details-content h2 { font-size: 1.4rem; }
+            .service-details-content h3 { font-size: 1.2rem; }
+            .service-details-content p, .service-details-content li { font-size: 0.9rem; }
+            .payment-popup-content h2 { font-size: 1.4rem; }
+            .payment-amount { font-size: 1.8rem; }
+            .payment-services h3 { font-size: 1rem; }
+            .payment-services li { font-size: 0.9rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+
+        .animate-zoom-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#home" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Sidebar">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="sidebar" id="sidebar">
+            <ul class="nav-links">
+                <li><a href="#home" class="sidebar-link">Home</a></li>
+                <li><a href="#about" class="sidebar-link">About</a></li>
+                <li><a href="#services" class="sidebar-link">Services</a></li>
+                <li><a href="#portfolio" class="sidebar-link">Portfolio</a></li>
+                <li><a href="#pricing" class="sidebar-link">Pricing</a></li>
+                <li><a href="#booking" class="sidebar-link">Booking</a></li>
+                <li><a href="#contact" class="sidebar-link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+    </nav>
+
+    <img src="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" alt="Floating Logo" class="floating-logo" aria-label="Open Consultation Popup">
+    <div class="side-popup">
+        <div class="side-popup-content">
+            <button class="side-popup-close" aria-label="Close Popup">×</button>
+            <h3>Let's Grow Your Business!</h3>
+            <p>Book a free consultation to discuss your marketing or video editing needs.</p>
+            <a href="#booking" class="side-popup-cta">Schedule Now</a>
+        </div>
+    </div>
+
+    <!-- Legal Popups -->
+    <div class="legal-popup" id="terms-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Terms Popup">×</button>
+            <h2>Terms of Use</h2>
+            <h3>1. Acceptance of Terms</h3>
+            <p>By accessing or using this website, you agree to be bound by these Terms of Use. If you do not agree, please do not use the website.</p>
+            <h3>2. Use of Services</h3>
+            <p>You agree to use the services provided by Rudraksh Sharma in accordance with all applicable laws and these terms. Unauthorized use of the services is prohibited.</p>
+            <h3>3. Intellectual Property</h3>
+            <p>All content on this website, including text, images, and videos, is the property of Rudraksh Sharma or its licensors and is protected by copyright laws.</p>
+            <h3>4. Limitation of Liability</h3>
+            <p>Rudraksh Sharma is not liable for any damages arising from the use or inability to use this website or services, including but not limited to direct, indirect, or consequential damages.</p>
+            <h3>5. Modifications</h3>
+            <p>We reserve the right to modify these terms at any time. Changes will be effective upon posting to the website.</p>
+            <h3>6. Governing Law</h3>
+            <p>These terms are governed by the laws of India. Any disputes will be resolved in the courts of Rajasthan, India.</p>
+        </div>
+    </div>
+    <div class="legal-popup" id="privacy-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Privacy Popup">×</button>
+            <h2>Privacy Policy</h2>
+            <h3>1. Information Collection</h3>
+            <p>We collect personal information such as name, email, and contact details when you interact with our website or services, including contact forms and bookings.</p>
+            <h3>2. Use of Information</h3>
+            <p>Your information is used to provide and improve our services, respond to inquiries, and communicate updates or offers.</p>
+            <h3>3. Data Sharing</h3>
+            <p>We do not sell or share your personal information with third parties, except as required by law or to fulfill services (e.g., booking platforms).</p>
+            <h3>4. Cookies</h3>
+            <p>We use cookies to enhance your experience. You can manage cookie preferences via our cookie consent tool.</p>
+            <h3>5. Data Security</h3>
+            <p>We implement reasonable measures to protect your data, but no method is completely secure.</p>
+            <h3>6. Your Rights</h3>
+            <p>You have the right to access, correct, or delete your personal data. Contact us at info.itsboyrudra@gmail.com for assistance.</p>
+        </div>
+    </div>
+    <div class="legal-popup" id="cookie-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Cookie Popup">×</button>
+            <h2>Cookie Policy</h2>
+            <h3>1. What Are Cookies?</h3>
+            <p>Cookies are small text files stored on your device to improve website functionality and user experience.</p>
+            <h3>2. Types of Cookies</h3>
+            <ul>
+                <li>Essential Cookies: Required for website operation.</li>
+                <li>Analytics Cookies: Help us analyze website usage.</li>
+                <li>Marketing Cookies: Used for personalized ads.</li>
+            </ul>
+            <h3>3. Managing Cookies</h3>
+            <p>You can accept or decline non-essential cookies via our cookie consent tool or adjust your browser settings.</p>
+            <h3>4. Third-Party Cookies</h3>
+            <p>Some third-party services (e.g., Google Analytics, Calendly) may set cookies. Refer to their policies for details.</p>
+            <h3>5. Updates</h3>
+            <p>This policy may be updated periodically. Check this page for the latest version.</p>
+        </div>
+    </div>
+    <div class="legal-popup" id="faqs-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close FAQs Popup">×</button>
+            <h2>FAQs</h2>
+            <h3>1. What services do you offer?</h3>
+            <p>I provide Google Ads, Facebook Ads, and video editing services to help brands grow and create engaging content.</p>
+            <h3>2. How can I book a consultation?</h3>
+            <p>Use the booking section to schedule a free consultation via Calendly.</p>
+            <h3>3. What are your pricing plans?</h3>
+            <p>Pricing plans range from $349/month to $1,499/month, with details in the Pricing section.</p>
+            <h3>4. How do you ensure campaign success?</h3>
+            <p>I use data-driven strategies, regular optimization, and detailed reporting to maximize ROI.</p>
+            <h3>5. Can I contact you for custom projects?</h3>
+            <p>Yes, reach out via the contact form or WhatsApp for custom project inquiries.</p>
+        </div>
+    </div>
+    <div class="legal-popup" id="disclaimer-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Disclaimer Popup">×</button>
+            <h2>Disclaimer</h2>
+            <h3>1. General Information</h3>
+            <p>The information on this website is for general informational purposes only and does not constitute professional advice.</p>
+            <h3>2. No Guarantees</h3>
+            <p>While we strive for optimal results, we cannot guarantee specific outcomes from our services due to market variables.</p>
+            <h3>3. Third-Party Links</h3>
+            <p>This website may contain links to third-party sites. We are not responsible for their content or practices.</p>
+            <h3>4. Limitation of Liability</h3>
+            <p>Rudraksh Sharma is not liable for any damages resulting from the use of this website or services.</p>
+            <h3>5. Content Accuracy</h3>
+            <p>We strive to keep information accurate but do not warrant its completeness or reliability.</p>
+        </div>
+    </div>
+    <div class="legal-popup service-details-popup" id="google-ads-details-popup">
+        <div class="service-details-content">
+            <button class="service-details-close" aria-label="Close Google Ads Details Popup">×</button>
+            <h2>Google Ads Service Details</h2>
+            <h3>Overview</h3>
+            <p>Maximize your ROI with targeted Google Ads campaigns designed to drive clicks, leads, and conversions.</p>
+            <h3>What's Included</h3>
+            <ul>
+                <li>Comprehensive campaign setup and management</li>
+                <li>Advanced keyword research and strategy</li>
+                <li>Smart bidding and ROI tracking</li>
+                <li>Custom dashboard reporting</li>
+                <li>Landing page optimization</li>
+                <li>Regular performance analysis</li>
+            </ul>
+            <h3>Benefits</h3>
+            <p>Reach your audience with precision, increase conversions, and get detailed insights to refine your strategy.</p>
+        </div>
+    </div>
+    <div class="legal-popup service-details-popup" id="facebook-ads-details-popup">
+        <div class="service-details-content">
+            <button class="service-details-close" aria-label="Close Facebook Ads Details Popup">×</button>
+            <h2>Facebook Ads Service Details</h2>
+            <h3>Overview</h3>
+            <p>Engage your audience with creative and data-driven Facebook Ads campaigns tailored for maximum impact.</p>
+            <h3>What's Included</h3>
+            <ul>
+                <li>Funnel strategy and retargeting campaigns</li>
+                <li>Lookalike audience targeting</li>
+                <li>Ad creative design and optimization</li>
+                <li>Conversion tracking setup</li>
+                <li>A/B testing for ad performance</li>
+                <li>Detailed campaign reports</li>
+            </ul>
+            <h3>Benefits</h3>
+            <p>Boost brand engagement, lower cost per lead, and create compelling ads that resonate with your audience.</p>
+        </div>
+    </div>
+    <div class="legal-popup service-details-popup" id="video-editing-details-popup">
+        <div class="service-details-content">
+            <button class="service-details-close" aria-label="Close Video Editing Details Popup">×</button>
+            <h2>Video Editing Service Details</h2>
+            <h3>Overview</h3>
+            <p>Create engaging and professional video content for social media, YouTube, and more with expert editing.</p>
+            <h3>What's Included</h3>
+            <ul>
+                <li>Editing for Reels, YouTube Shorts, and TikTok</li>
+                <li>Motion effects and smooth transitions</li>
+                <li>Auto subtitles and captions</li>
+                <li>AI-based editing tools for efficiency</li>
+                <li>Color grading and correction</li>
+                <li>Custom branding integration</li>
+            </ul>
+            <h3>Benefits</h3>
+            <p>Stand out with viral-ready content, increase viewer retention, and elevate your brand’s visual storytelling.</p>
+        </div>
+    </div>
+    <div class="legal-popup-backdrop" id="legal-popup-backdrop"></div>
+
+    <!-- Payment Popup -->
+    <div class="payment-popup" id="payment-popup">
+        <div class="payment-popup-content">
+            <button class="payment-popup-close" aria-label="Close Payment Popup">×</button>
+            <h2 id="payment-title">Select Payment Method</h2>
+            <div class="payment-amount" id="payment-amount"></div>
+            <div class="payment-gateways">
+                <a href="#" class="payment-gateway" data-gateway="phonepe" aria-label="Pay with PhonePe">
+                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.facebook.com%2FOfficialPhonePe%2Fphotos%2Fthe-same-but-different-hello-everyone-our-logo-and-symbol-have-undergone-a-chang%2F1987166788014696%2F&psig=AOvVaw3-G9ZscYRBhYyGYwDsIuzy&ust=1751204155353000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiWrOGclI4DFQAAAAAdAAAAABAE" alt="PhonePe Logo">
+                </a>
+                <a href="#" class="payment-gateway" data-gateway="razorpay" aria-label="Pay with Razorpay">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay Logo">
+                </a>
+                <a href="#" class="payment-gateway" data-gateway="paypal" aria-label="Pay with PayPal">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal Logo">
+                </a>
+            </div>
+            <div class="payment-services">
+                <h3>Included Services</h3>
+                <ul id="payment-services-list"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="payment-popup-backdrop" id="payment-popup-backdrop"></div>
+
+    <section class="hero" id="home">
+        <video autoplay muted loop class="hero-bg">
+            <source src="https://videos.pexels.com/video-files/12358562/12358562-hd_1920_1080_30fps.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1 class="animate-zoom-in">I Deliver Results with Ads & Visuals</h1>
+            <p class="animate-zoom-in delay-1"><span id="typed-text">Performance Marketing | Creative Storytelling | ROI-Driven Campaigns</span><span class="typed-cursor">|</span></p>
+            <a href="#services" class="cta-button animate-zoom-in delay-2">Explore Services</a>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <img src="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" alt="Rudraksh Sharma" class="about-image">
+            <div class="about-text animate-zoom-in delay-1">
+                <h3>Performance Marketer & Video Editor</h3>
+                <p>Hi, I'm Rudraksh Sharma. I help brands grow through smart Google Ads and Facebook Ads campaigns, driving more clicks, leads, and results. I also offer video editing services to make your content stand out with clean cuts, creative visuals, and smooth transitions. If you're looking for someone who can boost your visibility and bring your content to life—let’s connect!</p>
+                <p>My approach combines data-driven strategies with creative storytelling to deliver measurable results.</p>
+                <div class="skills">
+                    <span class="skill-tag">Meta Ads Manager</span>
+                    <span class="skill-tag">Google Ads Certified</span>
+                    <span class="skill-tag">Premiere Pro</span>
+                    <span class="skill-tag">After Effects</span>
+                    <span class="skill-tag">CapCut Pro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <img src="https://i.ibb.co/Mkms3WLj/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg" alt="Google Ads" class="service-image">
+                <div class="service-overlay">
+                    <p>Maximize ROI with targeted Google Ads campaigns.</p>
+                </div>
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Google Ads</h3>
+                <ul>
+                    <li>Campaign Setup & Optimization</li>
+                    <li>Smart Bidding & ROI Tracking</li>
+                    <li>Dashboard Reporting</li>
+                    <li>Keyword Research & Strategy</li>
+                    <li>Landing Page Optimization</li>
+                </ul>
+                <div class="service-cta">
+                    <a href="#" class="primary-cta" data-service="google-ads" data-amount="349">Get Started</a>
+                    <a href="#" class="secondary-cta" data-popup="google-ads-details-popup">View Details</a>
+                </div>
+            </div>
+            <div class="service-card animate-zoom-in delay-1">
+                <img src="https://i.ibb.co/Mkms3WLj/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg" alt="Facebook Ads" class="service-image">
+                <div class="service-overlay">
+                    <p>Engage audiences with creative Facebook Ads.</p>
+                </div>
+                <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                <h3>Facebook Ads</h3>
+                <ul>
+                    <li>Funnel Strategy & Retargeting</li>
+                    <li>Lookalike Audience Targeting</li>
+                    <li>Ad Creative Optimization</li>
+                    <li>Conversion Tracking</li>
+                    <li>A/B Testing Frameworks</li>
+                </ul>
+                <div class="service-cta">
+                    <a href="#" class="primary-cta" data-service="facebook-ads" data-amount="349">Get Started</a>
+                    <a href="#" class="secondary-cta" data-popup="facebook-ads-details-popup">View Details</a>
+                </div>
+            </div>
+            <div class="service-card animate-zoom-in delay-2">
+                <img src="https://i.ibb.co/3GkFqLF/15517230-uhd-3840-2160-60fps.gif" alt="Video Editing" class="service-image">
+                <div class="service-overlay">
+                    <p>Create viral content with professional video edits.</p>
+                </div>
+                <div class="service-icon"><i class="fas fa-video"></i></div>
+                <h3>Video Editing</h3>
+                <ul>
+                    <li>Reels, YouTube Shorts, TikTok</li>
+                    <li>Motion Effects & Transitions</li>
+                    <li>Auto Subtitles & Captions</li>
+                    <li>AI-based Editing Tools</li>
+                    <li>Color Grading & Correction</li>
+                </ul>
+                <div class="service-cta">
+                    <a href="#" class="primary-cta" data-service="video-editing" data-amount="349">Get Started</a>
+                    <a href="#" class="secondary-cta" data-popup="video-editing-details-popup">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="portfolio">
+        <h2 class="section-title">Portfolio</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="google-ads">Google Ads</button>
+                <button class="filter-btn" data-filter="facebook-ads">Facebook Ads</button>
+                <button class="filter-btn" data-filter="video-editing">Video Editing</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="google-ads">
+                    <video autoplay muted loop>
+                        <source src="https://videos.pexels.com/video-files/7579577/7579577-uhd_2732_1440_25fps.mp4" type="video/mp4">
+                    </video>
+                    <div class="portfolio-overlay">
+                        <h3>E-commerce Ad Campaign</h3>
+                        <p>300% ROAS achieved for fashion brand</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="facebook-ads">
+                    <img src="https://i.ibb.co/KcQJtNST/statistical-analysis-graph-red-color-white-background-391563-1042.jpg" alt="Facebook Ads Dashboard">
+                    <div class="portfolio-overlay">
+                        <h3>Lead Generation Funnel</h3>
+                        <p>$2.50 cost per lead for B2B service</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="video-editing">
+                    <video autoplay muted loop>
+                        <source src="https://videos.pexels.com/video-files/1536315/1536315-hd_1920_1080_30fps.mp4" type="video/mp4">
+                    </video>
+                    <div class="portfolio-overlay">
+                        <h3>Product Demo Video</h3>
+                        <p>Increased conversions by 40%</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="google-ads">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80" alt="Google Ads Dashboard">
+                    <div class="portfolio-overlay">
+                        <h3>Search Campaign</h3>
+                        <p>65% decrease in CPA for SaaS company</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="video-editing">
+                    <video autoplay muted loop>
+                        <source src="https://videos.pexels.com/video-files/12358562/12358562-hd_1920_1080_30fps.mp4" type="video/mp4">
+                    </video>
+                    <div class="portfolio-overlay">
+                        <h3>Brand Story Video</h3>
+                        <p>500k+ views on social media</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="facebook-ads">
+                    <img src="https://i.ibb.co/Mkms3WLj/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg" alt="Social Media Reels">
+                    <div class="portfolio-overlay">
+                        <h3>Social Media Reels</h3>
+                        <p>Viral content for fitness influencer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="pricing">
+        <h2 class="section-title">Pricing Plans</h2>
+        <div class="pricing-container">
+            <div class="pricing-card animate-zoom-in">
+                <h3>Basic</h3>
+                <div class="price">$349<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>1 Campaign Management</li>
+                    <li>Weekly Optimization</li>
+                    <li>Basic Reporting</li>
+                    <li>Email Support</li>
+                    <li>Up to $1,000 Ad Spend</li>
+                </ul>
+                <a href="#" class="pricing-cta" data-plan="basic" data-amount="349">Get Started</a>
+            </div>
+            <div class="pricing-card popular animate-zoom-in delay-1">
+                <div class="popular-tag">Most Popular</div>
+                <h3>Pro</h3>
+                <div class="price">$799<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>3 Campaigns Management</li>
+                    <li>Daily Optimization</li>
+                    <li>Advanced Reporting</li>
+                    <li>Priority Support</li>
+                    <li>Up to $5,000 Ad Spend</li>
+                    <li>Monthly Strategy Call</li>
+                </ul>
+                <a href="#" class="pricing-cta" data-plan="pro" data-amount="799">Get Started</a>
+            </div>
+            <div class="pricing-card animate-zoom-in delay-2">
+                <h3>Premium</h3>
+                <div class="price">$1,499<span>/month</span></div>
+                <ul class="pricing-features">
+                    <li>Unlimited Campaigns</li>
+                    <li>Real-time Optimization</li>
+                    <li>Custom Dashboard</li>
+                    <li>24/7 Support</li>
+                    <li>Unlimited Ad Spend</li>
+                    <li>Weekly Strategy Calls</li>
+                    <li>Creative Production</li>
+                </ul>
+                <a href="#" class="pricing-cta" data-plan="premium" data-amount="1499">Get Started</a>
+            </div>
+        </div>
+    </section>
+      <section class="section" id="booking">
+    <h2 class="section-title">Book a Consultation</h2>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/rudrakshrawla22122008/30min" style="min-width:320px;height:600px;"></div>
+    <p class="success-message">Booking scheduled! Check your email for confirmation.</p>
+    <p class="error-message">An error occurred. Please try again.</p>
+</section>
+
+<section class="section" id="contact">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="contact-container">
+        <div class="contact-info animate-zoom-in">
+            <div class="contact-method">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-text">
+                    <h3>Email</h3>
+                    <a href="mailto:info.itsboyrudra@gmail.com">info.itsboyrudra@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                <div class="contact-text">
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/+919351782102" target="_blank">+91 93517 82102</a>
+                </div>
+            </div>
+            <div class="contact-method">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="contact-text">
+                    <h3>Location</h3>
+                    <p>Rajasthan, India</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://linkedin.com/in/itsboyrudra" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+        <div class="contact-form animate-zoom-in delay-1">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <p class="success-message">Message sent! I'll get back to you soon.</p>
+            <p class="error-message">An error occurred. Please try again.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h3>Rudraksh Sharma</h3>
+            <p>Performance marketing and video editing services to grow your brand.</p>
+            <p>Rajasthan, India</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+                <li><a href="#" class="legal-link" data-popup="terms-popup">Terms of Use</a></li>
+                <li><a href="#" class="legal-link" data-popup="privacy-popup">Privacy Policy</a></li>
+                <li><a href="#" class="legal-link" data-popup="cookie-popup">Cookie Policy</a></li>
+                <li><a href="#" class="legal-link" data-popup="faqs-popup">FAQs</a></li>
+                <li><a href="#" class="legal-link" data-popup="disclaimer-popup">Disclaimer</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h3>Connect</h3>
+            <ul class="footer-links">
+                <li><a href="mailto:info.itsboyrudra@gmail.com">info.itsboyrudra@gmail.com</a></li>
+                <li><a href="https://wa.me/+919351782102" target="_blank">+91 93517 82102</a></li>
+                <li><a href="https://facebook.com/itsboyrudra" target="_blank">Facebook</a></li>
+                <li><a href="https://instagram.com/itsboyrudra" target="_blank">Instagram</a></li>
+                <li><a href="https://x.com/Itsboyrudra" target="_blank">X</a></li>
+                <li><a href="https://linkedin.com/in/itsboyrudra" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+    </div>
+</footer>
+
+<div class="cookie-consent" id="cookie-consent">
+    <div class="cookie-content">
+        <p>We use cookies to enhance your experience. By continuing, you agree to our <a href="#" class="legal-link" data-popup="cookie-popup">Cookie Policy</a>.</p>
+        <div class="cookie-buttons">
+            <button class="cookie-btn accept">Accept</button>
+            <button class="cookie-btn secondary">Decline</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Updated CSS for better social media logo visibility */
+    .social-link {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: all 0.3s;
+        border: 2px solid var(--accent);
+        font-size: 1.2rem;
+    }
+
+    .social-link:hover {
+        background: var(--accent);
+        color: var(--bg-dark);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
+    }
+
+    .footer-links a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.3s, transform 0.3s;
+        display: inline-block;
+        font-size: 1rem;
+    }
+
+    .footer-links a:hover {
+        color: var(--accent);
+        transform: translateX(5px);
+    }
+
+    /* Ensure payment gateway images are visible and styled */
+    .payment-gateway img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: white;
+        padding: 8px;
+        border-radius: 50%;
+    }
+</style>
+
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+<script>
+    // Hamburger Menu
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        const isActive = sidebar.classList.toggle('active');
+        sidebarBackdrop.classList.toggle('active', isActive);
+        mobileMenuBtn.classList.toggle('active', isActive);
+        document.body.classList.toggle('sidebar-open', isActive);
+    });
+
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            sidebarBackdrop.classList.remove('active');
+            mobileMenuBtn.classList.remove('active');
+            document.body.classList.remove('sidebar-open');
+        });
+    });
+
+    sidebarBackdrop.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        sidebarBackdrop.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+    });
+
+    // Side Popup
+    const floatingLogo = document.querySelector('.floating-logo');
+    const sidePopup = document.querySelector('.side-popup');
+    const sidePopupClose = document.querySelector('.side-popup-close');
+
+    floatingLogo.addEventListener('click', () => {
+        sidePopup.classList.add('active');
+    });
+
+    sidePopupClose.addEventListener('click', () => {
+        sidePopup.classList.remove('active');
+    });
+
+    // Legal Popups
+    const legalLinks = document.querySelectorAll('.legal-link');
+    const legalPopups = document.querySelectorAll('.legal-popup');
+    const legalPopupCloseButtons = document.querySelectorAll('.legal-popup-close');
+    const legalPopupBackdrop = document.getElementById('legal-popup-backdrop');
+
+    legalLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const popupId = link.getAttribute('data-popup');
+            const targetPopup = document.getElementById(popupId);
+            legalPopups.forEach(popup => popup.classList.remove('active'));
+            targetPopup.classList.add('active');
+            legalPopupBackdrop.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    legalPopupCloseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            legalPopups.forEach(popup => popup.classList.remove('active'));
+            legalPopupBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    legalPopupBackdrop.addEventListener('click', () => {
+        legalPopups.forEach(popup => popup.classList.remove('active'));
+        legalPopupBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Service Details Popups
+    const serviceDetailButtons = document.querySelectorAll('.secondary-cta');
+    const serviceDetailPopups = document.querySelectorAll('[id$="-details-popup"]');
+    const serviceDetailCloseButtons = document.querySelectorAll('.service-details-close');
+
+    serviceDetailButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const popupId = button.getAttribute('data-popup');
+            const targetPopup = document.getElementById(popupId);
+            serviceDetailPopups.forEach(popup => popup.classList.remove('active'));
+            targetPopup.classList.add('active');
+            legalPopupBackdrop.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    serviceDetailCloseButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            serviceDetailPopups.forEach(popup => popup.classList.remove('active'));
+            legalPopupBackdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+
+    legalPopupBackdrop.addEventListener('click', () => {
+        serviceDetailPopups.forEach(popup => popup.classList.remove('active'));
+        legalPopupBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Payment Popup
+    const pricingCtas = document.querySelectorAll('.pricing-cta');
+    const serviceCtas = document.querySelectorAll('.primary-cta');
+    const paymentPopup = document.getElementById('payment-popup');
+    const paymentPopupClose = document.querySelector('.payment-popup-close');
+    const paymentPopupBackdrop = document.getElementById('payment-popup-backdrop');
+    const paymentTitle = document.getElementById('payment-title');
+    const paymentAmount = document.getElementById('payment-amount');
+    const paymentServicesList = document.getElementById('payment-services-list');
+    const paymentGateways = document.querySelectorAll('.payment-gateway');
+
+    const serviceDetails = {
+        'google-ads': [
+            'Campaign Setup & Optimization',
+            'Smart Bidding & ROI Tracking',
+            'Dashboard Reporting',
+            'Keyword Research & Strategy',
+            'Landing Page Optimization'
+        ],
+        'facebook-ads': [
+            'Funnel Strategy & Retargeting',
+            'Lookalike Audience Targeting',
+            'Ad Creative Optimization',
+            'Conversion Tracking',
+            'A/B Testing Frameworks'
+        ],
+        'video-editing': [
+            'Reels, YouTube Shorts, TikTok',
+            'Motion Effects & Transitions',
+            'Auto Subtitles & Captions',
+            'AI-based Editing Tools',
+            'Color Grading & Correction'
+        ],
+        'basic': [
+            '1 Campaign Management',
+            'Weekly Optimization',
+            'Basic Reporting',
+            'Email Support',
+            'Up to $1,000 Ad Spend'
+        ],
+        'pro': [
+            '3 Campaigns Management',
+            'Daily Optimization',
+            'Advanced Reporting',
+            'Priority Support',
+            'Up to $5,000 Ad Spend',
+            'Monthly Strategy Call'
+        ],
+        'premium': [
+            'Unlimited Campaigns',
+            'Real-time Optimization',
+            'Custom Dashboard',
+            '24/7 Support',
+            'Unlimited Ad Spend',
+            'Weekly Strategy Calls',
+            'Creative Production'
+        ]
+    };
+
+    [...pricingCtas, ...serviceCtas].forEach(cta => {
+        cta.addEventListener('click', (e) => {
+            e.preventDefault();
+            const plan = cta.getAttribute('data-plan') || cta.getAttribute('data-service');
+            const amount = cta.getAttribute('data-amount');
+            paymentTitle.textContent = `Payment for ${plan.charAt(0).toUpperCase() + plan.slice(1)} Plan`;
+            paymentAmount.textContent = `$${amount}/month`;
+            paymentServicesList.innerHTML = serviceDetails[plan].map(item => `<li>${item}</li>`).join('');
+            paymentPopup.classList.add('active');
+            paymentPopupBackdrop.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    paymentPopupClose.addEventListener('click', () => {
+        paymentPopup.classList.remove('active');
+        paymentPopupBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    paymentPopupBackdrop.addEventListener('click', () => {
+        paymentPopup.classList.remove('active');
+        paymentPopupBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    paymentGateways.forEach(gateway => {
+        gateway.addEventListener('click', (e) => {
+            e.preventDefault();
+            const gatewayType = gateway.getAttribute('data-gateway');
+            alert(`Redirecting to ${gatewayType.charAt(0).toUpperCase() + gatewayType.slice(1)} for payment...`);
+        });
+    });
+
+    // Typed.js
+    new Typed('#typed-text', {
+        strings: [
+            'Performance Marketing | Creative Storytelling | ROI-Driven Campaigns',
+            'Google Ads | Facebook Ads | Video Editing',
+            'Boost Clicks | Engage Audiences | Build Brands'
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
+
+    // Portfolio Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            portfolioItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+                item.style.display = filter === 'all' || filter === category ? 'block' : 'none';
+            });
+        });
+    });
+
+    // Contact Form
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const successMessage = document.querySelector('.contact-form .success-message');
+        const errorMessage = document.querySelector('.contact-form .error-message');
+
+        try {
+            // Simulate form submission
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            contactForm.reset();
+            successMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            setTimeout(() => successMessage.style.display = 'none', 5000);
+        } catch {
+            errorMessage.style.display = 'block';
+            successMessage.style.display = 'none';
+            setTimeout(() => errorMessage.style.display = 'none', 5000);
+        }
+    });
+
+    // Cookie Consent
+    const cookieConsent = document.getElementById('cookie-consent');
+    const acceptBtn = document.querySelector('.cookie-btn.accept');
+    const declineBtn = document.querySelector('.cookie-btn.secondary');
+
+    if (!localStorage.getItem('cookieConsent')) {
+        setTimeout(() => cookieConsent.classList.add('active'), 2000);
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieConsent.classList.remove('active');
+    });
+
+    declineBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieConsent.classList.remove('active');
+    });
+</script>
+</body>
+</html>
