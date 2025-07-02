@@ -22,11 +22,10 @@
 
 <!-- Meta Tags Generated with https://metatags.io -->
 
-    <title>Rudraksh Sharma | Performance Marketing & Video Editing</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="IMG_20250530_180250 (1).jpg" style="border: 2px solid black; border-radius: 100%;">
     <style>
@@ -641,6 +640,7 @@
             margin-bottom: 1.5rem;
             line-height: 1.2;
             animation: fadeInText 1.5s ease-out;
+            opacity: 1; /* Ensure visibility */
         }
 
         @keyframes fadeInText {
@@ -1680,17 +1680,7 @@
             <button class="payment-popup-close" aria-label="Close Payment Popup">×</button>
             <h2 id="payment-title">Select Payment Method</h2>
             <div class="payment-amount" id="payment-amount"></div>
-            <div class="payment-gateways">
-                <a href="#" class="payment-gateway" data-gateway="phonepe" aria-label="Pay with PhonePe">
-                    <img src="https://i.ibb.co/R4hXL5yZ/images.png" alt="PhonePe Logo">
-                </a>
-                <a href="#" class="payment-gateway" data-gateway="razorpay" aria-label="Pay with Razorpay">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg" alt="Razorpay Logo">
-                </a>
-                <a href="#" class="payment-gateway" data-gateway="paypal" aria-label="Pay with PayPal">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal Logo">
-                </a>
-            </div>
+            <div class="payment-gateways" id="payment-gateways"></div>
             <div class="payment-services">
                 <h3>Included Services</h3>
                 <ul id="payment-services-list"></ul>
@@ -1705,7 +1695,7 @@
         </video>
         <div class="hero-content">
             <h1 class="animate-zoom-in">I Deliver Results with Ads & Visuals</h1>
-            <p class="animate-zoom-in delay-1"><span id="typed-text">Performance Marketing | Creative Storytelling | ROI-Driven Campaigns</span><span class="typed-cursor">|</span></p>
+            <p class="animate-zoom-in delay-1"><span id="typed-text"></span><span class="typed-cursor">|</span></p>
             <a href="#services" class="cta-button animate-zoom-in delay-2">Explore Services</a>
         </div>
     </section>
@@ -1899,451 +1889,490 @@
             </div>
         </div>
     </section>
-      <section class="section" id="booking">
-    <h2 class="section-title">Book a Consultation</h2>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/rudrakshrawla22122008/30min" style="min-width:320px;height:600px;"></div>
-    <p class="success-message">Booking scheduled! Check your email for confirmation.</p>
-    <p class="error-message">An error occurred. Please try again.</p>
-</section>
+    <section class="section" id="booking">
+        <h2 class="section-title">Book a Consultation</h2>
+        <div class="calendly-inline-widget" data-url="https://calendly.com/rudrakshrawla22122008/30min" style="min-width:320px;height:600px;"></div>
+        <p class="success-message">Booking scheduled! Check your email for confirmation.</p>
+        <p class="error-message">An error occurred. Please try again.</p>
+    </section>
 
-<section class="section" id="contact">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-container">
-        <div class="contact-info animate-zoom-in">
-            <div class="contact-method">
-                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                <div class="contact-text">
-                    <h3>Email</h3>
-                    <a href="mailto:info.itsboyrudra@gmail.com">info.itsboyrudra@gmail.com</a>
+    <section class="section" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info animate-zoom-in">
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-text">
+                        <h3>Email</h3>
+                        <a href="mailto:info.itsboyrudra@gmail.com">info.itsboyrudra@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                    <div class="contact-text">
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/+91787838379" target="_blank">+91 7878383739</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-text">
+                        <h3>Location</h3>
+                        <p>Rajasthan, India</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/itsboyrudra" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
             </div>
-            <div class="contact-method">
-                <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
-                <div class="contact-text">
-                    <h3>WhatsApp</h3>
-                    <a href="https://wa.me/+91787838379" target="_blank">+91 7878383739</a>
-                </div>
-            </div>
-            <div class="contact-method">
-                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                <div class="contact-text">
-                    <h3>Location</h3>
-                    <p>Rajasthan, India</p>
-                </div>
-            </div>
-            <div class="social-links">
-                <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-                <a href="https://linkedin.com/in/itsboyrudra" target="_blank" class="social-link" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
+            <div class="contact-form animate-zoom-in delay-1">
+                <form id="contact-form" action="https://formspree.io/f/xnqeklyw" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" required placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="
+submit-btn">Send Message</button>
+                </form>
+                <p class="success-message">Message sent successfully!</p>
+                <p class="error-message">Failed to send message. Please try again.</p>
             </div>
         </div>
-        <div class="contact-form animate-zoom-in delay-1">
-            <form id="contact-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" class="form-control" required>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#booking">Booking</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-popup="terms-popup">Terms of Use</a></li>
+                    <li><a href="#" data-popup="privacy-popup">Privacy Policy</a></li>
+                    <li><a href="#" data-popup="cookie-popup">Cookie Policy</a></li>
+                    <li><a href="#" data-popup="faqs-popup">FAQs</a></li>
+                    <li><a href="#" data-popup="disclaimer-popup">Disclaimer</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/itsboyrudra" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" class="form-control" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Send Message</button>
-            </form>
-            <p class="success-message">Message sent! I'll get back to you soon.</p>
-            <p class="error-message">An error occurred. Please try again.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="cookie-consent" id="cookie-consent">
+        <div class="cookie-content">
+            <p>We use cookies to enhance your experience. By continuing, you agree to our <a href="#" data-popup="cookie-popup">Cookie Policy</a>.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-btn accept" id="accept-cookies">Accept All</button>
+                <button class="cookie-btn secondary" id="decline-cookies">Decline Non-Essential</button>
+            </div>
         </div>
     </div>
-</section>
 
-<footer>
-    <div class="footer-content">
-        <div class="footer-col">
-            <h3>Rudraksh Sharma</h3>
-            <p>Performance marketing and video editing services to grow your brand.</p>
-            <p>Rajasthan, India</p>
-        </div>
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#booking">Booking</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Legal</h3>
-            <ul class="footer-links">
-                <li><a href="#" class="legal-link" data-popup="terms-popup">Terms of Use</a></li>
-                <li><a href="#" class="legal-link" data-popup="privacy-popup">Privacy Policy</a></li>
-                <li><a href="#" class="legal-link" data-popup="cookie-popup">Cookie Policy</a></li>
-                <li><a href="#" class="legal-link" data-popup="faqs-popup">FAQs</a></li>
-                <li><a href="#" class="legal-link" data-popup="disclaimer-popup">Disclaimer</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Connect</h3>
-            <ul class="footer-links">
-                <li><a href="mailto:info.itsboyrudra@gmail.com">info.itsboyrudra@gmail.com</a></li>
-                <li><a href="https://wa.me/+919351782102" target="_blank">+91 93517 82102</a></li>
-                <li><a href="https://facebook.com/itsboyrudra" target="_blank">Facebook</a></li>
-                <li><a href="https://instagram.com/itsboyrudra" target="_blank">Instagram</a></li>
-                <li><a href="https://x.com/Itsboyrudra" target="_blank">X</a></li>
-                <li><a href="https://linkedin.com/in/itsboyrudra" target="_blank">LinkedIn</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
-    </div>
-</footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <script>
+        // Sidebar Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+        const body = document.body;
 
-<div class="cookie-consent" id="cookie-consent">
-    <div class="cookie-content">
-        <p>We use cookies to enhance your experience. By continuing, you agree to our <a href="#" class="legal-link" data-popup="cookie-popup">Cookie Policy</a>.</p>
-        <div class="cookie-buttons">
-            <button class="cookie-btn accept">Accept</button>
-            <button class="cookie-btn secondary">Decline</button>
-        </div>
-    </div>
-</div>
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            sidebarBackdrop.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            body.classList.toggle('sidebar-open');
+        });
 
-<style>
-    /* Updated CSS for better social media logo visibility */
-    .social-link {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-primary);
-        text-decoration: none;
-        transition: all 0.3s;
-        border: 2px solid var(--accent);
-        font-size: 1.2rem;
-    }
-
-    .social-link:hover {
-        background: var(--accent);
-        color: var(--bg-dark);
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
-    }
-
-    .footer-links a {
-        color: var(--text-primary);
-        text-decoration: none;
-        transition: color 0.3s, transform 0.3s;
-        display: inline-block;
-        font-size: 1rem;
-    }
-
-    .footer-links a:hover {
-        color: var(--accent);
-        transform: translateX(5px);
-    }
-
-    /* Ensure payment gateway images are visible and styled */
-    .payment-gateway img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        background: white;
-        padding: 8px;
-        border-radius: 50%;
-    }
-</style>
-
-<script src="https://assets.calendly.com/assets/external/widget.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
-<script>
-    // Hamburger Menu
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const sidebar = document.getElementById('sidebar');
-    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
-
-    mobileMenuBtn.addEventListener('click', () => {
-        const isActive = sidebar.classList.toggle('active');
-        sidebarBackdrop.classList.toggle('active', isActive);
-        mobileMenuBtn.classList.toggle('active', isActive);
-        document.body.classList.toggle('sidebar-open', isActive);
-    });
-
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        sidebarBackdrop.addEventListener('click', () => {
             sidebar.classList.remove('active');
             sidebarBackdrop.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
-            document.body.classList.remove('sidebar-open');
+            body.classList.remove('sidebar-open');
         });
-    });
 
-    sidebarBackdrop.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        sidebarBackdrop.classList.remove('active');
-        mobileMenuBtn.classList.remove('active');
-        document.body.classList.remove('sidebar-open');
-    });
-
-    // Side Popup
-    const floatingLogo = document.querySelector('.floating-logo');
-    const sidePopup = document.querySelector('.side-popup');
-    const sidePopupClose = document.querySelector('.side-popup-close');
-
-    floatingLogo.addEventListener('click', () => {
-        sidePopup.classList.add('active');
-    });
-
-    sidePopupClose.addEventListener('click', () => {
-        sidePopup.classList.remove('active');
-    });
-
-    // Legal Popups
-    const legalLinks = document.querySelectorAll('.legal-link');
-    const legalPopups = document.querySelectorAll('.legal-popup');
-    const legalPopupCloseButtons = document.querySelectorAll('.legal-popup-close');
-    const legalPopupBackdrop = document.getElementById('legal-popup-backdrop');
-
-    legalLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const popupId = link.getAttribute('data-popup');
-            const targetPopup = document.getElementById(popupId);
-            legalPopups.forEach(popup => popup.classList.remove('active'));
-            targetPopup.classList.add('active');
-            legalPopupBackdrop.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    legalPopupCloseButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            legalPopups.forEach(popup => popup.classList.remove('active'));
-            legalPopupBackdrop.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    legalPopupBackdrop.addEventListener('click', () => {
-        legalPopups.forEach(popup => popup.classList.remove('active'));
-        legalPopupBackdrop.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Service Details Popups
-    const serviceDetailButtons = document.querySelectorAll('.secondary-cta');
-    const serviceDetailPopups = document.querySelectorAll('[id$="-details-popup"]');
-    const serviceDetailCloseButtons = document.querySelectorAll('.service-details-close');
-
-    serviceDetailButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const popupId = button.getAttribute('data-popup');
-            const targetPopup = document.getElementById(popupId);
-            serviceDetailPopups.forEach(popup => popup.classList.remove('active'));
-            targetPopup.classList.add('active');
-            legalPopupBackdrop.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    serviceDetailCloseButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            serviceDetailPopups.forEach(popup => popup.classList.remove('active'));
-            legalPopupBackdrop.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-    });
-
-    legalPopupBackdrop.addEventListener('click', () => {
-        serviceDetailPopups.forEach(popup => popup.classList.remove('active'));
-        legalPopupBackdrop.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    // Payment Popup
-    const pricingCtas = document.querySelectorAll('.pricing-cta');
-    const serviceCtas = document.querySelectorAll('.primary-cta');
-    const paymentPopup = document.getElementById('payment-popup');
-    const paymentPopupClose = document.querySelector('.payment-popup-close');
-    const paymentPopupBackdrop = document.getElementById('payment-popup-backdrop');
-    const paymentTitle = document.getElementById('payment-title');
-    const paymentAmount = document.getElementById('payment-amount');
-    const paymentServicesList = document.getElementById('payment-services-list');
-    const paymentGateways = document.querySelectorAll('.payment-gateway');
-
-    const serviceDetails = {
-        'google-ads': [
-            'Campaign Setup & Optimization',
-            'Smart Bidding & ROI Tracking',
-            'Dashboard Reporting',
-            'Keyword Research & Strategy',
-            'Landing Page Optimization'
-        ],
-        'facebook-ads': [
-            'Funnel Strategy & Retargeting',
-            'Lookalike Audience Targeting',
-            'Ad Creative Optimization',
-            'Conversion Tracking',
-            'A/B Testing Frameworks'
-        ],
-        'video-editing': [
-            'Reels, YouTube Shorts, TikTok',
-            'Motion Effects & Transitions',
-            'Auto Subtitles & Captions',
-            'AI-based Editing Tools',
-            'Color Grading & Correction'
-        ],
-        'basic': [
-            '1 Campaign Management',
-            'Weekly Optimization',
-            'Basic Reporting',
-            'Email Support',
-            'Up to $1,000 Ad Spend'
-        ],
-        'pro': [
-            '3 Campaigns Management',
-            'Daily Optimization',
-            'Advanced Reporting',
-            'Priority Support',
-            'Up to $5,000 Ad Spend',
-            'Monthly Strategy Call'
-        ],
-        'premium': [
-            'Unlimited Campaigns',
-            'Real-time Optimization',
-            'Custom Dashboard',
-            '24/7 Support',
-            'Unlimited Ad Spend',
-            'Weekly Strategy Calls',
-            'Creative Production'
-        ]
-    };
-
-    [...pricingCtas, ...serviceCtas].forEach(cta => {
-        cta.addEventListener('click', (e) => {
-            e.preventDefault();
-            const plan = cta.getAttribute('data-plan') || cta.getAttribute('data-service');
-            const amount = cta.getAttribute('data-amount');
-            paymentTitle.textContent = `Payment for ${plan.charAt(0).toUpperCase() + plan.slice(1)} Plan`;
-            paymentAmount.textContent = `$${amount}/month`;
-            paymentServicesList.innerHTML = serviceDetails[plan].map(item => `<li>${item}</li>`).join('');
-            paymentPopup.classList.add('active');
-            paymentPopupBackdrop.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        });
-    });
-
-    paymentPopupClose.addEventListener('click', () => {
-        paymentPopup.classList.remove('active');
-        paymentPopupBackdrop.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    paymentPopupBackdrop.addEventListener('click', () => {
-        paymentPopup.classList.remove('active');
-        paymentPopupBackdrop.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-
-    paymentGateways.forEach(gateway => {
-        gateway.addEventListener('click', (e) => {
-            e.preventDefault();
-            const gatewayType = gateway.getAttribute('data-gateway');
-            alert(`Redirecting to ${gatewayType.charAt(0).toUpperCase() + gatewayType.slice(1)} for payment...`);
-        });
-    });
-
-    // Typed.js
-    new Typed('#typed-text', {
-        strings: [
-            'Performance Marketing | Creative Storytelling | ROI-Driven Campaigns',
-            'Google Ads | Facebook Ads | Video Editing',
-            'Boost Clicks | Engage Audiences | Build Brands'
-        ],
-        typeSpeed: 50,
-        backSpeed: 30,
-        backDelay: 2000,
-        loop: true
-    });
-
-    // Portfolio Filter
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.getAttribute('data-filter');
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            portfolioItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                item.style.display = filter === 'all' || filter === category ? 'block' : 'none';
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                sidebarBackdrop.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+                body.classList.remove('sidebar-open');
             });
         });
-    });
 
-    // Contact Form
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
+        // Side Popup with Auto-Close
+        const floatingLogo = document.querySelector('.floating-logo');
+        const sidePopup = document.querySelector('.side-popup');
+        const sidePopupClose = document.querySelector('.side-popup-close');
+        let autoCloseTimeout;
+
+        floatingLogo.addEventListener('click', () => {
+            sidePopup.classList.toggle('active');
+            if (sidePopup.classList.contains('active')) {
+                // Auto-close after 5 seconds
+                autoCloseTimeout = setTimeout(() => {
+                    sidePopup.classList.remove('active');
+                }, 5000);
+            } else {
+                clearTimeout(autoCloseTimeout);
+            }
+        });
+
+        sidePopupClose.addEventListener('click', () => {
+            sidePopup.classList.remove('active');
+            clearTimeout(autoCloseTimeout);
+        });
+
+        // Legal Popups
+        const legalPopupTriggers = document.querySelectorAll('[data-popup]');
+        const legalPopupBackdrop = document.getElementById('legal-popup-backdrop');
+
+        legalPopupTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popupId = trigger.getAttribute('data-popup');
+                const popup = document.getElementById(popupId);
+                if (popup) {
+                    popup.classList.add('active');
+                    legalPopupBackdrop.classList.add('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+                    popup.classList.remove('active');
+                });
+                legalPopupBackdrop.classList.remove('active');
+            });
+        });
+
+        legalPopupBackdrop.addEventListener('click', () => {
+            document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+                popup.classList.remove('active');
+            });
+            legalPopupBackdrop.classList.remove('active');
+        });
+
+        // Typed.js for Hero Section with Fixed Backspace
+        new Typed('#typed-text', {
+            strings: ['Performance Marketing | Creative Storytelling | ROI-Driven Campaigns'],
+            typeSpeed: 50,
+            backSpeed: 20, // Reduced backspeed for smoother transition
+            backDelay: 2000,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+            smartBackspace: false // Disable smart backspace to prevent excessive backspacing
+        });
+
+        // Portfolio Filter
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filter = button.getAttribute('data-filter');
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                });
+            });
+        });
+
+        // Geolocation for Payment Gateways with Fallback
+        const paymentPopup = document.getElementById('payment-popup');
+        const paymentPopupBackdrop = document.getElementById('payment-popup-backdrop');
+        const paymentPopupClose = document.querySelector('.payment-popup-close');
+        const paymentGateways = document.getElementById('payment-gateways');
+        const paymentAmount = document.getElementById('payment-amount');
+        const paymentTitle = document.getElementById('payment-title');
+        const paymentServicesList = document.getElementById('payment-services-list');
+
+        const servicesData = {
+            'google-ads': {
+                title: 'Google Ads Payment',
+                services: [
+                    'Campaign Setup & Optimization',
+                    'Smart Bidding & ROI Tracking',
+                    'Dashboard Reporting',
+                    'Keyword Research & Strategy',
+                    'Landing Page Optimization'
+                ]
+            },
+            'facebook-ads': {
+                title: 'Facebook Ads Payment',
+                services: [
+                    'Funnel Strategy & Retargeting',
+                    'Lookalike Audience Targeting',
+                    'Ad Creative Optimization',
+                    'Conversion Tracking',
+                    'A/B Testing Frameworks'
+                ]
+            },
+            'video-editing': {
+                title: 'Video Editing Payment',
+                services: [
+                    'Reels, YouTube Shorts, TikTok',
+                    'Motion Effects & Transitions',
+                    'Auto Subtitles & Captions',
+                    'AI-based Editing Tools',
+                    'Color Grading & Correction'
+                ]
+            },
+            'basic': {
+                title: 'Basic Plan Payment',
+                services: [
+                    '1 Campaign Management',
+                    'Weekly Optimization',
+                    'Basic Reporting',
+                    'Email Support',
+                    'Up to $1,000 Ad Spend'
+                ]
+            },
+            'pro': {
+                title: 'Pro Plan Payment',
+                services: [
+                    '3 Campaigns Management',
+                    'Daily Optimization',
+                    'Advanced Reporting',
+                    'Priority Support',
+                    'Up to $5,000 Ad Spend',
+                    'Monthly Strategy Call'
+                ]
+            },
+            'premium': {
+                title: 'Premium Plan Payment',
+                services: [
+                    'Unlimited Campaigns',
+                    'Real-time Optimization',
+                    'Custom Dashboard',
+                    '24/7 Support',
+                    'Unlimited Ad Spend',
+                    'Weekly Strategy Calls',
+                    'Creative Production'
+                ]
+            }
+        };
+
+        function showPaymentPopup(service, amount) {
+            paymentTitle.textContent = servicesData[service].title;
+            paymentAmount.textContent = `$${amount}`;
+            paymentServicesList.innerHTML = servicesData[service].services.map(item => `<li>${item}</li>`).join('');
+            paymentGateways.innerHTML = ''; // Clear previous gateways
+
+            // Define payment gateways with reliable logo URLs and placeholder payment URLs
+            const defaultGateways = [
+                { name: 'PayPal', img: 'https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg', url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=info.itsboyrudra@gmail.com&amount=' + amount },
+                { name: 'Stripe', img: 'https://stripe.com/img/v3/home/brand-logos/stripe-logo-blue.png', url: 'https://buy.stripe.com/test_14k4hW1rI9xC4kE5kk' }, // Replace with your Stripe checkout link
+                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' } // Replace with your Razorpay checkout link
+            ];
+
+            const indiaGateways = [
+                { name: 'GPay', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg', url: 'https://pay.google.com/about/' }, // Replace with GPay payment link
+                { name: 'PhonePe', img: 'https://www.phonepe.com/webstatic/1474-0c7c5f0d4b0a1e9f5c4d7c6b8b0e9c4b.png', url: 'https://www.phonepe.com/' }, // Replace with PhonePe payment link
+                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' } // Replace with your Razorpay checkout link
+            ];
+
+            // Attempt geolocation with ipapi.co, fallback to default gateways
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const country = data.country_name;
+                    const gateways = country === 'India' ? indiaGateways : defaultGateways;
+
+                    gateways.forEach(gateway => {
+                        const gatewayElement = document.createElement('a');
+                        gatewayElement.href = gateway.url;
+                        gatewayElement.className = 'payment-gateway';
+                        gatewayElement.innerHTML = `<img src="${gateway.img}" alt="${gateway.name}" onerror="this.src='https://via.placeholder.com/60?text=${gateway.name}'">`;
+                        paymentGateways.appendChild(gatewayElement);
+                    });
+
+                    paymentPopup.classList.add('active');
+                    paymentPopupBackdrop.classList.add('active');
+                })
+                .catch(error => {
+                    console.error('Geolocation API error:', error);
+                    // Fallback to default gateways
+                    defaultGateways.forEach(gateway => {
+                        const gatewayElement = document.createElement('a');
+                        gatewayElement.href = gateway.url;
+                        gatewayElement.className = 'payment-gateway';
+                        gatewayElement.innerHTML = `<img src="${gateway.img}" alt="${gateway.name}" onerror="this.src='https://via.placeholder.com/60?text=${gateway.name}'">`;
+                        paymentGateways.appendChild(gatewayElement);
+                    });
+
+                    paymentPopup.classList.add('active');
+                    paymentPopupBackdrop.classList.add('active');
+                });
+        }
+
+        document.querySelectorAll('.primary-cta, .pricing-cta').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const service = button.getAttribute('data-service') || button.getAttribute('data-plan');
+                const amount = button.getAttribute('data-amount');
+                showPaymentPopup(service, amount);
+            });
+        });
+
+        paymentPopupClose.addEventListener('click', () => {
+            paymentPopup.classList.remove('active');
+            paymentPopupBackdrop.classList.remove('active');
+        });
+
+        paymentPopupBackdrop.addEventListener('click', () => {
+            paymentPopup.classList.remove('active');
+            paymentPopupBackdrop.classList.remove('active');
+        });
+
+        // Cookie Consent with sessionStorage
+        const cookieConsent = document.getElementById('cookie-consent');
+        const acceptCookies = document.getElementById('accept-cookies');
+        const declineCookies = document.getElementById('decline-cookies');
+
+        function checkCookieConsent() {
+            try {
+                const consent = sessionStorage.getItem('cookieConsent');
+                if (!consent) {
+                    cookieConsent.classList.add('active');
+                }
+            } catch (e) {
+                console.warn('sessionStorage not available:', e);
+                cookieConsent.classList.add('active');
+            }
+        }
+
+        acceptCookies.addEventListener('click', () => {
+            try {
+                sessionStorage.setItem('cookieConsent', 'accepted');
+                cookieConsent.classList.remove('active');
+                // Initialize analytics or other cookies here
+            } catch (e) {
+                console.warn('sessionStorage not available:', e);
+                cookieConsent.classList.remove('active');
+            }
+        });
+
+        declineCookies.addEventListener('click', () => {
+            try {
+                sessionStorage.setItem('cookieConsent', 'declined');
+                cookieConsent.classList.remove('active');
+                // Disable non-essential cookies
+            } catch (e) {
+                console.warn('sessionStorage not available:', e);
+                cookieConsent.classList.remove('active');
+            }
+        });
+
+        // Check cookie consent on page load
+        window.addEventListener('load', checkCookieConsent);
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contact-form');
         const successMessage = document.querySelector('.contact-form .success-message');
         const errorMessage = document.querySelector('.contact-form .error-message');
 
-        try {
-            // Simulate form submission
-            await new Promise(resolve => setTimeout(resolve, 1000));
-            contactForm.reset();
-            successMessage.style.display = 'block';
-            errorMessage.style.display = 'none';
-            setTimeout(() => successMessage.style.display = 'none', 5000);
-        } catch {
-            errorMessage.style.display = 'block';
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
             successMessage.style.display = 'none';
-            setTimeout(() => errorMessage.style.display = 'none', 5000);
-        }
-    });
+            errorMessage.style.display = 'none';
 
-    // Cookie Consent
-    const cookieConsent = document.getElementById('cookie-consent');
-    const acceptBtn = document.querySelector('.cookie-btn.accept');
-    const declineBtn = document.querySelector('.cookie-btn.secondary');
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
+                    setTimeout(() => successMessage.style.display = 'none', 5000);
+                } else {
+                    errorMessage.style.display = 'block';
+                    setTimeout(() => errorMessage.style.display = 'none', 5000);
+                }
+            } catch (error) {
+                errorMessage.style.display = 'block';
+                setTimeout(() => errorMessage.style.display = 'none', 5000);
+            }
+        });
 
-    if (!localStorage.getItem('cookieConsent')) {
-        setTimeout(() => cookieConsent.classList.add('active'), 2000);
-    }
-
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'accepted');
-        cookieConsent.classList.remove('active');
-    });
-
-    declineBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'declined');
-        cookieConsent.classList.remove('active');
-    });
-</script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
