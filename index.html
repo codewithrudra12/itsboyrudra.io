@@ -2218,7 +2218,6 @@ submit-btn">Send Message</button></a>
 
         function showPaymentPopup(service, amount) {
             paymentTitle.textContent = servicesData[service].title;
-            paymentAmount.textContent = `$${amount}`;
             paymentServicesList.innerHTML = servicesData[service].services.map(item => `<li>${item}</li>`).join('');
             paymentGateways.innerHTML = ''; // Clear previous gateways
 
@@ -2242,6 +2241,14 @@ submit-btn">Send Message</button></a>
                     const country = data.country_name;
                     const gateways = country === 'India' ? indiaGateways : defaultGateways;
 
+                    let currencySymbol = '$';
+                    let finalAmount = amount;
+                    if (country === 'India') {
+                        currencySymbol = '₹';
+                        finalAmount = Math.round(amount * 83); // Assuming approximate conversion rate 1 USD = 83 INR (update as needed)
+                    }
+                    paymentAmount.textContent = `${currencySymbol}${finalAmount}`;
+
                     gateways.forEach(gateway => {
                         const gatewayElement = document.createElement('a');
                         gatewayElement.href = gateway.url;
@@ -2256,6 +2263,8 @@ submit-btn">Send Message</button></a>
                 .catch(error => {
                     console.error('Geolocation API error:', error);
                     // Fallback to default gateways
+                    paymentAmount.textContent = `$${amount}`;
+
                     defaultGateways.forEach(gateway => {
                         const gatewayElement = document.createElement('a');
                         gatewayElement.href = gateway.url;
