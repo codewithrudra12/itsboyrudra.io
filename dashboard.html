@@ -15,6 +15,9 @@
             --text-primary: #f5f5f5;
             --text-secondary: #b0b0b0;
             --accent: #3a86ff;
+            --accent-green: #4CAF50;
+            --accent-orange: #FF9800;
+            --accent-red: #F44336;
             --card-bg: rgba(30, 30, 30, 0.6);
             --card-border: rgba(255, 255, 255, 0.05);
             --glass-effect: rgba(20, 20, 20, 0.7);
@@ -31,6 +34,7 @@
             background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .dashboard-container {
@@ -67,6 +71,7 @@
             padding: 2rem;
             border: 1px solid var(--card-border);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
         }
 
         .dashboard-card:hover {
@@ -145,11 +150,323 @@
             font-weight: 600;
             transition: background 0.3s, box-shadow 0.3s;
             margin-top: 1rem;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
             background: #2a75e6;
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(58, 134, 255, 0.1);
+        }
+
+        /* Modal/Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-darker);
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--accent);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .modal-tab.active {
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Project Details */
+        .project-info {
+            margin-bottom: 2rem;
+        }
+
+        .project-info h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .project-info p {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .project-milestones {
+            margin-bottom: 2rem;
+        }
+
+        .milestone {
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .milestone.completed {
+            border-left-color: var(--accent-green);
+        }
+
+        .milestone h4 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .milestone-status {
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: var(--accent);
+        }
+
+        .milestone-status.completed {
+            background: var(--accent-green);
+        }
+
+        /* Chat Section */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        .message.client {
+            background: rgba(58, 134, 255, 0.2);
+            margin-left: auto;
+        }
+
+        .message.admin {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        /* Asset Uploads */
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .asset-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .asset-item:hover {
+            transform: scale(1.05);
+        }
+
+        .asset-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .asset-name {
+            font-size: 0.9rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--card-border);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Booking Form */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+            color: var(--text-primary);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .booked-meetings {
+            margin-top: 2rem;
+        }
+
+        .meeting-item {
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .meeting-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .meeting-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
@@ -159,6 +476,14 @@
             
             .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .modal {
+                width: 95%;
+            }
+            
+            .assets-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -171,7 +496,7 @@
         </div>
         
         <div class="dashboard-grid">
-            <div class="dashboard-card">
+            <div class="dashboard-card" data-modal="campaign-modal">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                     <h2 class="card-title">Campaign Performance</h2>
@@ -192,11 +517,11 @@
                         <div class="progress-fill" style="width: 75%"></div>
                     </div>
                     <p>Monthly target: 75% complete</p>
-                    <a href="#" class="btn">View Detailed Report</a>
+                    <button class="btn">View Detailed Report</button>
                 </div>
             </div>
             
-            <div class="dashboard-card">
+            <div class="dashboard-card" data-modal="project-modal">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-video"></i></div>
                     <h2 class="card-title">Video Projects</h2>
@@ -217,11 +542,11 @@
                         <div class="progress-fill" style="width: 60%"></div>
                     </div>
                     <p>Current project: 60% complete</p>
-                    <a href="#" class="btn">View Project Details</a>
+                    <button class="btn">View Project Details</button>
                 </div>
             </div>
             
-            <div class="dashboard-card">
+            <div class="dashboard-card" data-modal="meetings-modal">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
                     <h2 class="card-title">Upcoming Meetings</h2>
@@ -238,11 +563,11 @@
                             <p>Next Monday, 10:00 AM</p>
                         </div>
                     </div>
-                    <a href="#booking" class="btn">Schedule New Meeting</a>
+                    <button class="btn">Schedule New Meeting</button>
                 </div>
             </div>
             
-            <div class="dashboard-card">
+            <div class="dashboard-card" data-modal="billing-modal">
                 <div class="card-header">
                     <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h2 class="card-title">Billing & Invoices</h2>
@@ -259,10 +584,492 @@
                             <div class="stat-label">Pending Invoices</div>
                         </div>
                     </div>
-                    <a href="#" class="btn">View Billing Details</a>
+                    <button class="btn">View Billing Details</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Campaign Performance Modal -->
+    <div class="modal-overlay" id="campaign-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Campaign Performance</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" data-tab="campaign-overview">Overview</div>
+                    <div class="modal-tab" data-tab="campaign-details">Details</div>
+                    <div class="modal-tab" data-tab="campaign-chat">Chat</div>
+                </div>
+                
+                <div class="tab-content active" id="campaign-overview">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">45%</div>
+                            <div class="stat-label">Conversion Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$2.50</div>
+                            <div class="stat-label">Cost Per Lead</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">1,243</div>
+                            <div class="stat-label">Total Clicks</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$3,245</div>
+                            <div class="stat-label">Total Spend</div>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <p class="text-center">Monthly target: 75% complete</p>
+                    
+                    <h3>Top Performing Ads</h3>
+                    <ul>
+                        <li>Summer Promotion Ad - 12.4% CTR</li>
+                        <li>Product Demo Video - 8.7% CTR</li>
+                        <li>Limited Time Offer - 7.2% CTR</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="campaign-details">
+                    <h3>Campaign Details</h3>
+                    <p>Detailed analytics and performance metrics for your advertising campaigns.</p>
+                    <!-- More detailed campaign info would go here -->
+                </div>
+                
+                <div class="tab-content" id="campaign-chat">
+                    <h3>Campaign Discussion</h3>
+                    <div class="chat-container">
+                        <div class="chat-messages">
+                            <div class="message admin">
+                                <p>Hi there! I've optimized your campaign based on last week's performance.</p>
+                                <div class="message-time">Today, 10:30 AM</div>
+                            </div>
+                            <div class="message client">
+                                <p>Thanks! The conversion rate looks much better this week.</p>
+                                <div class="message-time">Today, 10:35 AM</div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="Type your message...">
+                            <button class="btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal-overlay" id="project-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Project Details</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" data-tab="project-info">Project Info</div>
+                    <div class="modal-tab" data-tab="project-assets">Assets</div>
+                    <div class="modal-tab" data-tab="project-chat">Discussion</div>
+                </div>
+                
+                <div class="tab-content active" id="project-info">
+                    <div class="project-info">
+                        <h3>Product Explainer Video</h3>
+                        <p><strong>Status:</strong> In Progress (60% Complete)</p>
+                        <p><strong>Deadline:</strong> August 30, 2025</p>
+                        <p><strong>Project Manager:</strong> Rudraksh Sharma</p>
+                    </div>
+                    
+                    <div class="project-milestones">
+                        <h3>Milestones</h3>
+                        <div class="milestone completed">
+                            <h4>
+                                <span>Initial Concept Approval</span>
+                                <span class="milestone-status completed">Completed</span>
+                            </h4>
+                            <p>Completed: July 15, 2025</p>
+                        </div>
+                        <div class="milestone completed">
+                            <h4>
+                                <span>Script Finalization</span>
+                                <span class="milestone-status completed">Completed</span>
+                            </h4>
+                            <p>Completed: July 25, 2025</p>
+                        </div>
+                        <div class="milestone">
+                            <h4>
+                                <span>First Draft Delivery</span>
+                                <span class="milestone-status">In Progress</span>
+                            </h4>
+                            <p>Expected: August 15, 2025</p>
+                        </div>
+                        <div class="milestone">
+                            <h4>
+                                <span>Final Delivery</span>
+                                <span class="milestone-status">Pending</span>
+                            </h4>
+                            <p>Expected: August 30, 2025</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="project-assets">
+                    <h3>Project Assets</h3>
+                    <p>Upload and manage files for your project.</p>
+                    
+                    <div class="upload-area">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <p>Drag & drop files here or click to browse</p>
+                        <p class="text-small">Maximum file size: 100MB</p>
+                    </div>
+                    
+                    <div class="assets-grid">
+                        <div class="asset-item">
+                            <div class="asset-icon">
+                                <i class="fas fa-file-video"></i>
+                            </div>
+                            <div class="asset-name">product_demo.mp4</div>
+                        </div>
+                        <div class="asset-item">
+                            <div class="asset-icon">
+                                <i class="fas fa-file-image"></i>
+                            </div>
+                            <div class="asset-name">logo.png</div>
+                        </div>
+                        <div class="asset-item">
+                            <div class="asset-icon">
+                                <i class="fas fa-file-audio"></i>
+                            </div>
+                            <div class="asset-name">voiceover.mp3</div>
+                        </div>
+                        <div class="asset-item">
+                            <div class="asset-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="asset-name">script.pdf</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="project-chat">
+                    <h3>Project Discussion</h3>
+                    <div class="chat-container">
+                        <div class="chat-messages">
+                            <div class="message admin">
+                                <p>I've uploaded the first draft of the video. Let me know your thoughts!</p>
+                                <div class="message-time">Yesterday, 3:45 PM</div>
+                            </div>
+                            <div class="message client">
+                                <p>The intro looks great! Can we make the text animations a bit faster?</p>
+                                <div class="message-time">Today, 9:15 AM</div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="Type your message...">
+                            <button class="btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meetings Modal -->
+    <div class="modal-overlay" id="meetings-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Meeting Schedule</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" data-tab="schedule-meeting">Schedule Meeting</div>
+                    <div class="modal-tab" data-tab="upcoming-meetings">Upcoming Meetings</div>
+                </div>
+                
+                <div class="tab-content active" id="schedule-meeting">
+                    <form id="meeting-form">
+                        <div class="form-group">
+                            <label for="meeting-title">Meeting Title</label>
+                            <input type="text" id="meeting-title" placeholder="e.g., Project Review" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="meeting-date">Date</label>
+                            <input type="date" id="meeting-date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="meeting-time">Time</label>
+                            <input type="time" id="meeting-time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="meeting-duration">Duration</label>
+                            <select id="meeting-duration" required>
+                                <option value="30">30 minutes</option>
+                                <option value="60" selected>60 minutes</option>
+                                <option value="90">90 minutes</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="meeting-notes">Notes (Optional)</label>
+                            <textarea id="meeting-notes" placeholder="Any specific topics you want to discuss..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Schedule Meeting</button>
+                    </form>
+                </div>
+                
+                <div class="tab-content" id="upcoming-meetings">
+                    <h3>Your Scheduled Meetings</h3>
+                    
+                    <div class="booked-meetings">
+                        <div class="meeting-item">
+                            <h4>Strategy Review</h4>
+                            <div class="meeting-meta">
+                                <span>Tomorrow, 3:00 PM</span>
+                                <span>60 minutes</span>
+                            </div>
+                        </div>
+                        
+                        <div class="meeting-item">
+                            <h4>Monthly Report</h4>
+                            <div class="meeting-meta">
+                                <span>Next Monday, 10:00 AM</span>
+                                <span>30 minutes</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-secondary" id="switch-to-schedule">Schedule New Meeting</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Billing Modal -->
+    <div class="modal-overlay" id="billing-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Billing & Invoices</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-tabs">
+                    <div class="modal-tab active" data-tab="billing-overview">Overview</div>
+                    <div class="modal-tab" data-tab="billing-invoices">Invoices</div>
+                    <div class="modal-tab" data-tab="billing-chat">Support</div>
+                </div>
+                
+                <div class="tab-content active" id="billing-overview">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">$799</div>
+                            <div class="stat-label">Current Balance</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Pending Invoices</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$3,245</div>
+                            <div class="stat-label">Total Paid</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">15</div>
+                            <div class="stat-label">Total Invoices</div>
+                        </div>
+                    </div>
+                    
+                    <h3>Recent Transactions</h3>
+                    <ul>
+                        <li>July 15, 2025 - Payment Received - $1,200</li>
+                        <li>June 30, 2025 - Invoice #INV-2025-06 - $1,500</li>
+                        <li>June 15, 2025 - Payment Received - $545</li>
+                    </ul>
+                </div>
+                
+                <div class="tab-content" id="billing-invoices">
+                    <h3>Your Invoices</h3>
+                    <p>Download and view your invoice history.</p>
+                    <!-- Invoice list would go here -->
+                </div>
+                
+                <div class="tab-content" id="billing-chat">
+                    <h3>Billing Support</h3>
+                    <div class="chat-container">
+                        <div class="chat-messages">
+                            <div class="message admin">
+                                <p>Hello! How can I help with your billing questions today?</p>
+                                <div class="message-time">Today, 11:20 AM</div>
+                            </div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" placeholder="Type your message...">
+                            <button class="btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal functionality
+            const modalTriggers = document.querySelectorAll('.dashboard-card');
+            const modals = document.querySelectorAll('.modal-overlay');
+            const closeButtons = document.querySelectorAll('.modal-close');
+            
+            // Open modal when clicking on a dashboard card
+            modalTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const modalId = this.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal when clicking on close button
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal-overlay');
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+            
+            // Close modal when clicking outside
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Tab functionality
+            const tabs = document.querySelectorAll('.modal-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabContainer = this.closest('.modal-tabs');
+                    const tabContentId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs in this container
+                    tabContainer.querySelectorAll('.modal-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab content in this modal
+                    const modalBody = this.closest('.modal-body');
+                    modalBody.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show the selected tab content
+                    document.getElementById(tabContentId).classList.add('active');
+                });
+            });
+            
+            // Meeting form functionality
+            const meetingForm = document.getElementById('meeting-form');
+            if (meetingForm) {
+                meetingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // In a real application, you would send this data to a server
+                    alert('Meeting scheduled successfully!');
+                    
+                    // Switch to upcoming meetings tab
+                    document.querySelector('[data-tab="upcoming-meetings"]').click();
+                });
+            }
+            
+            // Switch to schedule meeting tab
+            const switchToScheduleBtn = document.getElementById('switch-to-schedule');
+            if (switchToScheduleBtn) {
+                switchToScheduleBtn.addEventListener('click', function() {
+                    document.querySelector('[data-tab="schedule-meeting"]').click();
+                });
+            }
+            
+            // Chat functionality (simplified)
+            const chatInputs = document.querySelectorAll('.chat-input input');
+            chatInputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        const message = this.value.trim();
+                        if (message) {
+                            const chatMessages = this.closest('.chat-container').querySelector('.chat-messages');
+                            
+                            // Create new message element
+                            const messageEl = document.createElement('div');
+                            messageEl.className = 'message client';
+                            messageEl.innerHTML = `
+                                <p>${message}</p>
+                                <div class="message-time">Just now</div>
+                            `;
+                            
+                            // Add to chat
+                            chatMessages.appendChild(messageEl);
+                            
+                            // Clear input
+                            this.value = '';
+                            
+                            // Scroll to bottom
+                            chatMessages.scrollTop = chatMessages.scrollHeight;
+                        }
+                    }
+                });
+            });
+            
+            // Send button functionality
+            const sendButtons = document.querySelectorAll('.chat-input .btn');
+            sendButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const input = this.previousElementSibling;
+                    const message = input.value.trim();
+                    
+                    if (message) {
+                        const chatMessages = this.closest('.chat-container').querySelector('.chat-messages');
+                        
+                        // Create new message element
+                        const messageEl = document.createElement('div');
+                        messageEl.className = 'message client';
+                        messageEl.innerHTML = `
+                            <p>${message}</p>
+                            <div class="message-time">Just now</div>
+                        `;
+                        
+                        // Add to chat
+                        chatMessages.appendChild(messageEl);
+                        
+                        // Clear input
+                        input.value = '';
+                        
+                        // Scroll to bottom
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
