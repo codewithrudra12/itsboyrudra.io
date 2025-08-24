@@ -126,6 +126,52 @@
             width: 100%;
         }
 
+        /* More from us dropdown */
+        .more-dropdown {
+            position: relative;
+        }
+
+        .more-dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 200px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+        }
+
+        .more-dropdown:hover .more-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .more-dropdown-content a {
+            display: block;
+            padding: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .more-dropdown-content a:hover {
+            background: rgba(58, 134, 255, 0.1);
+        }
+
         .mobile-menu-btn {
             display: none;
             background: transparent;
@@ -787,112 +833,6 @@
             transform: translateY(-2px);
         }
 
-        /* Testimonial Dropdown */
-        .testimonial-dropdown {
-            position: relative;
-            display: inline-block;
-            margin-top: 2rem;
-        }
-
-        .testimonial-trigger {
-            background: var(--accent);
-            color: var(--text-primary);
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .testimonial-trigger:hover {
-            background: #2a75e6;
-            transform: translateY(-2px);
-        }
-
-        .testimonial-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 400px;
-            max-width: 90vw;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-top: 1rem;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
-            z-index: 100;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-dropdown:hover .testimonial-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .testimonial-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-            text-align: center;
-        }
-
-        .testimonial-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .testimonial-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .testimonial-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent);
-        }
-
-        .testimonial-info h5 {
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .testimonial-info p {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        .testimonial-rating {
-            color: #ffc107;
-            margin-top: 0.5rem;
-        }
-
         /* Services Section */
         .services-container {
             display: grid;
@@ -947,6 +887,7 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             padding: 1rem;
+            text-align: center;
         }
 
         .service-card:hover .service-overlay {
@@ -1215,6 +1156,126 @@
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
         }
 
+        /* Testimonials Section */
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .testimonial-info h5 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 0.5rem;
+        }
+
+        /* Blogs Section */
+        .blogs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .blog-read-more {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .blog-read-more:hover {
+            color: #2a75e6;
+        }
+
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -1458,6 +1519,7 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cookie-btn {
@@ -1490,6 +1552,159 @@
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
         }
 
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
+            transition: all 0.3s;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(58, 134, 255, 0.4);
+        }
+
+        .chatbot-toggle i {
+            font-size: 1.5rem;
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chatbot-window.active {
+            display: flex;
+        }
+
+        .chatbot-header {
+            padding: 1rem;
+            background: rgba(58, 134, 255, 0.1);
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chatbot-header h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 0.8rem;
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background: rgba(58, 134, 255, 0.1);
+            border: 1px solid rgba(58, 134, 255, 0.2);
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background: rgba(58, 134, 255, 0.3);
+            border: 1px solid rgba(58, 134, 255, 0.4);
+        }
+
+        .chatbot-input {
+            padding: 1rem;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .chatbot-input button {
+            padding: 0.8rem;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .quick-reply {
+            padding: 0.4rem 0.8rem;
+            background: rgba(58, 134, 255, 0.1);
+            border: 1px solid rgba(58, 134, 255, 0.2);
+            border-radius: 16px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .quick-reply:hover {
+            background: rgba(58, 134, 255, 0.2);
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
@@ -1512,7 +1727,7 @@
             .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .pricing-container { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
             .contact-container { grid-template-columns: 1fr; }
-            .testimonial-content { width: 350px; }
+            .more-dropdown-content { width: 180px; }
         }
 
         @media (max-width: 768px) {
@@ -1547,13 +1762,14 @@
             .legal-popup { max-width: 80%; }
             .payment-popup { max-width: 80%; }
             .service-details-popup { max-width: 80%; }
-            .testimonial-content { 
-                width: 300px; 
-                left: 50%;
-                transform: translateX(-50%) translateY(-10px);
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+                right: 10px;
             }
-            .testimonial-dropdown:hover .testimonial-content {
-                transform: translateX(-50%) translateY(0);
+            .more-dropdown-content {
+                width: 160px;
+                right: -50px;
             }
         }
 
@@ -1581,13 +1797,14 @@
             .payment-amount { font-size: 1.8rem; }
             .payment-services h3 { font-size: 1rem; }
             .payment-services li { font-size: 0.9rem; }
-            .testimonial-content { 
-                width: 280px; 
-                left: 50%;
-                transform: translateX(-50%) translateY(-10px);
+            .chatbot-window {
+                width: 280px;
+                height: 380px;
+                right: 5px;
             }
-            .testimonial-dropdown:hover .testimonial-content {
-                transform: translateX(-50%) translateY(0);
+            .more-dropdown-content {
+                width: 140px;
+                right: -30px;
             }
         }
 
@@ -1621,6 +1838,14 @@
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#booking">Booking</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li class="more-dropdown">
+                <a href="#">More From Us <i class="fas fa-chevron-down"></i></a>
+                <div class="more-dropdown-content">
+                    <a href="#" data-popup="testimonials-popup">Testimonials</a>
+                    <a href="#" data-popup="blogs-popup">Blogs</a>
+                    <a href="dashboard.html" target="_blank">Dashboard</a>
+                </div>
+            </li>
         </ul>
         <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Sidebar">
             <i class="fas fa-bars"></i>
@@ -1635,6 +1860,9 @@
                 <li><a href="#pricing" class="sidebar-link">Pricing</a></li>
                 <li><a href="#booking" class="sidebar-link">Booking</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
+                <li><a href="#" data-popup="testimonials-popup" class="sidebar-link">Testimonials</a></li>
+                <li><a href="#" data-popup="blogs-popup" class="sidebar-link">Blogs</a></li>
+                <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -1739,6 +1967,87 @@
             <p>We strive to keep information accurate but do not warrant its completeness or reliability.</p>
         </div>
     </div>
+    <div class="legal-popup" id="testimonials-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Testimonials Popup">×</button>
+            <h2>Client Testimonials</h2>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Rudraksh's Google Ads strategy increased our conversions by 45% in just two months. His attention to detail and data-driven approach delivered exceptional ROI."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h5>Rajesh Kumar</h5>
+                        <p>E-commerce Business Owner</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"The video editing work was exceptional! Our social media engagement increased by 200% after implementing Rudraksh's creative edits and transitions."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h5>Priya Sharma</h5>
+                        <p>Content Creator</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+            </div>
+            <div class="testimonial-item">
+                <p class="testimonial-text">"Working with Rudraksh on our Facebook Ads campaign was a game-changer. He cut our cost per acquisition by 60% while increasing lead quality."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Client" class="testimonial-avatar">
+                    <div class="testimonial-info">
+                        <h5>Vikram Singh</h5>
+                        <p>Marketing Director</p>
+                    </div>
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="legal-popup" id="blogs-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Blogs Popup">×</button>
+            <h2>Latest Blogs</h2>
+            <div class="blog-item">
+                <h3>How to Maximize ROI with Google Ads</h3>
+                <p class="blog-date">June 15, 2025</p>
+                <p>Learn the strategies that can help you get the most out of your Google Ads budget and increase your return on investment.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Video Editing Tips for Social Media Success</h3>
+                <p class="blog-date">June 10, 2025</p>
+                <p>Discover the techniques that make videos go viral on platforms like Instagram, TikTok, and YouTube.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Facebook Ads vs. Google Ads: Which is Right for You?</h3>
+                <p class="blog-date">June 5, 2025</p>
+                <p>A comprehensive comparison to help you decide which advertising platform best suits your business needs.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+        </div>
+    </div>
     <div class="legal-popup service-details-popup" id="google-ads-details-popup">
         <div class="service-details-content">
             <button class="service-details-close" aria-label="Close Google Ads Details Popup">×</button>
@@ -1813,6 +2122,33 @@
     </div>
     <div class="payment-popup-backdrop" id="payment-popup-backdrop"></div>
 
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbot-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <h3>Rudraksh Assistant</h3>
+                <button class="chatbot-close" id="chatbot-close">×</button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    Hi there! 👋 I'm here to help you learn more about my services, pricing, or anything else you'd like to know. How can I assist you today?
+                    <div class="quick-replies">
+                        <div class="quick-reply" data-message="Tell me about your services">Services</div>
+                        <div class="quick-reply" data-message="What are your prices?">Pricing</div>
+                        <div class="quick-reply" data-message="How can I book a consultation?">Booking</div>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message here...">
+                <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
     <section class="hero" id="home">
         <video autoplay muted loop class="hero-bg">
             <source src="https://videos.pexels.com/video-files/12358562/12358562-hd_1920_1080_30fps.mp4" type="video/mp4">
@@ -1838,68 +2174,6 @@
                     <span class="skill-tag">Premiere Pro</span>
                     <span class="skill-tag">After Effects</span>
                     <span class="skill-tag">CapCut Pro</span>
-                </div>
-                
-                <!-- Testimonial Dropdown -->
-                <div class="testimonial-dropdown">
-                    <div class="testimonial-trigger">
-                        <span>Client Testimonials</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="testimonial-content">
-                        <h4>What My Clients Say</h4>
-                        <div class="testimonial-item">
-                            <p class="testimonial-text">"Rudraksh's Google Ads strategy increased our conversions by 45% in just two months. His attention to detail and data-driven approach delivered exceptional ROI."</p>
-                            <div class="testimonial-author">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="testimonial-avatar">
-                                <div class="testimonial-info">
-                                    <h5>Rajesh Kumar</h5>
-                                    <p>E-commerce Business Owner</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <p class="testimonial-text">"The video editing work was exceptional! Our social media engagement increased by 200% after implementing Rudraksh's creative edits and transitions."</p>
-                            <div class="testimonial-author">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="testimonial-avatar">
-                                <div class="testimonial-info">
-                                    <h5>Priya Sharma</h5>
-                                    <p>Content Creator</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                        <div class="testimonial-item">
-                            <p class="testimonial-text">"Working with Rudraksh on our Facebook Ads campaign was a game-changer. He cut our cost per acquisition by 60% while increasing lead quality."</p>
-                            <div class="testimonial-author">
-                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Client" class="testimonial-avatar">
-                                <div class="testimonial-info">
-                                    <h5>Vikram Singh</h5>
-                                    <p>Marketing Director</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2566,6 +2840,98 @@ submit-btn">Send Message</button></a>
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
+            });
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+
+        // Chatbot responses
+        const chatbotResponses = {
+            'hello': 'Hello! How can I help you today?',
+            'hi': 'Hi there! What can I assist you with?',
+            'services': 'I offer Google Ads management, Facebook Ads campaigns, and professional video editing services. Which one are you interested in?',
+            'pricing': 'My pricing starts at $349/month for basic plans, going up to $1,499/month for premium services. Would you like more details about a specific plan?',
+            'booking': 'You can book a free consultation using the Calendly widget in the Booking section of my website. Would you like me to take you there?',
+            'google ads': 'Google Ads service includes campaign setup, optimization, keyword research, and detailed reporting. The starting price is $349/month.',
+            'facebook ads': 'Facebook Ads service includes audience targeting, ad creative optimization, conversion tracking, and A/B testing. The starting price is $349/month.',
+            'video editing': 'Video editing service includes editing for social media platforms, motion effects, auto subtitles, and color grading. The starting price is $349/month.',
+            'thank you': 'You\'re welcome! Is there anything else I can help you with?',
+            'bye': 'Goodbye! Feel free to reach out if you have more questions.'
+        };
+
+        // Function to add message to chat
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            messageDiv.textContent = message;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Function to handle user input
+        function handleUserInput() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatbotInput.value = '';
+                
+                // Process message and generate response
+                setTimeout(() => {
+                    let response = "I'm not sure I understand. Can you please rephrase?";
+                    const lowerMessage = message.toLowerCase();
+                    
+                    // Check for specific keywords
+                    for (const [key, value] of Object.entries(chatbotResponses)) {
+                        if (lowerMessage.includes(key)) {
+                            response = value;
+                            break;
+                        }
+                    }
+                    
+                    // Special cases for calculations
+                    if (lowerMessage.includes('calculate') || lowerMessage.includes('price') || lowerMessage.includes('cost')) {
+                        if (lowerMessage.includes('google') || lowerMessage.includes('ads')) {
+                            response = "For Google Ads management, the price is $349/month for the Basic plan. Would you like to know what's included?";
+                        } else if (lowerMessage.includes('facebook')) {
+                            response = "For Facebook Ads management, the price is $349/month for the Basic plan. Would you like to know what's included?";
+                        } else if (lowerMessage.includes('video')) {
+                            response = "For video editing services, the price starts at $349/month. Would you like to know what's included?";
+                        }
+                    }
+                    
+                    addMessage(response);
+                }, 500);
+            }
+        }
+
+        // Event listeners for chatbot
+        chatbotSend.addEventListener('click', handleUserInput);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserInput();
+            }
+        });
+
+        // Quick replies
+        document.querySelectorAll('.quick-reply').forEach(reply => {
+            reply.addEventListener('click', () => {
+                const message = reply.getAttribute('data-message');
+                chatbotInput.value = message;
+                handleUserInput();
             });
         });
     </script>
