@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facebook Ads vs. Google Ads: Which is Right for You? | Rudraksh Sharma</title>
+<meta name="description" content="A comprehensive comparison to help you decide which advertising platform best suits your business needs." />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-facebook-vs-google-ads" />
+<meta property="og:title" content="Facebook Ads vs. Google Ads: Which is Right for You? | Rudraksh Sharma" />
+<meta property="og:description" content="A comprehensive comparison to help you decide which advertising platform best suits your business needs." />
+<meta property="og:image" content="https://i.ibb.co/4T2L7v7h/business-3d-two-opposing-arrows-one-pointing-to-a-facebook-icon-and-the-other-to-a-google-ads-icon.jpg" />
+
+<!-- X (Twitter) -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-facebook-vs-google-ads" />
+<meta property="twitter:title" content="Facebook Ads vs. Google Ads: Which is Right for You? | Rudraksh Sharma" />
+<meta property="twitter:description" content="A comprehensive comparison to help you decide which advertising platform best suits your business needs." />
+<meta property="twitter:image" content="https://i.ibb.co/4T2L7v7h/business-3d-two-opposing-arrows-one-pointing-to-a-facebook-icon-and-the-other-to-a-google-ads-icon.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid var(--card-border);
+        }
+
+        .comparison-table th {
+            background-color: rgba(58, 134, 255, 0.1);
+            color: var(--accent);
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        .platform-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .facebook-badge {
+            background-color: rgba(59, 89, 152, 0.2);
+            color: #3b5998;
+        }
+
+        .google-badge {
+            background-color: rgba(66, 133, 244, 0.2);
+            color: #4285f4;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Facebook Ads vs. Google Ads: Which is Right for You?</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>June 5, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>10 min read</span>
+                </div>
+            </div>
+            <img src="https://i.ibb.co/4T2L7v7h/business-3d-two-opposing-arrows-one-pointing-to-a-facebook-icon-and-the-other-to-a-google-ads-icon.jpg" alt="Facebook Ads vs Google Ads Comparison" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <p>Choosing between Facebook Ads and Google Ads is one of the most common dilemmas for digital marketers and business owners. Both platforms offer powerful advertising capabilities, but they work in fundamentally different ways. In this comprehensive guide, I'll break down the key differences, advantages, and use cases for each platform to help you make an informed decision.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>Understanding the Fundamental Difference</h2>
+                <p>The core distinction between these two advertising giants comes down to intent:</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">2.9B</div>
+                        <div class="stat-label">Monthly active users on Facebook</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5.6B</div>
+                        <div class="stat-label">Google searches per day</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">68%</div>
+                        <div class="stat-label">Marketers use both platforms together</div>
+                    </div>
+                </div>
+                
+                <p><span class="platform-badge google-badge">Google Ads</span> is primarily <strong>search-based</strong> - you're reaching people who are actively looking for products, services, or information.</p>
+                
+                <p><span class="platform-badge facebook-badge">Facebook Ads</span> is primarily <strong>interruption-based</strong> - you're reaching people while they're browsing their social feed, even if they weren't initially looking for what you offer.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Key Insight</h4>
+                    <p>Google Ads captures demand, while Facebook Ads creates demand. This fundamental difference should guide your platform selection based on your marketing objectives.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>Platform Comparison: Key Differences</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Facebook Ads</th>
+                            <th>Google Ads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primary Strength</td>
+                            <td>Audience targeting</td>
+                            <td>Intent targeting</td>
+                        </tr>
+                        <tr>
+                            <td>Best For</td>
+                            <td>Brand awareness, consideration</td>
+                            <td>Direct response, conversions</td>
+                        </tr>
+                        <tr>
+                            <td>Targeting Options</td>
+                            <td>Demographics, interests, behaviors</td>
+                            <td>Keywords, search intent</td>
+                        </tr>
+                        <tr>
+                            <td>Ad Formats</td>
+                            <td>Image, video, carousel, collection</td>
+                            <td>Search, display, video, shopping</td>
+                        </tr>
+                        <tr>
+                            <td>Average CPC</td>
+                            <td>$0.50 - $2.00+</td>
+                            <td>$1 - $50+ (varies by industry)</td>
+                        </tr>
+                        <tr>
+                            <td>Conversion Time</td>
+                            <td>Longer consideration cycles</td>
+                            <td>Immediate conversions</td>
+                        </tr>
+                        <tr>
+                            <td>Ideal Funnel Stage</td>
+                            <td>Top and middle funnel</td>
+                            <td>Middle and bottom funnel</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="blog-section">
+                <h2>When to Choose Facebook Ads</h2>
+                
+                <h3>1. Brand Awareness Campaigns</h3>
+                <p>Facebook excels at introducing your brand to new audiences. With advanced targeting options based on demographics, interests, and behaviors, you can reach people who are likely to be interested in your offerings.</p>
+                
+                <h3>2. Visual Products</h3>
+                <p>If your products are visually appealing (fashion, home decor, food), Facebook's image and video formats can showcase them effectively in users' feeds.</p>
+                
+                <h3>3. Detailed Audience Targeting</h3>
+                <p>Facebook's targeting capabilities are unparalleled. You can target users based on:</p>
+                <ul>
+                    <li>Detailed demographics (age, gender, location, education)</li>
+                    <li>Interests and hobbies</li>
+                    <li>Behaviors (purchase history, device usage)</li>
+                    <li>Custom audiences (website visitors, customer lists)</li>
+                    <li>Lookalike audiences (similar to your best customers)</li>
+                </ul>
+                
+                <h3>4. Lead Generation</h3>
+                <p>Facebook's lead ads make it easy to collect information from potential customers without them leaving the platform.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Success Story</h4>
+                    <p>An e-commerce fashion client achieved a 4.2x return on ad spend using Facebook's dynamic product ads for retargeting website visitors who didn't purchase.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>When to Choose Google Ads</h2>
+                
+                <h3>1. High Commercial Intent</h3>
+                <p>When users are actively searching for products or services like yours, Google Ads allows you to capture that demand immediately.</p>
+                
+                <h3>2. Local Businesses</h3>
+                <p>Google Local Services Ads and search ads are extremely effective for businesses targeting customers in specific geographic areas.</p>
+                
+                <h3>3. Complex Products/Services</h3>
+                <p>If your offerings require research or consideration (software, B2B services, high-ticket items), Google Ads helps you reach people actively looking for solutions.</p>
+                
+                <h3>4. Remarketing</h3>
+                <p>Google Display Network allows you to reach people who have visited your website as they browse other sites across the internet.</p>
+                
+                <h3>5. Performance-Based Marketing</h3>
+                <p>With clear ROI tracking and direct response mechanisms, Google Ads is ideal for performance-focused campaigns where you need to measure direct conversions.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Success Story</h4>
+                    <p>A SaaS company reduced their cost per acquisition by 37% using Google's Smart Bidding strategies combined with audience targeting.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>Cost Comparison: Facebook Ads vs. Google Ads</h2>
+                <p>Costs vary significantly by industry, competition, and targeting options. Here's a general comparison:</p>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Cost Metric</th>
+                            <th>Facebook Ads</th>
+                            <th>Google Ads</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Average CPC</td>
+                            <td>$0.50 - $2.00+</td>
+                            <td>$1 - $50+</td>
+                        </tr>
+                        <tr>
+                            <td>Average CPM</td>
+                            <td>$5 - $15+</td>
+                            <td>$1 - $10+</td>
+                        </tr>
+                        <tr>
+                            <td>Average Conversion Rate</td>
+                            <td>1-5%</td>
+                            <td>2-8%</td>
+                        </tr>
+                        <tr>
+                            <td>Minimum Daily Budget</td>
+                            <td>$1+</td>
+                            <td>$10+</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p>While Google Ads often has higher CPCs, it typically delivers higher conversion rates for commercial intent searches. Facebook generally offers lower costs but may require more touchpoints before conversion.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>The Power of Using Both Platforms Together</h2>
+                <p>The most sophisticated marketers don't choose one platform over the other—they use both in a coordinated strategy:</p>
+                
+                <h3>Funnel Approach</h3>
+                <ul>
+                    <li><strong>Top of Funnel:</strong> Use Facebook Ads for awareness and interest generation</li>
+                    <li><strong>Middle of Funnel:</strong> Retarget Facebook engagers with Google Display ads</li>
+                    <li><strong>Bottom of Funnel:</strong> Capture converting traffic with Google Search ads</li>
+                </ul>
+                
+                <h3>Cross-Platform Remarketing</h3>
+                <p>Create audiences in Facebook based on Google Ads interactions, and vice versa. For example, target people who clicked on your Google Ads but didn't convert with special offers on Facebook.</p>
+                
+                <h3>Attribution Modeling</h3>
+                <p>Use multi-touch attribution to understand how both platforms contribute to conversions throughout the customer journey.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Implement the Facebook pixel and Google Analytics simultaneously to track cross-platform performance and create unified audiences.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion: Which Platform Should You Choose?</h2>
+                <p>The decision between Facebook Ads and Google Ads isn't necessarily either/or. Consider these guidelines:</p>
+                
+                <p><strong>Choose Facebook Ads if:</strong></p>
+                <ul>
+                    <li>You're building brand awareness</li>
+                    <li>Your products are visual or impulse-driven</li>
+                    <li>You have detailed audience targeting needs</li>
+                    <li>You want to nurture leads over time</li>
+                </ul>
+                
+                <p><strong>Choose Google Ads if:</strong></p>
+                <ul>
+                    <li>Users are actively searching for your offerings</li>
+                    <li>You're focused on immediate conversions</li>
+                    <li>You're a local business with physical locations</li>
+                    <li>You offer complex or high-consideration products</li>
+                </ul>
+                
+                <p>For most businesses, the optimal approach is a combination of both platforms, with budget allocation based on your specific goals, target audience, and products/services.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Still Not Sure Which Platform Is Right For You?</h2>
+                <p>I can help you develop a customized advertising strategy based on your business goals, target audience, and budget. Get a free platform assessment and recommendation.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get Free Consultation</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
