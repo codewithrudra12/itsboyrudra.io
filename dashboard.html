@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard | Rudraksh Sharma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-header h1 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .dashboard-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-right: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .card-content {
+            color: var(--text-secondary);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: #2a75e6;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Client Dashboard</h1>
+            <p>Track your project progress and performance metrics</p>
+        </div>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h2 class="card-title">Campaign Performance</h2>
+                </div>
+                <div class="card-content">
+                    <p>Monitor the performance of your advertising campaigns in real-time.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">45%</div>
+                            <div class="stat-label">Conversion Rate</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">$2.50</div>
+                            <div class="stat-label">Cost Per Lead</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <p>Monthly target: 75% complete</p>
+                    <a href="#" class="btn">View Detailed Report</a>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-video"></i></div>
+                    <h2 class="card-title">Video Projects</h2>
+                </div>
+                <div class="card-content">
+                    <p>Track the progress of your video editing projects.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">3</div>
+                            <div class="stat-label">Active Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Videos Completed</div>
+                        </div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%"></div>
+                    </div>
+                    <p>Current project: 60% complete</p>
+                    <a href="#" class="btn">View Project Details</a>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <h2 class="card-title">Upcoming Meetings</h2>
+                </div>
+                <div class="card-content">
+                    <p>Your scheduled consultations and strategy sessions.</p>
+                    <div class="upcoming-events">
+                        <div class="event-item">
+                            <h3>Strategy Review</h3>
+                            <p>Tomorrow, 3:00 PM</p>
+                        </div>
+                        <div class="event-item">
+                            <h3>Monthly Report</h3>
+                            <p>Next Monday, 10:00 AM</p>
+                        </div>
+                    </div>
+                    <a href="#booking" class="btn">Schedule New Meeting</a>
+                </div>
+            </div>
+            
+            <div class="dashboard-card">
+                <div class="card-header">
+                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h2 class="card-title">Billing & Invoices</h2>
+                </div>
+                <div class="card-content">
+                    <p>View your billing history and download invoices.</p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">$799</div>
+                            <div class="stat-label">Current Balance</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">2</div>
+                            <div class="stat-label">Pending Invoices</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">View Billing Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
