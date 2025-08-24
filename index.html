@@ -787,6 +787,112 @@
             transform: translateY(-2px);
         }
 
+        /* Testimonial Dropdown */
+        .testimonial-dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: 2rem;
+        }
+
+        .testimonial-trigger {
+            background: var(--accent);
+            color: var(--text-primary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .testimonial-trigger:hover {
+            background: #2a75e6;
+            transform: translateY(-2px);
+        }
+
+        .testimonial-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 400px;
+            max-width: 90vw;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-dropdown:hover .testimonial-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .testimonial-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .testimonial-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .testimonial-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .testimonial-info h5 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .testimonial-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 0.5rem;
+        }
+
         /* Services Section */
         .services-container {
             display: grid;
@@ -1406,6 +1512,7 @@
             .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
             .pricing-container { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
             .contact-container { grid-template-columns: 1fr; }
+            .testimonial-content { width: 350px; }
         }
 
         @media (max-width: 768px) {
@@ -1440,6 +1547,14 @@
             .legal-popup { max-width: 80%; }
             .payment-popup { max-width: 80%; }
             .service-details-popup { max-width: 80%; }
+            .testimonial-content { 
+                width: 300px; 
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            .testimonial-dropdown:hover .testimonial-content {
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         @media (max-width: 576px) {
@@ -1466,6 +1581,14 @@
             .payment-amount { font-size: 1.8rem; }
             .payment-services h3 { font-size: 1rem; }
             .payment-services li { font-size: 0.9rem; }
+            .testimonial-content { 
+                width: 280px; 
+                left: 50%;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            .testimonial-dropdown:hover .testimonial-content {
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1670,7 +1793,7 @@
                 <li>Custom branding integration</li>
             </ul>
             <h3>Benefits</h3>
-            <p>Stand out with viral-ready content, increase viewer retention, and elevate your brand’s visual storytelling.</p>
+            <p>Stand out with viral-ready content, increase viewer retention, and elevate your brand's visual storytelling.</p>
         </div>
     </div>
     <div class="legal-popup-backdrop" id="legal-popup-backdrop"></div>
@@ -1707,7 +1830,7 @@
             <img src="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" alt="Rudraksh Sharma" class="about-image">
             <div class="about-text animate-zoom-in delay-1">
                 <h3>Performance Marketer & Video Editor</h3>
-                <p>Hi, I'm Rudraksh Sharma. I help brands grow through smart Google Ads and Facebook Ads campaigns, driving more clicks, leads, and results. I also offer video editing services to make your content stand out with clean cuts, creative visuals, and smooth transitions. If you're looking for someone who can boost your visibility and bring your content to life—let’s connect!</p>
+                <p>Hi, I'm Rudraksh Sharma. I help brands grow through smart Google Ads and Facebook Ads campaigns, driving more clicks, leads, and results. I also offer video editing services to make your content stand out with clean cuts, creative visuals, and smooth transitions. If you're looking for someone who can boost your visibility and bring your content to life—let's connect!</p>
                 <p>My approach combines data-driven strategies with creative storytelling to deliver measurable results.</p>
                 <div class="skills">
                     <span class="skill-tag">Meta Ads Manager</span>
@@ -1715,6 +1838,68 @@
                     <span class="skill-tag">Premiere Pro</span>
                     <span class="skill-tag">After Effects</span>
                     <span class="skill-tag">CapCut Pro</span>
+                </div>
+                
+                <!-- Testimonial Dropdown -->
+                <div class="testimonial-dropdown">
+                    <div class="testimonial-trigger">
+                        <span>Client Testimonials</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="testimonial-content">
+                        <h4>What My Clients Say</h4>
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"Rudraksh's Google Ads strategy increased our conversions by 45% in just two months. His attention to detail and data-driven approach delivered exceptional ROI."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="testimonial-avatar">
+                                <div class="testimonial-info">
+                                    <h5>Rajesh Kumar</h5>
+                                    <p>E-commerce Business Owner</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"The video editing work was exceptional! Our social media engagement increased by 200% after implementing Rudraksh's creative edits and transitions."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="testimonial-avatar">
+                                <div class="testimonial-info">
+                                    <h5>Priya Sharma</h5>
+                                    <p>Content Creator</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">"Working with Rudraksh on our Facebook Ads campaign was a game-changer. He cut our cost per acquisition by 60% while increasing lead quality."</p>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Client" class="testimonial-avatar">
+                                <div class="testimonial-info">
+                                    <h5>Vikram Singh</h5>
+                                    <p>Marketing Director</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1938,7 +2123,7 @@
                 </div>
             </div>
             <div class="contact-form animate-zoom-in delay-1">
-                <form id="contact-form" action="https://formspree.io/f/xnqeklyw" method="POST">
+                <form id="contact-form" action="https://formspree.io/f/mnnbaprr" method="POST">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required placeholder="Your Name">
