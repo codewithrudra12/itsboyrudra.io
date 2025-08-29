@@ -1047,6 +1047,7 @@
             padding: 1.5rem;
             opacity: 0;
             transition: opacity 0.3s ease;
+            text-align: left;
         }
 
         .portfolio-item:hover .portfolio-overlay {
@@ -1842,7 +1843,8 @@
                 <a href="#">More From Us <i class="fas fa-chevron-down"></i></a>
                 <div class="more-dropdown-content">
                     <a href="#" data-popup="testimonials-popup">Testimonials</a>
-                    <a href="dashboard.html" data-popup="blogs-popup">Blogs</a>
+                    <a href="#" data-popup="blogs-popup">Blogs</a>
+                    <a href="#" data-popup="download-popup">Download App</a>
                     <a href="dashboard.html" target="_blank">Dashboard</a>
                 </div>
             </li>
@@ -1862,6 +1864,7 @@
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
                 <li><a href="#" data-popup="testimonials-popup" class="sidebar-link">Testimonials</a></li>
                 <li><a href="#" data-popup="blogs-popup" class="sidebar-link">Blogs</a></li>
+                <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
                 <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
             </ul>
         </div>
@@ -2006,7 +2009,7 @@
                 </div>
             </div>
             <div class="testimonial-item">
-                <p class="testimonial-text">"Working with Rudraksh on our Facebook Ads campaign was a game-changer. He cut our cost per acquisition by 60% while increasing lead quality."</p>
+                <p class="testimonial-text">"Working with Rudraksh on our Facebook Ads campaign was a game-changer. He cut our cost per acquisition by 60% while increasing lead quality. His strategic approach and attention to detail made all the difference in our campaign performance."</p>
                 <div class="testimonial-author">
                     <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Client" class="testimonial-avatar">
                     <div class="testimonial-info">
@@ -2045,6 +2048,72 @@
                 <p class="blog-date">June 5, 2025</p>
                 <p>A comprehensive comparison to help you decide which advertising platform best suits your business needs.</p>
                 <a href="fbvsgoogleads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>10 Essential Tools for Performance Marketers</h3>
+                <p class="blog-date">May 28, 2025</p>
+                <p>Discover the must-have tools that every performance marketer needs to succeed in today's competitive landscape.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>How to Create Engaging Video Content That Converts</h3>
+                <p class="blog-date">May 22, 2025</p>
+                <p>Learn the secrets to creating video content that not only captures attention but also drives conversions.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>The Ultimate Guide to A/B Testing for Digital Ads</h3>
+                <p class="blog-date">May 15, 2025</p>
+                <p>Master the art of A/B testing to optimize your ad campaigns and maximize your advertising ROI.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Why Your Business Needs a Video Marketing Strategy</h3>
+                <p class="blog-date">May 10, 2025</p>
+                <p>Explore the benefits of video marketing and how it can transform your brand's online presence.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Top 5 Mistakes to Avoid in Facebook Advertising</h3>
+                <p class="blog-date">May 5, 2025</p>
+                <p>Learn about common pitfalls in Facebook advertising and how to avoid them for better campaign performance.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>How to Analyze and Interpret Google Ads Data</h3>
+                <p class="blog-date">April 28, 2025</p>
+                <p>A deep dive into understanding Google Ads metrics and how to use them to improve your campaigns.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>The Future of Digital Marketing: Trends to Watch</h3>
+                <p class="blog-date">April 22, 2025</p>
+                <p>Stay ahead of the curve by learning about the emerging trends that will shape the future of digital marketing.</p>
+                <a href="#" class="blog-read-more">Read More</a>
+            </div>
+        </div>
+    </div>
+    <div class="legal-popup" id="download-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Download Popup">×</button>
+            <h2>Download Our App</h2>
+            <p>Get access to exclusive content, tools, and resources with our dedicated app.</p>
+            <div class="download-options">
+                <h3>Available for:</h3>
+                <div class="download-platforms">
+                    <a href="#" class="download-platform">
+                        <i class="fab fa-android"></i>
+                        <span>Android</span>
+                    </a>
+                    <a href="#" class="download-platform">
+                        <i class="fab fa-windows"></i>
+                        <span>Windows</span>
+                    </a>
+                    <a href="#" class="download-platform">
+                        <i class="fab fa-linux"></i>
+                        <span>Linux</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -2463,6 +2532,18 @@ submit-btn">Send Message</button></a>
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
+                <h3 style="margin-top: 20px;">Download App</h3>
+                <div class="social-links">
+                    <a href="#" data-popup="download-popup" class="social-link" aria-label="Android App">
+                        <i class="fab fa-android"></i>
+                    </a>
+                    <a href="#" data-popup="download-popup" class="social-link" aria-label="Windows App">
+                        <i class="fab fa-windows"></i>
+                    </a>
+                    <a href="#" data-popup="download-popup" class="social-link" aria-label="Linux App">
+                        <i class="fab fa-linux"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -2684,7 +2765,7 @@ submit-btn">Send Message</button></a>
             // Define payment gateways with reliable logo URLs and placeholder payment URLs
             const defaultGateways = [
                 { name: 'PayPal', img: 'https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg', url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=info.itsboyrudra@gmail.com&amount=' + amount },
-                { name: 'Stripe', img: 'https://media.licdn.com/dms/image/v2/D4E0BAQFqiwiSMcKk6A/company-logo_200_200/company-logo_200_200/0/1724937022726/stripe_logo?e=2147483647&v=beta&t=--CED0oRQUupcr1Q2MktzOErO8NMpjCjxa4-JiqrGzU', url: 'https://buy.stripe.com/test_14k4hW1rI9xC4kE5kk' }, // Replace with your Stripe checkout link
+                { name: 'Payoneer', img: 'https://cdn.worldvectorlogo.com/logos/payoneer-2.svg', url: 'https://www.payoneer.com/' }, // Replace with your Payoneer payment link
                 { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' } // Replace with your Razorpay checkout link
             ];
 
@@ -2859,7 +2940,7 @@ submit-btn">Send Message</button></a>
             chatbotWindow.classList.remove('active');
         });
 
-        // Chatbot responses
+        // Enhanced chatbot responses
         const chatbotResponses = {
             'hello': 'Hello! How can I help you today?',
             'hi': 'Hi there! What can I assist you with?',
@@ -2870,7 +2951,16 @@ submit-btn">Send Message</button></a>
             'facebook ads': 'Facebook Ads service includes audience targeting, ad creative optimization, conversion tracking, and A/B testing. The starting price is $349/month.',
             'video editing': 'Video editing service includes editing for social media platforms, motion effects, auto subtitles, and color grading. The starting price is $349/month.',
             'thank you': 'You\'re welcome! Is there anything else I can help you with?',
-            'bye': 'Goodbye! Feel free to reach out if you have more questions.'
+            'bye': 'Goodbye! Feel free to reach out if you have more questions.',
+            'portfolio': 'You can view my portfolio in the Portfolio section of my website. It includes examples of Google Ads campaigns, Facebook Ads, and video editing work.',
+            'experience': 'I have several years of experience in performance marketing and video editing, working with various clients across different industries.',
+            'contact': 'You can contact me via email at info.itsboyrudra@gmail.com or through WhatsApp at +91 7878383739. You can also use the contact form on my website.',
+            'process': 'My process typically starts with a free consultation to understand your needs, followed by a proposal, and then execution with regular updates and reporting.',
+            'results': 'I focus on delivering measurable results such as increased conversions, lower cost per acquisition, and higher engagement rates for my clients.',
+            'guarantee': 'While I can\'t guarantee specific results due to market variables, I use proven strategies and continuously optimize campaigns to maximize ROI.',
+            'timeline': 'The timeline depends on the service and project scope. Typically, initial results can be seen within 2-4 weeks for ads campaigns, and video editing projects usually take 3-7 days depending on complexity.',
+            'requirements': 'For ads management, I typically need access to your ad accounts and clear business objectives. For video editing, I need the raw footage and any specific branding guidelines.',
+            'strategy': 'My strategy involves understanding your target audience, setting clear objectives, creating compelling creatives, and continuously optimizing based on data-driven insights.'
         };
 
         // Function to add message to chat
@@ -2891,7 +2981,7 @@ submit-btn">Send Message</button></a>
                 
                 // Process message and generate response
                 setTimeout(() => {
-                    let response = "I'm not sure I understand. Can you please rephrase?";
+                    let response = "I'm not sure I understand. Can you please rephrase or ask about my services, pricing, or booking process?";
                     const lowerMessage = message.toLowerCase();
                     
                     // Check for specific keywords
