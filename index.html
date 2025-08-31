@@ -1706,89 +1706,22 @@
         .quick-reply:hover {
             background: rgba(58, 134, 255, 0.2);
         }
-        /* Download Options Styling */
-.download-options {
-    margin-top: 1.5rem;
-}
-
-.download-options h3 {
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
-
-.download-platforms {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.download-platform {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    border: 1px solid var(--card-border);
-}
-
-.download-platform:hover {
-    background: rgba(58, 134, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
-}
-
-.download-platform i {
-    font-size: 2rem;
-    width: 40px;
+ /* Add to your existing CSS */
+.download-note {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
     text-align: center;
-    color: var(--accent);
 }
 
-.download-platform span {
-    font-weight: 600;
-    font-size: 1.1rem;
+.coming-soon {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-/* Platform-specific colors on hover */
-.download-platform:nth-child(1):hover i {
-    color: #3DDC84; /* Android green */
-}
-
-.download-platform:nth-child(2):hover i {
-    color: #0078D7; /* Windows blue */
-}
-
-.download-platform:nth-child(3):hover i {
-    color: #FCC624; /* Linux yellow */
-}
-
-/* Footer download section */
-.footer-col .download-platforms {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
-}
-
-.footer-col .download-platform {
-    flex-direction: column;
-    text-align: center;
-    padding: 0.8rem;
-    width: 80px;
-}
-
-.footer-col .download-platform i {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.footer-col .download-platform span {
-    font-size: 0.9rem;
+.coming-soon:hover {
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.05) !important;
 }
 
         /* Responsive Design */
@@ -2186,19 +2119,23 @@
         <div class="download-options">
             <h3>Available for:</h3>
             <div class="download-platforms">
-                <a href="file:///C:/Users/SVCR/Downloads/ITSBOYRUDRA.APK%20(1).apk" class="download-platform">
+                <a href="https://github.com/codewithrudra12/itsboyrudra.io/raw/main/ITSBOYRUDRA.APK" class="download-platform" download="ITSBOYRUDRA.APK">
                     <i class="fab fa-android"></i>
                     <span>Android</span>
                 </a>
-                <a href="#" class="download-platform">
+                <a href="#" class="download-platform coming-soon">
                     <i class="fab fa-windows"></i>
-                    <span>Windows</span>
+                    <span>Windows (Coming Soon)</span>
                 </a>
-                <a href="#" class="download-platform">
+                <a href="#" class="download-platform coming-soon">
                     <i class="fab fa-linux"></i>
-                    <span>Linux</span>
+                    <span>Linux (Coming Soon)</span>
                 </a>
             </div>
+            <p class="download-note">Android APK: 15.2 MB | Version 1.0</p>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 </div>
@@ -2619,20 +2556,24 @@ submit-btn">Send Message</button></a>
                     </a>
                 </div>
                    <h3 style="margin-top: 20px;">Download App</h3>
-        <div class="download-platforms">
-         <a href="file:///C:/Users/SVCR/Downloads/ITSBOYRUDRA.APK%20(1).apk" class="download-platform">
-        <i class="fab fa-android"></i>
-        <span>Android</span>
-               </a>
-               <a href="#" class="download-platform">
-        <i class="fab fa-windows"></i>
-        <span>Windows</span>
-       </a>
-    <a href="#" class="download-platform">
-        <i class="fab fa-linux"></i>
-           <span>Linux</span>
-    </a>
+                  <div class="footer-col">
+    <h3>Download App</h3>
+    <div class="download-platforms">
+        <a href="https://github.com/codewithrudra12/itsboyrudra.io/raw/main/ITSBOYRUDRA.APK" class="download-platform" download="ITSBOYRUDRA.APK">
+            <i class="fab fa-android"></i>
+            <span>Android</span>
+        </a>
+        <a href="#" class="download-platform coming-soon">
+            <i class="fab fa-windows"></i>
+            <span>Windows</span>
+        </a>
+        <a href="#" class="download-platform coming-soon">
+            <i class="fab fa-linux"></i>
+            <span>Linux</span>
+        </a>
+    </div>
 </div>
+
             </div>
         </div>
         <div class="footer-bottom">
