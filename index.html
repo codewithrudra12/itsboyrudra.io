@@ -1706,7 +1706,67 @@
         .quick-reply:hover {
             background: rgba(58, 134, 255, 0.2);
         }
- /* Add to your existing CSS */
+
+    /* Add this to your existing CSS */
+.download-options {
+    margin-top: 1.5rem;
+}
+
+.download-options h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.download-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.download-platform {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    border: 1px solid var(--card-border);
+}
+
+.download-platform:hover {
+    background: rgba(58, 134, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+}
+
+.download-platform i {
+    font-size: 2rem;
+    width: 40px;
+    text-align: center;
+    color: var(--accent);
+}
+
+.download-platform span {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Platform-specific colors on hover */
+.download-platform:nth-child(1):hover i {
+    color: #3DDC84; /* Android green */
+}
+
+.download-platform:nth-child(2):hover i {
+    color: #0078D7; /* Windows blue */
+}
+
+.download-platform:nth-child(3):hover i {
+    color: #FCC624; /* Linux yellow */
+}
 .download-note {
     margin-top: 1rem;
     font-size: 0.8rem;
