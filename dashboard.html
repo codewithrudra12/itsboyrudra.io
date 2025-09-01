@@ -120,6 +120,8 @@
             border-radius: 20px;
             border: 1px solid var(--card-border);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
         }
 
         .coming-soon-icon {
@@ -254,6 +256,64 @@
             text-transform: uppercase;
         }
 
+        /* Custom Notification Styles */
+        .custom-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            max-width: 350px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.5s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .custom-notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 0.2rem;
+        }
+
+        .notification-content {
+            flex: 1;
+        }
+
+        .notification-title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .notification-message {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .notification-close:hover {
+            color: var(--accent);
+        }
+
         footer {
             background: var(--bg-darker);
             padding: 4rem 5% 2rem;
@@ -372,6 +432,12 @@
             .countdown-value {
                 font-size: 2rem;
             }
+
+            .custom-notification {
+                max-width: calc(100% - 40px);
+                right: 20px;
+                left: 20px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -473,11 +539,23 @@
             </div>
 
             <h3>Get notified when we launch!</h3>
-            <form class="notify-form">
-                <input type="email" class="notify-input" placeholder="Enter your email address" required>
+            <form class="notify-form" id="notification-form">
+                <input type="email" class="notify-input" id="email-input" placeholder="Enter your email address" required>
                 <button type="submit" class="notify-btn">Notify Me</button>
             </form>
         </div>
+    </div>
+
+    <!-- Custom Notification -->
+    <div class="custom-notification" id="custom-notification">
+        <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="notification-content">
+            <h3 class="notification-title" id="notification-title">Notification</h3>
+            <p class="notification-message" id="notification-message">This is a custom notification message.</p>
+        </div>
+        <button class="notification-close" id="notification-close">&times;</button>
     </div>
 
     <footer>
@@ -532,9 +610,52 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set launch date (3 months from now)
-            const launchDate = new Date();
-            launchDate.setMonth(launchDate.getMonth() + 3);
+            // Set launch date (December 22, 2025)
+            const launchDate = new Date('December 22, 2025 00:00:00');
+            
+            // Get notification elements
+            const notification = document.getElementById('custom-notification');
+            const notificationTitle = document.getElementById('notification-title');
+            const notificationMessage = document.getElementById('notification-message');
+            const notificationClose = document.getElementById('notification-close');
+            const notificationForm = document.getElementById('notification-form');
+            const emailInput = document.getElementById('email-input');
+            
+            // Show notification function
+            function showNotification(title, message, duration = 5000) {
+                notificationTitle.textContent = title;
+                notificationMessage.textContent = message;
+                notification.classList.add('show');
+                
+                // Auto hide after duration
+                setTimeout(() => {
+                    hideNotification();
+                }, duration);
+            }
+            
+            // Hide notification function
+            function hideNotification() {
+                notification.classList.remove('show');
+            }
+            
+            // Close notification when close button is clicked
+            notificationClose.addEventListener('click', hideNotification);
+            
+            // Handle form submission
+            notificationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = emailInput.value.trim();
+                
+                if (email) {
+                    // Show custom notification
+                    showNotification('Success!', `We'll notify you at ${email} when the dashboard launches.`, 6000);
+                    
+                    // Clear the input
+                    emailInput.value = '';
+                } else {
+                    showNotification('Error', 'Please enter a valid email address.', 4000);
+                }
+            });
             
             // Update countdown every second
             const countdownTimer = setInterval(function() {
@@ -560,23 +681,11 @@
                     document.getElementById("hours").textContent = "00";
                     document.getElementById("minutes").textContent = "00";
                     document.getElementById("seconds").textContent = "00";
+                    
+                    // Show launch notification
+                    showNotification('Dashboard Launched!', 'The client dashboard is now available.', 10000);
                 }
             }, 1000);
-            
-            // Notify form submission
-            const notifyForm = document.querySelector('.notify-form');
-            if (notifyForm) {
-                notifyForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const emailInput = this.querySelector('input[type="email"]');
-                    const email = emailInput.value.trim();
-                    
-                    if (email) {
-                        alert('Thank you! We will notify you when the dashboard is launched.');
-                        emailInput.value = '';
-                    }
-                });
-            }
         });
     </script>
 </body>
