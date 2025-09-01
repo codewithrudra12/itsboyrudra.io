@@ -36,1044 +36,547 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .dashboard-container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
-        }
-
-        .dashboard-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .dashboard-header h1 {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .dashboard-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .dashboard-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid var(--card-border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-icon {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-right: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: var(--accent);
-        }
-
-        .card-content {
-            color: var(--text-secondary);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-        }
-
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            margin: 1rem 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--accent);
-            border-radius: 4px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: var(--accent);
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: background 0.3s, box-shadow 0.3s;
-            margin-top: 1rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #2a75e6;
-            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--accent);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(58, 134, 255, 0.1);
-        }
-
-        /* Modal/Popup Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal {
-            background: var(--bg-darker);
-            border-radius: 10px;
-            border: 1px solid var(--card-border);
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: translateY(50px);
-            transition: transform 0.3s ease;
-        }
-
-        .modal-overlay.active .modal {
-            transform: translateY(0);
-        }
-
-        .modal-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 {
-            color: var(--accent);
-            font-size: 1.8rem;
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .modal-close:hover {
-            color: var(--accent);
-        }
-
-        .modal-body {
-            padding: 1.5rem;
-        }
-
-        .modal-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--card-border);
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-tab {
-            padding: 1rem 1.5rem;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .modal-tab.active {
-            border-bottom: 2px solid var(--accent);
-            color: var(--accent);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Project Details */
-        .project-info {
-            margin-bottom: 2rem;
-        }
-
-        .project-info h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .project-info p {
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .project-milestones {
-            margin-bottom: 2rem;
-        }
-
-        .milestone {
-            padding: 1rem;
-            background: var(--card-bg);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent);
-        }
-
-        .milestone.completed {
-            border-left-color: var(--accent-green);
-        }
-
-        .milestone h4 {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .milestone-status {
-            font-size: 0.8rem;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            background: var(--accent);
-        }
-
-        .milestone-status.completed {
-            background: var(--accent-green);
-        }
-
-        /* Chat Section */
-        .chat-container {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            height: 400px;
+            justify-content: center;
+            align-items: center;
         }
 
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1rem;
+        .coming-soon-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 3rem;
             background: var(--card-bg);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .message {
-            margin-bottom: 1rem;
-            padding: 0.8rem;
-            border-radius: 8px;
-            max-width: 80%;
-        }
-
-        .message.client {
-            background: rgba(58, 134, 255, 0.2);
-            margin-left: auto;
-        }
-
-        .message.admin {
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .message-time {
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            margin-top: 0.3rem;
-        }
-
-        .chat-input {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .chat-input input {
-            flex: 1;
-            padding: 0.8rem;
-            border-radius: 4px;
+            border-radius: 20px;
             border: 1px solid var(--card-border);
-            background: var(--card-bg);
-            color: var(--text-primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        /* Asset Uploads */
-        .assets-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .asset-item {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .asset-item:hover {
-            transform: scale(1.05);
-        }
-
-        .asset-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+        .coming-soon-icon {
+            font-size: 5rem;
             color: var(--accent);
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
         }
 
-        .asset-name {
-            font-size: 0.9rem;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
-        .upload-area {
-            border: 2px dashed var(--card-border);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            cursor: pointer;
-            transition: border-color 0.3s;
-        }
-
-        .upload-area:hover {
-            border-color: var(--accent);
-        }
-
-        .upload-icon {
+        .coming-soon-title {
             font-size: 3rem;
             color: var(--accent);
             margin-bottom: 1rem;
         }
 
-        /* Booking Form */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
+        .coming-soon-subtitle {
+            font-size: 1.5rem;
             color: var(--text-primary);
+            margin-bottom: 2rem;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
+        .coming-soon-description {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-item {
+            background: var(--bg-darker);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .notify-form {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .notify-input {
+            padding: 1rem 1.5rem;
             border-radius: 4px;
             border: 1px solid var(--card-border);
-            background: var(--card-bg);
+            background: var(--bg-darker);
             color: var(--text-primary);
+            min-width: 300px;
+            font-size: 1rem;
         }
 
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
+        .notify-btn {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
-        .booked-meetings {
-            margin-top: 2rem;
+        .notify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
         }
 
-        .meeting-item {
-            padding: 1rem;
-            background: var(--card-bg);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border-left: 4px solid var(--accent);
+        .countdown {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0;
+            flex-wrap: wrap;
         }
 
-        .meeting-item h4 {
-            margin-bottom: 0.5rem;
+        .countdown-item {
+            background: var(--bg-darker);
+            border-radius: 10px;
+            padding: 1.5rem;
+            min-width: 100px;
+            border: 1px solid var(--card-border);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
             color: var(--accent);
         }
 
-        .meeting-meta {
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        .social-links {
             display: flex;
-            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
-            .dashboard-grid {
+            .nav-links {
+                display: none;
+            }
+            
+            .coming-soon-title {
+                font-size: 2.5rem;
+            }
+            
+            .coming-soon-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .notify-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .notify-input {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            .countdown {
+                gap: 0.5rem;
+            }
+            
+            .countdown-item {
+                min-width: 70px;
+                padding: 1rem;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .coming-soon-container {
+                padding: 2rem 1.5rem;
+            }
+            
+            .coming-soon-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
                 grid-template-columns: 1fr;
             }
             
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .countdown-item {
+                min-width: 60px;
+                padding: 0.8rem;
             }
             
-            .modal {
-                width: 95%;
-            }
-            
-            .assets-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .countdown-value {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
     <div class="dashboard-container">
-        <div class="dashboard-header">
-            <h1>Client Dashboard</h1>
-            <p>Track your project progress and performance metrics</p>
-        </div>
-        
-        <div class="dashboard-grid">
-            <div class="dashboard-card" data-modal="campaign-modal">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                    <h2 class="card-title">Campaign Performance</h2>
+        <div class="coming-soon-container">
+            <div class="coming-soon-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+            <h1 class="coming-soon-title">Client Dashboard Coming Soon</h1>
+            <h2 class="coming-soon-subtitle">We're building something amazing for you!</h2>
+            <p class="coming-soon-description">
+                Our client dashboard is currently under development and will be available soon. 
+                This powerful tool will allow you to track your project progress, view performance metrics, 
+                communicate directly with our team, and manage all aspects of your campaigns in one place.
+            </p>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">00</div>
+                    <div class="countdown-label">Days</div>
                 </div>
-                <div class="card-content">
-                    <p>Monitor the performance of your advertising campaigns in real-time.</p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">45%</div>
-                            <div class="stat-label">Conversion Rate</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$2.50</div>
-                            <div class="stat-label">Cost Per Lead</div>
-                        </div>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%"></div>
-                    </div>
-                    <p>Monthly target: 75% complete</p>
-                    <button class="btn">View Detailed Report</button>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
                 </div>
             </div>
-            
-            <div class="dashboard-card" data-modal="project-modal">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fas fa-video"></i></div>
-                    <h2 class="card-title">Video Projects</h2>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="feature-title">Performance Analytics</h3>
+                    <p class="feature-description">Track your campaign performance with real-time analytics and detailed reports.</p>
                 </div>
-                <div class="card-content">
-                    <p>Track the progress of your video editing projects.</p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">3</div>
-                            <div class="stat-label">Active Projects</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">12</div>
-                            <div class="stat-label">Videos Completed</div>
-                        </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 60%"></div>
+                    <h3 class="feature-title">Project Tracking</h3>
+                    <p class="feature-description">Monitor the progress of your video projects and provide feedback in real-time.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
                     </div>
-                    <p>Current project: 60% complete</p>
-                    <button class="btn">View Project Details</button>
+                    <h3 class="feature-title">Direct Communication</h3>
+                    <p class="feature-description">Chat directly with our team to discuss strategies and provide input.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="feature-title">Billing Management</h3>
+                    <p class="feature-description">View invoices, make payments, and track your billing history all in one place.</p>
                 </div>
             </div>
-            
-            <div class="dashboard-card" data-modal="meetings-modal">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
-                    <h2 class="card-title">Upcoming Meetings</h2>
-                </div>
-                <div class="card-content">
-                    <p>Your scheduled consultations and strategy sessions.</p>
-                    <div class="upcoming-events">
-                        <div class="event-item">
-                            <h3>Strategy Review</h3>
-                            <p>Tomorrow, 3:00 PM</p>
-                        </div>
-                        <div class="event-item">
-                            <h3>Monthly Report</h3>
-                            <p>Next Monday, 10:00 AM</p>
-                        </div>
-                    </div>
-                    <button class="btn">Schedule New Meeting</button>
-                </div>
-            </div>
-            
-            <div class="dashboard-card" data-modal="billing-modal">
-                <div class="card-header">
-                    <div class="card-icon"><i class="fas fa-file-invoice-dollar"></i></div>
-                    <h2 class="card-title">Billing & Invoices</h2>
-                </div>
-                <div class="card-content">
-                    <p>View your billing history and download invoices.</p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">$799</div>
-                            <div class="stat-label">Current Balance</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">2</div>
-                            <div class="stat-label">Pending Invoices</div>
-                        </div>
-                    </div>
-                    <button class="btn">View Billing Details</button>
-                </div>
-            </div>
+
+            <h3>Get notified when we launch!</h3>
+            <form class="notify-form">
+                <input type="email" class="notify-input" placeholder="Enter your email address" required>
+                <button type="submit" class="notify-btn">Notify Me</button>
+            </form>
         </div>
     </div>
 
-    <!-- Campaign Performance Modal -->
-    <div class="modal-overlay" id="campaign-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Campaign Performance</h2>
-                <button class="modal-close">&times;</button>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
             </div>
-            <div class="modal-body">
-                <div class="modal-tabs">
-                    <div class="modal-tab active" data-tab="campaign-overview">Overview</div>
-                    <div class="modal-tab" data-tab="campaign-details">Details</div>
-                    <div class="modal-tab" data-tab="campaign-chat">Chat</div>
-                </div>
-                
-                <div class="tab-content active" id="campaign-overview">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">45%</div>
-                            <div class="stat-label">Conversion Rate</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$2.50</div>
-                            <div class="stat-label">Cost Per Lead</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">1,243</div>
-                            <div class="stat-label">Total Clicks</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$3,245</div>
-                            <div class="stat-label">Total Spend</div>
-                        </div>
-                    </div>
-                    
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 75%"></div>
-                    </div>
-                    <p class="text-center">Monthly target: 75% complete</p>
-                    
-                    <h3>Top Performing Ads</h3>
-                    <ul>
-                        <li>Summer Promotion Ad - 12.4% CTR</li>
-                        <li>Product Demo Video - 8.7% CTR</li>
-                        <li>Limited Time Offer - 7.2% CTR</li>
-                    </ul>
-                </div>
-                
-                <div class="tab-content" id="campaign-details">
-                    <h3>Campaign Details</h3>
-                    <p>Detailed analytics and performance metrics for your advertising campaigns.</p>
-                    <!-- More detailed campaign info would go here -->
-                </div>
-                
-                <div class="tab-content" id="campaign-chat">
-                    <h3>Campaign Discussion</h3>
-                    <div class="chat-container">
-                        <div class="chat-messages">
-                            <div class="message admin">
-                                <p>Hi there! I've optimized your campaign based on last week's performance.</p>
-                                <div class="message-time">Today, 10:30 AM</div>
-                            </div>
-                            <div class="message client">
-                                <p>Thanks! The conversion rate looks much better this week.</p>
-                                <div class="message-time">Today, 10:35 AM</div>
-                            </div>
-                        </div>
-                        <div class="chat-input">
-                            <input type="text" placeholder="Type your message...">
-                            <button class="btn">Send</button>
-                        </div>
-                    </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Project Details Modal -->
-    <div class="modal-overlay" id="project-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Project Details</h2>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-tabs">
-                    <div class="modal-tab active" data-tab="project-info">Project Info</div>
-                    <div class="modal-tab" data-tab="project-assets">Assets</div>
-                    <div class="modal-tab" data-tab="project-chat">Discussion</div>
-                </div>
-                
-                <div class="tab-content active" id="project-info">
-                    <div class="project-info">
-                        <h3>Product Explainer Video</h3>
-                        <p><strong>Status:</strong> In Progress (60% Complete)</p>
-                        <p><strong>Deadline:</strong> August 30, 2025</p>
-                        <p><strong>Project Manager:</strong> Rudraksh Sharma</p>
-                    </div>
-                    
-                    <div class="project-milestones">
-                        <h3>Milestones</h3>
-                        <div class="milestone completed">
-                            <h4>
-                                <span>Initial Concept Approval</span>
-                                <span class="milestone-status completed">Completed</span>
-                            </h4>
-                            <p>Completed: July 15, 2025</p>
-                        </div>
-                        <div class="milestone completed">
-                            <h4>
-                                <span>Script Finalization</span>
-                                <span class="milestone-status completed">Completed</span>
-                            </h4>
-                            <p>Completed: July 25, 2025</p>
-                        </div>
-                        <div class="milestone">
-                            <h4>
-                                <span>First Draft Delivery</span>
-                                <span class="milestone-status">In Progress</span>
-                            </h4>
-                            <p>Expected: August 15, 2025</p>
-                        </div>
-                        <div class="milestone">
-                            <h4>
-                                <span>Final Delivery</span>
-                                <span class="milestone-status">Pending</span>
-                            </h4>
-                            <p>Expected: August 30, 2025</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="project-assets">
-                    <h3>Project Assets</h3>
-                    <p>Upload and manage files for your project.</p>
-                    
-                    <div class="upload-area">
-                        <div class="upload-icon">
-                            <i class="fas fa-cloud-upload-alt"></i>
-                        </div>
-                        <p>Drag & drop files here or click to browse</p>
-                        <p class="text-small">Maximum file size: 100MB</p>
-                    </div>
-                    
-                    <div class="assets-grid">
-                        <div class="asset-item">
-                            <div class="asset-icon">
-                                <i class="fas fa-file-video"></i>
-                            </div>
-                            <div class="asset-name">product_demo.mp4</div>
-                        </div>
-                        <div class="asset-item">
-                            <div class="asset-icon">
-                                <i class="fas fa-file-image"></i>
-                            </div>
-                            <div class="asset-name">logo.png</div>
-                        </div>
-                        <div class="asset-item">
-                            <div class="asset-icon">
-                                <i class="fas fa-file-audio"></i>
-                            </div>
-                            <div class="asset-name">voiceover.mp3</div>
-                        </div>
-                        <div class="asset-item">
-                            <div class="asset-icon">
-                                <i class="fas fa-file-pdf"></i>
-                            </div>
-                            <div class="asset-name">script.pdf</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="tab-content" id="project-chat">
-                    <h3>Project Discussion</h3>
-                    <div class="chat-container">
-                        <div class="chat-messages">
-                            <div class="message admin">
-                                <p>I've uploaded the first draft of the video. Let me know your thoughts!</p>
-                                <div class="message-time">Yesterday, 3:45 PM</div>
-                            </div>
-                            <div class="message client">
-                                <p>The intro looks great! Can we make the text animations a bit faster?</p>
-                                <div class="message-time">Today, 9:15 AM</div>
-                            </div>
-                        </div>
-                        <div class="chat-input">
-                            <input type="text" placeholder="Type your message...">
-                            <button class="btn">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
         </div>
-    </div>
-
-    <!-- Meetings Modal -->
-    <form
-  action="https://formspree.io/f/mblarylg"
-  method="POST"
->
-    <div class="modal-overlay" id="meetings-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Meeting Schedule</h2>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-tabs">
-                    <div class="modal-tab active" data-tab="schedule-meeting">Schedule Meeting</div>
-                    <div class="modal-tab" data-tab="upcoming-meetings">Upcoming Meetings</div>
-                </div>
-                
-                <div class="tab-content active" id="schedule-meeting">
-                    <form id="meeting-form">
-                        <div class="form-group">
-                            <label for="meeting-title">Meeting Title</label>
-                            <input type="text" id="meeting-title" placeholder="e.g., Project Review" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="meeting-date">Date</label>
-                            <input type="date" id="meeting-date" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="meeting-time">Time</label>
-                            <input type="time" id="meeting-time" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="meeting-duration">Duration</label>
-                            <select id="meeting-duration" required>
-                                <option value="30">30 minutes</option>
-                                <option value="60" selected>60 minutes</option>
-                                <option value="90">90 minutes</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="meeting-notes">Notes (Optional)</label>
-                            <textarea id="meeting-notes" placeholder="Any specific topics you want to discuss..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn">Schedule Meeting</button>
-                    </form>
-                </div>
-                
-                <div class="tab-content" id="upcoming-meetings">
-                    <h3>Your Scheduled Meetings</h3>
-                    
-                    <div class="booked-meetings">
-                        <div class="meeting-item">
-                            <h4>Strategy Review</h4>
-                            <div class="meeting-meta">
-                                <span>Tomorrow, 3:00 PM</span>
-                                <span>60 minutes</span>
-                            </div>
-                        </div>
-                        
-                        <div class="meeting-item">
-                            <h4>Monthly Report</h4>
-                            <div class="meeting-meta">
-                                <span>Next Monday, 10:00 AM</span>
-                                <span>30 minutes</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="btn btn-secondary" id="switch-to-schedule">Schedule New Meeting</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Billing Modal -->
-    <div class="modal-overlay" id="billing-modal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2>Billing & Invoices</h2>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-tabs">
-                    <div class="modal-tab active" data-tab="billing-overview">Overview</div>
-                    <div class="modal-tab" data-tab="billing-invoices">Invoices</div>
-                    <div class="modal-tab" data-tab="billing-chat">Support</div>
-                </div>
-                
-                <div class="tab-content active" id="billing-overview">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-value">$799</div>
-                            <div class="stat-label">Current Balance</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">2</div>
-                            <div class="stat-label">Pending Invoices</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">$3,245</div>
-                            <div class="stat-label">Total Paid</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">15</div>
-                            <div class="stat-label">Total Invoices</div>
-                        </div>
-                    </div>
-                    
-                    <h3>Recent Transactions</h3>
-                    <ul>
-                        <li>July 15, 2025 - Payment Received - $1,200</li>
-                        <li>June 30, 2025 - Invoice #INV-2025-06 - $1,500</li>
-                        <li>June 15, 2025 - Payment Received - $545</li>
-                    </ul>
-                </div>
-                
-                <div class="tab-content" id="billing-invoices">
-                    <h3>Your Invoices</h3>
-                    <p>Download and view your invoice history.</p>
-                    <!-- Invoice list would go here -->
-                </div>
-                
-                <div class="tab-content" id="billing-chat">
-                    <h3>Billing Support</h3>
-                    <div class="chat-container">
-                        <div class="chat-messages">
-                            <div class="message admin">
-                                <p>Hello! How can I help with your billing questions today?</p>
-                                <div class="message-time">Today, 11:20 AM</div>
-                            </div>
-                        </div>
-                        <div class="chat-input">
-                            <input type="text" placeholder="Type your message...">
-                            <button class="btn">Send</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Modal functionality
-            const modalTriggers = document.querySelectorAll('.dashboard-card');
-            const modals = document.querySelectorAll('.modal-overlay');
-            const closeButtons = document.querySelectorAll('.modal-close');
+            // Set launch date (3 months from now)
+            const launchDate = new Date();
+            launchDate.setMonth(launchDate.getMonth() + 3);
             
-            // Open modal when clicking on a dashboard card
-            modalTriggers.forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    const modalId = this.getAttribute('data-modal');
-                    const modal = document.getElementById(modalId);
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-                });
-            });
+            // Update countdown every second
+            const countdownTimer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = launchDate - now;
+                
+                // Calculate days, hours, minutes, seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                // Display the results
+                document.getElementById("days").textContent = days.toString().padStart(2, '0');
+                document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+                
+                // If the countdown is over
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById("days").textContent = "00";
+                    document.getElementById("hours").textContent = "00";
+                    document.getElementById("minutes").textContent = "00";
+                    document.getElementById("seconds").textContent = "00";
+                }
+            }, 1000);
             
-            // Close modal when clicking on close button
-            closeButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const modal = this.closest('.modal-overlay');
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                });
-            });
-            
-            // Close modal when clicking outside
-            modals.forEach(modal => {
-                modal.addEventListener('click', function(e) {
-                    if (e.target === this) {
-                        this.classList.remove('active');
-                        document.body.style.overflow = 'auto';
-                    }
-                });
-            });
-            
-            // Tab functionality
-            const tabs = document.querySelectorAll('.modal-tab');
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const tabContainer = this.closest('.modal-tabs');
-                    const tabContentId = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all tabs in this container
-                    tabContainer.querySelectorAll('.modal-tab').forEach(t => {
-                        t.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked tab
-                    this.classList.add('active');
-                    
-                    // Hide all tab content in this modal
-                    const modalBody = this.closest('.modal-body');
-                    modalBody.querySelectorAll('.tab-content').forEach(content => {
-                        content.classList.remove('active');
-                    });
-                    
-                    // Show the selected tab content
-                    document.getElementById(tabContentId).classList.add('active');
-                });
-            });
-            
-            // Meeting form functionality
-            const meetingForm = document.getElementById('meeting-form');
-            if (meetingForm) {
-                meetingForm.addEventListener('submit', function(e) {
+            // Notify form submission
+            const notifyForm = document.querySelector('.notify-form');
+            if (notifyForm) {
+                notifyForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    const emailInput = this.querySelector('input[type="email"]');
+                    const email = emailInput.value.trim();
                     
-                    // In a real application, you would send this data to a server
-                    alert('Meeting scheduled successfully!');
-                    
-                    // Switch to upcoming meetings tab
-                    document.querySelector('[data-tab="upcoming-meetings"]').click();
-                });
-            }
-            
-            // Switch to schedule meeting tab
-            const switchToScheduleBtn = document.getElementById('switch-to-schedule');
-            if (switchToScheduleBtn) {
-                switchToScheduleBtn.addEventListener('click', function() {
-                    document.querySelector('[data-tab="schedule-meeting"]').click();
-                });
-            }
-            
-            // Chat functionality (simplified)
-            const chatInputs = document.querySelectorAll('.chat-input input');
-            chatInputs.forEach(input => {
-                input.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        const message = this.value.trim();
-                        if (message) {
-                            const chatMessages = this.closest('.chat-container').querySelector('.chat-messages');
-                            
-                            // Create new message element
-                            const messageEl = document.createElement('div');
-                            messageEl.className = 'message client';
-                            messageEl.innerHTML = `
-                                <p>${message}</p>
-                                <div class="message-time">Just now</div>
-                            `;
-                            
-                            // Add to chat
-                            chatMessages.appendChild(messageEl);
-                            
-                            // Clear input
-                            this.value = '';
-                            
-                            // Scroll to bottom
-                            chatMessages.scrollTop = chatMessages.scrollHeight;
-                        }
+                    if (email) {
+                        alert('Thank you! We will notify you when the dashboard is launched.');
+                        emailInput.value = '';
                     }
                 });
-            });
-            
-            // Send button functionality
-            const sendButtons = document.querySelectorAll('.chat-input .btn');
-            sendButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const input = this.previousElementSibling;
-                    const message = input.value.trim();
-                    
-                    if (message) {
-                        const chatMessages = this.closest('.chat-container').querySelector('.chat-messages');
-                        
-                        // Create new message element
-                        const messageEl = document.createElement('div');
-                        messageEl.className = 'message client';
-                        messageEl.innerHTML = `
-                            <p>${message}</p>
-                            <div class="message-time">Just now</div>
-                        `;
-                        
-                        // Add to chat
-                        chatMessages.appendChild(messageEl);
-                        
-                        // Clear input
-                        input.value = '';
-                        
-                        // Scroll to bottom
-                        chatMessages.scrollTop = chatMessages.scrollHeight;
-                    }
-                });
-            });
+            }
         });
     </script>
 </body>
