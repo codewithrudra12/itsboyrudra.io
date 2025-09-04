@@ -8,12 +8,12 @@
   "theme_color": "#111111",
   "icons": [
     {
-      "src": "https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg",
+      "src": "/itsboyrudra.io/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg",
+      "src": "/itsboyrudra.io/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
