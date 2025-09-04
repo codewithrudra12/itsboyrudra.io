@@ -1,0 +1,21 @@
+{
+  "name": "ITSBOYRUDRA",
+  "short_name": "IBR",
+  "start_url": "/itsboyrudra.io/index.html",
+  "scope": "/itsboyrudra.io/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
