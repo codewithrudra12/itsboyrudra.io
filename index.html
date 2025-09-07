@@ -3017,106 +3017,414 @@ submit-btn">Send Message</button></a>
             });
         });
 
-        // Chatbot functionality
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const chatbotClose = document.getElementById('chatbot-close');
-        const chatbotMessages = document.getElementById('chatbot-messages');
-        const chatbotInput = document.getElementById('chatbot-input');
-        const chatbotSend = document.getElementById('chatbot-send');
+        <!-- Replace the existing chatbot implementation with this improved version -->
+<script>
+// Enhanced Chatbot functionality
+const chatbotToggle = document.getElementById('chatbot-toggle');
+const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotClose = document.getElementById('chatbot-close');
+const chatbotMessages = document.getElementById('chatbot-messages');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotSend = document.getElementById('chatbot-send');
 
-        chatbotToggle.addEventListener('click', () => {
-            chatbotWindow.classList.toggle('active');
-        });
+// Chatbot state management
+let chatContext = {
+    userName: null,
+    serviceInterest: null,
+    budgetRange: null,
+    conversationHistory: []
+};
 
-        chatbotClose.addEventListener('click', () => {
-            chatbotWindow.classList.remove('active');
-        });
+chatbotToggle.addEventListener('click', () => {
+    chatbotWindow.classList.toggle('active');
+    if (chatbotWindow.classList.contains('active')) {
+        chatbotInput.focus();
+    }
+});
 
-        // Enhanced chatbot responses
-        const chatbotResponses = {
-            'hello': 'Hello! How can I help you today?',
-            'hi': 'Hi there! What can I assist you with?',
-            'services': 'I offer Google Ads management, Facebook Ads campaigns, and professional video editing services. Which one are you interested in?',
-            'pricing': 'My pricing starts at $349/month for basic plans, going up to $1,499/month for premium services. Would you like more details about a specific plan?',
-            'booking': 'You can book a free consultation using the Calendly widget in the Booking section of my website. Would you like me to take you there?',
-            'google ads': 'Google Ads service includes campaign setup, optimization, keyword research, and detailed reporting. The starting price is $349/month.',
-            'facebook ads': 'Facebook Ads service includes audience targeting, ad creative optimization, conversion tracking, and A/B testing. The starting price is $349/month.',
-            'video editing': 'Video editing service includes editing for social media platforms, motion effects, auto subtitles, and color grading. The starting price is $349/month.',
-            'thank you': 'You\'re welcome! Is there anything else I can help you with?',
-            'bye': 'Goodbye! Feel free to reach out if you have more questions.',
-            'portfolio': 'You can view my portfolio in the Portfolio section of my website. It includes examples of Google Ads campaigns, Facebook Ads, and video editing work.',
-            'experience': 'I have several years of experience in performance marketing and video editing, working with various clients across different industries.',
-            'contact': 'You can contact me via email at info.itsboyrudra@gmail.com or through WhatsApp at +91 7878383739. You can also use the contact form on my website.',
-            'process': 'My process typically starts with a free consultation to understand your needs, followed by a proposal, and then execution with regular updates and reporting.',
-            'results': 'I focus on delivering measurable results such as increased conversions, lower cost per acquisition, and higher engagement rates for my clients.',
-            'guarantee': 'While I can\'t guarantee specific results due to market variables, I use proven strategies and continuously optimize campaigns to maximize ROI.',
-            'timeline': 'The timeline depends on the service and project scope. Typically, initial results can be seen within 2-4 weeks for ads campaigns, and video editing projects usually take 3-7 days depending on complexity.',
-            'requirements': 'For ads management, I typically need access to your ad accounts and clear business objectives. For video editing, I need the raw footage and any specific branding guidelines.',
-            'strategy': 'My strategy involves understanding your target audience, setting clear objectives, creating compelling creatives, and continuously optimizing based on data-driven insights.'
-        };
+chatbotClose.addEventListener('click', () => {
+    chatbotWindow.classList.remove('active');
+});
 
-        // Function to add message to chat
-        function addMessage(message, isUser = false) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-            messageDiv.textContent = message;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+// Enhanced chatbot responses with context awareness
+const chatbotResponses = {
+    'greeting': {
+        patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
+        responses: [
+            "Hello! I'm Rudraksh's assistant. How can I help you today?",
+            "Hi there! What can I assist you with?",
+            "Hello! Interested in learning about performance marketing or video editing services?"
+        ],
+        followUps: [
+            {text: "Tell me about services", message: "What services do you offer?"},
+            {text: "View pricing", message: "What are your prices?"},
+            {text: "Book consultation", message: "How can I book a consultation?"}
+        ]
+    },
+    'services': {
+        patterns: ['services', 'what do you offer', 'what can you do', 'offerings'],
+        responses: [
+            "I offer Google Ads management, Facebook Ads campaigns, and professional video editing services. Which one are you interested in?",
+            "My services include Google Ads optimization, Facebook Ads management, and creative video editing. What would you like to know more about?",
+            "I specialize in performance marketing (Google/Facebook Ads) and video editing services. Which area interests you?"
+        ],
+        followUps: [
+            {text: "Google Ads", message: "Tell me about Google Ads"},
+            {text: "Facebook Ads", message: "Tell me about Facebook Ads"},
+            {text: "Video Editing", message: "Tell me about video editing"}
+        ]
+    },
+    'google_ads': {
+        patterns: ['google ads', 'google adwords', 'search ads'],
+        responses: [
+            "Google Ads service includes campaign setup, optimization, keyword research, and detailed reporting. The starting price is $349/month. Would you like to know more specifics?",
+            "With Google Ads, I help businesses appear in search results for relevant keywords. I handle everything from strategy to optimization. Interested in this service?"
+        ],
+        followUps: [
+            {text: "Case studies", message: "Do you have Google Ads examples?"},
+            {text: "Pricing details", message: "What's included in Google Ads pricing?"},
+            {text: "Get started", message: "How do I start with Google Ads?"}
+        ]
+    },
+    'facebook_ads': {
+        patterns: ['facebook ads', 'meta ads', 'social media ads'],
+        responses: [
+            "Facebook Ads service includes audience targeting, ad creative optimization, conversion tracking, and A/B testing. The starting price is $349/month. Want to learn more?",
+            "Facebook Ads help you reach specific audiences based on demographics, interests, and behaviors. I create and manage campaigns that convert. Curious about how it works?"
+        ],
+        followUps: [
+            {text: "Examples", message: "Show Facebook Ads examples"},
+            {text: "Audience targeting", message: "How do you target audiences?"},
+            {text: "Start campaign", message: "How to begin Facebook Ads?"}
+        ]
+    },
+    'video_editing': {
+        patterns: ['video editing', 'video production', 'reels', 'tiktok', 'youtube shorts'],
+        responses: [
+            "Video editing service includes editing for social media platforms, motion effects, auto subtitles, and color grading. The starting price is $349/month. What type of videos do you need?",
+            "I create engaging video content for social media, including Reels, TikTok, and YouTube Shorts. I use advanced editing techniques to make your content stand out. Tell me about your video needs!"
+        ],
+        followUps: [
+            {text: "Portfolio", message: "Show video examples"},
+            {text: "Turnaround time", message: "How long does editing take?"},
+            {text: "Get a quote", message: "Can I get a custom quote?"}
+        ]
+    },
+    'pricing': {
+        patterns: ['pricing', 'price', 'cost', 'how much', 'rates'],
+        responses: [
+            "My pricing starts at $349/month for basic plans, going up to $1,499/month for premium services. Which service are you interested in?",
+            "Prices vary based on the service and scope. Basic plans start at $349/month. Could you tell me which service you're considering?"
+        ],
+        followUps: [
+            {text: "Google Ads pricing", message: "Google Ads cost"},
+            {text: "Facebook Ads pricing", message: "Facebook Ads cost"},
+            {text: "Video editing pricing", message: "Video editing cost"}
+        ]
+    },
+    'booking': {
+        patterns: ['booking', 'consultation', 'schedule', 'meeting', 'call'],
+        responses: [
+            "You can book a free consultation using the Calendly widget in the Booking section of my website. Would you like me to take you there?",
+            "I'd be happy to schedule a consultation! You can use the booking section on my website. Should I scroll to that section for you?"
+        ],
+        followUps: [
+            {text: "Yes, take me there", action: "scrollToBooking"},
+            {text: "Tell me more first", message: "What happens in a consultation?"}
+        ]
+    },
+    'portfolio': {
+        patterns: ['portfolio', 'examples', 'work', 'case studies', 'show me'],
+        responses: [
+            "You can view my portfolio in the Portfolio section of my website. It includes examples of Google Ads campaigns, Facebook Ads, and video editing work. Would you like to see it?",
+            "I have examples of ad campaigns and video edits in my portfolio section. Should I take you there?"
+        ],
+        followUps: [
+            {text: "Yes, show portfolio", action: "scrollToPortfolio"},
+            {text: "Google Ads examples", message: "Show Google Ads case studies"},
+            {text: "Video examples", message: "Show video editing samples"}
+        ]
+    },
+    'experience': {
+        patterns: ['experience', 'background', 'how long', 'qualifications'],
+        responses: [
+            "I have several years of experience in performance marketing and video editing, working with various clients across different industries. I'm Google Ads certified and proficient with Adobe Premiere Pro, After Effects, and CapCut.",
+            "I've been helping businesses with digital marketing and video content for several years. I'm certified in Google Ads and specialize in creating results-driven campaigns and engaging video content."
+        ],
+        followUps: [
+            {text: "Certifications", message: "What certifications do you have?"},
+            {text: "Client results", message: "What results have you achieved?"},
+            {text: "Process", message: "What's your working process?"}
+        ]
+    },
+    'gratitude': {
+        patterns: ['thank', 'thanks', 'appreciate', 'helpful'],
+        responses: [
+            "You're welcome! Is there anything else I can help you with?",
+            "Happy to help! Let me know if you have any other questions.",
+            "My pleasure! Feel free to ask if you need anything else."
+        ],
+        followUps: [
+            {text: "Services", message: "Tell me about services"},
+            {text: "Pricing", message: "What are your prices?"},
+            {text: "Contact", message: "How can I contact you?"}
+        ]
+    },
+    'farewell': {
+        patterns: ['bye', 'goodbye', 'see you', 'talk later'],
+        responses: [
+            "Goodbye! Feel free to reach out if you have more questions.",
+            "Thanks for chatting! Don't hesitate to come back if you need anything.",
+            "Have a great day! Reach out anytime you need marketing or video editing help."
+        ]
+    },
+    'contact': {
+        patterns: ['contact', 'email', 'whatsapp', 'phone', 'reach'],
+        responses: [
+            "You can contact me via email at info.itsboyrudra@gmail.com or through WhatsApp at +91 7878383739. You can also use the contact form on my website.",
+            "Feel free to email me at info.itsboyrudra@gmail.com or message me on WhatsApp at +91 7878383739. I'm also available through the contact form on this site."
+        ],
+        followUps: [
+            {text: "Send email", action: "openEmail"},
+            {text: "Open WhatsApp", action: "openWhatsApp"},
+            {text: "Contact form", action: "scrollToContact"}
+        ]
+    },
+    'default': {
+        responses: [
+            "I'm not sure I understand. Can you please rephrase or ask about my services, pricing, or booking process?",
+            "I didn't quite get that. Could you ask about my services, experience, or how to work with me?",
+            "I'm still learning! Try asking about performance marketing, video editing, or how to get started."
+        ],
+        followUps: [
+            {text: "Services", message: "What services do you offer?"},
+            {text: "Pricing", message: "What are your prices?"},
+            {text: "Portfolio", message: "Can I see examples?"}
+        ]
+    }
+};
+
+// Function to simulate typing effect
+function showTypingIndicator() {
+    const typingIndicator = document.createElement('div');
+    typingIndicator.className = 'message bot-message typing-indicator';
+    typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+    chatbotMessages.appendChild(typingIndicator);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    return typingIndicator;
+}
+
+// Function to remove typing indicator
+function removeTypingIndicator(indicator) {
+    if (indicator && indicator.parentNode) {
+        indicator.parentNode.removeChild(indicator);
+    }
+}
+
+// Function to add message to chat
+function addMessage(message, isUser = false, delay = 0) {
+    setTimeout(() => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+        messageDiv.textContent = message;
+        chatbotMessages.appendChild(messageDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }, delay);
+}
+
+// Function to add quick replies
+function addQuickReplies(replies) {
+    const quickRepliesContainer = document.createElement('div');
+    quickRepliesContainer.className = 'quick-replies';
+    
+    replies.forEach(reply => {
+        const replyButton = document.createElement('div');
+        replyButton.className = 'quick-reply';
+        replyButton.textContent = reply.text;
+        
+        if (reply.action) {
+            replyButton.setAttribute('data-action', reply.action);
+        } else if (reply.message) {
+            replyButton.setAttribute('data-message', reply.message);
         }
-
-        // Function to handle user input
-        function handleUserInput() {
-            const message = chatbotInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                chatbotInput.value = '';
-                
-                // Process message and generate response
-                setTimeout(() => {
-                    let response = "I'm not sure I understand. Can you please rephrase or ask about my services, pricing, or booking process?";
-                    const lowerMessage = message.toLowerCase();
-                    
-                    // Check for specific keywords
-                    for (const [key, value] of Object.entries(chatbotResponses)) {
-                        if (lowerMessage.includes(key)) {
-                            response = value;
-                            break;
-                        }
-                    }
-                    
-                    // Special cases for calculations
-                    if (lowerMessage.includes('calculate') || lowerMessage.includes('price') || lowerMessage.includes('cost')) {
-                        if (lowerMessage.includes('google') || lowerMessage.includes('ads')) {
-                            response = "For Google Ads management, the price is $349/month for the Basic plan. Would you like to know what's included?";
-                        } else if (lowerMessage.includes('facebook')) {
-                            response = "For Facebook Ads management, the price is $349/month for the Basic plan. Would you like to know what's included?";
-                        } else if (lowerMessage.includes('video')) {
-                            response = "For video editing services, the price starts at $349/month. Would you like to know what's included?";
-                        }
-                    }
-                    
-                    addMessage(response);
-                }, 500);
-            }
-        }
-
-        // Event listeners for chatbot
-        chatbotSend.addEventListener('click', handleUserInput);
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        
+        quickRepliesContainer.appendChild(replyButton);
+    });
+    
+    chatbotMessages.appendChild(quickRepliesContainer);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    
+    // Add event listeners to quick replies
+    quickRepliesContainer.querySelectorAll('.quick-reply').forEach(reply => {
+        reply.addEventListener('click', () => {
+            if (reply.getAttribute('data-action')) {
+                handleAction(reply.getAttribute('data-action'));
+            } else if (reply.getAttribute('data-message')) {
+                chatbotInput.value = reply.getAttribute('data-message');
                 handleUserInput();
             }
         });
+    });
+}
 
-        // Quick replies
-        document.querySelectorAll('.quick-reply').forEach(reply => {
-            reply.addEventListener('click', () => {
-                const message = reply.getAttribute('data-message');
-                chatbotInput.value = message;
-                handleUserInput();
-            });
-        });
-    </script>
-</body>
-</html>
+// Function to handle special actions
+function handleAction(action) {
+    switch(action) {
+        case 'scrollToBooking':
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            addMessage("I've scrolled to the booking section. You can schedule a consultation there!", false, 300);
+            break;
+        case 'scrollToPortfolio':
+            document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+            addMessage("Here's my portfolio section. Take a look at my work!", false, 300);
+            break;
+        case 'scrollToContact':
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            addMessage("I've taken you to the contact section. Feel free to reach out!", false, 300);
+            break;
+        case 'openEmail':
+            window.location.href = "mailto:info.itsboyrudra@gmail.com";
+            addMessage("Opening your email client...", false, 300);
+            break;
+        case 'openWhatsApp':
+            window.open("https://wa.me/+917878383739", "_blank");
+            addMessage("Opening WhatsApp...", false, 300);
+            break;
+    }
+}
+
+// Function to process message and generate response
+function generateResponse(message) {
+    const lowerMessage = message.toLowerCase();
+    
+    // Check for matching patterns
+    for (const [key, value] of Object.entries(chatbotResponses)) {
+        if (key !== 'default') {
+            for (const pattern of value.patterns) {
+                if (lowerMessage.includes(pattern)) {
+                    return {
+                        response: value.responses[Math.floor(Math.random() * value.responses.length)],
+                        followUps: value.followUps || []
+                    };
+                }
+            }
+        }
+    }
+    
+    // Default response if no pattern matches
+    return {
+        response: chatbotResponses.default.responses[Math.floor(Math.random() * chatbotResponses.default.responses.length)],
+        followUps: chatbotResponses.default.followUps || []
+    };
+}
+
+// Function to handle user input
+function handleUserInput() {
+    const message = chatbotInput.value.trim();
+    if (message) {
+        addMessage(message, true);
+        chatbotInput.value = '';
+        
+        // Show typing indicator
+        const typingIndicator = showTypingIndicator();
+        
+        // Process after a short delay to simulate thinking
+        setTimeout(() => {
+            removeTypingIndicator(typingIndicator);
+            
+            // Generate response
+            const {response, followUps} = generateResponse(message);
+            
+            // Add response to chat
+            addMessage(response);
+            
+            // Add quick replies if available
+            if (followUps && followUps.length > 0) {
+                addQuickReplies(followUps);
+            }
+        }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+    }
+}
+
+// Event listeners for chatbot
+chatbotSend.addEventListener('click', handleUserInput);
+chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        handleUserInput();
+    }
+});
+
+// Initialize with welcome message when chatbot is opened
+chatbotToggle.addEventListener('click', () => {
+    if (chatbotWindow.classList.contains('active') && chatbotMessages.children.length <= 1) {
+        setTimeout(() => {
+            addMessage("Hi there! 👋 I'm Rudraksh's assistant. I can help you learn more about services, pricing, or anything else you'd like to know. How can I assist you today?");
+            addQuickReplies([
+                {text: "Services", message: "Tell me about your services"},
+                {text: "Pricing", message: "What are your prices?"},
+                {text: "Portfolio", message: "Can I see examples of your work?"}
+            ]);
+        }, 300);
+    }
+});
+
+// Add some CSS for the typing indicator
+const style = document.createElement('style');
+style.textContent = `
+.typing-indicator {
+    background-color: rgba(58, 134, 255, 0.1) !important;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.typing-indicator span {
+    height: 8px;
+    width: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    opacity: 0.6;
+    animation: typingAnimation 1.4s infinite ease-in-out;
+}
+.typing-indicator span:nth-child(1) {
+    animation-delay: 0s;
+}
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+@keyframes typingAnimation {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    30% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+}
+.quick-replies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+}
+.quick-reply {
+    padding: 0.5rem 0.8rem;
+    background: rgba(58, 134, 255, 0.1);
+    border: 1px solid rgba(58, 134, 255, 0.2);
+    border-radius: 16px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.quick-reply:hover {
+    background: rgba(58, 134, 255, 0.2);
+    transform: translateY(-2px);
+}
+`;
+document.head.appendChild(style);
+</script>
