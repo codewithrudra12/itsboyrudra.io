@@ -32,6 +32,78 @@
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
     <style>
+        /* All previous CSS remains the same */
+        /* Adding new styles for notifications */
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .notifications-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1004;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .notifications-popup.active {
+            display: block;
+        }
+        
+        .notifications-content {
+            color: var(--text-primary);
+            text-align: center;
+        }
+        
+        .notifications-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .notifications-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .notifications-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .notifications-close:hover {
+            transform: rotate(180deg);
+        }
+        
+        /* Rest of the CSS remains the same */
         :root {
             --bg-dark: #0e0e0e;
             --bg-darker: #070707;
@@ -168,6 +240,7 @@
             text-decoration: none;
             border-radius: 4px;
             transition: background 0.3s;
+            position: relative;
         }
 
         .more-dropdown-content a:hover {
@@ -1902,6 +1975,9 @@
                     <a href="#" data-popup="download-popup">Download App</a>
                     <a href="dashboard.html" target="_blank">Dashboard</a>
                     <a href="#" id="start-tour">Take a Tour</a>
+                    <a href="#" data-popup="notifications-popup">Notifications
+                        <span class="notification-badge">0</span>
+                    </a>
                 </div>
             </li>
         </ul>
@@ -1923,6 +1999,9 @@
                 <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
                 <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
                 <li><a href="#" id="sidebar-start-tour" class="sidebar-link">Take a Tour</a></li>
+                <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications
+                    <span class="notification-badge">0</span>
+                </a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -2180,6 +2259,16 @@
         </div>
     </div>
     <div class="legal-popup-backdrop" id="legal-popup-backdrop"></div>
+
+    <!-- Notifications Popup -->
+    <div class="notifications-popup" id="notifications-popup">
+        <div class="notifications-content">
+            <button class="notifications-close" aria-label="Close Notifications Popup">×</button>
+            <h3>Notifications</h3>
+            <p>You have no new notifications at this time.</p>
+            <p>Check back later for updates!</p>
+        </div>
+    </div>
 
     <!-- Payment Popup -->
     <div class="payment-popup" id="payment-popup">
@@ -2590,6 +2679,36 @@ submit-btn">Send Message</button></a>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script>
+        // Disable right-click and inspect
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            alert('Right-click is disabled on this page.');
+        });
+        
+        // Disable keyboard shortcuts for inspect
+        document.addEventListener('keydown', function(e) {
+            // Disable F12
+            if (e.keyCode === 123) {
+                e.preventDefault();
+                alert('Inspect element is disabled.');
+            }
+            // Disable Ctrl+Shift+I
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                e.preventDefault();
+                alert('Inspect element is disabled.');
+            }
+            // Disable Ctrl+Shift+C
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+                e.preventDefault();
+                alert('Inspect element is disabled.');
+            }
+            // Disable Ctrl+U
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                alert('View source is disabled.');
+            }
+        });
+
         // Sidebar Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.getElementById('sidebar');
@@ -2658,9 +2777,9 @@ submit-btn">Send Message</button></a>
             });
         });
 
-        document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
+        document.querySelectorAll('.legal-popup-close, .service-details-close, .notifications-close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
-                document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+                document.querySelectorAll('.legal-popup, .service-details-popup, .notifications-popup').forEach(popup => {
                     popup.classList.remove('active');
                 });
                 legalPopupBackdrop.classList.remove('active');
@@ -2668,7 +2787,7 @@ submit-btn">Send Message</button></a>
         });
 
         legalPopupBackdrop.addEventListener('click', () => {
-            document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+            document.querySelectorAll('.legal-popup, .service-details-popup, .notifications-popup').forEach(popup => {
                 popup.classList.remove('active');
             });
             legalPopupBackdrop.classList.remove('active');
@@ -2950,7 +3069,7 @@ submit-btn">Send Message</button></a>
             });
         });
 
-        // Website Tour Functionality
+        // Website Tour Functionality - FIXED
         const startTourBtn = document.getElementById('start-tour');
         const sidebarStartTourBtn = document.getElementById('sidebar-start-tour');
         const tourOverlay = document.getElementById('tour-overlay');
@@ -3056,7 +3175,7 @@ submit-btn">Send Message</button></a>
         tourPrevBtn.addEventListener('click', prevTourStep);
         tourOverlay.addEventListener('click', endTour);
 
-        // Enhanced Chatbot functionality
+        // Enhanced Chatbot functionality with personal information
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
@@ -3083,7 +3202,7 @@ submit-btn">Send Message</button></a>
             chatbotWindow.classList.remove('active');
         });
 
-        // Enhanced chatbot responses with context awareness
+        // Enhanced chatbot responses with personal information
         const chatbotResponses = {
             'greeting': {
                 patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
@@ -3096,6 +3215,58 @@ submit-btn">Send Message</button></a>
                     {text: "Tell me about services", message: "What services do you offer?"},
                     {text: "View pricing", message: "What are your prices?"},
                     {text: "Book consultation", message: "How can I book a consultation?"}
+                ]
+            },
+            'about_me': {
+                patterns: ['who are you', 'tell me about yourself', 'about you', 'your name', 'what do you do'],
+                responses: [
+                    "I'm Rudraksh Sharma, a performance marketer and video editor based in Rajasthan, India. I help brands grow through Google Ads, Facebook Ads, and creative video editing services.",
+                    "I'm Rudraksh Sharma, specializing in performance marketing and video editing. I help businesses increase their online visibility and create engaging video content.",
+                    "My name is Rudraksh Sharma. I'm a digital marketing expert and video editor with experience in Google Ads, Facebook Ads, and creating viral video content."
+                ],
+                followUps: [
+                    {text: "Your services", message: "What services do you offer?"},
+                    {text: "Your contact", message: "How can I contact you?"},
+                    {text: "Your experience", message: "What's your experience?"}
+                ]
+            },
+            'contact_info': {
+                patterns: ['contact', 'phone', 'number', 'whatsapp', 'email', 'how to reach'],
+                responses: [
+                    "You can contact me via WhatsApp at +91 7878383739 or email at info.itsboyrudra@gmail.com. I'm based in Rajasthan, India.",
+                    "Feel free to reach out on WhatsApp: +91 7878383739 or email: info.itsboyrudra@gmail.com. I'm located in Rajasthan, India.",
+                    "My contact number is +91 7878383739 (WhatsApp) and email is info.itsboyrudra@gmail.com. I'm based in Rajasthan, India."
+                ],
+                followUps: [
+                    {text: "Send WhatsApp", action: "openWhatsApp"},
+                    {text: "Send email", action: "openEmail"},
+                    {text: "Book consultation", message: "How can I book a consultation?"}
+                ]
+            },
+            'location': {
+                patterns: ['where are you', 'location', 'based', 'from', 'rajasthan'],
+                responses: [
+                    "I'm based in Rajasthan, India. I work with clients globally through online platforms.",
+                    "I'm located in Rajasthan, India, but I serve clients worldwide through digital channels.",
+                    "My base is in Rajasthan, India, but I work remotely with clients from all over the world."
+                ],
+                followUps: [
+                    {text: "Your services", message: "What services do you offer?"},
+                    {text: "Remote work", message: "Do you work remotely?"},
+                    {text: "Contact info", message: "How can I contact you?"}
+                ]
+            },
+            'quote': {
+                patterns: ['quote', 'motto', 'philosophy', 'belief', 'approach'],
+                responses: [
+                    "My approach is simple: 'Deliver results with data-driven strategies and creative storytelling.' I believe in measurable outcomes and transparent communication.",
+                    "I follow the philosophy: 'Quality over quantity, results over promises.' Every campaign is tailored to deliver maximum ROI.",
+                    "My motto is: 'Growth through smart marketing and compelling visuals.' I focus on strategies that actually work for your business."
+                ],
+                followUps: [
+                    {text: "Your services", message: "What services do you offer?"},
+                    {text: "Success stories", message: "Do you have case studies?"},
+                    {text: "Process", message: "What's your working process?"}
                 ]
             },
             'services': {
@@ -3213,18 +3384,6 @@ submit-btn">Send Message</button></a>
                     "Goodbye! Feel free to reach out if you have more questions.",
                     "Thanks for chatting! Don't hesitate to come back if you need anything.",
                     "Have a great day! Reach out anytime you need marketing or video editing help."
-                ]
-            },
-            'contact': {
-                patterns: ['contact', 'email', 'whatsapp', 'phone', 'reach'],
-                responses: [
-                    "You can contact me via email at info.itsboyrudra@gmail.com or through WhatsApp at +91 7878383739. You can also use the contact form on my website.",
-                    "Feel free to email me at info.itsboyrudra@gmail.com or message me on WhatsApp at +91 7878383739. I'm also available through the contact form on this site."
-                ],
-                followUps: [
-                    {text: "Send email", action: "openEmail"},
-                    {text: "Open WhatsApp", action: "openWhatsApp"},
-                    {text: "Contact form", action: "scrollToContact"}
                 ]
             },
             'default': {
@@ -3397,9 +3556,9 @@ submit-btn">Send Message</button></a>
                 setTimeout(() => {
                     addMessage("Hi there! 👋 I'm Rudraksh's assistant. I can help you learn more about services, pricing, or anything else you'd like to know. How can I assist you today?");
                     addQuickReplies([
-                        {text: "Services", message: "Tell me about your services"},
-                        {text: "Pricing", message: "What are your prices?"},
-                        {text: "Portfolio", message: "Can I see examples of your work?"}
+                        {text: "About Rudraksh", message: "Tell me about yourself"},
+                        {text: "Services", message: "What services do you offer?"},
+                        {text: "Contact info", message: "How can I contact you?"}
                     ]);
                 }, 300);
             }
