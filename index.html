@@ -30,7 +30,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg">
     <style>
         :root {
             --bg-dark: #0e0e0e;
@@ -1676,11 +1676,6 @@
     color: var(--accent);
 }
 
-.download-platform span {
-    font-weight: 600;
-    font-size: 1.1rem;
-}
-
 /* Platform-specific colors on hover */
 .download-platform:nth-child(1):hover i {
     color: #3DDC84; /* Android green */
@@ -2885,7 +2880,7 @@
     window.addEventListener('load', () => {
         setTimeout(() => {
             document.getElementById('security-splash').classList.add('hidden');
-        }, 3000); // 3 seconds delay
+        }, 2000); // 2 seconds delay
     });
 
     // Disable Right-Click and Inspect
@@ -3399,21 +3394,23 @@
             followUps: [
                 {text: "Tell me about services", message: "What services do you offer?"},
                 {text: "View pricing", message: "What are your prices?"},
-                {text: "Book consultation", message: "How can I book a consultation?"}
+                {text: "Book consultation", message: "How can I book a consultation?"},
+                {text: "About Rudraksh", message: "Who is Rudraksh Sharma?"}
             ]
         },
         'about_me': {
-            patterns: ['who are you', 'about you', 'tell me about yourself', 'who is rudraksh', 'who is you'],
+            patterns: ['who are you', 'about you', 'tell me about yourself', 'who is rudraksh', 'who is you', 'biography', 'bio'],
             responses: [
-                "I'm Rudraksh Sharma, a performance marketer and video editor from Rajasthan, India. I specialize in Google Ads, Facebook Ads, and video editing. Contact me at +91 7878383739 or info.itsboyrudra@gmail.com. 'Success is not final, failure is not fatal: It is the courage to continue that counts.' - Winston Churchill",
-                "Hi, I'm Rudraksh Sharma, based in Rajasthan, India. I help brands grow with ROI-driven ads and creative video edits. Reach me at +91 7878383739. 'The best way to predict the future is to create it.' - Peter Drucker",
-                "Rudraksh Sharma here! Performance marketer and video editor specializing in Google/Facebook Ads and professional editing. From Rajasthan, India. Phone: +91 7878383739. 'Innovation distinguishes between a leader and a follower.' - Steve Jobs"
+                "I'm Rudraksh Sharma, a 17-year-old performance marketer and video editor from Rajasthan, India. I specialize in Google Ads, Facebook Ads, and video editing. With a passion for digital marketing since age 15, I've helped multiple brands grow through ROI-driven campaigns and creative content. Contact me at +91 7878383739 or info.itsboyrudra@gmail.com. 'Success is not final, failure is not fatal: It is the courage to continue that counts.' - Winston Churchill",
+                "Hi, I'm Rudraksh Sharma, based in Rajasthan, India. As a young entrepreneur at 17, I provide performance marketing and video editing services. Started my journey in 2023, focusing on data-driven ads and professional edits. Reach me at +91 7878383739. 'The best way to predict the future is to create it.' - Peter Drucker",
+                "Rudraksh Sharma here! A 17-year-old performance marketer and video editor specializing in Google/Facebook Ads and professional editing. From Rajasthan, India, with experience since 2023. Phone: +91 7878383739. 'Innovation distinguishes between a leader and a follower.' - Steve Jobs"
             ],
             followUps: [
                 {text: "Contact details", message: "What's your number?"},
                 {text: "Get a quote", message: "Can I get a quote?"},
                 {text: "Services", message: "What services do you offer?"},
-                {text: "Call you", message: "Can I call you?"}
+                {text: "Call you", message: "Can I call you?"},
+                {text: "Message on WhatsApp", action: "openWhatsApp"}
             ]
         },
         'contact_number': {
@@ -3425,7 +3422,8 @@
             followUps: [
                 {text: "Call now", action: "callNumber"},
                 {text: "WhatsApp message", action: "openWhatsApp"},
-                {text: "Email", action: "openEmail"}
+                {text: "Email", action: "openEmail"},
+                {text: "Services", message: "What services do you offer?"}
             ]
         },
         'quote': {
@@ -3437,7 +3435,8 @@
             followUps: [
                 {text: "Estimate cost", message: "Calculate cost for me"},
                 {text: "Call for quote", action: "callNumber"},
-                {text: "View standard pricing", message: "Show me standard pricing"}
+                {text: "View standard pricing", message: "Show me standard pricing"},
+                {text: "Message on WhatsApp", action: "openWhatsApp"}
             ]
         },
         'calculate_cost': {
@@ -3446,7 +3445,12 @@
                 "Sure, let's calculate a cost estimate. What service are you interested in? (Google Ads, Facebook Ads, Video Editing)",
                 "To estimate cost, tell me the service and details like ad spend or video length."
             ],
-            followUps: []
+            followUps: [
+                {text: "Google Ads", message: "Calculate cost for Google Ads"},
+                {text: "Facebook Ads", message: "Calculate cost for Facebook Ads"},
+                {text: "Video Editing", message: "Calculate cost for Video Editing"},
+                {text: "Contact for details", action: "openWhatsApp"}
+            ]
         },
         'services': {
             patterns: ['services', 'what do you offer', 'what can you do', 'offerings', 'your services'],
@@ -3458,7 +3462,8 @@
                 {text: "Google Ads details", message: "Tell me about Google Ads"},
                 {text: "Facebook Ads details", message: "Tell me about Facebook Ads"},
                 {text: "Video Editing details", message: "Tell me about video editing"},
-                {text: "Cost estimate", message: "Estimate cost for a service"}
+                {text: "Cost estimate", message: "Estimate cost for a service"},
+                {text: "Call to discuss", action: "callNumber"}
             ]
         },
         'google_ads': {
@@ -3468,7 +3473,8 @@
             ],
             followUps: [
                 {text: "Estimate cost", message: "Calculate cost for Google Ads"},
-                {text: "Book consultation", action: "scrollToBooking"}
+                {text: "Book consultation", action: "scrollToBooking"},
+                {text: "Message on WhatsApp", action: "openWhatsApp"}
             ]
         },
         'facebook_ads': {
@@ -3478,7 +3484,8 @@
             ],
             followUps: [
                 {text: "Estimate cost", message: "Calculate cost for Facebook Ads"},
-                {text: "See examples", action: "scrollToPortfolio"}
+                {text: "See examples", action: "scrollToPortfolio"},
+                {text: "Call for details", action: "callNumber"}
             ]
         },
         'video_editing': {
@@ -3488,7 +3495,8 @@
             ],
             followUps: [
                 {text: "Estimate cost", message: "Calculate cost for video editing"},
-                {text: "Contact for custom", action: "scrollToContact"}
+                {text: "Contact for custom", action: "scrollToContact"},
+                {text: "Message on WhatsApp", action: "openWhatsApp"}
             ]
         },
         'pricing': {
@@ -3499,7 +3507,8 @@
             followUps: [
                 {text: "Basic details", message: "Tell me about basic plan"},
                 {text: "Pro details", message: "Tell me about pro plan"},
-                {text: "Custom estimate", message: "Calculate custom cost"}
+                {text: "Custom estimate", message: "Calculate custom cost"},
+                {text: "Call to discuss pricing", action: "callNumber"}
             ]
         },
         'booking': {
@@ -3509,7 +3518,8 @@
             ],
             followUps: [
                 {text: "Scroll to booking", action: "scrollToBooking"},
-                {text: "Call now", action: "callNumber"}
+                {text: "Call now", action: "callNumber"},
+                {text: "Message on WhatsApp", action: "openWhatsApp"}
             ]
         },
         'default': {
@@ -3519,7 +3529,8 @@
             followUps: [
                 {text: "About you", message: "Who are you?"},
                 {text: "Services", message: "What services do you offer?"},
-                {text: "Calculate cost", message: "Estimate cost"}
+                {text: "Calculate cost", message: "Estimate cost"},
+                {text: "Contact via WhatsApp", action: "openWhatsApp"}
             ]
         }
     };
