@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remarketing Lists in Google Ads | Rudraksh Sharma</title>
+    <meta name="description" content="Master remarketing lists in Google Ads with Rudraksh Sharma’s expert guide. Learn how to create, optimize, and leverage remarketing lists to boost conversions and ROI." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-remarketing-lists-google-ads" />
+    <meta property="og:title" content="Remarketing Lists in Google Ads | Rudraksh Sharma" />
+    <meta property="og:description" content="Master remarketing lists in Google Ads with Rudraksh Sharma’s expert guide. Learn how to create, optimize, and leverage remarketing lists to boost conversions and ROI." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/remarketing-lists-google-ads.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-remarketing-lists-google-ads" />
+    <meta property="twitter:title" content="Remarketing Lists in Google Ads | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Master remarketing lists in Google Ads with Rudraksh Sharma’s expert guide. Learn how to create, optimize, and leverage remarketing lists to boost conversions and ROI." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/remarketing-lists-google-ads.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Remarketing Lists in Google Ads</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>December 15, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>10 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg" alt="Remarketing Lists in Google Ads" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Remarketing Lists in Google Ads</h2>
+                <p>Remarketing lists in Google Ads allow you to reconnect with users who have previously interacted with your website or app, targeting them with tailored ads to drive conversions. This guide explores how to create, optimize, and leverage remarketing lists for maximum ROI in your Google Ads campaigns.</p>
+                <p>Remarketing can increase conversion rates by up to 150% by targeting warm audiences. Mastering remarketing lists is key to boosting ad performance and reducing acquisition costs.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">150%</div>
+                        <div class="stat-label">Potential conversion rate increase</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Of marketers use remarketing</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2x</div>
+                        <div class="stat-label">Higher ROI with remarketing ads</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Understanding Remarketing Lists</h2>
+                <p>Remarketing lists are groups of users segmented based on their interactions with your website, app, or other digital assets, allowing personalized ad targeting.</p>
+                
+                <h3>Types of Remarketing Lists:</h3>
+                <ul>
+                    <li><strong>Website Visitors:</strong> Users who visited specific pages</li>
+                    <li><strong>App Users:</strong> Users who interacted with your mobile app</li>
+                    <li><strong>Customer Lists:</strong> Uploaded lists of customer emails or phone numbers</li>
+                    <li><strong>YouTube Audiences:</strong> Users who engaged with your YouTube videos</li>
+                    <li><strong>Dynamic Lists:</strong> Users who viewed specific products or services</li>
+                </ul>
+                
+                <p>Using remarketing lists can improve ad relevance by 40%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Start with website visitor lists to target users already familiar with your brand.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Setting Up Remarketing Lists</h2>
+                <p>Creating remarketing lists in Google Ads is straightforward and essential for effective campaigns.</p>
+                
+                <h3>Setup Steps:</h3>
+                <ul>
+                    <li><strong>Install Google Ads Tag:</strong> Add the remarketing tag to your website</li>
+                    <li><strong>Define Audiences:</strong> Create lists based on URLs, events, or behaviors</li>
+                    <li><strong>Set Membership Duration:</strong> Choose how long users stay on the list (e.g., 30 or 90 days)</li>
+                    <li><strong>Integrate Analytics:</strong> Link Google Analytics for advanced audience tracking</li>
+                </ul>
+                
+                <p>Proper setup can reduce campaign setup time by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Google Tag Manager to simplify the installation of the Google Ads remarketing tag.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Segmenting Your Remarketing Lists</h2>
+                <p>Segmentation allows you to target specific user groups with tailored ads.</p>
+                
+                <h3>Segmentation Strategies:</h3>
+                <ul>
+                    <li><strong>Page-Based Lists:</strong> Target users who visited product pages or abandoned carts</li>
+                    <li><strong>Time-Based Lists:</strong> Segment by recency of visits (e.g., last 7 days)</li>
+                    <li><strong>Behavior-Based Lists:</strong> Target users based on actions like form submissions</li>
+                    <li><strong>Customer Match:</strong> Upload customer data for precise targeting</li>
+                </ul>
+                
+                <p>Segmented lists can increase click-through rates by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Create separate lists for cart abandoners to target with discount offers.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Creating Effective Remarketing Ads</h2>
+                <p>Compelling ads are crucial for re-engaging users on your remarketing lists.</p>
+                
+                <h3>Ad Creation Tips:</h3>
+                <ul>
+                    <li><strong>Personalize Content:</strong> Reference products or pages users viewed</li>
+                    <li><strong>Use Strong CTAs:</strong> Include phrases like “Shop Now” or “Complete Your Purchase”</li>
+                    <li><strong>Leverage Dynamic Ads:</strong> Automatically show products users interacted with</li>
+                    <li><strong>Add Urgency:</strong> Use phrases like “Limited Time Offer” to prompt action</li>
+                </ul>
+                
+                <p>Effective remarketing ads can boost conversions by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use dynamic remarketing ads to show personalized product recommendations.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Optimizing Remarketing Campaigns</h2>
+                <p>Continuous optimization ensures your remarketing campaigns deliver maximum ROI.</p>
+                
+                <h3>Optimization Strategies:</h3>
+                <ul>
+                    <li><strong>A/B Testing:</strong> Test different ad copy, visuals, or CTAs</li>
+                    <li><strong>Bid Adjustments:</strong> Increase bids for high-value audiences like cart abandoners</li>
+                    <li><strong>Frequency Caps:</strong> Limit ad impressions to avoid annoying users</li>
+                    <li><strong>Exclude Converters:</strong> Remove users who already converted from lists</li>
+                </ul>
+                
+                <p>Optimization can reduce cost-per-conversion by 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Google Ads’ automated bidding strategies like Target CPA for efficient scaling.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Combining Remarketing with Other Strategies</h2>
+                <p>Integrating remarketing with other Google Ads strategies amplifies results.</p>
+                
+                <h3>Integration Tips:</h3>
+                <ul>
+                    <li><strong>Similar Audiences:</strong> Target users similar to your remarketing lists</li>
+                    <li><strong>Search Campaigns:</strong> Use RLSA (Remarketing Lists for Search Ads) to target searchers</li>
+                    <li><strong>Display Network:</strong> Show remarketing ads across Google’s Display Network</li>
+                    <li><strong>Cross-Channel:</strong> Combine with email marketing for cohesive retargeting</li>
+                </ul>
+                
+                <p>Integrated strategies can improve ROI by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use RLSA to bid higher on searchers who previously visited your site.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Remarketing Mistakes to Avoid</h2>
+                <p>Avoid these pitfalls to ensure your remarketing campaigns succeed.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Generic Ads:</strong> Failing to personalize ads for specific audiences</li>
+                    <li><strong>Overexposure:</strong> Showing ads too frequently, causing ad fatigue</li>
+                    <li><strong>Poor Segmentation:</strong> Targeting overly broad or irrelevant lists</li>
+                    <li><strong>Ignoring Analytics:</strong> Not tracking performance metrics</li>
+                    <li><strong>Neglecting Privacy:</strong> Failing to comply with GDPR or CCPA regulations</li>
+                </ul>
+                
+                <p>Fixing these issues can significantly improve campaign performance.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Ensure your website has a clear cookie consent policy to comply with privacy laws.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Measuring Remarketing Success</h2>
+                <p>Tracking key metrics ensures your remarketing lists deliver value.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Conversion Rate:</strong> Percentage of users completing desired actions</li>
+                    <li><strong>Cost Per Conversion:</strong> Cost of acquiring each conversion</li>
+                    <li><strong>Click-Through Rate (CTR):</strong> Percentage of users clicking your ads</li>
+                    <li><strong>Return on Ad Spend (ROAS):</strong> Revenue generated per dollar spent</li>
+                    <li><strong>Audience Size:</strong> Growth and engagement of remarketing lists</li>
+                </ul>
+                
+                <p>Use Google Ads and Analytics to track these metrics and gain insights.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Set up conversion tracking in Google Ads to measure specific actions like purchases or sign-ups.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Remarketing lists in Google Ads are a powerful tool for re-engaging warm audiences and driving conversions. By setting up targeted lists, creating compelling ads, and optimizing campaigns, you can significantly boost your ROI. Avoid common mistakes and integrate remarketing with other strategies to maximize results. Start leveraging remarketing lists today to take your Google Ads campaigns to the next level.</p>
+                <p>Whether you’re targeting cart abandoners or building brand loyalty, these strategies will help you succeed. Let’s optimize your remarketing efforts.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Google Ads Management?</h2>
+                <p>Looking to boost conversions with remarketing? I specialize in crafting tailored Google Ads campaigns to drive results. Let’s reconnect with your audience.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
