@@ -32,78 +32,6 @@
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
     <style>
-        /* All previous CSS remains the same */
-        /* Adding new styles for notifications */
-        .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background-color: #ff4757;
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .notifications-popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 400px;
-            background: var(--glass-effect);
-            backdrop-filter: blur(12px);
-            border: 1px solid var(--card-border);
-            border-radius: 10px;
-            padding: 2rem;
-            z-index: 1004;
-            display: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .notifications-popup.active {
-            display: block;
-        }
-        
-        .notifications-content {
-            color: var(--text-primary);
-            text-align: center;
-        }
-        
-        .notifications-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-        
-        .notifications-content p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-        
-        .notifications-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.6rem;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .notifications-close:hover {
-            transform: rotate(180deg);
-        }
-        
-        /* Rest of the CSS remains the same */
         :root {
             --bg-dark: #0e0e0e;
             --bg-darker: #070707;
@@ -131,6 +59,49 @@
 
         body.sidebar-open {
             overflow: hidden;
+        }
+
+        /* Security Splash Screen */
+        .security-splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+
+        .security-splash.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .security-splash p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .spinner {
+            border: 4px solid var(--card-border);
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Navbar */
@@ -240,7 +211,6 @@
             text-decoration: none;
             border-radius: 4px;
             transition: background 0.3s;
-            position: relative;
         }
 
         .more-dropdown-content a:hover {
@@ -293,6 +263,7 @@
             z-index: 1001;
             border-right: 1px solid var(--card-border);
             display: block;
+            overflow-y: auto; /* Make sidebar scrollable */
         }
 
         .sidebar.active {
@@ -1827,6 +1798,37 @@
             transition: all 0.3s ease;
         }
 
+        /* Custom Notification for Right-Click */
+        .custom-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: 8px;
+            z-index: 9999;
+            display: none;
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Notifications Popup */
+        .notifications-content {
+            text-align: center;
+        }
+
+        .notifications-content i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
@@ -1957,6 +1959,11 @@
     </style>
 </head>
 <body>
+    <div id="security-splash" class="security-splash">
+        <div class="spinner"></div>
+        <p>Checking your browser security...</p>
+    </div>
+
     <nav class="navbar">
         <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
         <ul class="nav-links">
@@ -1972,12 +1979,10 @@
                 <div class="more-dropdown-content">
                     <a href="testonomial.html" target="_blank">Testimonials</a>
                     <a href="#" data-popup="blogs-popup">Blogs</a>
+                    <a href="#" data-popup="notifications-popup">Notifications</a>
                     <a href="#" data-popup="download-popup">Download App</a>
                     <a href="dashboard.html" target="_blank">Dashboard</a>
                     <a href="#" id="start-tour">Take a Tour</a>
-                    <a href="#" data-popup="notifications-popup">Notifications
-                        <span class="notification-badge">0</span>
-                    </a>
                 </div>
             </li>
         </ul>
@@ -1996,12 +2001,10 @@
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
                 <li><a href="testonomial.html" target="_blank" class="sidebar-link">Testimonials</a></li>
                 <li><a href="#" data-popup="blogs-popup" class="sidebar-link">Blogs</a></li>
+                <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications</a></li>
                 <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
                 <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
                 <li><a href="#" id="sidebar-start-tour" class="sidebar-link">Take a Tour</a></li>
-                <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications
-                    <span class="notification-badge">0</span>
-                </a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -2106,6 +2109,15 @@
             <p>We strive to keep information accurate but do not warrant its completeness or reliability.</p>
         </div>
     </div>
+    <!-- Notifications Popup -->
+    <div class="legal-popup" id="notifications-popup">
+        <div class="legal-popup-content notifications-content">
+            <button class="legal-popup-close" aria-label="Close Notifications Popup">×</button>
+            <i class="fas fa-bell"></i>
+            <h2>Notifications</h2>
+            <p>Still No Notifications</p>
+        </div>
+    </div>
     <div class="legal-popup" id="blogs-popup">
         <div class="legal-popup-content">
             <button class="legal-popup-close" aria-label="Close Blogs Popup">×</button>
@@ -2170,36 +2182,231 @@
                 <p>Stay ahead of the curve by learning about the emerging trends that will shape the future of digital marketing.</p>
                 <a href="DIGITALMARK.html" class="blog-read-more">Read More</a>
             </div>
-        </div>
-    </div>
-<div class="legal-popup" id="download-popup">
-    <div class="legal-popup-content">
-        <button class="legal-popup-close" aria-label="Close Download Popup">×</button>
-        <h2>Download Our App</h2>
-        <p>Get access to exclusive content, tools, and resources with our dedicated app.</p>
-        <div class="download-options">
-            <h3>Available for:</h3>
-            <div class="download-platforms">
-                <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="download-platform" download="ITSBOYRUDRA.APK">
-                    <i class="fab fa-android"></i>
-                    <span>Android</span>
-                </a>
-                <a href="#" class="download-platform coming-soon">
-                    <i class="fab fa-windows"></i>
-                    <span>Windows (Coming Soon)</span>
-                </a>
-                <a href="#" class="download-platform coming-soon">
-                    <i class="fab fa-linux"></i>
-                    <span>Linux (Coming Soon)</span>
-                </a>
+            <!-- Additional 25 Blogs -->
+            <div class="blog-item">
+                <h3>Mastering Keyword Research for SEO Success</h3>
+                <p class="blog-date">April 15, 2025</p>
+                <p>Unlock the power of keywords to boost your website's visibility and drive organic traffic.</p>
+                <a href="keywordresearch.html" class="blog-read-more">Read More</a>
             </div>
-            <p class="download-note">Android APK: 4.2 MB | Version 1.0</p>
+            <div class="blog-item">
+                <h3>Building High-Converting Landing Pages</h3>
+                <p class="blog-date">April 10, 2025</p>
+                <p>Design tips and best practices for creating landing pages that turn visitors into customers.</p>
+                <a href="landingpages.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>The Role of AI in Modern Video Editing</h3>
+                <p class="blog-date">April 5, 2025</p>
+                <p>Explore how AI tools are revolutionizing video production and editing workflows.</p>
+                <a href="aiinediting.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Retargeting Strategies for E-commerce</h3>
+                <p class="blog-date">March 30, 2025</p>
+                <p>Learn how to bring back lost visitors and increase sales with effective retargeting.</p>
+                <a href="retargeting.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Instagram Reels: The Ultimate Guide</h3>
+                <p class="blog-date">March 25, 2025</p>
+                <p>Everything you need to know to create engaging Reels that boost your brand.</p>
+                <a href="instagramreels.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Understanding Ad Auction in Google Ads</h3>
+                <p class="blog-date">March 20, 2025</p>
+                <p>Demystify how Google Ads auctions work and optimize your bids for better results.</p>
+                <a href="adauction.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Color Theory in Video Editing</h3>
+                <p class="blog-date">March 15, 2025</p>
+                <p>Master color grading to evoke emotions and enhance your video storytelling.</p>
+                <a href="colortheory.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Scaling Facebook Ads Without Burning Budget</h3>
+                <p class="blog-date">March 10, 2025</p>
+                <p>Proven tactics to scale your ad campaigns efficiently and profitably.</p>
+                <a href="scalingads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Analytics Tools for Marketers</h3>
+                <p class="blog-date">March 5, 2025</p>
+                <p>Top analytics platforms to track, measure, and improve your marketing efforts.</p>
+                <a href="analytics.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Creating User-Generated Content Campaigns</h3>
+                <p class="blog-date">February 28, 2025</p>
+                <p>Leverage UGC to build trust and engagement on social media.</p>
+                <a href="ugc.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Optimizing YouTube Videos for SEO</h3>
+                <p class="blog-date">February 22, 2025</p>
+                <p>SEO strategies to rank higher on YouTube and attract more viewers.</p>
+                <a href="youtubeseo.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>The Power of Storytelling in Ads</h3>
+                <p class="blog-date">February 15, 2025</p>
+                <p>How narratives can make your ads more memorable and effective.</p>
+                <a href="storytellingads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Budgeting for Digital Marketing Campaigns</h3>
+                <p class="blog-date">February 10, 2025</p>
+                <p>Smart budgeting tips to maximize ROI without overspending.</p>
+                <a href="budgeting.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Advanced Transitions in Premiere Pro</h3>
+                <p class="blog-date">February 5, 2025</p>
+                <p>Elevate your edits with professional transitions and effects.</p>
+                <a href="transitions.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Email Marketing Integration with Ads</h3>
+                <p class="blog-date">January 30, 2025</p>
+                <p>Combine email and ads for a powerful lead nurturing strategy.</p>
+                <a href="emailads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>TikTok Advertising Best Practices</h3>
+                <p class="blog-date">January 25, 2025</p>
+                <p>Tap into TikTok's audience with targeted ad campaigns.</p>
+                <a href="tiktokads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Measuring Video Engagement Metrics</h3>
+                <p class="blog-date">January 20, 2025</p>
+                <p>Key metrics to track the success of your video content.</p>
+                <a href="videoengagement.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Local SEO for Small Businesses</h3>
+                <p class="blog-date">January 15, 2025</p>
+                <p>Strategies to dominate local search results and attract nearby customers.</p>
+                <a href="localseo.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Dynamic Ads on Facebook</h3>
+                <p class="blog-date">January 10, 2025</p>
+                <p>Personalize ads dynamically to boost conversions.</p>
+                <a href="dynamicads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Sound Design in Video Editing</h3>
+                <p class="blog-date">January 5, 2025</p>
+                <p>The importance of audio in creating immersive video experiences.</p>
+                <a href="sounddesign.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Conversion Rate Optimization Tips</h3>
+                <p class="blog-date">December 30, 2024</p>
+                <p>Improve your website's conversion rates with these proven techniques.</p>
+                <a href="cro.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>LinkedIn Ads for B2B Marketing</h3>
+                <p class="blog-date">December 25, 2024</p>
+                <p>Leverage LinkedIn to reach professionals and generate B2B leads.</p>
+                <a href="linkedinads.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Batch Editing Videos for Efficiency</h3>
+                <p class="blog-date">December 20, 2024</p>
+                <p>Streamline your workflow with batch editing techniques.</p>
+                <a href="batchediting.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Remarketing Lists in Google Ads</h3>
+                <p class="blog-date">December 15, 2024</p>
+                <p>Use remarketing to re-engage past visitors and drive sales.</p>
+                <a href="remarketinglists.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Creating Thumbnails That Click</h3>
+                <p class="blog-date">December 10, 2024</p>
+                <p>Design eye-catching thumbnails to increase video views.</p>
+                <a href="thumbnails.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Audience Segmentation in Ads</h3>
+                <p class="blog-date">December 5, 2024</p>
+                <p>Segment your audience for more targeted and effective advertising.</p>
+                <a href="segmentation.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Subtitles and Captions Best Practices</h3>
+                <p class="blog-date">November 30, 2024</p>
+                <p>Enhance accessibility and engagement with proper subtitles.</p>
+                <a href="subtitles.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Performance Marketing Metrics Explained</h3>
+                <p class="blog-date">November 25, 2024</p>
+                <p>Understand key metrics to evaluate your marketing performance.</p>
+                <a href="metrics.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Motion Graphics for Social Media</h3>
+                <p class="blog-date">November 20, 2024</p>
+                <p>Create dynamic motion graphics to captivate your audience.</p>
+                <a href="motiongraphics.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Ad Compliance and Policies</h3>
+                <p class="blog-date">November 15, 2024</p>
+                <p>Stay compliant with ad platform policies to avoid disapprovals.</p>
+                <a href="adcompliance.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Storyboarding for Video Projects</h3>
+                <p class="blog-date">November 10, 2024</p>
+                <p>Plan your videos effectively with professional storyboarding.</p>
+                <a href="storyboarding.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Influencer Marketing Strategies</h3>
+                <p class="blog-date">November 5, 2024</p>
+                <p>Partner with influencers to amplify your brand reach.</p>
+                <a href="influencer.html" class="blog-read-more">Read More</a>
+            </div>
+            <div class="blog-item">
+                <h3>Analytics Dashboard Setup</h3>
+                <p class="blog-date">October 30, 2024</p>
+                <p>Build custom dashboards to monitor campaign performance in real-time.</p>
+                <a href="dashboardsetup.html" class="blog-read-more">Read More</a>
+            </div>
         </div>
     </div>
-</div>
+    <div class="legal-popup" id="download-popup">
+        <div class="legal-popup-content">
+            <button class="legal-popup-close" aria-label="Close Download Popup">×</button>
+            <h2>Download Our App</h2>
+            <p>Get access to exclusive content, tools, and resources with our dedicated app.</p>
+            <div class="download-options">
+                <h3>Available for:</h3>
+                <div class="download-platforms">
+                    <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="download-platform" download="ITSBOYRUDRA.APK">
+                        <i class="fab fa-android"></i>
+                        <span>Android</span>
+                    </a>
+                    <a href="#" class="download-platform coming-soon">
+                        <i class="fab fa-windows"></i>
+                        <span>Windows (Coming Soon)</span>
+                    </a>
+                    <a href="#" class="download-platform coming-soon">
+                        <i class="fab fa-linux"></i>
+                        <span>Linux (Coming Soon)</span>
+                    </a>
+                </div>
+                <p class="download-note">Android APK: 4.2 MB | Version 1.0</p>
+            </div>
         </div>
-    </div>
-</div>
     </div>
     <div class="legal-popup service-details-popup" id="google-ads-details-popup">
         <div class="service-details-content">
@@ -2260,16 +2467,6 @@
     </div>
     <div class="legal-popup-backdrop" id="legal-popup-backdrop"></div>
 
-    <!-- Notifications Popup -->
-    <div class="notifications-popup" id="notifications-popup">
-        <div class="notifications-content">
-            <button class="notifications-close" aria-label="Close Notifications Popup">×</button>
-            <h3>Notifications</h3>
-            <p>You have no new notifications at this time.</p>
-            <p>Check back later for updates!</p>
-        </div>
-    </div>
-
     <!-- Payment Popup -->
     <div class="payment-popup" id="payment-popup">
         <div class="payment-popup-content">
@@ -2292,10 +2489,15 @@
             <h3 id="tour-title">Welcome to My Website</h3>
             <p id="tour-description">Let me show you around to help you find what you need.</p>
             <div class="tour-buttons">
-                <button id="tour-prev" class="tour-btn prev">Previous</button>
+                <button id="tour-prev" class="tour-btn prev" style="display: none;">Previous</button>
                 <button id="tour-next" class="tour-btn next">Next</button>
             </div>
         </div>
+    </div>
+
+    <!-- Custom Notification -->
+    <div class="custom-notification" id="custom-notification">
+        <p>Right-click and inspect are disabled for security. Contact support if needed!</p>
     </div>
 
     <!-- Chatbot -->
@@ -2312,7 +2514,7 @@
                 <div class="message bot-message">
                     Hi there! 👋 I'm here to help you learn more about my services, pricing, or anything else you'd like to know. How can I assist you today?
                     <div class="quick-replies">
-                        <div class="quick-reply" data-message="Tell me about your services">Services</div>
+                        <div class="quick-reply" data-message="Tell me about services">Services</div>
                         <div class="quick-reply" data-message="What are your prices?">Pricing</div>
                         <div class="quick-reply" data-message="How can I book a consultation?">Booking</div>
                     </div>
@@ -2586,8 +2788,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" class="form-control" required placeholder="Your Message"></textarea>
                     </div>
-                    <a href="mailto:info.itsboyrudra@gmail.com"><button type="submit-btn" class="
-submit-btn">Send Message</button></a>
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </form>
                 <p class="success-message">Message sent successfully!</p>
                 <p class="error-message">Failed to send message. Please try again.</p>
@@ -2639,25 +2840,23 @@ submit-btn">Send Message</button></a>
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-                  
-                  <div class="footer-col">
-    <h3>Download App</h3>
-    <div class="download-platforms">
-        <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="download-platform" download="ITSBOYRUDRA.APK">
-            <i class="fab fa-android"></i>
-            <span>Android</span>
-        </a>
-        <a href="#" class="download-platform coming-soon">
-            <i class="fab fa-windows"></i>
-            <span>Windows(Coming Soon)</span>
-        </a>
-        <a href="#" class="download-platform coming-soon">
-            <i class="fab fa-linux"></i>
-            <span>Linux(Coming Soon))</span>
-        </a>
-    </div>
-</div>
-
+                <div class="footer-col">
+                    <h3>Download App</h3>
+                    <div class="download-platforms">
+                        <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="download-platform" download="ITSBOYRUDRA.APK">
+                            <i class="fab fa-android"></i>
+                            <span>Android</span>
+                        </a>
+                        <a href="#" class="download-platform coming-soon">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows(Coming Soon)</span>
+                        </a>
+                        <a href="#" class="download-platform coming-soon">
+                            <i class="fab fa-linux"></i>
+                            <span>Linux(Coming Soon)</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -2679,35 +2878,34 @@ submit-btn">Send Message</button></a>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script>
-        // Disable right-click and inspect
-        document.addEventListener('contextmenu', function(e) {
+        // Security Splash Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('security-splash').classList.add('hidden');
+            }, 3000); // 3 seconds delay
+        });
+
+        // Disable Right-Click and Inspect
+        document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
-            alert('Right-click is disabled on this page.');
+            showCustomNotification('Right-click disabled for security.');
         });
-        
-        // Disable keyboard shortcuts for inspect
-        document.addEventListener('keydown', function(e) {
-            // Disable F12
-            if (e.keyCode === 123) {
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
-                alert('Inspect element is disabled.');
-            }
-            // Disable Ctrl+Shift+I
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-                e.preventDefault();
-                alert('Inspect element is disabled.');
-            }
-            // Disable Ctrl+Shift+C
-            if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-                e.preventDefault();
-                alert('Inspect element is disabled.');
-            }
-            // Disable Ctrl+U
-            if (e.ctrlKey && e.keyCode === 85) {
-                e.preventDefault();
-                alert('View source is disabled.');
+                showCustomNotification('Inspect tools are disabled for security.');
             }
         });
+
+        function showCustomNotification(message) {
+            const notification = document.getElementById('custom-notification');
+            notification.querySelector('p').textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
 
         // Sidebar Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -2747,7 +2945,6 @@ submit-btn">Send Message</button></a>
         floatingLogo.addEventListener('click', () => {
             sidePopup.classList.toggle('active');
             if (sidePopup.classList.contains('active')) {
-                // Auto-close after 5 seconds
                 autoCloseTimeout = setTimeout(() => {
                     sidePopup.classList.remove('active');
                 }, 5000);
@@ -2777,9 +2974,9 @@ submit-btn">Send Message</button></a>
             });
         });
 
-        document.querySelectorAll('.legal-popup-close, .service-details-close, .notifications-close').forEach(closeBtn => {
+        document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
-                document.querySelectorAll('.legal-popup, .service-details-popup, .notifications-popup').forEach(popup => {
+                document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
                     popup.classList.remove('active');
                 });
                 legalPopupBackdrop.classList.remove('active');
@@ -2787,7 +2984,7 @@ submit-btn">Send Message</button></a>
         });
 
         legalPopupBackdrop.addEventListener('click', () => {
-            document.querySelectorAll('.legal-popup, .service-details-popup, .notifications-popup').forEach(popup => {
+            document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
                 popup.classList.remove('active');
             });
             legalPopupBackdrop.classList.remove('active');
@@ -2797,12 +2994,12 @@ submit-btn">Send Message</button></a>
         new Typed('#typed-text', {
             strings: ['Performance Marketing | Creative Storytelling | ROI-Driven Campaigns'],
             typeSpeed: 50,
-            backSpeed: 20, // Reduced backspeed for smoother transition
+            backSpeed: 20,
             backDelay: 2000,
             loop: true,
             showCursor: true,
             cursorChar: '|',
-            smartBackspace: false // Disable smart backspace to prevent excessive backspacing
+            smartBackspace: false
         });
 
         // Portfolio Filter
@@ -2834,6 +3031,7 @@ submit-btn">Send Message</button></a>
         const paymentAmount = document.getElementById('payment-amount');
         const paymentTitle = document.getElementById('payment-title');
         const paymentServicesList = document.getElementById('payment-services-list');
+        const paymentServices = paymentPopup.querySelector('.payment-services');
 
         const servicesData = {
             'google-ads': {
@@ -2905,22 +3103,20 @@ submit-btn">Send Message</button></a>
             paymentTitle.textContent = servicesData[service].title;
             paymentServicesList.innerHTML = servicesData[service].services.map(item => `<li>${item}</li>`).join('');
             paymentServices.style.display = 'block';
-            paymentGateways.innerHTML = ''; // Clear previous gateways
+            paymentGateways.innerHTML = '';
 
-            // Define payment gateways with reliable logo URLs and placeholder payment URLs
             const defaultGateways = [
                 { name: 'PayPal', img: 'https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg', url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=info.itsboyrudra@gmail.com&amount=' + amount },
-                { name: 'Payoneer', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUWM23eSCWzToHqGa9TCwQUSrzyG77Fc7A_w&s', url: 'https://www.payoneer.com/' }, // Replace with your Payoneer payment link
-                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' } // Replace with your Razorpay checkout link
+                { name: 'Payoneer', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUWM23eSCWzToHqGa9TCwQUSrzyG77Fc7A_w&s', url: 'https://www.payoneer.com/' },
+                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' }
             ];
 
             const indiaGateways = [
-                { name: 'GPay', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg', url: 'https://pay.google.com/about/' }, // Replace with GPay payment link
-                { name: 'PhonePe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKPIjqCe07YG6F3Ikr9NRjFr42AmuvuRr2A&s', url: 'https://www.phonepe.com/' }, // Replace with PhonePe payment link
-                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' } // Replace with your Razorpay checkout link
+                { name: 'GPay', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg', url: 'https://pay.google.com/about/' },
+                { name: 'PhonePe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKPIjqCe07YG6F3Ikr9NRjFr42AmuvuRr2A&s', url: 'https://www.phonepe.com/' },
+                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' }
             ];
 
-            // Attempt geolocation with ipapi.co, fallback to default gateways
             fetch('https://ipapi.co/json/')
                 .then(response => response.json())
                 .then(data => {
@@ -2931,7 +3127,7 @@ submit-btn">Send Message</button></a>
                     let finalAmount = amount;
                     if (country === 'India') {
                         currencySymbol = '₹';
-                        finalAmount = Math.round(amount * 83); // Assuming approximate conversion rate 1 USD = 83 INR (update as needed)
+                        finalAmount = Math.round(amount * 83);
                     }
                     paymentAmount.textContent = `${currencySymbol}${finalAmount}`;
 
@@ -2948,7 +3144,6 @@ submit-btn">Send Message</button></a>
                 })
                 .catch(error => {
                     console.error('Geolocation API error:', error);
-                    // Fallback to default gateways
                     paymentAmount.textContent = `$${amount}`;
 
                     defaultGateways.forEach(gateway => {
@@ -2968,7 +3163,7 @@ submit-btn">Send Message</button></a>
             button.addEventListener('click', (e) => {
                 e.preventDefault();
                 const service = button.getAttribute('data-service') || button.getAttribute('data-plan');
-                const amount = button.getAttribute('data-amount');
+                const amount = parseInt(button.getAttribute('data-amount'));
                 showPaymentPopup(service, amount);
             });
         });
@@ -3004,7 +3199,6 @@ submit-btn">Send Message</button></a>
             try {
                 sessionStorage.setItem('cookieConsent', 'accepted');
                 cookieConsent.classList.remove('active');
-                // Initialize analytics or other cookies here
             } catch (e) {
                 console.warn('sessionStorage not available:', e);
                 cookieConsent.classList.remove('active');
@@ -3015,14 +3209,12 @@ submit-btn">Send Message</button></a>
             try {
                 sessionStorage.setItem('cookieConsent', 'declined');
                 cookieConsent.classList.remove('active');
-                // Disable non-essential cookies
             } catch (e) {
                 console.warn('sessionStorage not available:', e);
                 cookieConsent.classList.remove('active');
             }
         });
 
-        // Check cookie consent on page load
         window.addEventListener('load', checkCookieConsent);
 
         // Contact Form Submission
@@ -3069,7 +3261,7 @@ submit-btn">Send Message</button></a>
             });
         });
 
-        // Website Tour Functionality - FIXED
+        // Website Tour Functionality - Fixed
         const startTourBtn = document.getElementById('start-tour');
         const sidebarStartTourBtn = document.getElementById('sidebar-start-tour');
         const tourOverlay = document.getElementById('tour-overlay');
@@ -3120,6 +3312,7 @@ submit-btn">Send Message</button></a>
             tourOverlay.style.display = 'block';
             tourPopup.style.display = 'block';
             document.body.style.overflow = 'hidden';
+            tourPopup.style.zIndex = '2001'; // Ensure popup is above everything
         }
 
         function showTourStep() {
@@ -3127,8 +3320,9 @@ submit-btn">Send Message</button></a>
             tourTitle.textContent = step.title;
             tourDescription.textContent = step.description;
 
-            // Update button states
+            // Update button states - Fixed for first step
             tourPrevBtn.style.display = currentTourStep === 0 ? 'none' : 'block';
+            tourNextBtn.style.display = 'block'; // Always show Next except on last
             tourNextBtn.textContent = currentTourStep === tourSteps.length - 1 ? 'Finish' : 'Next';
 
             // Remove previous highlight
@@ -3168,14 +3362,13 @@ submit-btn">Send Message</button></a>
             });
         }
 
-        // Event listeners for tour
         startTourBtn.addEventListener('click', startTour);
         sidebarStartTourBtn.addEventListener('click', startTour);
         tourNextBtn.addEventListener('click', nextTourStep);
         tourPrevBtn.addEventListener('click', prevTourStep);
         tourOverlay.addEventListener('click', endTour);
 
-        // Enhanced Chatbot functionality with personal information
+        // Enhanced Chatbot with New Features
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
@@ -3183,27 +3376,16 @@ submit-btn">Send Message</button></a>
         const chatbotInput = document.getElementById('chatbot-input');
         const chatbotSend = document.getElementById('chatbot-send');
 
-        // Chatbot state management
         let chatContext = {
             userName: null,
             serviceInterest: null,
             budgetRange: null,
-            conversationHistory: []
+            conversationHistory: [],
+            calculatingCost: false,
+            costDetails: {}
         };
 
-        chatbotToggle.addEventListener('click', () => {
-            chatbotWindow.classList.toggle('active');
-            if (chatbotWindow.classList.contains('active')) {
-                chatbotInput.focus();
-            }
-        });
-
-        chatbotClose.addEventListener('click', () => {
-            chatbotWindow.classList.remove('active');
-        });
-
-        // Enhanced chatbot responses with personal information
-        const chatbotResponses = {
+        chatbotResponses = {
             'greeting': {
                 patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
                 responses: [
@@ -3218,411 +3400,270 @@ submit-btn">Send Message</button></a>
                 ]
             },
             'about_me': {
-                patterns: ['who are you', 'tell me about yourself', 'about you', 'your name', 'what do you do'],
+                patterns: ['who are you', 'about you', 'tell me about yourself', 'who is rudraksh', 'who is you'],
                 responses: [
-                    "I'm Rudraksh Sharma, a performance marketer and video editor based in Rajasthan, India. I help brands grow through Google Ads, Facebook Ads, and creative video editing services.",
-                    "I'm Rudraksh Sharma, specializing in performance marketing and video editing. I help businesses increase their online visibility and create engaging video content.",
-                    "My name is Rudraksh Sharma. I'm a digital marketing expert and video editor with experience in Google Ads, Facebook Ads, and creating viral video content."
+                    "I'm Rudraksh Sharma, a performance marketer and video editor from Rajasthan, India. I specialize in Google Ads, Facebook Ads, and video editing. Contact me at +91 7878383739 or info.itsboyrudra@gmail.com. 'Success is not final, failure is not fatal: It is the courage to continue that counts.' - Winston Churchill",
+                    "Hi, I'm Rudraksh Sharma, based in Rajasthan, India. I help brands grow with ROI-driven ads and creative video edits. Reach me at +91 7878383739. 'The best way to predict the future is to create it.' - Peter Drucker",
+                    "Rudraksh Sharma here! Performance marketer and video editor specializing in Google/Facebook Ads and professional editing. From Rajasthan, India. Phone: +91 7878383739. 'Innovation distinguishes between a leader and a follower.' - Steve Jobs"
                 ],
                 followUps: [
-                    {text: "Your services", message: "What services do you offer?"},
-                    {text: "Your contact", message: "How can I contact you?"},
-                    {text: "Your experience", message: "What's your experience?"}
+                    {text: "Contact details", message: "What's your number?"},
+                    {text: "Get a quote", message: "Can I get a quote?"},
+                    {text: "Services", message: "What services do you offer?"},
+                    {text: "Call you", message: "Can I call you?"}
                 ]
             },
-            'contact_info': {
-                patterns: ['contact', 'phone', 'number', 'whatsapp', 'email', 'how to reach'],
+            'contact_number': {
+                patterns: ['number', 'phone', 'call me', 'contact number', 'whatsapp', 'contact you'],
                 responses: [
-                    "You can contact me via WhatsApp at +91 7878383739 or email at info.itsboyrudra@gmail.com. I'm based in Rajasthan, India.",
-                    "Feel free to reach out on WhatsApp: +91 7878383739 or email: info.itsboyrudra@gmail.com. I'm located in Rajasthan, India.",
-                    "My contact number is +91 7878383739 (WhatsApp) and email is info.itsboyrudra@gmail.com. I'm based in Rajasthan, India."
+                    "My contact number is +91 7878383739. You can call or WhatsApp me. Would you like me to initiate a call or message?",
+                    "Reach me at +91 7878383739 via call or WhatsApp. I'm in Rajasthan, India. Let me know if you want to connect now!"
                 ],
                 followUps: [
-                    {text: "Send WhatsApp", action: "openWhatsApp"},
-                    {text: "Send email", action: "openEmail"},
-                    {text: "Book consultation", message: "How can I book a consultation?"}
-                ]
-            },
-            'location': {
-                patterns: ['where are you', 'location', 'based', 'from', 'rajasthan'],
-                responses: [
-                    "I'm based in Rajasthan, India. I work with clients globally through online platforms.",
-                    "I'm located in Rajasthan, India, but I serve clients worldwide through digital channels.",
-                    "My base is in Rajasthan, India, but I work remotely with clients from all over the world."
-                ],
-                followUps: [
-                    {text: "Your services", message: "What services do you offer?"},
-                    {text: "Remote work", message: "Do you work remotely?"},
-                    {text: "Contact info", message: "How can I contact you?"}
+                    {text: "Call now", action: "callNumber"},
+                    {text: "WhatsApp message", action: "openWhatsApp"},
+                    {text: "Email", action: "openEmail"}
                 ]
             },
             'quote': {
-                patterns: ['quote', 'motto', 'philosophy', 'belief', 'approach'],
+                patterns: ['quote', 'get a quote', 'pricing quote', 'cost estimate', 'how much'],
                 responses: [
-                    "My approach is simple: 'Deliver results with data-driven strategies and creative storytelling.' I believe in measurable outcomes and transparent communication.",
-                    "I follow the philosophy: 'Quality over quantity, results over promises.' Every campaign is tailored to deliver maximum ROI.",
-                    "My motto is: 'Growth through smart marketing and compelling visuals.' I focus on strategies that actually work for your business."
+                    "For custom quotes, contact me at +91 7878383739. Basic plans start at $349/month. Tell me more about your project for an estimate. 'The only way to do great work is to love what you do.' - Steve Jobs",
+                    "Happy to provide a quote! Share details like service type, ad spend, or video length. Base Google/Facebook Ads: $349/month. Video editing: $349 base + extras."
                 ],
                 followUps: [
-                    {text: "Your services", message: "What services do you offer?"},
-                    {text: "Success stories", message: "Do you have case studies?"},
-                    {text: "Process", message: "What's your working process?"}
+                    {text: "Estimate cost", message: "Calculate cost for me"},
+                    {text: "Call for quote", action: "callNumber"},
+                    {text: "View standard pricing", message: "Show me standard pricing"}
                 ]
             },
-            'services': {
-                patterns: ['services', 'what do you offer', 'what can you do', 'offerings'],
+            'calculate_cost': {
+                patterns: ['calculate cost', 'estimate cost', 'how much does it cost', 'cost for', 'price for'],
                 responses: [
-                    "I offer Google Ads management, Facebook Ads campaigns, and professional video editing services. Which one are you interested in?",
-                    "My services include Google Ads optimization, Facebook Ads management, and creative video editing. What would you like to know more about?",
-                    "I specialize in performance marketing (Google/Facebook Ads) and video editing services. Which area interests you?"
+                    "Sure, let's calculate a cost estimate. What service are you interested in? (Google Ads, Facebook Ads, Video Editing)",
+                    "To estimate cost, tell me the service and details like ad spend or video length."
+                ],
+                followUps: []
+            },
+            'services': {
+                patterns: ['services', 'what do you offer', 'what can you do', 'offerings', 'your services'],
+                responses: [
+                    "I offer Google Ads (campaign setup, optimization, ROI tracking), Facebook Ads (funnel strategy, targeting, A/B testing), and Video Editing (Reels, Shorts, effects, subtitles). Which one interests you?",
+                    "My services: 1. Google Ads - Data-driven campaigns for max ROI. 2. Facebook Ads - Creative targeting for engagement. 3. Video Editing - Professional edits for social media. Details?"
                 ],
                 followUps: [
-                    {text: "Google Ads", message: "Tell me about Google Ads"},
-                    {text: "Facebook Ads", message: "Tell me about Facebook Ads"},
-                    {text: "Video Editing", message: "Tell me about video editing"}
+                    {text: "Google Ads details", message: "Tell me about Google Ads"},
+                    {text: "Facebook Ads details", message: "Tell me about Facebook Ads"},
+                    {text: "Video Editing details", message: "Tell me about video editing"},
+                    {text: "Cost estimate", message: "Estimate cost for a service"}
                 ]
             },
             'google_ads': {
-                patterns: ['google ads', 'google adwords', 'search ads'],
+                patterns: ['google ads', 'google'],
                 responses: [
-                    "Google Ads service includes campaign setup, optimization, keyword research, and detailed reporting. The starting price is $349/month. Would you like to know more specifics?",
-                    "With Google Ads, I help businesses appear in search results for relevant keywords. I handle everything from strategy to optimization. Interested in this service?"
+                    "Google Ads service: Comprehensive setup, keyword research, smart bidding, reporting. Starts at $349/month. Interested in an estimate?"
                 ],
                 followUps: [
-                    {text: "Case studies", message: "Do you have Google Ads examples?"},
-                    {text: "Pricing details", message: "What's included in Google Ads pricing?"},
-                    {text: "Get started", message: "How do I start with Google Ads?"}
+                    {text: "Estimate cost", message: "Calculate cost for Google Ads"},
+                    {text: "Book consultation", action: "scrollToBooking"}
                 ]
             },
             'facebook_ads': {
-                patterns: ['facebook ads', 'meta ads', 'social media ads'],
+                patterns: ['facebook ads', 'facebook', 'meta ads'],
                 responses: [
-                    "Facebook Ads service includes audience targeting, ad creative optimization, conversion tracking, and A/B testing. The starting price is $349/month. Want to learn more?",
-                    "Facebook Ads help you reach specific audiences based on demographics, interests, and behaviors. I create and manage campaigns that convert. Curious about how it works?"
+                    "Facebook Ads: Funnel strategy, lookalike audiences, creative optimization. From $349/month. Need a custom quote?"
                 ],
                 followUps: [
-                    {text: "Examples", message: "Show Facebook Ads examples"},
-                    {text: "Audience targeting", message: "How do you target audiences?"},
-                    {text: "Start campaign", message: "How to begin Facebook Ads?"}
+                    {text: "Estimate cost", message: "Calculate cost for Facebook Ads"},
+                    {text: "See examples", action: "scrollToPortfolio"}
                 ]
             },
             'video_editing': {
-                patterns: ['video editing', 'video production', 'reels', 'tiktok', 'youtube shorts'],
+                patterns: ['video editing', 'video', 'editing'],
                 responses: [
-                    "Video editing service includes editing for social media platforms, motion effects, auto subtitles, and color grading. The starting price is $349/month. What type of videos do you need?",
-                    "I create engaging video content for social media, including Reels, TikTok, and YouTube Shorts. I use advanced editing techniques to make your content stand out. Tell me about your video needs!"
+                    "Video Editing: For Reels, Shorts, TikTok with effects, subtitles, grading. Base $349 + per video length. Tell me more for cost calc."
                 ],
                 followUps: [
-                    {text: "Portfolio", message: "Show video examples"},
-                    {text: "Turnaround time", message: "How long does editing take?"},
-                    {text: "Get a quote", message: "Can I get a custom quote?"}
+                    {text: "Estimate cost", message: "Calculate cost for video editing"},
+                    {text: "Contact for custom", action: "scrollToContact"}
                 ]
             },
             'pricing': {
-                patterns: ['pricing', 'price', 'cost', 'how much', 'rates'],
+                patterns: ['pricing', 'prices', 'cost', 'how much', 'plans'],
                 responses: [
-                    "My pricing starts at $349/month for basic plans, going up to $1,499/month for premium services. Which service are you interested in?",
-                    "Prices vary based on the service and scope. Basic plans start at $349/month. Could you tell me which service you're considering?"
+                    "Pricing plans: Basic $349/mo (1 campaign), Pro $799/mo (3 campaigns), Premium $1499/mo (unlimited). Custom? Let's calculate."
                 ],
                 followUps: [
-                    {text: "Google Ads pricing", message: "Google Ads cost"},
-                    {text: "Facebook Ads pricing", message: "Facebook Ads cost"},
-                    {text: "Video editing pricing", message: "Video editing cost"}
+                    {text: "Basic details", message: "Tell me about basic plan"},
+                    {text: "Pro details", message: "Tell me about pro plan"},
+                    {text: "Custom estimate", message: "Calculate custom cost"}
                 ]
             },
             'booking': {
-                patterns: ['booking', 'consultation', 'schedule', 'meeting', 'call'],
+                patterns: ['book', 'consultation', 'schedule', 'appointment'],
                 responses: [
-                    "You can book a free consultation using the Calendly widget in the Booking section of my website. Would you like me to take you there?",
-                    "I'd be happy to schedule a consultation! You can use the booking section on my website. Should I scroll to that section for you?"
+                    "To book a consultation, I can scroll to the booking section or open Calendly. Free 30-min call available."
                 ],
                 followUps: [
-                    {text: "Yes, take me there", action: "scrollToBooking"},
-                    {text: "Tell me more first", message: "What happens in a consultation?"}
-                ]
-            },
-            'portfolio': {
-                patterns: ['portfolio', 'examples', 'work', 'case studies', 'show me'],
-                responses: [
-                    "You can view my portfolio in the Portfolio section of my website. It includes examples of Google Ads campaigns, Facebook Ads, and video editing work. Would you like to see it?",
-                    "I have examples of ad campaigns and video edits in my portfolio section. Should I take you there?"
-                ],
-                followUps: [
-                    {text: "Yes, show portfolio", action: "scrollToPortfolio"},
-                    {text: "Google Ads examples", message: "Show Google Ads case studies"},
-                    {text: "Video examples", message: "Show video editing samples"}
-                ]
-            },
-            'experience': {
-                patterns: ['experience', 'background', 'how long', 'qualifications'],
-                responses: [
-                    "I have several years of experience in performance marketing and video editing, working with various clients across different industries. I'm Google Ads certified and proficient with Adobe Premiere Pro, After Effects, and CapCut.",
-                    "I've been helping businesses with digital marketing and video content for several years. I'm certified in Google Ads and specialize in creating results-driven campaigns and engaging video content."
-                ],
-                followUps: [
-                    {text: "Certifications", message: "What certifications do you have?"},
-                    {text: "Client results", message: "What results have you achieved?"},
-                    {text: "Process", message: "What's your working process?"}
-                ]
-            },
-            'gratitude': {
-                patterns: ['thank', 'thanks', 'appreciate', 'helpful'],
-                responses: [
-                    "You're welcome! Is there anything else I can help you with?",
-                    "Happy to help! Let me know if you have any other questions.",
-                    "My pleasure! Feel free to ask if you need anything else."
-                ],
-                followUps: [
-                    {text: "Services", message: "Tell me about services"},
-                    {text: "Pricing", message: "What are your prices?"},
-                    {text: "Contact", message: "How can I contact you?"}
-                ]
-            },
-            'farewell': {
-                patterns: ['bye', 'goodbye', 'see you', 'talk later'],
-                responses: [
-                    "Goodbye! Feel free to reach out if you have more questions.",
-                    "Thanks for chatting! Don't hesitate to come back if you need anything.",
-                    "Have a great day! Reach out anytime you need marketing or video editing help."
+                    {text: "Scroll to booking", action: "scrollToBooking"},
+                    {text: "Call now", action: "callNumber"}
                 ]
             },
             'default': {
                 responses: [
-                    "I'm not sure I understand. Can you please rephrase or ask about my services, pricing, or booking process?",
-                    "I didn't quite get that. Could you ask about my services, experience, or how to work with me?",
-                    "I'm still learning! Try asking about performance marketing, video editing, or how to get started."
+                    "Sorry, I didn't catch that. Ask about me, services, pricing, or booking. Or say 'calculate cost' for estimates."
                 ],
                 followUps: [
+                    {text: "About you", message: "Who are you?"},
                     {text: "Services", message: "What services do you offer?"},
-                    {text: "Pricing", message: "What are your prices?"},
-                    {text: "Portfolio", message: "Can I see examples?"}
+                    {text: "Calculate cost", message: "Estimate cost"}
                 ]
             }
         };
 
-        // Function to simulate typing effect
-        function showTypingIndicator() {
-            const typingIndicator = document.createElement('div');
-            typingIndicator.className = 'message bot-message typing-indicator';
-            typingIndicator.innerHTML = '<span></span><span></span><span></span>';
-            chatbotMessages.appendChild(typingIndicator);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            return typingIndicator;
-        }
-
-        // Function to remove typing indicator
-        function removeTypingIndicator(indicator) {
-            if (indicator && indicator.parentNode) {
-                indicator.parentNode.removeChild(indicator);
+        function handleAction(action) {
+            switch(action) {
+                case 'callNumber':
+                    addMessage("Initiating call to Rudraksh at +91 7878383739...", false);
+                    window.location.href = 'tel:+917878383739';
+                    break;
+                case 'openWhatsApp':
+                    addMessage("Opening WhatsApp to message Rudraksh...", false);
+                    window.open('https://wa.me/+917878383739', '_blank');
+                    break;
+                case 'openEmail':
+                    addMessage("Opening email to info.itsboyrudra@gmail.com...", false);
+                    window.location.href = 'mailto:info.itsboyrudra@gmail.com';
+                    break;
+                case 'scrollToBooking':
+                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+                    addMessage("Scrolled to booking section!", false);
+                    break;
+                case 'scrollToPortfolio':
+                    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+                    addMessage("Scrolled to portfolio!", false);
+                    break;
+                case 'scrollToContact':
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                    addMessage("Scrolled to contact section!", false);
+                    break;
+                default:
+                    addMessage("Action not recognized.", false);
             }
         }
 
-        // Function to add message to chat
+        function showTypingIndicator() {
+            const indicator = document.createElement('div');
+            indicator.className = 'message bot-message typing-indicator';
+            indicator.innerHTML = '<span></span><span></span><span></span>';
+            chatbotMessages.appendChild(indicator);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            return indicator;
+        }
+
+        function removeTypingIndicator(indicator) {
+            if (indicator) chatbotMessages.removeChild(indicator);
+        }
+
         function addMessage(message, isUser = false, delay = 0) {
             setTimeout(() => {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-                messageDiv.textContent = message;
-                chatbotMessages.appendChild(messageDiv);
+                const div = document.createElement('div');
+                div.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+                div.textContent = message;
+                chatbotMessages.appendChild(div);
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             }, delay);
         }
 
-        // Function to add quick replies
         function addQuickReplies(replies) {
-            const quickRepliesContainer = document.createElement('div');
-            quickRepliesContainer.className = 'quick-replies';
-            
+            const container = document.createElement('div');
+            container.className = 'quick-replies';
             replies.forEach(reply => {
-                const replyButton = document.createElement('div');
-                replyButton.className = 'quick-reply';
-                replyButton.textContent = reply.text;
-                
-                if (reply.action) {
-                    replyButton.setAttribute('data-action', reply.action);
-                } else if (reply.message) {
-                    replyButton.setAttribute('data-message', reply.message);
-                }
-                
-                quickRepliesContainer.appendChild(replyButton);
+                const btn = document.createElement('div');
+                btn.className = 'quick-reply';
+                btn.textContent = reply.text;
+                if (reply.action) btn.dataset.action = reply.action;
+                if (reply.message) btn.dataset.message = reply.message;
+                container.appendChild(btn);
             });
-            
-            chatbotMessages.appendChild(quickRepliesContainer);
+            chatbotMessages.appendChild(container);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            
-            // Add event listeners to quick replies
-            quickRepliesContainer.querySelectorAll('.quick-reply').forEach(reply => {
-                reply.addEventListener('click', () => {
-                    if (reply.getAttribute('data-action')) {
-                        handleAction(reply.getAttribute('data-action'));
-                    } else if (reply.getAttribute('data-message')) {
-                        chatbotInput.value = reply.getAttribute('data-message');
+
+            container.querySelectorAll('.quick-reply').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (btn.dataset.action) handleAction(btn.dataset.action);
+                    else if (btn.dataset.message) {
+                        chatbotInput.value = btn.dataset.message;
                         handleUserInput();
                     }
                 });
             });
         }
 
-        // Function to handle special actions
-        function handleAction(action) {
-            switch(action) {
-                case 'scrollToBooking':
-                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("I've scrolled to the booking section. You can schedule a consultation there!", false, 300);
-                    break;
-                case 'scrollToPortfolio':
-                    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Here's my portfolio section. Take a look at my work!", false, 300);
-                    break;
-                case 'scrollToContact':
-                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("I've taken you to the contact section. Feel free to reach out!", false, 300);
-                    break;
-                case 'openEmail':
-                    window.location.href = "mailto:info.itsboyrudra@gmail.com";
-                    addMessage("Opening your email client...", false, 300);
-                    break;
-                case 'openWhatsApp':
-                    window.open("https://wa.me/+917878383739", "_blank");
-                    addMessage("Opening WhatsApp...", false, 300);
-                    break;
-            }
-        }
-
-        // Function to process message and generate response
         function generateResponse(message) {
-            const lowerMessage = message.toLowerCase();
-            
-            // Check for matching patterns
+            const lower = message.toLowerCase();
             for (const [key, value] of Object.entries(chatbotResponses)) {
-                if (key !== 'default') {
-                    for (const pattern of value.patterns) {
-                        if (lowerMessage.includes(pattern)) {
-                            return {
-                                response: value.responses[Math.floor(Math.random() * value.responses.length)],
-                                followUps: value.followUps || []
-                            };
-                        }
-                    }
+                if (value.patterns.some(p => lower.includes(p))) {
+                    return {
+                        response: value.responses[Math.floor(Math.random() * value.responses.length)],
+                        followUps: value.followUps || []
+                    };
                 }
             }
-            
-            // Default response if no pattern matches
             return {
                 response: chatbotResponses.default.responses[Math.floor(Math.random() * chatbotResponses.default.responses.length)],
                 followUps: chatbotResponses.default.followUps || []
             };
         }
 
-        // Function to handle user input
+        function handleCostCalculation(message) {
+            if (!chatContext.serviceInterest) {
+                chatContext.serviceInterest = message.toLowerCase().includes('google') ? 'google-ads' : message.toLowerCase().includes('facebook') ? 'facebook-ads' : 'video-editing';
+                addMessage("Got it! For " + chatContext.serviceInterest + ". What's your estimated ad spend or video length (e.g., 1000 for $1000 spend, or 5 for 5-min video)?", false);
+                chatContext.calculatingCost = true;
+                return;
+            }
+            const num = parseInt(message);
+            if (!isNaN(num)) {
+                let cost = 349; // base
+                if (chatContext.serviceInterest === 'google-ads' || chatContext.serviceInterest === 'facebook-ads') {
+                    cost += num * 0.1; // 10% of ad spend
+                    addMessage(`Estimated cost for ${chatContext.serviceInterest}: $${cost.toFixed(2)} (base $349 + 10% of $${num} spend). Contact for exact quote?`, false);
+                } else {
+                    cost += num * 50; // $50 per min
+                    addMessage(`Estimated cost for video editing: $${cost.toFixed(2)} (base $349 + $50/min for ${num} min). Need more details?`, false);
+                }
+                chatContext.calculatingCost = false;
+                addQuickReplies([{text: "Contact now", action: "callNumber"}, {text: "Message", action: "openWhatsApp"}]);
+            } else {
+                addMessage("Please provide a number for spend or length.", false);
+            }
+        }
+
         function handleUserInput() {
             const message = chatbotInput.value.trim();
-            if (message) {
-                addMessage(message, true);
-                chatbotInput.value = '';
-                
-                // Show typing indicator
-                const typingIndicator = showTypingIndicator();
-                
-                // Process after a short delay to simulate thinking
-                setTimeout(() => {
-                    removeTypingIndicator(typingIndicator);
-                    
-                    // Generate response
+            if (!message) return;
+            addMessage(message, true);
+            chatbotInput.value = '';
+
+            const typing = showTypingIndicator();
+            setTimeout(() => {
+                removeTypingIndicator(typing);
+                if (chatContext.calculatingCost) {
+                    handleCostCalculation(message);
+                } else if (message.toLowerCase().includes('calculate cost') || message.toLowerCase().includes('estimate cost')) {
+                    chatContext.calculatingCost = true;
+                    addMessage("Sure! Which service? (Google Ads, Facebook Ads, Video Editing)", false);
+                } else {
                     const {response, followUps} = generateResponse(message);
-                    
-                    // Add response to chat
                     addMessage(response);
-                    
-                    // Add quick replies if available
-                    if (followUps && followUps.length > 0) {
-                        addQuickReplies(followUps);
-                    }
-                }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
-            }
+                    if (followUps.length) addQuickReplies(followUps);
+                }
+            }, 1000 + Math.random() * 1000);
         }
 
-        // Event listeners for chatbot
         chatbotSend.addEventListener('click', handleUserInput);
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleUserInput();
-            }
-        });
-
-        // Initialize with welcome message when chatbot is opened
-        chatbotToggle.addEventListener('click', () => {
-            if (chatbotWindow.classList.contains('active') && chatbotMessages.children.length <= 1) {
-                setTimeout(() => {
-                    addMessage("Hi there! 👋 I'm Rudraksh's assistant. I can help you learn more about services, pricing, or anything else you'd like to know. How can I assist you today?");
-                    addQuickReplies([
-                        {text: "About Rudraksh", message: "Tell me about yourself"},
-                        {text: "Services", message: "What services do you offer?"},
-                        {text: "Contact info", message: "How can I contact you?"}
-                    ]);
-                }, 300);
-            }
-        });
-
-        // Add some CSS for the typing indicator
-        const style = document.createElement('style');
-        style.textContent = `
-        .typing-indicator {
-            background-color: rgba(58, 134, 255, 0.1) !important;
-            display: flex;
-            align-items: center;
-            height: 40px;
-        }
-        .typing-indicator span {
-            height: 8px;
-            width: 8px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 2px;
-            opacity: 0.6;
-            animation: typingAnimation 1.4s infinite ease-in-out;
-        }
-        .typing-indicator span:nth-child(1) {
-            animation-delay: 0s;
-        }
-        .typing-indicator span:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-        .typing-indicator span:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-        @keyframes typingAnimation {
-            0%, 60%, 100% {
-                transform: translateY(0);
-                opacity: 0.6;
-            }
-            30% {
-                transform: translateY(-5px);
-                opacity: 1;
-            }
-        }
-        .quick-replies {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 0.8rem;
-        }
-        .quick-reply {
-            padding: 0.5rem 0.8rem;
-            background: rgba(58, 134, 255, 0.1);
-            border: 1px solid rgba(58, 134, 255, 0.2);
-            border-radius: 16px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .quick-reply:hover {
-            background: rgba(58, 134, 255, 0.2);
-            transform: translateY(-2px);
-        }
-        `;
-        document.head.appendChild(style);
+        chatbotInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleUserInput(); });
     </script>
 </body>
 </html>
