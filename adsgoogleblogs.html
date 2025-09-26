@@ -401,6 +401,95 @@
                 justify-content: center;
             }
         }
+
+        /* Notification Styles */
+        .notification-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            width: 300px;
+        }
+
+        .notification {
+            background: var(--accent);
+            color: var(--text-primary);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: slideIn 0.5s forwards, slideOut 0.5s 2.5s forwards;
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Welcome Popup Styles */
+        .welcome-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            text-align: center;
+            max-width: 400px;
+            display: none;
+        }
+
+        .welcome-popup h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .welcome-popup p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-popup button {
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .welcome-popup button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .notification-container {
+                width: 90%;
+                right: 5%;
+            }
+
+            .welcome-popup {
+                width: 90%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -625,5 +714,59 @@
             <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
         </div>
     </footer>
+
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <div class="welcome-popup" id="welcomePopup">
+        <h3>Welcome to Rudraksh Sharma's Blog</h3>
+        <p>Discover proven strategies to maximize your ROI with Google Ads in this comprehensive guide.</p>
+        <button onclick="closeWelcomePopup()">Got it!</button>
+    </div>
+
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled on this page.');
+        });
+
+        // Disable common keyboard shortcuts for view source
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) {
+                e.preventDefault();
+                showNotification('View source is disabled on this page.');
+            }
+        });
+
+        // Notification function
+        function showNotification(message) {
+            const notificationContainer = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notificationContainer.appendChild(notification);
+            
+            // Remove notification after animation
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Welcome popup
+        function showWelcomePopup() {
+            const popup = document.getElementById('welcomePopup');
+            popup.style.display = 'block';
+        }
+
+        function closeWelcomePopup() {
+            const popup = document.getElementById('welcomePopup');
+            popup.style.display = 'none';
+        }
+
+        // Show welcome popup on page load
+        window.onload = function() {
+            showWelcomePopup();
+        };
+    </script>
 </body>
 </html>
