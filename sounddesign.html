@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Design in Video Editing | Rudraksh Sharma</title>
+    <meta name="description" content="Explore the art of sound design in video editing with Rudraksh Sharma’s expert guide. Learn techniques, tools, and strategies to create immersive audio experiences that elevate your videos." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-sound-design-video-editing" />
+    <meta property="og:title" content="Sound Design in Video Editing | Rudraksh Sharma" />
+    <meta property="og:description" content="Explore the art of sound design in video editing with Rudraksh Sharma’s expert guide. Learn techniques, tools, and strategies to create immersive audio experiences that elevate your videos." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/sound-design-video-editing.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-sound-design-video-editing" />
+    <meta property="twitter:title" content="Sound Design in Video Editing | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Explore the art of sound design in video editing with Rudraksh Sharma’s expert guide. Learn techniques, tools, and strategies to create immersive audio experiences that elevate your videos." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/sound-design-video-editing.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Sound Design in Video Editing</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>January 5, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>10 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/4389409/pexels-photo-4389409.jpeg" alt="Sound Design in Video Editing" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Sound Design in Video Editing</h2>
+                <p>Sound design is a critical yet often overlooked aspect of video editing that can make or break the viewer's experience. From background music to sound effects, a well-crafted audio landscape enhances storytelling and engagement. This guide explores techniques, tools, and strategies to master sound design in video editing.</p>
+                <p>Studies show that high-quality audio can increase viewer retention by 50%. Whether you're editing YouTube videos, commercials, or short films, sound design is key to creating immersive content.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Increase in viewer retention with quality audio</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Of viewers notice poor audio quality</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">65%</div>
+                        <div class="stat-label">Of editors prioritize sound design</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Understanding the Role of Sound Design</h2>
+                <p>Sound design involves creating an audio experience that complements the visuals, sets the mood, and guides the audience’s emotions.</p>
+                
+                <h3>Key Elements of Sound Design:</h3>
+                <ul>
+                    <li><strong>Dialogue:</strong> Clear and balanced speech to convey the narrative</li>
+                    <li><strong>Sound Effects (SFX):</strong> Realistic or creative sounds to enhance actions</li>
+                    <li><strong>Background Music:</strong> Sets tone and pacing for the video</li>
+                    <li><strong>Ambient Sounds:</strong> Background noises to create a sense of place</li>
+                </ul>
+                
+                <p>Effective sound design can elevate a video’s emotional impact by 40%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Always balance audio elements to avoid overpowering dialogue or visuals.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Choosing the Right Audio Tools</h2>
+                <p>Professional sound design requires the right software and resources to achieve high-quality results.</p>
+                
+                <h3>Popular Tools:</h3>
+                <ul>
+                    <li><strong>Adobe Audition:</strong> Advanced audio editing and mixing</li>
+                    <li><strong>Audacity:</strong> Free, open-source tool for basic audio editing</li>
+                    <li><strong>Logic Pro X:</strong> Comprehensive audio production for Mac users</li>
+                    <li><strong>Freesound.org:</strong> Library of free sound effects</li>
+                    <li><strong>Epidemic Sound:</strong> Royalty-free music for videos</li>
+                </ul>
+                
+                <p>Using the right tools can reduce audio editing time by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Explore royalty-free libraries like Epidemic Sound to find music that matches your video’s tone.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Recording and Editing Dialogue</h2>
+                <p>Clear dialogue is essential for storytelling and viewer engagement.</p>
+                
+                <h3>Dialogue Tips:</h3>
+                <ul>
+                    <li><strong>Use Quality Microphones:</strong> Invest in a good condenser or shotgun mic</li>
+                    <li><strong>Reduce Background Noise:</strong> Record in a quiet environment or use noise gates</li>
+                    <li><strong>Equalize Audio:</strong> Adjust frequencies to enhance clarity</li>
+                    <li><strong>Normalize Levels:</strong> Ensure consistent volume across dialogue tracks</li>
+                </ul>
+                
+                <p>Well-edited dialogue can improve viewer comprehension by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Adobe Audition’s noise reduction tools to clean up dialogue recordings effectively.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Incorporating Sound Effects</h2>
+                <p>Sound effects add realism and depth to your video’s actions and environments.</p>
+                
+                <h3>Sound Effect Strategies:</h3>
+                <ul>
+                    <li><strong>Match Actions:</strong> Sync SFX with on-screen movements (e.g., footsteps, door creaks)</li>
+                    <li><strong>Layer Sounds:</strong> Combine multiple effects for richer audio</li>
+                    <li><strong>Adjust Volume:</strong> Keep SFX subtle to avoid overpowering other elements</li>
+                    <li><strong>Use High-Quality SFX:</strong> Source from libraries like SoundSnap or Zapsplat</li>
+                </ul>
+                
+                <p>Well-placed sound effects can increase immersion by 35%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use a Foley artist or record custom SFX to create unique sounds tailored to your video.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Selecting and Editing Background Music</h2>
+                <p>Background music sets the emotional tone and pacing of your video.</p>
+                
+                <h3>Music Selection Tips:</h3>
+                <ul>
+                    <li><strong>Match the Mood:</strong> Choose music that aligns with your video’s narrative</li>
+                    <li><strong>Edit for Timing:</strong> Cut or loop music to fit scene transitions</li>
+                    <li><strong>Fade In/Out:</strong> Smooth transitions to avoid abrupt starts or stops</li>
+                    <li><strong>Balance with Dialogue:</strong> Lower music volume during spoken parts</li>
+                </ul>
+                
+                <p>Properly edited music can enhance viewer engagement by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use keyframes in your video editing software to dynamically adjust music volume for seamless integration.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Creating Ambient Soundscapes</h2>
+                <p>Ambient sounds create a sense of place and immersion in your video.</p>
+                
+                <h3>Ambient Sound Tips:</h3>
+                <ul>
+                    <li><strong>Choose Relevant Sounds:</strong> Use sounds like wind, traffic, or birds for context</li>
+                    <li><strong>Layer Subtly:</strong> Keep ambient sounds low to avoid distraction</li>
+                    <li><strong>Use Stereo Effects:</strong> Pan sounds to create a 3D audio experience</li>
+                    <li><strong>Source Authentically:</strong> Record ambient sounds or use high-quality libraries</li>
+                </ul>
+                
+                <p>Ambient sounds can make videos feel 30% more realistic.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Experiment with stereo panning in tools like Logic Pro to create immersive soundscapes.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Sound Design Mistakes to Avoid</h2>
+                <p>Avoid these pitfalls to ensure your sound design enhances your video.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Unbalanced Audio:</strong> Overpowering music or SFX drowning out dialogue</li>
+                    <li><strong>Poor Quality Audio:</strong> Using low-quality or distorted recordings</li>
+                    <li><strong>Ignoring Sync:</strong> Misaligned sound effects with visuals</li>
+                    <li><strong>Overusing Effects:</strong> Too many SFX causing sensory overload</li>
+                    <li><strong>Neglecting Testing:</strong> Not testing audio on different devices</li>
+                </ul>
+                
+                <p>Fixing these issues can significantly improve audio quality.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test your audio on headphones, speakers, and mobile devices to ensure consistent quality.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Measuring the Impact of Sound Design</h2>
+                <p>Evaluate your sound design’s effectiveness by analyzing viewer feedback and engagement.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Viewer Retention:</strong> How long viewers stay engaged with your video</li>
+                    <li><strong>Engagement Rate:</strong> Likes, comments, and shares on platforms</li>
+                    <li><strong>Completion Rate:</strong> Percentage of viewers watching the entire video</li>
+                    <li><strong>Feedback:</strong> Comments or surveys about audio quality</li>
+                </ul>
+                
+                <p>Use tools like YouTube Analytics or Wistia to track these metrics.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>A/B test videos with different audio designs to identify which resonates most with your audience.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Sound design is a vital component of video editing that enhances storytelling and viewer engagement. By mastering dialogue, sound effects, background music, and ambient sounds, you can create immersive videos that captivate your audience. Avoid common mistakes and use the right tools to elevate your sound design. Start applying these techniques today to take your video editing to the next level.</p>
+                <p>Whether you’re a content creator or a brand, these sound design strategies will help your videos stand out. Let’s make your audio unforgettable.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Video Editing?</h2>
+                <p>Looking to create videos with professional sound design? I specialize in crafting high-quality video content with immersive audio tailored to your brand. Let’s bring your vision to life.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
