@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Ads on Facebook | Rudraksh Sharma</title>
+    <meta name="description" content="Learn how to leverage Dynamic Ads on Facebook with Rudraksh Sharma’s expert guide. Discover strategies to create personalized, high-performing ads that drive conversions and maximize ROI." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-dynamic-ads-facebook" />
+    <meta property="og:title" content="Dynamic Ads on Facebook | Rudraksh Sharma" />
+    <meta property="og:description" content="Learn how to leverage Dynamic Ads on Facebook with Rudraksh Sharma’s expert guide. Discover strategies to create personalized, high-performing ads that drive conversions and maximize ROI." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/dynamic-ads-facebook.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-dynamic-ads-facebook" />
+    <meta property="twitter:title" content="Dynamic Ads on Facebook | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Learn how to leverage Dynamic Ads on Facebook with Rudraksh Sharma’s expert guide. Discover strategies to create personalized, high-performing ads that drive conversions and maximize ROI." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/dynamic-ads-facebook.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Dynamic Ads on Facebook</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>January 10, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>12 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/3184296/pexels-photo-3184296.jpeg" alt="Dynamic Ads on Facebook" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Dynamic Ads on Facebook</h2>
+                <p>Dynamic Ads on Facebook are a game-changer for businesses aiming to deliver personalized advertising at scale. By automatically showing the right products to the right people based on their behavior, these ads drive higher conversions and ROI. This guide explores how to set up, optimize, and measure Dynamic Ads for maximum impact.</p>
+                <p>Studies show that Dynamic Ads can increase click-through rates by 34% and conversions by 20% compared to standard ads. Whether you’re an e-commerce brand or a service provider, mastering Dynamic Ads can transform your marketing strategy.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">34%</div>
+                        <div class="stat-label">Higher CTR with Dynamic Ads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20%</div>
+                        <div class="stat-label">Increase in conversions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Of retailers use Dynamic Ads</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Understanding Dynamic Ads</h2>
+                <p>Dynamic Ads use your product catalog and user data to create tailored ads automatically. They’re ideal for retargeting and reaching new audiences with personalized content.</p>
+                
+                <h3>Key Features:</h3>
+                <ul>
+                    <li><strong>Product Catalog:</strong> Upload your inventory for automatic ad creation</li>
+                    <li><strong>Retargeting:</strong> Show ads to users who viewed products on your site</li>
+                    <li><strong>Lookalike Audiences:</strong> Target users similar to your existing customers</li>
+                    <li><strong>Cross-Device Targeting:</strong> Reach users across mobile and desktop</li>
+                </ul>
+                
+                <p>Dynamic Ads simplify large-scale campaigns while maintaining relevance.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Ensure your product catalog is detailed with accurate titles, descriptions, and images for optimal ad performance.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Setting Up Your Product Catalog</h2>
+                <p>A well-structured product catalog is the foundation of Dynamic Ads.</p>
+                
+                <h3>Setup Steps:</h3>
+                <ul>
+                    <li><strong>Create a Catalog:</strong> Use Facebook Business Manager to upload your product feed</li>
+                    <li><strong>Format Data:</strong> Include fields like product ID, name, price, and image URL</li>
+                    <li><strong>Update Regularly:</strong> Sync your catalog to reflect inventory changes</li>
+                    <li><strong>Integrate with Platforms:</strong> Connect with e-commerce platforms like Shopify or WooCommerce</li>
+                </ul>
+                
+                <p>A dynamic catalog can reduce ad setup time by 50%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Facebook’s Catalog Diagnostics tool to identify and fix errors in your product feed.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Installing the Facebook Pixel</h2>
+                <p>The Facebook Pixel tracks user actions on your website, enabling effective retargeting with Dynamic Ads.</p>
+                
+                <h3>Pixel Setup Tips:</h3>
+                <ul>
+                    <li><strong>Install Pixel Code:</strong> Add the Pixel to your website’s header</li>
+                    <li><strong>Track Events:</strong> Monitor actions like “View Content,” “Add to Cart,” and “Purchase”</li>
+                    <li><strong>Test Events:</strong> Use Facebook’s Pixel Helper to verify tracking</li>
+                    <li><strong>Enable Advanced Matching:</strong> Improve audience targeting with user data</li>
+                </ul>
+                
+                <p>A properly installed Pixel can improve ad relevance by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Set up custom conversions in Facebook Ads Manager to track specific user actions for better insights.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Creating Dynamic Ad Campaigns</h2>
+                <p>Setting up a Dynamic Ad campaign requires careful planning to align with your goals.</p>
+                
+                <h3>Campaign Creation Steps:</h3>
+                <ul>
+                    <li><strong>Choose Objective:</strong> Select “Catalog Sales” in Ads Manager</li>
+                    <li><strong>Select Catalog:</strong> Link your product catalog to the campaign</li>
+                    <li><strong>Define Audience:</strong> Target retargeted users or lookalike audiences</li>
+                    <li><strong>Customize Ad Creative:</strong> Use dynamic templates for images, headlines, and CTAs</li>
+                </ul>
+                
+                <p>Dynamic Ads can increase conversion rates by targeting high-intent users.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test multiple ad formats (e.g., carousel, single image) to find the best-performing creative for your audience.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Optimizing Dynamic Ads for Performance</h2>
+                <p>Continuous optimization ensures your Dynamic Ads deliver maximum ROI.</p>
+                
+                <h3>Optimization Strategies:</h3>
+                <ul>
+                    <li><strong>A/B Testing:</strong> Test different audiences, creatives, or placements</li>
+                    <li><strong>Bid Adjustments:</strong> Use automated bidding like Target Cost or ROAS</li>
+                    <li><strong>Dynamic Creative:</strong> Let Facebook optimize ad elements automatically</li>
+                    <li><strong>Frequency Capping:</strong> Limit ad impressions to avoid ad fatigue</li>
+                    <li><strong>Exclude Audiences:</strong> Avoid targeting users who recently converted</li>
+                </ul>
+                
+                <p>Optimization can improve ad performance by up to 40%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Facebook’s Automated Rules to pause underperforming ads and reallocate budgets to top performers.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Measuring Dynamic Ad Success</h2>
+                <p>Tracking key metrics helps you evaluate and refine your Dynamic Ad campaigns.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Return on Ad Spend (ROAS):</strong> Revenue generated per dollar spent</li>
+                    <li><strong>Click-Through Rate (CTR):</strong> Percentage of users clicking your ad</li>
+                    <li><strong>Cost Per Conversion:</strong> Cost of each purchase or lead</li>
+                    <li><strong>Impressions:</strong> Number of times your ad is shown</li>
+                    <li><strong>Conversion Rate:</strong> Percentage of users completing desired actions</li>
+                </ul>
+                
+                <p>Use Facebook Ads Manager to track these metrics and gain actionable insights.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Set up custom reports in Ads Manager to focus on metrics most relevant to your campaign goals.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Mistakes to Avoid</h2>
+                <p>Avoid these pitfalls to ensure your Dynamic Ads perform effectively.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Poor Catalog Quality:</strong> Inaccurate or incomplete product data</li>
+                    <li><strong>Incorrect Pixel Setup:</strong> Missing or misconfigured tracking events</li>
+                    <li><strong>Overlapping Audiences:</strong> Targeting the same users across multiple campaigns</li>
+                    <li><strong>Ignoring Optimization:</strong> Failing to test and refine ad performance</li>
+                    <li><strong>Neglecting Mobile:</strong> Not optimizing ads for mobile users</li>
+                </ul>
+                
+                <p>Addressing these issues can significantly boost campaign success.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Regularly audit your Pixel and catalog to ensure data accuracy and optimal ad delivery.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Scaling Your Dynamic Ad Campaigns</h2>
+                <p>Once your campaigns are optimized, scaling can amplify your results.</p>
+                
+                <h3>Scaling Tips:</h3>
+                <ul>
+                    <li><strong>Increase Budgets:</strong> Allocate more to high-performing ad sets</li>
+                    <li><strong>Expand Audiences:</strong> Use lookalike audiences to reach new customers</li>
+                    <li><strong>Add Products:</strong> Include more items from your catalog in ads</li>
+                    <li><strong>Cross-Platform Promotion:</strong> Run Dynamic Ads on Instagram alongside Facebook</li>
+                    <li><strong>Seasonal Campaigns:</strong> Boost budgets during peak shopping periods</li>
+                </ul>
+                
+                <p>Strategic scaling can drive 25% higher conversions without sacrificing ROI.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Monitor ROAS closely when scaling to ensure increased budgets maintain profitability.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Dynamic Ads on Facebook offer a powerful way to deliver personalized, high-converting ads at scale. By setting up a robust product catalog, installing the Facebook Pixel, optimizing campaigns, and tracking key metrics, you can maximize your ad performance. Avoid common mistakes and scale strategically to drive growth. Start leveraging Dynamic Ads today to elevate your Facebook marketing strategy.</p>
+                <p>Whether you’re an e-commerce brand or a small business, these tips will help you achieve better results. Let’s make your ads stand out.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Facebook Ads?</h2>
+                <p>Looking to boost your conversions with Dynamic Ads? I specialize in crafting high-performance Facebook ad campaigns tailored to your brand. Let’s grow your business together.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
