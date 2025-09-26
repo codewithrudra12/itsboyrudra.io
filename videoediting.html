@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Editing Tips for Social Media Success | Rudraksh Sharma</title>
-<meta name="description" content="Learn professional video editing tips to boost engagement and success on social media platforms from expert Rudraksh Sharma." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Editing Tips for Social Media Success | Rudraksh Sharma</title>
+    <meta name="description" content="Learn professional video editing tips to boost engagement and success on social media platforms from expert Rudraksh Sharma." />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-video-editing-social-media" />
-<meta property="og:title" content="Video Editing Tips for Social Media Success | Rudraksh Sharma" />
-<meta property="og:description" content="Learn professional video editing tips to boost engagement and success on social media platforms from expert Rudraksh Sharma." />
-<meta property="og:image" content="https://i.ibb.co/6nLbM8c/video-editing-social-media.jpg" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-video-editing-social-media" />
+    <meta property="og:title" content="Video Editing Tips for Social Media Success | Rudraksh Sharma" />
+    <meta property="og:description" content="Learn professional video editing tips to boost engagement and success on social media platforms from expert Rudraksh Sharma." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/video-editing-social-media.jpg" />
 
-<!-- X (Twitter) -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-video-editing-social-media" />
-<meta property="twitter:title" content="Video Editing Tips for Social Media Success | Rudraksh Sharma" />
-<meta property="twitter:description" content="Learn professional video editing tips to boost engagement and success on social media platforms from expert Rudraksh Sharma." />
-<meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/video-editing-social-media.jpg" />
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-video-editing-social-media" />
+    <meta property="twitter:title" content="Video Editing Tips for Social Media Success | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Learn professional video editing tips to boost engagement and success on social media platforms from expert Rudraksh Sharma." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/video-editing-social-media.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
     <style>
         :root {
             --bg-dark: #0e0e0e;
@@ -359,6 +360,38 @@
             font-size: 0.9rem;
         }
 
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -637,5 +670,38 @@
             <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
         </div>
     </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J') ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools are disabled on this page.');
+            }
+        });
+    </script>
 </body>
 </html>
