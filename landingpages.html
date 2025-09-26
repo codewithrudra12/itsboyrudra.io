@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building High-Converting Landing Pages | Rudraksh Sharma</title>
+    <meta name="description" content="Discover expert tips for building high-converting landing pages to boost your conversions and drive business growth with Rudraksh Sharma." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-landing-pages" />
+    <meta property="og:title" content="Building High-Converting Landing Pages | Rudraksh Sharma" />
+    <meta property="og:description" content="Discover expert tips for building high-converting landing pages to boost your conversions and drive business growth with Rudraksh Sharma." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/landing-page-success.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-landing-pages" />
+    <meta property="twitter:title" content="Building High-Converting Landing Pages | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Discover expert tips for building high-converting landing pages to boost your conversions and drive business growth with Rudraksh Sharma." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/landing-page-success.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Building High-Converting Landing Pages</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>September 26, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>12 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg" alt="High-Converting Landing Pages" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <p>Landing pages are critical for turning visitors into leads or customers. A high-converting landing page is designed to capture attention, build trust, and drive action. In this guide, I’ll share proven strategies to create landing pages that convert, based on my experience as a performance marketer.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>Why Landing Pages Matter</h2>
+                <p>Landing pages are tailored to specific campaigns, unlike generic website pages. They focus on a single goal, such as generating leads or driving sales, resulting in higher conversion rates. Studies show landing pages can achieve conversion rates of 10-20% when optimized properly.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">23%</div>
+                        <div class="stat-label">Average conversion rate for optimized landing pages</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">68%</div>
+                        <div class="stat-label">Of businesses use landing pages for lead generation</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2X</div>
+                        <div class="stat-label">Higher conversions with personalized landing pages</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Craft a Compelling Headline</h2>
+                <p>Your headline is the first thing visitors see. It should be clear, concise, and convey the value of your offer immediately to grab attention.</p>
+                
+                <h3>Headline Tips:</h3>
+                <ul>
+                    <li><strong>Be specific:</strong> Highlight the key benefit (e.g., "Increase Sales by 30% with Our Tool")</li>
+                    <li><strong>Use power words:</strong> Words like "free," "proven," or "exclusive" create urgency</li>
+                    <li><strong>Keep it short:</strong> Aim for 6-12 words for maximum impact</li>
+                    <li><strong>Match ad copy:</strong> Ensure consistency with the ad that brought them here</li>
+                    <li><strong>Test variations:</strong> A/B test headlines to find the best performer</li>
+                </ul>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>A compelling headline can increase conversions by up to 80%. Use tools like CoSchedule’s Headline Analyzer to refine your headlines.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Optimize for User Experience (UX)</h2>
+                <p>A seamless UX keeps visitors engaged and reduces bounce rates. Focus on simplicity, speed, and clarity in your design.</p>
+                
+                <h3>UX Best Practices:</h3>
+                <ul>
+                    <li><strong>Mobile-first design:</strong> Over 50% of traffic comes from mobile devices</li>
+                    <li><strong>Fast load times:</strong> Aim for under 3 seconds to retain visitors</li>
+                    <li><strong>Clear navigation:</strong> Minimize distractions with a single call-to-action</li>
+                    <li><strong>Readable fonts:</strong> Use legible fonts and high-contrast colors</li>
+                    <li><strong>Whitespace:</strong> Avoid clutter to make content easy to scan</li>
+                </ul>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use tools like Google PageSpeed Insights to optimize load times and improve UX.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Include a Strong Call-to-Action (CTA)</h2>
+                <p>Your CTA is the gateway to conversions. It should be bold, action-oriented, and easy to find.</p>
+                
+                <h3>CTA Strategies:</h3>
+                <ul>
+                    <li><strong>Use action verbs:</strong> Words like "Get," "Start," or "Download" drive action</li>
+                    <li><strong>Create urgency:</strong> Phrases like "Limited Offer" or "Act Now" work well</li>
+                    <li><strong>Make it stand out:</strong> Use contrasting colors for your CTA button</li>
+                    <li><strong>Place strategically:</strong> Include CTAs above and below the fold</li>
+                    <li><strong>Test variations:</strong> Experiment with wording, size, and placement</li>
+                </ul>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Personalized CTAs (e.g., "Get Your Free Plan") can boost conversions by 42%.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Build Trust with Social Proof</h2>
+                <p>Visitors are more likely to convert if they trust your brand. Social proof, like testimonials or reviews, builds credibility.</p>
+                
+                <h3>Social Proof Elements:</h3>
+                <ul>
+                    <li><strong>Testimonials:</strong> Include quotes from satisfied customers</li>
+                    <li><strong>Case studies:</strong> Showcase success stories with measurable results</li>
+                    <li><strong>Trust badges:</strong> Display logos of well-known clients or certifications</li>
+                    <li><strong>Star ratings:</strong> Show reviews with 4+ stars for maximum impact</li>
+                    <li><strong>User stats:</strong> Highlight numbers like "10,000+ happy users"</li>
+                </ul>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Use High-Quality Visuals</h2>
+                <p>Visuals play a huge role in keeping visitors engaged. Professional images and videos can make your landing page more appealing.</p>
+                
+                <h3>Visual Best Practices:</h3>
+                <ul>
+                    <li><strong>Hero images:</strong> Use high-resolution images that reflect your offer</li>
+                    <li><strong>Product visuals:</strong> Show your product or service in action</li>
+                    <li><strong>Consistent branding:</strong> Align visuals with your brand colors and style</li>
+                    <li><strong>Optimize file sizes:</strong> Compress images to maintain fast load times</li>
+                    <li><strong>Video content:</strong> Embed short explainer videos for higher engagement</li>
+                </ul>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Optimize Forms for Lead Capture</h2>
+                <p>Forms are often the final step before conversion. Keep them simple to maximize completions.</p>
+                
+                <h3>Form Optimization Tips:</h3>
+                <ul>
+                    <li><strong>Minimize fields:</strong> Ask only for essential information (e.g., name, email)</li>
+                    <li><strong>Use placeholders:</strong> Guide users with clear input examples</li>
+                    <li><strong>Add microcopy:</strong> Reassure users about data privacy</li>
+                    <li><strong>Enable autofill:</strong> Make form-filling faster and easier</li>
+                    <li><strong>Test form length:</strong> Short forms often convert better</li>
+                </ul>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Reducing form fields from 11 to 4 can increase conversions by up to 120%.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. A/B Test and Analyze Performance</h2>
+                <p>Continuous testing and analysis are key to improving conversion rates over time.</p>
+                
+                <h3>Testing Strategies:</h3>
+                <ul>
+                    <li><strong>Test one element at a time:</strong> Isolate variables like headlines or CTAs</li>
+                    <li><strong>Use analytics tools:</strong> Track performance with Google Analytics or Hotjar</li>
+                    <li><strong>Monitor bounce rates:</strong> High bounce rates may indicate UX issues</li>
+                    <li><strong>Track conversions:</strong> Measure form submissions or purchases</li>
+                    <li><strong>Iterate regularly:</strong> Update your page based on test results</li>
+                </ul>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Building high-converting landing pages requires a blend of compelling design, user-focused UX, and continuous optimization. By crafting strong headlines, optimizing CTAs, incorporating social proof, using high-quality visuals, and refining forms, you can create landing pages that turn visitors into customers. Regular A/B testing ensures your pages evolve with your audience’s needs.</p>
+                <p>Start implementing these strategies today to boost your conversions and grow your business.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Help Building Your Landing Page?</h2>
+                <p>Want a landing page that converts? I specialize in creating high-performing landing pages tailored to your business goals. Let’s work together to drive results.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J') ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
