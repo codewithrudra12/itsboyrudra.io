@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Editing Videos for Efficiency | Rudraksh Sharma</title>
+    <meta name="description" content="Learn how to batch edit videos for efficiency with Rudraksh Sharma’s expert guide. Discover tools, techniques, and workflows to streamline your video editing process and save time." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-batch-editing-videos" />
+    <meta property="og:title" content="Batch Editing Videos for Efficiency | Rudraksh Sharma" />
+    <meta property="og:description" content="Learn how to batch edit videos for efficiency with Rudraksh Sharma’s expert guide. Discover tools, techniques, and workflows to streamline your video editing process and save time." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/batch-editing-videos.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-batch-editing-videos" />
+    <meta property="twitter:title" content="Batch Editing Videos for Efficiency | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Learn how to batch edit videos for efficiency with Rudraksh Sharma’s expert guide. Discover tools, techniques, and workflows to streamline your video editing process and save time." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/batch-editing-videos.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Batch Editing Videos for Efficiency</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>December 20, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>10 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg" alt="Batch Editing Videos for Efficiency" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Batch Editing Videos</h2>
+                <p>Batch editing videos is a game-changer for content creators and editors managing multiple projects. By streamlining repetitive tasks, you can save time, maintain consistency, and boost productivity. This guide explores tools, techniques, and workflows to master batch video editing for efficiency.</p>
+                <p>Studies show that batch editing can reduce editing time by up to 50%. Whether you’re creating YouTube content, social media clips, or client projects, batch editing is essential for scaling your workflow.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Reduction in editing time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">75%</div>
+                        <div class="stat-label">Of editors use batch processing</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Increase in project output</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Understanding Batch Editing</h2>
+                <p>Batch editing involves applying the same edits to multiple video files simultaneously, such as adding intros, adjusting colors, or exporting in a specific format.</p>
+                
+                <h3>Key Benefits:</h3>
+                <ul>
+                    <li><strong>Time Savings:</strong> Automate repetitive tasks to edit faster</li>
+                    <li><strong>Consistency:</strong> Ensure uniform branding across videos</li>
+                    <li><strong>Scalability:</strong> Handle large volumes of content efficiently</li>
+                    <li><strong>Error Reduction:</strong> Minimize manual mistakes with automation</li>
+                </ul>
+                
+                <p>Batch editing can improve workflow efficiency by 40%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Plan your batch editing workflow before starting to ensure all videos share consistent settings.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Choosing the Right Tools for Batch Editing</h2>
+                <p>The right software makes batch editing seamless and efficient.</p>
+                
+                <h3>Popular Tools:</h3>
+                <ul>
+                    <li><strong>Adobe Premiere Pro:</strong> Use Sequence Presets and Multi-Camera Editing</li>
+                    <li><strong>Final Cut Pro:</strong> Leverage Compound Clips and Batch Export</li>
+                    <li><strong>DaVinci Resolve:</strong> Batch color grading and rendering</li>
+                    <li><strong>Adobe After Effects:</strong> Automate effects with scripts</li>
+                    <li><strong>FFmpeg:</strong> Free, command-line tool for bulk processing</li>
+                </ul>
+                
+                <p>Using batch editing tools can reduce processing time by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Learn basic scripting in FFmpeg to automate complex tasks like format conversion.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Setting Up a Batch Editing Workflow</h2>
+                <p>A structured workflow is key to efficient batch editing.</p>
+                
+                <h3>Workflow Steps:</h3>
+                <ul>
+                    <li><strong>Organize Files:</strong> Group videos by project or edit type</li>
+                    <li><strong>Create Templates:</strong> Set up reusable intros, outros, or overlays</li>
+                    <li><strong>Use Presets:</strong> Save color grades, transitions, or export settings</li>
+                    <li><strong>Automate Tasks:</strong> Apply edits to multiple clips at once</li>
+                </ul>
+                
+                <p>A well-planned workflow can cut editing time by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use folder structures to keep raw footage, assets, and exports organized.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Batch Editing Common Tasks</h2>
+                <p>Batch editing is ideal for repetitive tasks that apply across multiple videos.</p>
+                
+                <h3>Common Tasks:</h3>
+                <ul>
+                    <li><strong>Color Correction:</strong> Apply consistent grading to all clips</li>
+                    <li><strong>Adding Branding:</strong> Insert logos, intros, or watermarks</li>
+                    <li><strong>Trimming:</strong> Cut intros or outros uniformly</li>
+                    <li><strong>Exporting:</strong> Render multiple videos in the same format</li>
+                </ul>
+                
+                <p>Batch processing these tasks can save hours per project.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Adobe Premiere’s Adjustment Layers to apply effects across multiple clips simultaneously.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Automating Audio Adjustments</h2>
+                <p>Batch editing audio ensures consistency across your videos.</p>
+                
+                <h3>Audio Editing Tips:</h3>
+                <ul>
+                    <li><strong>Normalize Audio:</strong> Set consistent volume levels for all clips</li>
+                    <li><strong>Add Music Tracks:</strong> Apply the same background music to multiple videos</li>
+                    <li><strong>Remove Noise:</strong> Batch apply noise reduction filters</li>
+                    <li><strong>Sync Audio:</strong> Align audio tracks across multiple clips</li>
+                </ul>
+                
+                <p>Automated audio adjustments can improve audio quality by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use DaVinci Resolve’s Fairlight audio tools for batch audio processing.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Managing Large Projects</h2>
+                <p>Batch editing is especially useful for large-scale video projects.</p>
+                
+                <h3>Large Project Tips:</h3>
+                <ul>
+                    <li><strong>Use Project Bins:</strong> Organize clips by type or sequence in your editor</li>
+                    <li><strong>Batch Export:</strong> Render multiple videos overnight to save time</li>
+                    <li><strong>Collaborate Efficiently:</strong> Share templates with team members</li>
+                    <li><strong>Backup Regularly:</strong> Save projects to avoid data loss</li>
+                </ul>
+                
+                <p>Effective project management can increase output by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use cloud storage like Google Drive to back up and share project files securely.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Batch Editing Mistakes to Avoid</h2>
+                <p>Avoid these pitfalls to ensure your batch editing process is effective.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Poor Organization:</strong> Unorganized files leading to errors</li>
+                    <li><strong>Over-Automation:</strong> Applying incorrect settings to all videos</li>
+                    <li><strong>Ignoring Previews:</strong> Not checking edits before batch rendering</li>
+                    <li><strong>Inconsistent Branding:</strong> Failing to use templates for uniformity</li>
+                    <li><strong>Neglecting Backups:</strong> Losing data due to lack of backups</li>
+                </ul>
+                
+                <p>Addressing these issues can improve editing accuracy.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Preview a single video after applying batch edits to catch errors early.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Measuring Batch Editing Efficiency</h2>
+                <p>Evaluate your batch editing process to ensure it saves time and maintains quality.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Editing Time:</strong> Time spent per video or project</li>
+                    <li><strong>Output Rate:</strong> Number of videos completed per day</li>
+                    <li><strong>Error Rate:</strong> Frequency of mistakes in batch edits</li>
+                    <li><strong>Client Feedback:</strong> Satisfaction with video quality and consistency</li>
+                </ul>
+                
+                <p>Track these metrics to optimize your workflow continuously.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use project management tools like Trello to track editing progress and deadlines.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Batch editing videos is a powerful way to streamline your workflow, save time, and maintain consistency. By using the right tools, setting up efficient workflows, and avoiding common mistakes, you can scale your video production without sacrificing quality. Start implementing these batch editing tips today to boost your productivity.</p>
+                <p>Whether you’re a solo creator or managing a team, these strategies will help you work smarter. Let’s make your video editing process efficient.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Video Editing?</h2>
+                <p>Looking to streamline your video production? I specialize in efficient video editing workflows tailored to your needs. Let’s optimize your content creation.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
