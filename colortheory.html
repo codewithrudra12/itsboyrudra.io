@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Theory in Video Editing | Rudraksh Sharma</title>
+    <meta name="description" content="Master color theory in video editing with Rudraksh Sharma’s comprehensive guide. Learn how to use colors to enhance storytelling, evoke emotions, and create visually stunning videos." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-color-theory-video-editing" />
+    <meta property="og:title" content="Color Theory in Video Editing | Rudraksh Sharma" />
+    <meta property="og:description" content="Master color theory in video editing with Rudraksh Sharma’s comprehensive guide. Learn how to use colors to enhance storytelling, evoke emotions, and create visually stunning videos." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/color-theory-video-editing.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-color-theory-video-editing" />
+    <meta property="twitter:title" content="Color Theory in Video Editing | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Master color theory in video editing with Rudraksh Sharma’s comprehensive guide. Learn how to use colors to enhance storytelling, evoke emotions, and create visually stunning videos." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/color-theory-video-editing.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Color Theory in Video Editing</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>March 15, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>18 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/11035471/pexels-photo-11035471.jpeg" alt="Color Theory in Video Editing" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Color Theory in Video Editing</h2>
+                <p>Color theory is a foundational element of video editing, influencing how viewers perceive and emotionally connect with your content. By strategically using colors, editors can enhance storytelling, evoke specific emotions, and create visually cohesive videos. In this comprehensive guide, I’ll explore the principles of color theory, its application in video editing, and pro tips to help you create stunning visuals that captivate audiences.</p>
+                <p>Colors can impact viewer psychology, with studies showing that 93% of consumers consider visual appearance a key factor in purchasing decisions. Whether you’re editing a cinematic short film or an Instagram Reel, mastering color theory can elevate your work to a professional level.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">93%</div>
+                        <div class="stat-label">Of consumers prioritize visuals in decisions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Increase in engagement with color-optimized videos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Of viewers recall color-driven content</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>Understanding the Basics of Color Theory</h2>
+                <p>Color theory is the science and art of using colors to create harmony, contrast, and emotional impact. It’s built on the color wheel and key concepts like hue, saturation, and value.</p>
+                
+                <h3>Core Concepts:</h3>
+                <ul>
+                    <li><strong>Hue:</strong> The base color (e.g., red, blue, yellow)</li>
+                    <li><strong>Saturation:</strong> The intensity or purity of a color</li>
+                    <li><strong>Value:</strong> The lightness or darkness of a color</li>
+                    <li><strong>Color Wheel:</strong> A visual tool showing relationships between primary, secondary, and tertiary colors</li>
+                    <li><strong>Complementary Colors:</strong> Opposite colors on the wheel (e.g., red and green) for high contrast</li>
+                    <li><strong>Analogous Colors:</strong> Adjacent colors on the wheel (e.g., blue and green) for harmony</li>
+                    <li><strong>Triadic Colors:</strong> Three evenly spaced colors on the wheel for balanced vibrancy</li>
+                </ul>
+                
+                <p>Understanding these concepts helps editors choose color schemes that align with the video’s mood and message.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use an online color wheel tool like Adobe Color to experiment with color schemes before editing your video.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Using Color to Evoke Emotions</h2>
+                <p>Colors have psychological effects that can influence how viewers feel. Choosing the right colors can enhance the emotional impact of your video.</p>
+                
+                <h3>Emotional Color Associations:</h3>
+                <ul>
+                    <li><strong>Red:</strong> Passion, urgency, or danger</li>
+                    <li><strong>Blue:</strong> Calm, trust, or professionalism</li>
+                    <li><strong>Yellow:</strong> Happiness, energy, or optimism</li>
+                    <li><strong>Green:</strong> Growth, nature, or balance</li>
+                    <li><strong>Purple:</strong> Creativity, luxury, or mystery</li>
+                    <li><strong>Black/White:</strong> Elegance, simplicity, or contrast</li>
+                </ul>
+                
+                <p>For example, a travel vlog might use warm yellows and oranges to evoke excitement, while a corporate video might use blues for trust and professionalism.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Match your color palette to your video’s narrative. For emotional scenes, use desaturated colors to create a somber mood, or vibrant hues for high-energy moments.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Color Grading for Visual Consistency</h2>
+                <p>Color grading is the process of adjusting colors in post-production to achieve a desired look. It ensures visual consistency and enhances the storytelling.</p>
+                
+                <h3>Color Grading Techniques:</h3>
+                <ul>
+                    <li><strong>White Balance:</strong> Correct color temperature for natural tones</li>
+                    <li><strong>Contrast Adjustment:</strong> Enhance depth by adjusting light and dark areas</li>
+                    <li><strong>Color LUTs:</strong> Apply Look-Up Tables for cinematic looks (e.g., teal and orange)</li>
+                    <li><strong>Curves Adjustment:</strong> Fine-tune RGB channels for precise color control</li>
+                    <li><strong>Saturation Control:</strong> Adjust intensity to avoid over-saturation</li>
+                    <li><strong>Skin Tone Correction:</strong> Ensure natural skin tones for realistic visuals</li>
+                </ul>
+                
+                <p>Tools like Adobe Premiere Pro, DaVinci Resolve, or Final Cut Pro offer robust color grading features for professional results.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use DaVinci Resolve’s color wheels to create a signature look, like the popular teal-and-orange grade, for a cinematic feel.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Creating Visual Hierarchy with Color</h2>
+                <p>Colors can guide viewers’ attention to key elements in a video, creating a visual hierarchy that enhances storytelling.</p>
+                
+                <h3>Hierarchy Techniques:</h3>
+                <ul>
+                    <li><strong>Contrast:</strong> Use complementary colors to highlight important elements</li>
+                    <li><strong>Focus Areas:</strong> Desaturate backgrounds to emphasize subjects</li>
+                    <li><strong>Color Blocking:</strong> Use bold colors to separate scenes or elements</li>
+                    <li><strong>Text Overlays:</strong> Choose high-contrast colors for readable captions</li>
+                    <li><strong>Spot Color:</strong> Isolate a single color to draw attention (e.g., a red object in a grayscale scene)</li>
+                    <li><strong>Transitions:</strong> Use color shifts to signal scene changes</li>
+                </ul>
+                
+                <p>Effective use of color hierarchy can increase viewer retention by guiding their focus naturally.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test your color hierarchy by watching your video in grayscale. If the focus areas are still clear, your hierarchy is effective.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Choosing Color Schemes for Branding</h2>
+                <p>Consistent color schemes reinforce brand identity and make your videos instantly recognizable.</p>
+                
+                <h3>Branding Color Tips:</h3>
+                <ul>
+                    <li><strong>Use brand colors:</strong> Incorporate your brand’s primary and secondary colors</li>
+                    <li><strong>Create a palette:</strong> Develop a consistent color palette for all videos</li>
+                    <li><strong>Match mood to brand:</strong> Align colors with your brand’s personality (e.g., bold for energetic brands)</li>
+                    <li><strong>Logo integration:</strong> Use brand colors in logos or text overlays</li>
+                    <li><strong>Consistent grading:</strong> Apply the same color grade across all videos</li>
+                    <li><strong>Color psychology:</strong> Choose colors that align with your brand’s message</li>
+                </ul>
+                
+                <p>For example, a luxury brand might use black, gold, and purple, while a fitness brand might opt for vibrant reds and blues.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Create a color style guide for your brand to ensure consistency across all video content, from YouTube to Instagram Reels.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Color Correction vs. Color Grading</h2>
+                <p>Color correction and color grading are distinct processes in video editing, both essential for professional results.</p>
+                
+                <h3>Key Differences:</h3>
+                <ul>
+                    <li><strong>Color Correction:</strong> Fixes technical issues like incorrect white balance or exposure</li>
+                    <li><strong>Color Grading:</strong> Enhances the aesthetic to create a specific mood or style</li>
+                    <li><strong>Correction Tools:</strong> Use scopes (e.g., waveform, vectorscope) for accurate adjustments</li>
+                    <li><strong>Grading Tools:</strong> Use LUTs, curves, or color wheels for creative control</li>
+                    <li><strong>Order:</strong> Always correct colors before grading for best results</li>
+                </ul>
+                
+                <p>Proper color correction ensures a neutral starting point, while grading adds the creative flair.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use a vectorscope in DaVinci Resolve to ensure accurate skin tones during color correction, especially for interviews or vlogs.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Using Color to Enhance Storytelling</h2>
+                <p>Colors can amplify a video’s narrative by reinforcing themes, signaling changes, or creating emotional arcs.</p>
+                
+                <h3>Storytelling Techniques:</h3>
+                <ul>
+                    <li><strong>Color Arcs:</strong> Shift colors to reflect story progression (e.g., warm to cool tones)</li>
+                    <li><strong>Symbolism:</strong> Use colors to represent themes (e.g., red for conflict)</li>
+                    <li><strong>Scene Differentiation:</strong> Assign unique color palettes to different scenes</li>
+                    <li><strong>Emotional Shifts:</strong> Use color changes to mirror character emotions</li>
+                    <li><strong>Flashbacks:</strong> Apply sepia or desaturated tones for past events</li>
+                    <li><strong>Foreshadowing:</strong> Use subtle color cues to hint at future events</li>
+                </ul>
+                
+                <p>For example, a thriller might use dark, desaturated colors to build tension, while a romantic scene might use soft pinks and warm tones.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Create a color script before editing to map out how colors will evolve throughout your video’s narrative.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Tools and Software for Color Editing</h2>
+                <p>Modern video editing software offers powerful tools for color correction and grading, making it easier to achieve professional results.</p>
+                
+                <h3>Recommended Tools:</h3>
+                <ul>
+                    <li><strong>DaVinci Resolve:</strong> Industry-standard for advanced color grading</li>
+                    <li><strong>Adobe Premiere Pro:</strong> Offers Lumetri Color for intuitive grading</li>
+                    <li><strong>Final Cut Pro:</strong> Includes robust color wheels and LUT support</li>
+                    <li><strong>Adobe After Effects:</strong> Ideal for motion graphics and color effects</li>
+                    <li><strong>CapCut:</strong> Mobile-friendly for quick Reels or social media edits</li>
+                    <li><strong>Color Grading Plugins:</strong> Use tools like Color Finale or FilmConvert</li>
+                </ul>
+                
+                <p>Choose a tool based on your skill level and project needs, from beginner-friendly CapCut to advanced DaVinci Resolve.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Download free LUTs from websites like Color Grading Central to quickly apply cinematic looks to your videos.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Testing and Calibrating Colors</h2>
+                <p>Accurate color representation requires proper calibration and testing to ensure consistency across devices.</p>
+                
+                <h3>Calibration Tips:</h3>
+                <ul>
+                    <li><strong>Calibrate your monitor:</strong> Use a colorimeter for accurate colors</li>
+                    <li><strong>Use reference monitors:</strong> Edit on a calibrated, high-quality display</li>
+                    <li><strong>Test on multiple devices:</strong> Check how colors appear on phones, tablets, and TVs</li>
+                    <li><strong>Use color bars:</strong> Include SMPTE color bars for accurate correction</li>
+                    <li><strong>Check scopes:</strong> Use waveform and vectorscope for technical accuracy</li>
+                    <li><strong>Export tests:</strong> Test exports to ensure colors remain consistent</li>
+                </ul>
+                
+                <p>Proper calibration prevents color shifts and ensures your video looks great on all platforms.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Always export a test clip and view it on multiple devices to catch any color inconsistencies before finalizing your edit.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>9. Avoiding Common Color Mistakes</h2>
+                <p>Color editing mistakes can detract from your video’s quality and impact. Avoiding these pitfalls ensures professional results.</p>
+                
+                <h3>Common Mistakes to Avoid:</h3>
+                <ul>
+                    <li><strong>Over-saturation:</strong> Avoid overly vibrant colors that look unnatural</li>
+                    <li><strong>Inconsistent grading:</strong> Maintain a consistent look across scenes</li>
+                    <li><strong>Ignoring skin tones:</strong> Ensure natural skin tones for realistic visuals</li>
+                    <li><strong>Poor white balance:</strong> Correct color temperature before grading</li>
+                    <li><strong>Neglecting platform specs:</strong> Optimize colors for specific platforms like YouTube or Instagram</li>
+                    <li><strong>Overusing LUTs:</strong> Apply LUTs subtly to avoid unnatural looks</li>
+                </ul>
+                
+                <p>Paying attention to these details can elevate your video from amateur to professional.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>10. Future Trends in Color Editing</h2>
+                <p>Color editing is evolving with advancements in technology and audience expectations.</p>
+                
+                <h3>Emerging Trends:</h3>
+                <ul>
+                    <li><strong>AI-driven grading:</strong> Tools like DaVinci Resolve’s AI color matching</li>
+                    <li><strong>HDR editing:</strong> High Dynamic Range for richer colors and contrast</li>
+                    <li><strong>Real-time collaboration:</strong> Cloud-based color grading for teams</li>
+                    <li><strong>Platform-specific grading:</strong> Tailoring colors for Instagram, TikTok, or YouTube</li>
+                    <li><strong>Immersive formats:</strong> Color grading for VR and 360-degree videos</li>
+                    <li><strong>Dynamic color grading:</strong> Adjusting colors based on viewer preferences</li>
+                </ul>
+                
+                <p>Staying updated on these trends will keep your editing skills competitive and relevant.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Experiment with HDR grading in DaVinci Resolve to create vibrant, high-contrast videos that stand out on modern displays.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Color theory is a powerful tool in video editing, enabling editors to enhance storytelling, evoke emotions, and create visually stunning content. By understanding color basics, applying strategic grading, creating visual hierarchies, and aligning colors with branding, you can produce professional-grade videos that captivate audiences. Avoiding common mistakes and staying ahead of trends like AI-driven grading and HDR ensures your work remains cutting-edge.</p>
+                <p>Whether you’re editing for social media, film, or branding, mastering color theory will set your videos apart. Start experimenting with these techniques today to elevate your editing game and create content that resonates with viewers.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Professional Video Editing?</h2>
+                <p>Want to create visually stunning videos with expert color grading? I specialize in crafting high-quality videos tailored to your brand’s vision. Let’s bring your ideas to life.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J') ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
