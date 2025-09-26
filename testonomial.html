@@ -405,14 +405,19 @@
         // Disable right-click
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
-            showNotification('Right-click is disabled on this page.');
+            showNotification('Inspect tools are restricted on this page for security reasons.');
         });
 
-        // Disable common keyboard shortcuts for view source
+        // Disable common keyboard shortcuts for inspect tools
         document.addEventListener('keydown', function(e) {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) {
+            // Ctrl+U, Ctrl+S, Ctrl+I, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C, F12
+            if (
+                (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i')) ||
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) ||
+                (e.key === 'F12')
+            ) {
                 e.preventDefault();
-                showNotification('View source is disabled on this page.');
+                showNotification('Inspect tools are restricted on this page for security reasons.');
             }
         });
 
