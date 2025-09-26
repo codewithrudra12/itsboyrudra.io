@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard Setup | Rudraksh Sharma</title>
+    <meta name="description" content="Learn how to set up an effective analytics dashboard with Rudraksh Sharma’s expert guide. Discover tools, best practices, and strategies to track and optimize performance." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-analytics-dashboard-setup" />
+    <meta property="og:title" content="Analytics Dashboard Setup | Rudraksh Sharma" />
+    <meta property="og:description" content="Learn how to set up an effective analytics dashboard with Rudraksh Sharma’s expert guide. Discover tools, best practices, and strategies to track and optimize performance." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/analytics-dashboard-setup.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-analytics-dashboard-setup" />
+    <meta property="twitter:title" content="Analytics Dashboard Setup | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Learn how to set up an effective analytics dashboard with Rudraksh Sharma’s expert guide. Discover tools, best practices, and strategies to track and optimize performance." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/analytics-dashboard-setup.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Analytics Dashboard Setup</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>October 30, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>9 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/669996/pexels-photo-669996.jpeg" alt="Analytics Dashboard Setup" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Analytics Dashboards</h2>
+                <p>Analytics dashboards provide a centralized view of key metrics, enabling data-driven decisions. This guide covers tools, best practices, and strategies to set up effective dashboards for tracking performance.</p>
+                <p>Well-designed dashboards can improve decision-making speed by 25%. Mastering dashboard setup is essential for marketers, analysts, and business owners.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Faster decision-making</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Of businesses use dashboards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Increase in data visibility</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Why Analytics Dashboards Matter</h2>
+                <p>Dashboards consolidate data into actionable insights, streamlining monitoring and reporting processes.</p>
+                
+                <h3>Key Benefits:</h3>
+                <ul>
+                    <li><strong>Data Centralization:</strong> View all metrics in one place</li>
+                    <li><strong>Real-Time Insights:</strong> Monitor performance instantly</li>
+                    <li><strong>Improved Collaboration:</strong> Share insights with teams</li>
+                    <li><strong>Actionable Decisions:</strong> Identify trends and opportunities</li>
+                </ul>
+                
+                <p>Dashboards can reduce reporting time by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Focus on key performance indicators (KPIs) relevant to your goals.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Choosing the Right Dashboard Tools</h2>
+                <p>The right tools simplify dashboard creation and enhance functionality.</p>
+                
+                <h3>Popular Tools:</h3>
+                <ul>
+                    <li><strong>Google Data Studio:</strong> Free, integrates with Google Analytics</li>
+                    <li><strong>Tableau:</strong> Advanced visualizations for complex data</li>
+                    <li><strong>Power BI:</strong> Robust for enterprise analytics</li>
+                    <li><strong>Klipfolio:</strong> Flexible for custom dashboards</li>
+                    <li><strong>Databox:</strong> User-friendly for marketing metrics</li>
+                </ul>
+                
+                <p>Using dedicated tools can cut setup time by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Start with Google Data Studio for cost-effective, beginner-friendly dashboards.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Defining KPIs for Your Dashboard</h2>
+                <p>Selecting relevant KPIs ensures your dashboard delivers actionable insights.</p>
+                
+                <h3>KPI Selection Tips:</h3>
+                <ul>
+                    <li><strong>Align with Goals:</strong> Choose metrics tied to business objectives</li>
+                    <li><strong>Prioritize Clarity:</strong> Focus on 5-10 key metrics</li>
+                    <li><strong>Include Trends:</strong> Track performance over time</li>
+                    <li><strong>Segment Data:</strong> Break down by channel or audience</li>
+                </ul>
+                
+                <p>Clear KPIs improve dashboard effectiveness by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Review KPIs quarterly to align with changing business needs.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Designing an Effective Dashboard</h2>
+                <p>Good design enhances usability and clarity for better insights.</p>
+                
+                <h3>Design Tips:</h3>
+                <ul>
+                    <li><strong>Keep It Simple:</strong> Avoid clutter with minimal visuals</li>
+                    <li><strong>Use Visual Hierarchy:</strong> Highlight critical metrics</li>
+                    <li><strong>Choose Clear Visuals:</strong> Use charts, graphs, and gauges</li>
+                    <li><strong>Ensure Responsiveness:</strong> Optimize for mobile and desktop</li>
+                </ul>
+                
+                <p>Well-designed dashboards boost user engagement by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use color coding to highlight positive and negative trends.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Integrating Data Sources</h2>
+                <p>Connecting relevant data sources ensures comprehensive insights.</p>
+                
+                <h3>Data Integration Tips:</h3>
+                <ul>
+                    <li><strong>Connect APIs:</strong> Link tools like Google Analytics or CRM</li>
+                    <li><strong>Use Connectors:</strong> Tools like Zapier for seamless integration</li>
+                    <li><strong>Ensure Data Accuracy:</strong> Validate sources regularly</li>
+                    <li><strong>Automate Updates:</strong> Set up real-time data feeds</li>
+                </ul>
+                
+                <p>Proper integration improves data accuracy by 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test integrations to ensure real-time data updates work smoothly.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Sharing and Collaborating on Dashboards</h2>
+                <p>Effective dashboards enable team collaboration and stakeholder alignment.</p>
+                
+                <h3>Collaboration Tips:</h3>
+                <ul>
+                    <li><strong>Share Access:</strong> Grant permissions to relevant team members</li>
+                    <li><strong>Use Filters:</strong> Allow users to customize views</li>
+                    <li><strong>Schedule Reports:</strong> Automate delivery of insights</li>
+                    <li><strong>Gather Feedback:</strong> Refine based on user input</li>
+                </ul>
+                
+                <p>Collaborative dashboards improve team alignment by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use tools like Tableau’s sharing features for real-time collaboration.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Dashboard Setup Mistakes</h2>
+                <p>Avoid these pitfalls to create effective and user-friendly dashboards.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Overloading Metrics:</strong> Including too many KPIs</li>
+                    <li><strong>Poor Visualization:</strong> Using confusing or cluttered charts</li>
+                    <li><strong>Ignoring Users:</strong> Not tailoring to audience needs</li>
+                    <li><strong>Neglecting Updates:</strong> Failing to refresh data sources</li>
+                </ul>
+                
+                <p>Avoiding these mistakes can enhance dashboard usability by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test dashboards with end-users to ensure clarity and relevance.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Measuring Dashboard Effectiveness</h2>
+                <p>Evaluating dashboards ensures they meet business needs and drive results.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>User Engagement:</strong> Frequency of dashboard access</li>
+                    <li><strong>Data Accuracy:</strong> Consistency of reported metrics</li>
+                    <li><strong>Decision Impact:</strong> Influence on business outcomes</li>
+                    <li><strong>Update Frequency:</strong> Timeliness of data refreshes</li>
+                </ul>
+                
+                <p>Regular evaluation can improve dashboard performance by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Conduct monthly reviews to optimize dashboard design and metrics.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Analytics dashboards are powerful tools for transforming data into actionable insights. By choosing the right tools, defining clear KPIs, and designing user-friendly interfaces, you can create dashboards that drive better decisions. Avoid common mistakes and regularly evaluate performance to keep your dashboards effective. Start setting up your analytics dashboard today to unlock your data’s potential.</p>
+                <p>Whether you’re tracking marketing or business metrics, these strategies will help you succeed. Let’s build a dashboard that works for you.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need a Custom Analytics Dashboard?</h2>
+                <p>Looking to track your performance with a tailored dashboard? I specialize in creating analytics solutions that deliver insights. Let’s optimize your data.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
