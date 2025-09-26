@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Transitions in Premiere Pro | Rudraksh Sharma</title>
+    <meta name="description" content="Master advanced transitions in Adobe Premiere Pro with Rudraksh Sharma’s expert guide. Learn creative techniques to enhance your video edits with seamless and dynamic transitions." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-advanced-transitions-premiere" />
+    <meta property="og:title" content="Advanced Transitions in Premiere Pro | Rudraksh Sharma" />
+    <meta property="og:description" content="Master advanced transitions in Adobe Premiere Pro with Rudraksh Sharma’s expert guide. Learn creative techniques to enhance your video edits with seamless and dynamic transitions." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/premiere-pro-transitions.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-advanced-transitions-premiere" />
+    <meta property="twitter:title" content="Advanced Transitions in Premiere Pro | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Master advanced transitions in Adobe Premiere Pro with Rudraksh Sharma’s expert guide. Learn creative techniques to enhance your video edits with seamless and dynamic transitions." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/premiere-pro-transitions.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Advanced Transitions in Premiere Pro</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>February 5, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>12 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg" alt="Advanced Transitions in Premiere Pro" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Advanced Transitions</h2>
+                <p>Transitions in Adobe Premiere Pro can elevate your video edits from basic to professional, creating seamless and dynamic connections between scenes. While basic cuts and dissolves are effective, advanced transitions add creativity and polish to your storytelling. In this guide, I’ll explore advanced transition techniques in Premiere Pro to help you create visually stunning videos that captivate your audience.</p>
+                <p>According to industry surveys, videos with creative transitions can increase viewer retention by up to 25%. Whether you're editing a short film, YouTube video, or social media content, mastering these techniques will set your work apart.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">25%</div>
+                        <div class="stat-label">Increase in viewer retention with creative transitions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Of editors use custom transitions for branding</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">Of viewers notice transition quality in videos</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Using Keyframes for Custom Transitions</h2>
+                <p>Keyframes allow you to animate properties like position, scale, and opacity to create custom transitions in Premiere Pro.</p>
+                
+                <h3>Keyframing Techniques:</h3>
+                <ul>
+                    <li><strong>Zoom Transition:</strong> Animate the scale property to zoom in or out between clips</li>
+                    <li><strong>Slide Transition:</strong> Keyframe the position to slide one clip into another</li>
+                    <li><strong>Spin Transition:</strong> Use rotation keyframes for a spinning effect</li>
+                    <li><strong>Blur Transition:</strong> Apply Gaussian Blur with keyframes for a smooth dissolve</li>
+                </ul>
+                
+                <p>These techniques add dynamic movement to your edits, enhancing viewer engagement.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use the Ease In/Out options in the Effect Controls panel to smooth out keyframe animations for natural-looking transitions.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Leveraging Adjustment Layers</h2>
+                <p>Adjustment layers allow you to apply transitions to multiple clips at once, saving time and ensuring consistency.</p>
+                
+                <h3>How to Use Adjustment Layers:</h3>
+                <ul>
+                    <li>Create an adjustment layer in the Project panel</li>
+                    <li>Place it above your clips on the timeline</li>
+                    <li>Apply effects like dissolves, wipes, or color grading</li>
+                    <li>Adjust duration and keyframes for seamless transitions</li>
+                </ul>
+                
+                <p>This method is ideal for applying uniform transitions across long sequences.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Combine adjustment layers with effects like Crop or Vignette to create cinematic transitions like a letterbox fade.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Creative Use of Premiere Pro’s Transition Effects</h2>
+                <p>Premiere Pro offers a range of built-in transitions that can be customized for advanced effects.</p>
+                
+                <h3>Popular Transitions to Customize:</h3>
+                <ul>
+                    <li><strong>Push:</strong> Adjust direction and speed for a sliding effect</li>
+                    <li><strong>Wipe:</strong> Modify edge softness and angle for unique wipes</li>
+                    <li><strong>Zoom:</strong> Combine with keyframes for dynamic zooms</li>
+                    <li><strong>Iris:</strong> Create circular reveals for dramatic scene changes</li>
+                    <li><strong>Page Peel:</strong> Add a playful, book-like transition</li>
+                </ul>
+                
+                <p>Customizing these transitions with keyframes or effects elevates their impact.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Access the Effect Controls panel to fine-tune transition properties like border width or anti-aliasing for smoother results.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Combining Transitions with Motion Graphics</h2>
+                <p>Integrating motion graphics from Adobe After Effects with Premiere Pro transitions can create stunning effects.</p>
+                
+                <h3>Steps for Integration:</h3>
+                <ul>
+                    <li>Create a motion graphic in After Effects (e.g., animated shapes or text)</li>
+                    <li>Export as a video or use Dynamic Link to import into Premiere Pro</li>
+                    <li>Place the graphic over your transition point</li>
+                    <li>Sync with keyframes or effects for seamless blending</li>
+                </ul>
+                
+                <p>This technique is perfect for branded intros or cinematic sequences.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use After Effects templates from sites like Motion Array to quickly add professional motion graphics to your transitions.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Using Masks for Creative Transitions</h2>
+                <p>Masks in Premiere Pro allow you to create custom shapes or reveals for unique transitions.</p>
+                
+                <h3>Masking Techniques:</h3>
+                <ul>
+                    <li><strong>Shape Masks:</strong> Use circle or rectangle masks for reveal effects</li>
+                    <li><strong>Track Mattes:</strong> Apply masks to control visibility of underlying clips</li>
+                    <li><strong>Animated Masks:</strong> Keyframe mask paths for dynamic reveals</li>
+                    <li><strong>Feather Edges:</strong> Soften mask edges for smoother transitions</li>
+                </ul>
+                
+                <p>Masks add a layer of creativity, perfect for stylized or artistic videos.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Combine masks with color grading to create transitions that shift both visuals and mood, like a grayscale-to-color reveal.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Audio-Driven Transitions</h2>
+                <p>Syncing transitions with audio cues enhances the rhythm and impact of your edits.</p>
+                
+                <h3>Audio Transition Tips:</h3>
+                <ul>
+                    <li><strong>Beat Matching:</strong> Align transitions with music beats or sound effects</li>
+                    <li><strong>Audio Keyframes:</strong> Fade audio in sync with visual transitions</li>
+                    <li><strong>Sound Design:</strong> Add whooshes or impact sounds to emphasize transitions</li>
+                    <li><strong>Audio Waveform:</strong> Use the waveform to time transitions precisely</li>
+                </ul>
+                
+                <p>Audio-driven transitions create a cohesive and immersive viewing experience.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Premiere Pro’s Audio Track Mixer to fine-tune audio fades that match your visual transitions.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Creating Seamless Looping Transitions</h2>
+                <p>Looping transitions are ideal for social media content, creating a continuous flow between clips.</p>
+                
+                <h3>Looping Transition Steps:</h3>
+                <ul>
+                    <li>Overlap identical frames at the start and end of clips</li>
+                    <li>Apply a zoom or slide effect to blend frames</li>
+                    <li>Use opacity keyframes to fade between clips</li>
+                    <li>Test the loop to ensure seamless playback</li>
+                </ul>
+                
+                <p>These transitions keep viewers engaged, especially on platforms like Instagram Reels.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Export a test loop and watch it on a mobile device to ensure the transition is smooth and seamless.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Avoiding Common Transition Mistakes</h2>
+                <p>Overusing or misapplying transitions can distract viewers and reduce professionalism.</p>
+                
+                <h3>Common Mistakes to Avoid:</h3>
+                <ul>
+                    <li><strong>Overuse:</strong> Too many transitions can overwhelm viewers</li>
+                    <li><strong>Inconsistent Style:</strong> Mixing unrelated transition types</li>
+                    <li><strong>Poor Timing:</strong> Transitions that don’t align with the video’s rhythm</li>
+                    <li><strong>Low-Quality Effects:</strong> Using outdated or cheesy transitions</li>
+                    <li><strong>Ignoring Narrative:</strong> Transitions that don’t support the story</li>
+                </ul>
+                
+                <p>Thoughtful use of transitions enhances storytelling without overpowering it.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Review your edit with fresh eyes after a break to ensure transitions feel natural and purposeful.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Advanced transitions in Adobe Premiere Pro allow you to elevate your video edits with creative and professional flair. By mastering keyframes, adjustment layers, masks, and audio-driven techniques, you can create seamless and engaging transitions that enhance storytelling. Avoiding common mistakes and experimenting with custom effects will set your videos apart in a competitive digital landscape.</p>
+                <p>Whether you're editing for YouTube, social media, or film, these techniques will help you create polished content that captivates audiences. Start practicing these advanced transitions today to take your editing skills to the next level.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Professional Video Editing?</h2>
+                <p>Want to create videos with stunning transitions and professional polish? I specialize in crafting high-quality edits tailored to your vision. Let’s bring your ideas to life.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2027 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
