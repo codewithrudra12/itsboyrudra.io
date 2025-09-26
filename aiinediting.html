@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Role of AI in Modern Video Editing | Rudraksh Sharma</title>
+    <meta name="description" content="Explore how AI is revolutionizing video editing with expert insights from Rudraksh Sharma. Learn about AI tools, techniques, and their impact on modern content creation." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-ai-video-editing" />
+    <meta property="og:title" content="The Role of AI in Modern Video Editing | Rudraksh Sharma" />
+    <meta property="og:description" content="Explore how AI is revolutionizing video editing with expert insights from Rudraksh Sharma. Learn about AI tools, techniques, and their impact on modern content creation." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/ai-video-editing.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-ai-video-editing" />
+    <meta property="twitter:title" content="The Role of AI in Modern Video Editing | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Explore how AI is revolutionizing video editing with expert insights from Rudraksh Sharma. Learn about AI tools, techniques, and their impact on modern content creation." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/ai-video-editing.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">The Role of AI in Modern Video Editing</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>September 26, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>15 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg" alt="AI in Video Editing" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <p>Artificial Intelligence (AI) is transforming video editing, making it faster, more efficient, and accessible to creators of all skill levels. From automating repetitive tasks to enabling creative enhancements, AI is reshaping how content is produced for platforms like YouTube, TikTok, and Instagram. In this comprehensive guide, I’ll explore the role of AI in modern video editing, its tools, benefits, and future potential.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>The Rise of AI in Video Editing</h2>
+                <p>AI-powered tools have revolutionized video editing by automating complex processes and providing intelligent suggestions. These advancements allow creators to focus on storytelling while AI handles technical tasks. According to industry reports, the global AI video editing market is expected to grow at a CAGR of 25% from 2025 to 2030.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Of editors use AI tools for at least one task</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50%</div>
+                        <div class="stat-label">Reduction in editing time with AI automation</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3X</div>
+                        <div class="stat-label">Increase in content output for AI adopters</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Automated Video Editing</h2>
+                <p>AI excels at automating repetitive tasks, saving editors hours of manual work. From cutting clips to generating transitions, AI tools streamline workflows and improve efficiency.</p>
+                
+                <h3>Key Automation Features:</h3>
+                <ul>
+                    <li><strong>Auto-cuts:</strong> AI detects natural breaks in footage to create seamless edits</li>
+                    <li><strong>Scene detection:</strong> Identifies scene changes for quick clip organization</li>
+                    <li><strong>Auto-transitions:</strong> Suggests and applies transitions based on video style</li>
+                    <li><strong>Smart trimming:</strong> Removes unnecessary pauses or filler words</li>
+                    <li><strong>Batch processing:</strong> Applies effects or corrections to multiple clips at once</li>
+                </ul>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Tools like Adobe Premiere Pro’s Auto Reframe use AI to automatically adjust footage for different aspect ratios, saving time for multi-platform content creation.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. AI-Powered Color Grading</h2>
+                <p>Color grading is critical for creating a professional look, and AI makes it accessible to beginners while enhancing efficiency for pros. AI tools analyze footage and suggest color corrections or stylized looks.</p>
+                
+                <h3>AI Color Grading Techniques:</h3>
+                <ul>
+                    <li><strong>Auto color correction:</strong> Balances white balance and exposure automatically</li>
+                    <li><strong>Style transfer:</strong> Applies cinematic looks based on reference images</li>
+                    <li><strong>Scene matching:</strong> Ensures consistent color across different shots</li>
+                    <li><strong>Mood-based grading:</strong> Suggests color palettes based on video tone</li>
+                    <li><strong>LUT generation:</strong> Creates custom Look-Up Tables for brand consistency</li>
+                </ul>
+                
+                <p>AI tools like DaVinci Resolve’s Color Warper use machine learning to simplify complex grading tasks, allowing editors to achieve professional results with minimal effort.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Save your AI-generated LUTs to maintain a consistent aesthetic across all your projects, strengthening your brand identity.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Audio Enhancement with AI</h2>
+                <p>High-quality audio is essential for viewer retention, and AI is making audio editing more accessible. From noise reduction to automated mixing, AI tools ensure crisp, professional sound.</p>
+                
+                <h3>AI Audio Features:</h3>
+                <ul>
+                    <li><strong>Noise reduction:</strong> Removes background noise with one click</li>
+                    <li><strong>Voice enhancement:</strong> Improves clarity of dialogue automatically</li>
+                    <li><strong>Auto-ducking:</strong> Lowers music volume during speech</li>
+                    <li><strong>Sound effect suggestions:</strong> Recommends SFX based on video content</li>
+                    <li><strong>Audio balancing:</strong> Ensures consistent volume across clips</li>
+                    <li><strong>Voiceover generation:</strong> Creates synthetic voiceovers from text</li>
+                </ul>
+                
+                <p>Tools like Descript and Adobe Audition use AI to simplify audio editing, making it easier for creators to produce polished soundtracks.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. AI-Driven Captioning and Subtitles</h2>
+                <p>With many viewers watching videos without sound, captions are crucial. AI-powered captioning tools generate accurate subtitles quickly, improving accessibility and engagement.</p>
+                
+                <h3>Captioning Benefits:</h3>
+                <ul>
+                    <li><strong>Auto-transcription:</strong> Converts speech to text with high accuracy</li>
+                    <li><strong>Multilingual support:</strong> Translates captions into multiple languages</li>
+                    <li><strong>Style customization:</strong> Adjusts font, size, and placement for readability</li>
+                    <li><strong>Keyword highlighting:</strong> Emphasizes key phrases for impact</li>
+                    <li><strong>Real-time captioning:</strong> Generates subtitles during live streams</li>
+                </ul>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Tools like Kapwing or YouTube’s auto-captioning can increase viewer retention by up to 12% by making content accessible to non-native speakers and viewers with hearing impairments.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. AI for Visual Effects and Motion Graphics</h2>
+                <p>AI is pushing the boundaries of visual effects, enabling creators to add stunning motion graphics and animations without extensive technical expertise.</p>
+                
+                <h3>AI Visual Effect Tools:</h3>
+                <ul>
+                    <li><strong>Object removal:</strong> Erases unwanted elements from footage</li>
+                    <li><strong>Background replacement:</strong> Swaps backgrounds using green-screen-like tech</li>
+                    <li><strong>Motion tracking:</strong> Applies effects that follow moving objects</li>
+                    <li><strong>AI-generated animations:</strong> Creates animated overlays or transitions</li>
+                    <li><strong>Facial recognition:</strong> Enhances or modifies faces in videos</li>
+                </ul>
+                
+                <p>Software like Runway ML and After Effects’ Content-Aware Fill leverage AI to simplify complex VFX tasks, making professional-grade effects accessible to all.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Content Personalization with AI</h2>
+                <p>AI enables editors to create personalized video content tailored to specific audiences, increasing engagement and conversions.</p>
+                
+                <h3>Personalization Techniques:</h3>
+                <ul>
+                    <li><strong>Dynamic content:</strong> Inserts viewer-specific elements like names or locations</li>
+                    <li><strong>Audience segmentation:</strong> Edits videos based on viewer demographics</li>
+                    <li><strong>Behavior-based edits:</strong> Adjusts content based on user interactions</li>
+                    <li><strong>A/B testing suggestions:</strong> Recommends variations for better performance</li>
+                    <li><strong>Platform optimization:</strong> Customizes videos for specific platforms</li>
+                </ul>
+                
+                <p>AI platforms like Wibbitz and Synthesia allow creators to produce personalized videos at scale, ideal for marketing campaigns.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Personalized videos can increase click-through rates by up to 30%. Use AI tools to analyze audience data and tailor content accordingly.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. AI-Assisted Storytelling</h2>
+                <p>AI is not just about technical tasks—it can also enhance creative storytelling by analyzing content and suggesting narrative improvements.</p>
+                
+                <h3>Storytelling Enhancements:</h3>
+                <ul>
+                    <li><strong>Script analysis:</strong> Suggests pacing or dialogue improvements</li>
+                    <li><strong>Emotion detection:</strong> Identifies emotional tone for better editing choices</li>
+                    <li><strong>Scene suggestions:</strong> Recommends additional shots or sequences</li>
+                    <li><strong>Thumbnail optimization:</strong> Generates click-worthy thumbnails</li>
+                    <li><strong>Trend analysis:</strong> Suggests trending formats or styles</li>
+                </ul>
+                
+                <p>Tools like ScriptBook and Magisto use AI to guide editors in crafting compelling narratives that resonate with audiences.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Challenges and Limitations of AI in Video Editing</h2>
+                <p>While AI offers immense benefits, it’s not without challenges. Understanding its limitations helps editors use AI effectively.</p>
+                
+                <h3>Common Challenges:</h3>
+                <ul>
+                    <li><strong>Lack of human creativity:</strong> AI may struggle with nuanced storytelling</li>
+                    <li><strong>Data dependency:</strong> Requires large datasets for accurate results</li>
+                    <li><strong>Learning curve:</strong> Some AI tools require technical knowledge</li>
+                    <li><strong>Cost:</strong> Premium AI tools can be expensive for small creators</li>
+                    <li><strong>Ethical concerns:</strong> Issues like deepfakes or copyright infringement</li>
+                </ul>
+                
+                <p>Balancing AI automation with human creativity is key to producing authentic, high-quality content.</p>
+            </div>
+
+            <div class="blog-section">
+                <h2>9. The Future of AI in Video Editing</h2>
+                <p>AI’s role in video editing is only beginning. Emerging trends point to even more advanced capabilities in the coming years.</p>
+                
+                <h3>Future Trends:</h3>
+                <ul>
+                    <li><strong>Real-time editing:</strong> AI will edit videos during live streams</li>
+                    <li><strong>Generative AI:</strong> Creates entire videos from text prompts</li>
+                    <li><strong>Immersive experiences:</strong> Enhances VR and AR content creation</li>
+                    <li><strong>Collaborative AI:</strong> Works alongside editors in real-time</li>
+                    <li><strong>Hyper-personalization:</strong> Delivers fully customized videos for each viewer</li>
+                </ul>
+                
+                <p>As AI evolves, it will continue to democratize video editing, enabling creators to produce professional content with minimal resources.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Stay updated with AI advancements by following platforms like xAI’s blog or industry leaders on X to integrate cutting-edge tools into your workflow.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>AI is transforming video editing by automating tasks, enhancing creativity, and enabling personalized content at scale. From automated cuts and color grading to captioning and visual effects, AI tools empower creators to produce high-quality videos efficiently. While challenges like cost and ethical concerns exist, the future of AI in video editing is bright, with trends pointing to real-time editing and hyper-personalized content.</p>
+                <p>By embracing AI, creators can stay ahead in the competitive world of content creation, delivering engaging videos that captivate audiences across platforms. Start experimenting with AI tools today to elevate your editing game.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Ready to Leverage AI for Your Videos?</h2>
+                <p>Need help integrating AI into your video editing workflow? I offer professional video editing services tailored to your needs, using the latest AI tools to create stunning content. Let’s take your videos to the next level.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J') ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
