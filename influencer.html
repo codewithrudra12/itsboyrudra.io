@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencer Marketing Strategies | Rudraksh Sharma</title>
+    <meta name="description" content="Discover effective influencer marketing strategies with Rudraksh Sharma’s expert guide. Learn how to partner with influencers to boost brand visibility and engagement." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-influencer-marketing-strategies" />
+    <meta property="og:title" content="Influencer Marketing Strategies | Rudraksh Sharma" />
+    <meta property="og:description" content="Discover effective influencer marketing strategies with Rudraksh Sharma’s expert guide. Learn how to partner with influencers to boost brand visibility and engagement." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/influencer-marketing-strategies.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-influencer-marketing-strategies" />
+    <meta property="twitter:title" content="Influencer Marketing Strategies | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Discover effective influencer marketing strategies with Rudraksh Sharma’s expert guide. Learn how to partner with influencers to boost brand visibility and engagement." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/influencer-marketing-strategies.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Influencer Marketing Strategies</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>November 5, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>9 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/6476808/pexels-photo-6476808.jpeg" alt="Influencer Marketing Strategies" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Influencer Marketing</h2>
+                <p>Influencer marketing leverages trusted voices to promote brands, driving engagement and authenticity. This guide explores effective strategies, tools, and best practices to maximize influencer campaigns for brand growth.</p>
+                <p>Influencer campaigns can boost brand awareness by up to 30%. Mastering these strategies is key for marketers aiming to connect with audiences authentically.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Increase in brand awareness</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Of consumers trust influencers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4x</div>
+                        <div class="stat-label">Higher ROI than traditional ads</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Why Influencer Marketing Works</h2>
+                <p>Influencer marketing taps into established audiences, building trust and driving conversions through authentic content.</p>
+                
+                <h3>Key Benefits:</h3>
+                <ul>
+                    <li><strong>Authenticity:</strong> Influencers connect through genuine storytelling</li>
+                    <li><strong>Targeted Reach:</strong> Access niche audiences with precision</li>
+                    <li><strong>Engagement:</strong> Higher interaction rates than traditional ads</li>
+                    <li><strong>Brand Trust:</strong> Leverages influencer credibility</li>
+                </ul>
+                
+                <p>Influencer campaigns can increase engagement rates by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Choose influencers whose values align with your brand for authenticity.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Identifying the Right Influencers</h2>
+                <p>Selecting the right influencers is critical for campaign success.</p>
+                
+                <h3>Selection Criteria:</h3>
+                <ul>
+                    <li><strong>Audience Alignment:</strong> Match influencer audience with your target</li>
+                    <li><strong>Engagement Rate:</strong> Prioritize high interaction over follower count</li>
+                    <li><strong>Content Quality:</strong> Ensure professional and relevant content</li>
+                    <li><strong>Niche Expertise:</strong> Choose influencers with industry authority</li>
+                </ul>
+                
+                <p>Choosing the right influencers can boost campaign ROI by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use tools like HypeAuditor to verify influencer authenticity.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Tools for Influencer Marketing</h2>
+                <p>Leverage tools to streamline influencer discovery, management, and analytics.</p>
+                
+                <h3>Popular Tools:</h3>
+                <ul>
+                    <li><strong>Influencity:</strong> Finds and manages influencers</li>
+                    <li><strong>Upfluence:</strong> Tracks campaign performance</li>
+                    <li><strong>AspireIQ:</strong> Facilitates collaborations and content creation</li>
+                    <li><strong>HypeAuditor:</strong> Analyzes audience authenticity</li>
+                    <li><strong>Social Blade:</strong> Monitors influencer growth and engagement</li>
+                </ul>
+                
+                <p>Using tools can reduce campaign setup time by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Integrate tools with CRM platforms for seamless campaign tracking.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Crafting Effective Influencer Campaigns</h2>
+                <p>Successful campaigns require clear goals, creative freedom, and strategic planning.</p>
+                
+                <h3>Campaign Tips:</h3>
+                <ul>
+                    <li><strong>Define Goals:</strong> Set objectives like awareness or conversions</li>
+                    <li><strong>Creative Briefs:</strong> Provide guidelines but allow flexibility</li>
+                    <li><strong>Multi-Platform Strategy:</strong> Use Instagram, TikTok, and YouTube</li>
+                    <li><strong>Clear CTAs:</strong> Include actionable calls-to-action</li>
+                </ul>
+                
+                <p>Well-planned campaigns can increase conversions by 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Create a detailed brief but let influencers adapt it to their style.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Collaborating with Influencers</h2>
+                <p>Strong collaborations build trust and maximize campaign impact.</p>
+                
+                <h3>Collaboration Tips:</h3>
+                <ul>
+                    <li><strong>Build Relationships:</strong> Communicate regularly with influencers</li>
+                    <li><strong>Negotiate Fairly:</strong> Agree on compensation and deliverables</li>
+                    <li><strong>Provide Resources:</strong> Offer product samples or brand assets</li>
+                    <li><strong>Monitor Content:</strong> Ensure compliance with brand guidelines</li>
+                </ul>
+                
+                <p>Effective collaborations can boost campaign success by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Treat influencers as partners, not just vendors, for better results.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Measuring Influencer Campaign Success</h2>
+                <p>Tracking metrics ensures campaigns deliver desired results.</p>
+                
+                <h3>Key Metrics:</h3>
+                <ul>
+                    <li><strong>Engagement Rate:</strong> Likes, comments, and shares</li>
+                    <li><strong>Reach and Impressions:</strong> Total audience exposure</li>
+                    <li><strong>Conversion Rate:</strong> Actions like purchases or sign-ups</li>
+                    <li><strong>ROI:</strong> Revenue generated versus campaign cost</li>
+                </ul>
+                
+                <p>Accurate tracking can improve future campaigns by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use UTM links to track conversions from influencer posts.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Influencer Marketing Mistakes</h2>
+                <p>Avoid these pitfalls to ensure campaign success.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Choosing by Follower Count:</strong> Ignoring engagement quality</li>
+                    <li><strong>Lack of Clear Goals:</strong> Vague campaign objectives</li>
+                    <li><strong>Micromanaging Content:</strong> Limiting influencer creativity</li>
+                    <li><strong>Ignoring Compliance:</strong> Skipping FTC disclosure rules</li>
+                </ul>
+                
+                <p>Avoiding these mistakes can improve campaign performance by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Ensure influencers include #ad or #sponsored for transparency.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Scaling Influencer Marketing</h2>
+                <p>Scaling campaigns involves expanding reach while maintaining effectiveness.</p>
+                
+                <h3>Scaling Strategies:</h3>
+                <ul>
+                    <li><strong>Diversify Influencers:</strong> Partner with micro and macro influencers</li>
+                    <li><strong>Repurpose Content:</strong> Use influencer content across channels</li>
+                    <li><strong>Automate Processes:</strong> Use platforms for campaign management</li>
+                    <li><strong>Long-Term Partnerships:</strong> Build ongoing relationships</li>
+                </ul>
+                
+                <p>Scaling effectively can increase campaign reach by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Repurpose influencer content for ads to maximize ROI.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Influencer marketing is a powerful strategy for building brand trust and engagement. By selecting the right influencers, using effective tools, and tracking key metrics, you can create campaigns that resonate with audiences. Avoid common mistakes and scale strategically to maximize impact. Start leveraging influencer marketing today to grow your brand authentically.</p>
+                <p>Whether you’re launching your first campaign or scaling up, these strategies will drive results. Let’s connect to boost your brand’s reach.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Influencer Marketing?</h2>
+                <p>Looking to amplify your brand with influencer campaigns? I specialize in crafting strategies that drive engagement and ROI. Let’s get started.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
