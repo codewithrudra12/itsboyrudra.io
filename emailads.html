@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Marketing Integration with Ads | Rudraksh Sharma</title>
+    <meta name="description" content="Discover how to integrate email marketing with ad campaigns in Rudraksh Sharma’s expert guide. Learn strategies to boost engagement, conversions, and ROI through seamless integration." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-email-marketing-ads" />
+    <meta property="og:title" content="Email Marketing Integration with Ads | Rudraksh Sharma" />
+    <meta property="og:description" content="Discover how to integrate email marketing with ad campaigns in Rudraksh Sharma’s expert guide. Learn strategies to boost engagement, conversions, and ROI through seamless integration." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/email-marketing-ads.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-email-marketing-ads" />
+    <meta property="twitter:title" content="Email Marketing Integration with Ads | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Discover how to integrate email marketing with ad campaigns in Rudraksh Sharma’s expert guide. Learn strategies to boost engagement, conversions, and ROI through seamless integration." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/email-marketing-ads.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Email Marketing Integration with Ads</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>January 30, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>14 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/669610/pexels-photo-669610.jpeg" alt="Email Marketing Integration with Ads" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Email Marketing and Ads Integration</h2>
+                <p>Integrating email marketing with ad campaigns creates a powerful synergy that boosts engagement, conversions, and ROI. By combining the personalized reach of email with the broad exposure of ads, businesses can nurture leads and drive sales effectively. In this guide, I’ll explore strategies to seamlessly integrate email marketing with advertising platforms to maximize your marketing impact.</p>
+                <p>Studies show that integrated email and ad campaigns can increase conversion rates by up to 35%. Whether you’re a small business or a large brand, these strategies will help you create cohesive campaigns that resonate with your audience.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">35%</div>
+                        <div class="stat-label">Increase in conversions with integrated campaigns</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">68%</div>
+                        <div class="stat-label">Of marketers use email alongside ads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Of consumers prefer personalized emails</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Understanding the Synergy</h2>
+                <p>Email marketing and ads complement each other by targeting audiences at different stages of the customer journey. Ads drive awareness and acquisition, while emails nurture leads and encourage conversions.</p>
+                
+                <h3>Key Benefits of Integration:</h3>
+                <ul>
+                    <li><strong>Wider Reach:</strong> Ads attract new audiences, emails retain them</li>
+                    <li><strong>Personalization:</strong> Emails deliver tailored content based on ad interactions</li>
+                    <li><strong>Retargeting:</strong> Re-engage ad viewers with targeted email campaigns</li>
+                    <li><strong>Consistency:</strong> Unified messaging across channels builds trust</li>
+                </ul>
+                
+                <p>Integration creates a cohesive strategy that maximizes touchpoints with your audience.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Align your ad and email messaging to reinforce brand identity and improve campaign coherence.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Building a Unified Audience Strategy</h2>
+                <p>A successful integration starts with understanding your audience and segmenting them effectively.</p>
+                
+                <h3>Segmentation Strategies:</h3>
+                <ul>
+                    <li><strong>Ad Interaction Data:</strong> Segment based on ad clicks, views, or engagements</li>
+                    <li><strong>Email Behavior:</strong> Group users by open rates, click-throughs, or purchases</li>
+                    <li><strong>Demographics:</strong> Tailor content by age, location, or interests</li>
+                    <li><strong>Purchase Intent:</strong> Target high-intent users with personalized offers</li>
+                </ul>
+                
+                <p>Tools like Mailchimp or HubSpot can sync with ad platforms for seamless segmentation.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Facebook Pixel or Google Tag Manager to track ad interactions and feed data into your email platform for precise segmentation.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Retargeting with Email Campaigns</h2>
+                <p>Retargeting is a powerful way to re-engage users who interacted with your ads but didn’t convert.</p>
+                
+                <h3>Retargeting Techniques:</h3>
+                <ul>
+                    <li><strong>Abandoned Cart Emails:</strong> Target users who left items in their cart</li>
+                    <li><strong>Ad Click Follow-Ups:</strong> Send emails to users who clicked ads</li>
+                    <li><strong>Lookalike Audiences:</strong> Use ad data to create similar email segments</li>
+                    <li><strong>Dynamic Content:</strong> Personalize emails based on ad interactions</li>
+                </ul>
+                
+                <p>Retargeting emails can boost conversions by up to 20% when paired with ads.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use dynamic content in emails to show products or offers users viewed in your ads for higher relevance.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Choosing the Right Tools</h2>
+                <p>Integration requires tools that connect email marketing platforms with ad networks.</p>
+                
+                <h3>Recommended Tools:</h3>
+                <ul>
+                    <li><strong>Mailchimp:</strong> Integrates with Google Ads and Facebook for automated campaigns</li>
+                    <li><strong>HubSpot:</strong> Offers robust CRM and ad integration features</li>
+                    <li><strong>ActiveCampaign:</strong> Advanced automation for email-ad workflows</li>
+                    <li><strong>Klaviyo:</strong> Ideal for e-commerce with Shopify integration</li>
+                    <li><strong>Zapier:</strong> Connects ad platforms with email tools for custom workflows</li>
+                </ul>
+                
+                <p>Choose tools based on your campaign scale and integration needs.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Zapier to create automated workflows, like sending an email when a user clicks a Google Ad.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Crafting Consistent Messaging</h2>
+                <p>Consistency in tone, visuals, and branding across ads and emails builds trust and recognition.</p>
+                
+                <h3>Messaging Tips:</h3>
+                <ul>
+                    <li><strong>Unified Design:</strong> Use similar colors, fonts, and logos</li>
+                    <li><strong>Aligned CTAs:</strong> Match call-to-actions (e.g., “Shop Now” in both ads and emails)</li>
+                    <li><strong>Storytelling:</strong> Continue ad narratives in email content</li>
+                    <li><strong>Timing:</strong> Coordinate ad and email delivery for maximum impact</li>
+                </ul>
+                
+                <p>Consistent messaging can increase brand recall by up to 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Create a brand style guide to ensure visual and tonal consistency across ads and emails.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Automating Email-Ad Workflows</h2>
+                <p>Automation streamlines integration, saving time and improving efficiency.</p>
+                
+                <h3>Automation Strategies:</h3>
+                <ul>
+                    <li><strong>Trigger Emails:</strong> Send emails based on ad clicks or website visits</li>
+                    <li><strong>Drip Campaigns:</strong> Nurture leads with a series of emails post-ad exposure</li>
+                    <li><strong>Behavioral Triggers:</strong> Automate emails based on user actions (e.g., downloads)</li>
+                    <li><strong>Scheduled Sends:</strong> Time emails to complement ad campaigns</li>
+                </ul>
+                
+                <p>Automation can reduce manual work by up to 50% while improving campaign performance.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Mailchimp’s automation features to set up drip campaigns that nurture leads from ad interactions.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Measuring Success</h2>
+                <p>Tracking performance across both channels is critical to evaluate integration success.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Email Open Rate:</strong> Percentage of recipients opening emails</li>
+                    <li><strong>Click-Through Rate (CTR):</strong> Clicks on email and ad links</li>
+                    <li><strong>Conversion Rate:</strong> Actions taken from emails or ads</li>
+                    <li><strong>Return on Investment (ROI):</strong> Revenue generated vs. spend</li>
+                    <li><strong>Engagement Rate:</strong> Interactions across both channels</li>
+                </ul>
+                
+                <p>Use integrated analytics from tools like Google Analytics or HubSpot to track these metrics.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Set up UTM parameters for email links to track their performance in Google Analytics alongside ad campaigns.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Avoiding Common Integration Mistakes</h2>
+                <p>Avoid these pitfalls to ensure seamless integration and optimal results.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Inconsistent Messaging:</strong> Misaligned ads and emails confuse audiences</li>
+                    <li><strong>Poor Segmentation:</strong> Sending generic emails to ad audiences</li>
+                    <li><strong>Overloading Emails:</strong> Too many emails reduce engagement</li>
+                    <li><strong>Ignoring Analytics:</strong> Failing to track integrated performance</li>
+                    <li><strong>Lack of Automation:</strong> Manual processes lead to inefficiencies</li>
+                </ul>
+                
+                <p>Addressing these issues ensures a cohesive and effective campaign.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test email frequency with small segments to find the optimal send rate without overwhelming your audience.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Integrating email marketing with ad campaigns creates a powerful strategy to engage audiences, nurture leads, and drive conversions. By leveraging segmentation, retargeting, consistent messaging, and automation, you can maximize ROI and build stronger connections with your audience. Avoiding common mistakes and tracking performance ensures your integrated campaigns remain effective and scalable.</p>
+                <p>Whether you’re promoting a product, service, or brand, these integration strategies will elevate your marketing efforts. Start implementing these techniques today to create cohesive and impactful campaigns.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Marketing Support?</h2>
+                <p>Looking to integrate email marketing with your ad campaigns for maximum impact? I specialize in creating high-performance marketing strategies tailored to your brand. Let’s grow your business together.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
