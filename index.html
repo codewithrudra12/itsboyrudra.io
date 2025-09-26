@@ -2877,793 +2877,811 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
-    <script>
-        // Security Splash Screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('security-splash').classList.add('hidden');
-            }, 3000); // 3 seconds delay
-        });
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://assets.calendly.com/assets/external/widget.js"></script>
+<script>
+    // Security Splash Screen
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            document.getElementById('security-splash').classList.add('hidden');
+        }, 3000); // 3 seconds delay
+    });
 
-        // Disable Right-Click and Inspect
-        document.addEventListener('contextmenu', (e) => {
+    // Disable Right-Click and Inspect
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        showCustomNotification('Right-click disabled for security.');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.key === 'u')) {
             e.preventDefault();
-            showCustomNotification('Right-click disabled for security.');
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.key === 'u')) {
-                e.preventDefault();
-                showCustomNotification('Inspect tools are disabled for security.');
-            }
-        });
-
-        function showCustomNotification(message) {
-            const notification = document.getElementById('custom-notification');
-            notification.querySelector('p').textContent = message;
-            notification.style.display = 'block';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
+            showCustomNotification('Inspect tools are disabled for security.');
         }
+    });
 
-        // Sidebar Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const sidebar = document.getElementById('sidebar');
-        const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-        const body = document.body;
+    function showCustomNotification(message) {
+        const notification = document.getElementById('custom-notification');
+        notification.querySelector('p').textContent = message;
+        notification.style.display = 'block';
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
 
-        mobileMenuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-            sidebarBackdrop.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-            body.classList.toggle('sidebar-open');
-        });
+    // Sidebar Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    const body = document.body;
 
-        sidebarBackdrop.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        sidebarBackdrop.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('active');
+        body.classList.toggle('sidebar-open');
+    });
+
+    sidebarBackdrop.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        sidebarBackdrop.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
+        body.classList.remove('sidebar-open');
+    });
+
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', () => {
             sidebar.classList.remove('active');
             sidebarBackdrop.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
             body.classList.remove('sidebar-open');
         });
+    });
 
-        document.querySelectorAll('.sidebar-link').forEach(link => {
-            link.addEventListener('click', () => {
-                sidebar.classList.remove('active');
-                sidebarBackdrop.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                body.classList.remove('sidebar-open');
-            });
-        });
+    // Side Popup with Auto-Close
+    const floatingLogo = document.querySelector('.floating-logo');
+    const sidePopup = document.querySelector('.side-popup');
+    const sidePopupClose = document.querySelector('.side-popup-close');
+    let autoCloseTimeout;
 
-        // Side Popup with Auto-Close
-        const floatingLogo = document.querySelector('.floating-logo');
-        const sidePopup = document.querySelector('.side-popup');
-        const sidePopupClose = document.querySelector('.side-popup-close');
-        let autoCloseTimeout;
+    floatingLogo.addEventListener('click', () => {
+        sidePopup.classList.toggle('active');
+        if (sidePopup.classList.contains('active')) {
+            autoCloseTimeout = setTimeout(() => {
+                sidePopup.classList.remove('active');
+            }, 5000);
+        } else {
+            clearTimeout(autoCloseTimeout);
+        }
+    });
 
-        floatingLogo.addEventListener('click', () => {
-            sidePopup.classList.toggle('active');
-            if (sidePopup.classList.contains('active')) {
-                autoCloseTimeout = setTimeout(() => {
-                    sidePopup.classList.remove('active');
-                }, 5000);
-            } else {
-                clearTimeout(autoCloseTimeout);
+    sidePopupClose.addEventListener('click', () => {
+        sidePopup.classList.remove('active');
+        clearTimeout(autoCloseTimeout);
+    });
+
+    // Legal Popups
+    const legalPopupTriggers = document.querySelectorAll('[data-popup]');
+    const legalPopupBackdrop = document.getElementById('legal-popup-backdrop');
+
+    legalPopupTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const popupId = trigger.getAttribute('data-popup');
+            const popup = document.getElementById(popupId);
+            if (popup) {
+                popup.classList.add('active');
+                legalPopupBackdrop.classList.add('active');
             }
         });
+    });
 
-        sidePopupClose.addEventListener('click', () => {
-            sidePopup.classList.remove('active');
-            clearTimeout(autoCloseTimeout);
-        });
-
-        // Legal Popups
-        const legalPopupTriggers = document.querySelectorAll('[data-popup]');
-        const legalPopupBackdrop = document.getElementById('legal-popup-backdrop');
-
-        legalPopupTriggers.forEach(trigger => {
-            trigger.addEventListener('click', (e) => {
-                e.preventDefault();
-                const popupId = trigger.getAttribute('data-popup');
-                const popup = document.getElementById(popupId);
-                if (popup) {
-                    popup.classList.add('active');
-                    legalPopupBackdrop.classList.add('active');
-                }
-            });
-        });
-
-        document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
-            closeBtn.addEventListener('click', () => {
-                document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
-                    popup.classList.remove('active');
-                });
-                legalPopupBackdrop.classList.remove('active');
-            });
-        });
-
-        legalPopupBackdrop.addEventListener('click', () => {
+    document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', () => {
             document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
                 popup.classList.remove('active');
             });
             legalPopupBackdrop.classList.remove('active');
         });
+    });
 
-        // Typed.js for Hero Section with Fixed Backspace
-        new Typed('#typed-text', {
-            strings: ['Performance Marketing | Creative Storytelling | ROI-Driven Campaigns'],
-            typeSpeed: 50,
-            backSpeed: 20,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|',
-            smartBackspace: false
+    legalPopupBackdrop.addEventListener('click', () => {
+        document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+            popup.classList.remove('active');
         });
+        legalPopupBackdrop.classList.remove('active');
+    });
 
-        // Portfolio Filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+    // Typed.js for Hero Section with Fixed Backspace
+    new Typed('#typed-text', {
+        strings: ['Performance Marketing | Creative Storytelling | ROI-Driven Campaigns'],
+        typeSpeed: 50,
+        backSpeed: 20,
+        backDelay: 2000,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|',
+        smartBackspace: false
+    });
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const filter = button.getAttribute('data-filter');
-                portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.style.display = 'block';
-                        item.style.opacity = '1';
-                    } else {
-                        item.style.display = 'none';
-                        item.style.opacity = '0';
-                    }
-                });
-            });
-        });
+    // Portfolio Filter
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-        // Geolocation for Payment Gateways with Fallback
-        const paymentPopup = document.getElementById('payment-popup');
-        const paymentPopupBackdrop = document.getElementById('payment-popup-backdrop');
-        const paymentPopupClose = document.querySelector('.payment-popup-close');
-        const paymentGateways = document.getElementById('payment-gateways');
-        const paymentAmount = document.getElementById('payment-amount');
-        const paymentTitle = document.getElementById('payment-title');
-        const paymentServicesList = document.getElementById('payment-services-list');
-        const paymentServices = paymentPopup.querySelector('.payment-services');
-
-        const servicesData = {
-            'google-ads': {
-                title: 'Google Ads Payment',
-                services: [
-                    'Campaign Setup & Optimization',
-                    'Smart Bidding & ROI Tracking',
-                    'Dashboard Reporting',
-                    'Keyword Research & Strategy',
-                    'Landing Page Optimization'
-                ]
-            },
-            'facebook-ads': {
-                title: 'Facebook Ads Payment',
-                services: [
-                    'Funnel Strategy & Retargeting',
-                    'Lookalike Audience Targeting',
-                    'Ad Creative Optimization',
-                    'Conversion Tracking',
-                    'A/B Testing Frameworks'
-                ]
-            },
-            'video-editing': {
-                title: 'Video Editing Payment',
-                services: [
-                    'Reels, YouTube Shorts, TikTok',
-                    'Motion Effects & Transitions',
-                    'Auto Subtitles & Captions',
-                    'AI-based Editing Tools',
-                    'Color Grading & Correction'
-                ]
-            },
-            'basic': {
-                title: 'Basic Plan Payment',
-                services: [
-                    '1 Campaign Management',
-                    'Weekly Optimization',
-                    'Basic Reporting',
-                    'Email Support',
-                    'Up to $1,000 Ad Spend'
-                ]
-            },
-            'pro': {
-                title: 'Pro Plan Payment',
-                services: [
-                    '3 Campaigns Management',
-                    'Daily Optimization',
-                    'Advanced Reporting',
-                    'Priority Support',
-                    'Up to $5,000 Ad Spend',
-                    'Monthly Strategy Call'
-                ]
-            },
-            'premium': {
-                title: 'Premium Plan Payment',
-                services: [
-                    'Unlimited Campaigns',
-                    'Real-time Optimization',
-                    'Custom Dashboard',
-                    '24/7 Support',
-                    'Unlimited Ad Spend',
-                    'Weekly Strategy Calls',
-                    'Creative Production'
-                ]
-            }
-        };
-
-        function showPaymentPopup(service, amount) {
-            paymentTitle.textContent = servicesData[service].title;
-            paymentServicesList.innerHTML = servicesData[service].services.map(item => `<li>${item}</li>`).join('');
-            paymentServices.style.display = 'block';
-            paymentGateways.innerHTML = '';
-
-            const defaultGateways = [
-                { name: 'PayPal', img: 'https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg', url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=info.itsboyrudra@gmail.com&amount=' + amount },
-                { name: 'Payoneer', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUWM23eSCWzToHqGa9TCwQUSrzyG77Fc7A_w&s', url: 'https://www.payoneer.com/' },
-                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' }
-            ];
-
-            const indiaGateways = [
-                { name: 'GPay', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg', url: 'https://pay.google.com/about/' },
-                { name: 'PhonePe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKPIjqCe07YG6F3Ikr9NRjFr42AmuvuRr2A&s', url: 'https://www.phonepe.com/' },
-                { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' }
-            ];
-
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => {
-                    const country = data.country_name;
-                    const gateways = country === 'India' ? indiaGateways : defaultGateways;
-
-                    let currencySymbol = '$';
-                    let finalAmount = amount;
-                    if (country === 'India') {
-                        currencySymbol = '₹';
-                        finalAmount = Math.round(amount * 83);
-                    }
-                    paymentAmount.textContent = `${currencySymbol}${finalAmount}`;
-
-                    gateways.forEach(gateway => {
-                        const gatewayElement = document.createElement('a');
-                        gatewayElement.href = gateway.url;
-                        gatewayElement.className = 'payment-gateway';
-                        gatewayElement.innerHTML = `<img src="${gateway.img}" alt="${gateway.name}" onerror="this.src='https://via.placeholder.com/60?text=${gateway.name}'">`;
-                        paymentGateways.appendChild(gatewayElement);
-                    });
-
-                    paymentPopup.classList.add('active');
-                    paymentPopupBackdrop.classList.add('active');
-                })
-                .catch(error => {
-                    console.error('Geolocation API error:', error);
-                    paymentAmount.textContent = `$${amount}`;
-
-                    defaultGateways.forEach(gateway => {
-                        const gatewayElement = document.createElement('a');
-                        gatewayElement.href = gateway.url;
-                        gatewayElement.className = 'payment-gateway';
-                        gatewayElement.innerHTML = `<img src="${gateway.img}" alt="${gateway.name}" onerror="this.src='https://via.placeholder.com/60?text=${gateway.name}'">`;
-                        paymentGateways.appendChild(gatewayElement);
-                    });
-
-                    paymentPopup.classList.add('active');
-                    paymentPopupBackdrop.classList.add('active');
-                });
-        }
-
-        document.querySelectorAll('.primary-cta, .pricing-cta').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const service = button.getAttribute('data-service') || button.getAttribute('data-plan');
-                const amount = parseInt(button.getAttribute('data-amount'));
-                showPaymentPopup(service, amount);
-            });
-        });
-
-        paymentPopupClose.addEventListener('click', () => {
-            paymentPopup.classList.remove('active');
-            paymentPopupBackdrop.classList.remove('active');
-        });
-
-        paymentPopupBackdrop.addEventListener('click', () => {
-            paymentPopup.classList.remove('active');
-            paymentPopupBackdrop.classList.remove('active');
-        });
-
-        // Cookie Consent with sessionStorage
-        const cookieConsent = document.getElementById('cookie-consent');
-        const acceptCookies = document.getElementById('accept-cookies');
-        const declineCookies = document.getElementById('decline-cookies');
-
-        function checkCookieConsent() {
-            try {
-                const consent = sessionStorage.getItem('cookieConsent');
-                if (!consent) {
-                    cookieConsent.classList.add('active');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            const filter = button.getAttribute('data-filter');
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                } else {
+                    item.style.display = 'none';
+                    item.style.opacity = '0';
                 }
-            } catch (e) {
-                console.warn('sessionStorage not available:', e);
+            });
+        });
+    });
+
+    // Geolocation for Payment Gateways with Fallback
+    const paymentPopup = document.getElementById('payment-popup');
+    const paymentPopupBackdrop = document.getElementById('payment-popup-backdrop');
+    const paymentPopupClose = document.querySelector('.payment-popup-close');
+    const paymentGateways = document.getElementById('payment-gateways');
+    const paymentAmount = document.getElementById('payment-amount');
+    const paymentTitle = document.getElementById('payment-title');
+    const paymentServicesList = document.getElementById('payment-services-list');
+    const paymentServices = paymentPopup.querySelector('.payment-services');
+
+    const servicesData = {
+        'google-ads': {
+            title: 'Google Ads Payment',
+            services: [
+                'Campaign Setup & Optimization',
+                'Smart Bidding & ROI Tracking',
+                'Dashboard Reporting',
+                'Keyword Research & Strategy',
+                'Landing Page Optimization'
+            ]
+        },
+        'facebook-ads': {
+            title: 'Facebook Ads Payment',
+            services: [
+                'Funnel Strategy & Retargeting',
+                'Lookalike Audience Targeting',
+                'Ad Creative Optimization',
+                'Conversion Tracking',
+                'A/B Testing Frameworks'
+            ]
+        },
+        'video-editing': {
+            title: 'Video Editing Payment',
+            services: [
+                'Reels, YouTube Shorts, TikTok',
+                'Motion Effects & Transitions',
+                'Auto Subtitles & Captions',
+                'AI-based Editing Tools',
+                'Color Grading & Correction'
+            ]
+        },
+        'basic': {
+            title: 'Basic Plan Payment',
+            services: [
+                '1 Campaign Management',
+                'Weekly Optimization',
+                'Basic Reporting',
+                'Email Support',
+                'Up to $1,000 Ad Spend'
+            ]
+        },
+        'pro': {
+            title: 'Pro Plan Payment',
+            services: [
+                '3 Campaigns Management',
+                'Daily Optimization',
+                'Advanced Reporting',
+                'Priority Support',
+                'Up to $5,000 Ad Spend',
+                'Monthly Strategy Call'
+            ]
+        },
+        'premium': {
+            title: 'Premium Plan Payment',
+            services: [
+                'Unlimited Campaigns',
+                'Real-time Optimization',
+                'Custom Dashboard',
+                '24/7 Support',
+                'Unlimited Ad Spend',
+                'Weekly Strategy Calls',
+                'Creative Production'
+            ]
+        }
+    };
+
+    function showPaymentPopup(service, amount) {
+        paymentTitle.textContent = servicesData[service].title;
+        paymentServicesList.innerHTML = servicesData[service].services.map(item => `<li>${item}</li>`).join('');
+        paymentServices.style.display = 'block';
+        paymentGateways.innerHTML = '';
+
+        const defaultGateways = [
+            { name: 'PayPal', img: 'https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg', url: 'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=info.itsboyrudra@gmail.com&amount=' + amount },
+            { name: 'Payoneer', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUWM23eSCWzToHqGa9TCwQUSrzyG77Fc7A_w&s', url: 'https://www.payoneer.com/' },
+            { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' }
+        ];
+
+        const indiaGateways = [
+            { name: 'GPay', img: 'https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg', url: 'https://pay.google.com/about/' },
+            { name: 'PhonePe', img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNKPIjqCe07YG6F3Ikr9NRjFr42AmuvuRr2A&s', url: 'https://www.phonepe.com/' },
+            { name: 'Razorpay', img: 'https://razorpay.com/assets/razorpay-logo.svg', url: 'https://rzp.io/l/your-link' }
+        ];
+
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const country = data.country_name;
+                const gateways = country === 'India' ? indiaGateways : defaultGateways;
+
+                let currencySymbol = '$';
+                let finalAmount = amount;
+                if (country === 'India') {
+                    currencySymbol = '₹';
+                    finalAmount = Math.round(amount * 83);
+                }
+                paymentAmount.textContent = `${currencySymbol}${finalAmount}`;
+
+                gateways.forEach(gateway => {
+                    const gatewayElement = document.createElement('a');
+                    gatewayElement.href = gateway.url;
+                    gatewayElement.className = 'payment-gateway';
+                    gatewayElement.innerHTML = `<img src="${gateway.img}" alt="${gateway.name}" onerror="this.src='https://via.placeholder.com/60?text=${gateway.name}'">`;
+                    paymentGateways.appendChild(gatewayElement);
+                });
+
+                paymentPopup.classList.add('active');
+                paymentPopupBackdrop.classList.add('active');
+            })
+            .catch(error => {
+                console.error('Geolocation API error:', error);
+                paymentAmount.textContent = `$${amount}`;
+
+                defaultGateways.forEach(gateway => {
+                    const gatewayElement = document.createElement('a');
+                    gatewayElement.href = gateway.url;
+                    gatewayElement.className = 'payment-gateway';
+                    gatewayElement.innerHTML = `<img src="${gateway.img}" alt="${gateway.name}" onerror="this.src='https://via.placeholder.com/60?text=${gateway.name}'">`;
+                    paymentGateways.appendChild(gatewayElement);
+                });
+
+                paymentPopup.classList.add('active');
+                paymentPopupBackdrop.classList.add('active');
+            });
+    }
+
+    document.querySelectorAll('.primary-cta, .pricing-cta').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const service = button.getAttribute('data-service') || button.getAttribute('data-plan');
+            const amount = parseInt(button.getAttribute('data-amount'));
+            showPaymentPopup(service, amount);
+        });
+    });
+
+    paymentPopupClose.addEventListener('click', () => {
+        paymentPopup.classList.remove('active');
+        paymentPopupBackdrop.classList.remove('active');
+    });
+
+    paymentPopupBackdrop.addEventListener('click', () => {
+        paymentPopup.classList.remove('active');
+        paymentPopupBackdrop.classList.remove('active');
+    });
+
+    // Cookie Consent with sessionStorage
+    const cookieConsent = document.getElementById('cookie-consent');
+    const acceptCookies = document.getElementById('accept-cookies');
+    const declineCookies = document.getElementById('decline-cookies');
+
+    function checkCookieConsent() {
+        try {
+            const consent = sessionStorage.getItem('cookieConsent');
+            if (!consent) {
                 cookieConsent.classList.add('active');
             }
+        } catch (e) {
+            console.warn('sessionStorage not available:', e);
+            cookieConsent.classList.add('active');
         }
+    }
 
-        acceptCookies.addEventListener('click', () => {
-            try {
-                sessionStorage.setItem('cookieConsent', 'accepted');
-                cookieConsent.classList.remove('active');
-            } catch (e) {
-                console.warn('sessionStorage not available:', e);
-                cookieConsent.classList.remove('active');
-            }
-        });
+    acceptCookies.addEventListener('click', () => {
+        try {
+            sessionStorage.setItem('cookieConsent', 'accepted');
+            cookieConsent.classList.remove('active');
+        } catch (e) {
+            console.warn('sessionStorage not available:', e);
+            cookieConsent.classList.remove('active');
+        }
+    });
 
-        declineCookies.addEventListener('click', () => {
-            try {
-                sessionStorage.setItem('cookieConsent', 'declined');
-                cookieConsent.classList.remove('active');
-            } catch (e) {
-                console.warn('sessionStorage not available:', e);
-                cookieConsent.classList.remove('active');
-            }
-        });
+    declineCookies.addEventListener('click', () => {
+        try {
+            sessionStorage.setItem('cookieConsent', 'declined');
+            cookieConsent.classList.remove('active');
+        } catch (e) {
+            console.warn('sessionStorage not available:', e);
+            cookieConsent.classList.remove('active');
+        }
+    });
 
-        window.addEventListener('load', checkCookieConsent);
+    window.addEventListener('load', checkCookieConsent);
 
-        // Contact Form Submission
-        const contactForm = document.getElementById('contact-form');
-        const successMessage = document.querySelector('.contact-form .success-message');
-        const errorMessage = document.querySelector('.contact-form .error-message');
+    // Contact Form Submission
+    const contactForm = document.getElementById('contact-form');
+    const successMessage = document.querySelector('.contact-form .success-message');
+    const errorMessage = document.querySelector('.contact-form .error-message');
 
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
 
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    body: new FormData(contactForm),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                if (response.ok) {
-                    successMessage.style.display = 'block';
-                    contactForm.reset();
-                    setTimeout(() => successMessage.style.display = 'none', 5000);
-                } else {
-                    errorMessage.style.display = 'block';
-                    setTimeout(() => errorMessage.style.display = 'none', 5000);
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
                 }
-            } catch (error) {
+            });
+            if (response.ok) {
+                successMessage.style.display = 'block';
+                contactForm.reset();
+                setTimeout(() => successMessage.style.display = 'none', 5000);
+            } else {
                 errorMessage.style.display = 'block';
                 setTimeout(() => errorMessage.style.display = 'none', 5000);
             }
-        });
+        } catch (error) {
+            errorMessage.style.display = 'block';
+            setTimeout(() => errorMessage.style.display = 'none', 5000);
+        }
+    });
 
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Website Tour Functionality - Fixed
-        const startTourBtn = document.getElementById('start-tour');
-        const sidebarStartTourBtn = document.getElementById('sidebar-start-tour');
-        const tourOverlay = document.getElementById('tour-overlay');
-        const tourPopup = document.getElementById('tour-popup');
-        const tourTitle = document.getElementById('tour-title');
-        const tourDescription = document.getElementById('tour-description');
-        const tourPrevBtn = document.getElementById('tour-prev');
-        const tourNextBtn = document.getElementById('tour-next');
-
-        const tourSteps = [
-            {
-                title: "Welcome to My Website",
-                description: "Let me show you around to help you find what you need.",
-                element: null
-            },
-            {
-                title: "Services Section",
-                description: "Here you can explore my Google Ads, Facebook Ads, and Video Editing services.",
-                element: document.getElementById('services')
-            },
-            {
-                title: "Portfolio Section",
-                description: "Check out my previous work and successful campaigns.",
-                element: document.getElementById('portfolio')
-            },
-            {
-                title: "Pricing Plans",
-                description: "Choose the plan that best fits your needs and budget.",
-                element: document.getElementById('pricing')
-            },
-            {
-                title: "Booking Section",
-                description: "Schedule a free consultation to discuss your project.",
-                element: document.getElementById('booking')
-            },
-            {
-                title: "Contact Information",
-                description: "Get in touch with me via email, WhatsApp, or the contact form.",
-                element: document.getElementById('contact')
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
-        ];
+        });
+    });
 
-        let currentTourStep = 0;
+    // Website Tour Functionality - Fixed
+    const startTourBtn = document.getElementById('start-tour');
+    const sidebarStartTourBtn = document.getElementById('sidebar-start-tour');
+    const tourOverlay = document.getElementById('tour-overlay');
+    const tourPopup = document.getElementById('tour-popup');
+    const tourTitle = document.getElementById('tour-title');
+    const tourDescription = document.getElementById('tour-description');
+    const tourPrevBtn = document.getElementById('tour-prev');
+    const tourNextBtn = document.getElementById('tour-next');
 
-        function startTour() {
-            currentTourStep = 0;
+    const tourSteps = [
+        {
+            title: "Welcome to My Website",
+            description: "Let me show you around to help you find what you need.",
+            element: null
+        },
+        {
+            title: "Services Section",
+            description: "Here you can explore my Google Ads, Facebook Ads, and Video Editing services.",
+            element: document.getElementById('services')
+        },
+        {
+            title: "Portfolio Section",
+            description: "Check out my previous work and successful campaigns.",
+            element: document.getElementById('portfolio')
+        },
+        {
+            title: "Pricing Plans",
+            description: "Choose the plan that best fits your needs and budget.",
+            element: document.getElementById('pricing')
+        },
+        {
+            title: "Booking Section",
+            description: "Schedule a free consultation to discuss your project.",
+            element: document.getElementById('booking')
+        },
+        {
+            title: "Contact Information",
+            description: "Get in touch with me via email, WhatsApp, or the contact form.",
+            element: document.getElementById('contact')
+        }
+    ];
+
+    let currentTourStep = 0;
+
+    function startTour() {
+        currentTourStep = 0;
+        showTourStep();
+        tourOverlay.style.display = 'block';
+        tourPopup.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        tourPopup.style.zIndex = '2001'; // Ensure popup is above everything
+    }
+
+    function showTourStep() {
+        const step = tourSteps[currentTourStep];
+        tourTitle.textContent = step.title;
+        tourDescription.textContent = step.description;
+
+        // Update button states - Fixed for first step
+        tourPrevBtn.style.display = currentTourStep === 0 ? 'none' : 'block';
+        tourNextBtn.style.display = 'block'; // Always show Next except on last
+        tourNextBtn.textContent = currentTourStep === tourSteps.length - 1 ? 'Finish' : 'Next';
+
+        // Remove previous highlight
+        document.querySelectorAll('.tour-highlight').forEach(el => {
+            el.classList.remove('tour-highlight');
+        });
+
+        // Highlight current element if exists
+        if (step.element) {
+            step.element.classList.add('tour-highlight');
+            step.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
+    function nextTourStep() {
+        if (currentTourStep < tourSteps.length - 1) {
+            currentTourStep++;
             showTourStep();
-            tourOverlay.style.display = 'block';
-            tourPopup.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            tourPopup.style.zIndex = '2001'; // Ensure popup is above everything
+        } else {
+            endTour();
         }
+    }
 
-        function showTourStep() {
-            const step = tourSteps[currentTourStep];
-            tourTitle.textContent = step.title;
-            tourDescription.textContent = step.description;
-
-            // Update button states - Fixed for first step
-            tourPrevBtn.style.display = currentTourStep === 0 ? 'none' : 'block';
-            tourNextBtn.style.display = 'block'; // Always show Next except on last
-            tourNextBtn.textContent = currentTourStep === tourSteps.length - 1 ? 'Finish' : 'Next';
-
-            // Remove previous highlight
-            document.querySelectorAll('.tour-highlight').forEach(el => {
-                el.classList.remove('tour-highlight');
-            });
-
-            // Highlight current element if exists
-            if (step.element) {
-                step.element.classList.add('tour-highlight');
-                step.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+    function prevTourStep() {
+        if (currentTourStep > 0) {
+            currentTourStep--;
+            showTourStep();
         }
+    }
 
-        function nextTourStep() {
-            if (currentTourStep < tourSteps.length - 1) {
-                currentTourStep++;
-                showTourStep();
-            } else {
-                endTour();
-            }
+    function endTour() {
+        tourOverlay.style.display = 'none';
+        tourPopup.style.display = 'none';
+        document.body.style.overflow = '';
+        document.querySelectorAll('.tour-highlight').forEach(el => {
+            el.classList.remove('tour-highlight');
+        });
+    }
+
+    startTourBtn.addEventListener('click', startTour);
+    sidebarStartTourBtn.addEventListener('click', startTour);
+    tourNextBtn.addEventListener('click', nextTourStep);
+    tourPrevBtn.addEventListener('click', prevTourStep);
+    tourOverlay.addEventListener('click', endTour);
+
+    // Enhanced Chatbot with New Features
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatbotClose = document.getElementById('chatbot-close');
+    const chatbotMessages = document.getElementById('chatbot-messages');
+    const chatbotInput = document.getElementById('chatbot-input');
+    const chatbotSend = document.getElementById('chatbot-send');
+
+    let chatContext = {
+        userName: null,
+        serviceInterest: null,
+        budgetRange: null,
+        conversationHistory: [],
+        calculatingCost: false,
+        costDetails: {}
+    };
+
+    chatbotResponses = {
+        'greeting': {
+            patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
+            responses: [
+                "Hello! I'm Rudraksh's assistant. How can I help you today?",
+                "Hi there! What can I assist you with?",
+                "Hello! Interested in learning about performance marketing or video editing services?"
+            ],
+            followUps: [
+                {text: "Tell me about services", message: "What services do you offer?"},
+                {text: "View pricing", message: "What are your prices?"},
+                {text: "Book consultation", message: "How can I book a consultation?"}
+            ]
+        },
+        'about_me': {
+            patterns: ['who are you', 'about you', 'tell me about yourself', 'who is rudraksh', 'who is you'],
+            responses: [
+                "I'm Rudraksh Sharma, a performance marketer and video editor from Rajasthan, India. I specialize in Google Ads, Facebook Ads, and video editing. Contact me at +91 7878383739 or info.itsboyrudra@gmail.com. 'Success is not final, failure is not fatal: It is the courage to continue that counts.' - Winston Churchill",
+                "Hi, I'm Rudraksh Sharma, based in Rajasthan, India. I help brands grow with ROI-driven ads and creative video edits. Reach me at +91 7878383739. 'The best way to predict the future is to create it.' - Peter Drucker",
+                "Rudraksh Sharma here! Performance marketer and video editor specializing in Google/Facebook Ads and professional editing. From Rajasthan, India. Phone: +91 7878383739. 'Innovation distinguishes between a leader and a follower.' - Steve Jobs"
+            ],
+            followUps: [
+                {text: "Contact details", message: "What's your number?"},
+                {text: "Get a quote", message: "Can I get a quote?"},
+                {text: "Services", message: "What services do you offer?"},
+                {text: "Call you", message: "Can I call you?"}
+            ]
+        },
+        'contact_number': {
+            patterns: ['number', 'phone', 'call me', 'contact number', 'whatsapp', 'contact you'],
+            responses: [
+                "My contact number is +91 7878383739. You can call or WhatsApp me. Would you like me to initiate a call or message?",
+                "Reach me at +91 7878383739 via call or WhatsApp. I'm in Rajasthan, India. Let me know if you want to connect now!"
+            ],
+            followUps: [
+                {text: "Call now", action: "callNumber"},
+                {text: "WhatsApp message", action: "openWhatsApp"},
+                {text: "Email", action: "openEmail"}
+            ]
+        },
+        'quote': {
+            patterns: ['quote', 'get a quote', 'pricing quote', 'cost estimate', 'how much'],
+            responses: [
+                "For custom quotes, contact me at +91 7878383739. Basic plans start at $349/month. Tell me more about your project for an estimate. 'The only way to do great work is to love what you do.' - Steve Jobs",
+                "Happy to provide a quote! Share details like service type, ad spend, or video length. Base Google/Facebook Ads: $349/month. Video editing: $349 base + extras."
+            ],
+            followUps: [
+                {text: "Estimate cost", message: "Calculate cost for me"},
+                {text: "Call for quote", action: "callNumber"},
+                {text: "View standard pricing", message: "Show me standard pricing"}
+            ]
+        },
+        'calculate_cost': {
+            patterns: ['calculate cost', 'estimate cost', 'how much does it cost', 'cost for', 'price for'],
+            responses: [
+                "Sure, let's calculate a cost estimate. What service are you interested in? (Google Ads, Facebook Ads, Video Editing)",
+                "To estimate cost, tell me the service and details like ad spend or video length."
+            ],
+            followUps: []
+        },
+        'services': {
+            patterns: ['services', 'what do you offer', 'what can you do', 'offerings', 'your services'],
+            responses: [
+                "I offer Google Ads (campaign setup, optimization, ROI tracking), Facebook Ads (funnel strategy, targeting, A/B testing), and Video Editing (Reels, Shorts, effects, subtitles). Which one interests you?",
+                "My services: 1. Google Ads - Data-driven campaigns for max ROI. 2. Facebook Ads - Creative targeting for engagement. 3. Video Editing - Professional edits for social media. Details?"
+            ],
+            followUps: [
+                {text: "Google Ads details", message: "Tell me about Google Ads"},
+                {text: "Facebook Ads details", message: "Tell me about Facebook Ads"},
+                {text: "Video Editing details", message: "Tell me about video editing"},
+                {text: "Cost estimate", message: "Estimate cost for a service"}
+            ]
+        },
+        'google_ads': {
+            patterns: ['google ads', 'google'],
+            responses: [
+                "Google Ads service: Comprehensive setup, keyword research, smart bidding, reporting. Starts at $349/month. Interested in an estimate?"
+            ],
+            followUps: [
+                {text: "Estimate cost", message: "Calculate cost for Google Ads"},
+                {text: "Book consultation", action: "scrollToBooking"}
+            ]
+        },
+        'facebook_ads': {
+            patterns: ['facebook ads', 'facebook', 'meta ads'],
+            responses: [
+                "Facebook Ads: Funnel strategy, lookalike audiences, creative optimization. From $349/month. Need a custom quote?"
+            ],
+            followUps: [
+                {text: "Estimate cost", message: "Calculate cost for Facebook Ads"},
+                {text: "See examples", action: "scrollToPortfolio"}
+            ]
+        },
+        'video_editing': {
+            patterns: ['video editing', 'video', 'editing'],
+            responses: [
+                "Video Editing: For Reels, Shorts, TikTok with effects, subtitles, grading. Base $349 + per video length. Tell me more for cost calc."
+            ],
+            followUps: [
+                {text: "Estimate cost", message: "Calculate cost for video editing"},
+                {text: "Contact for custom", action: "scrollToContact"}
+            ]
+        },
+        'pricing': {
+            patterns: ['pricing', 'prices', 'cost', 'how much', 'plans'],
+            responses: [
+                "Pricing plans: Basic $349/mo (1 campaign), Pro $799/mo (3 campaigns), Premium $1499/mo (unlimited). Custom? Let's calculate."
+            ],
+            followUps: [
+                {text: "Basic details", message: "Tell me about basic plan"},
+                {text: "Pro details", message: "Tell me about pro plan"},
+                {text: "Custom estimate", message: "Calculate custom cost"}
+            ]
+        },
+        'booking': {
+            patterns: ['book', 'consultation', 'schedule', 'appointment'],
+            responses: [
+                "To book a consultation, I can scroll to the booking section or open Calendly. Free 30-min call available."
+            ],
+            followUps: [
+                {text: "Scroll to booking", action: "scrollToBooking"},
+                {text: "Call now", action: "callNumber"}
+            ]
+        },
+        'default': {
+            responses: [
+                "Sorry, I didn't catch that. Ask about me, services, pricing, or booking. Or say 'calculate cost' for estimates."
+            ],
+            followUps: [
+                {text: "About you", message: "Who are you?"},
+                {text: "Services", message: "What services do you offer?"},
+                {text: "Calculate cost", message: "Estimate cost"}
+            ]
         }
+    };
 
-        function prevTourStep() {
-            if (currentTourStep > 0) {
-                currentTourStep--;
-                showTourStep();
-            }
+    // Add event listeners for opening/closing the chatbot (this was missing)
+    chatbotToggle.addEventListener('click', () => {
+        chatbotWindow.classList.toggle('active');
+        if (chatbotWindow.classList.contains('active')) {
+            chatbotInput.focus(); // Focus input for better UX
         }
+    });
 
-        function endTour() {
-            tourOverlay.style.display = 'none';
-            tourPopup.style.display = 'none';
-            document.body.style.overflow = '';
-            document.querySelectorAll('.tour-highlight').forEach(el => {
-                el.classList.remove('tour-highlight');
-            });
+    chatbotClose.addEventListener('click', () => {
+        chatbotWindow.classList.remove('active');
+    });
+
+    // Existing chatbot functions (unchanged except for minor optimizations)
+    function handleAction(action) {
+        switch(action) {
+            case 'callNumber':
+                addMessage("Initiating call to Rudraksh at +91 7878383739...", false);
+                window.location.href = 'tel:+917878383739';
+                break;
+            case 'openWhatsApp':
+                addMessage("Opening WhatsApp to message Rudraksh...", false);
+                window.open('https://wa.me/+917878383739', '_blank');
+                break;
+            case 'openEmail':
+                addMessage("Opening email to info.itsboyrudra@gmail.com...", false);
+                window.location.href = 'mailto:info.itsboyrudra@gmail.com';
+                break;
+            case 'scrollToBooking':
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+                addMessage("Scrolled to booking section!", false);
+                break;
+            case 'scrollToPortfolio':
+                document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+                addMessage("Scrolled to portfolio!", false);
+                break;
+            case 'scrollToContact':
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                addMessage("Scrolled to contact section!", false);
+                break;
+            default:
+                addMessage("Action not recognized.", false);
         }
+    }
 
-        startTourBtn.addEventListener('click', startTour);
-        sidebarStartTourBtn.addEventListener('click', startTour);
-        tourNextBtn.addEventListener('click', nextTourStep);
-        tourPrevBtn.addEventListener('click', prevTourStep);
-        tourOverlay.addEventListener('click', endTour);
+    function showTypingIndicator() {
+        const indicator = document.createElement('div');
+        indicator.className = 'message bot-message typing-indicator';
+        indicator.innerHTML = '<span></span><span></span><span></span>';
+        chatbotMessages.appendChild(indicator);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        return indicator;
+    }
 
-        // Enhanced Chatbot with New Features
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const chatbotClose = document.getElementById('chatbot-close');
-        const chatbotMessages = document.getElementById('chatbot-messages');
-        const chatbotInput = document.getElementById('chatbot-input');
-        const chatbotSend = document.getElementById('chatbot-send');
-
-        let chatContext = {
-            userName: null,
-            serviceInterest: null,
-            budgetRange: null,
-            conversationHistory: [],
-            calculatingCost: false,
-            costDetails: {}
-        };
-
-        chatbotResponses = {
-            'greeting': {
-                patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
-                responses: [
-                    "Hello! I'm Rudraksh's assistant. How can I help you today?",
-                    "Hi there! What can I assist you with?",
-                    "Hello! Interested in learning about performance marketing or video editing services?"
-                ],
-                followUps: [
-                    {text: "Tell me about services", message: "What services do you offer?"},
-                    {text: "View pricing", message: "What are your prices?"},
-                    {text: "Book consultation", message: "How can I book a consultation?"}
-                ]
-            },
-            'about_me': {
-                patterns: ['who are you', 'about you', 'tell me about yourself', 'who is rudraksh', 'who is you'],
-                responses: [
-                    "I'm Rudraksh Sharma, a performance marketer and video editor from Rajasthan, India. I specialize in Google Ads, Facebook Ads, and video editing. Contact me at +91 7878383739 or info.itsboyrudra@gmail.com. 'Success is not final, failure is not fatal: It is the courage to continue that counts.' - Winston Churchill",
-                    "Hi, I'm Rudraksh Sharma, based in Rajasthan, India. I help brands grow with ROI-driven ads and creative video edits. Reach me at +91 7878383739. 'The best way to predict the future is to create it.' - Peter Drucker",
-                    "Rudraksh Sharma here! Performance marketer and video editor specializing in Google/Facebook Ads and professional editing. From Rajasthan, India. Phone: +91 7878383739. 'Innovation distinguishes between a leader and a follower.' - Steve Jobs"
-                ],
-                followUps: [
-                    {text: "Contact details", message: "What's your number?"},
-                    {text: "Get a quote", message: "Can I get a quote?"},
-                    {text: "Services", message: "What services do you offer?"},
-                    {text: "Call you", message: "Can I call you?"}
-                ]
-            },
-            'contact_number': {
-                patterns: ['number', 'phone', 'call me', 'contact number', 'whatsapp', 'contact you'],
-                responses: [
-                    "My contact number is +91 7878383739. You can call or WhatsApp me. Would you like me to initiate a call or message?",
-                    "Reach me at +91 7878383739 via call or WhatsApp. I'm in Rajasthan, India. Let me know if you want to connect now!"
-                ],
-                followUps: [
-                    {text: "Call now", action: "callNumber"},
-                    {text: "WhatsApp message", action: "openWhatsApp"},
-                    {text: "Email", action: "openEmail"}
-                ]
-            },
-            'quote': {
-                patterns: ['quote', 'get a quote', 'pricing quote', 'cost estimate', 'how much'],
-                responses: [
-                    "For custom quotes, contact me at +91 7878383739. Basic plans start at $349/month. Tell me more about your project for an estimate. 'The only way to do great work is to love what you do.' - Steve Jobs",
-                    "Happy to provide a quote! Share details like service type, ad spend, or video length. Base Google/Facebook Ads: $349/month. Video editing: $349 base + extras."
-                ],
-                followUps: [
-                    {text: "Estimate cost", message: "Calculate cost for me"},
-                    {text: "Call for quote", action: "callNumber"},
-                    {text: "View standard pricing", message: "Show me standard pricing"}
-                ]
-            },
-            'calculate_cost': {
-                patterns: ['calculate cost', 'estimate cost', 'how much does it cost', 'cost for', 'price for'],
-                responses: [
-                    "Sure, let's calculate a cost estimate. What service are you interested in? (Google Ads, Facebook Ads, Video Editing)",
-                    "To estimate cost, tell me the service and details like ad spend or video length."
-                ],
-                followUps: []
-            },
-            'services': {
-                patterns: ['services', 'what do you offer', 'what can you do', 'offerings', 'your services'],
-                responses: [
-                    "I offer Google Ads (campaign setup, optimization, ROI tracking), Facebook Ads (funnel strategy, targeting, A/B testing), and Video Editing (Reels, Shorts, effects, subtitles). Which one interests you?",
-                    "My services: 1. Google Ads - Data-driven campaigns for max ROI. 2. Facebook Ads - Creative targeting for engagement. 3. Video Editing - Professional edits for social media. Details?"
-                ],
-                followUps: [
-                    {text: "Google Ads details", message: "Tell me about Google Ads"},
-                    {text: "Facebook Ads details", message: "Tell me about Facebook Ads"},
-                    {text: "Video Editing details", message: "Tell me about video editing"},
-                    {text: "Cost estimate", message: "Estimate cost for a service"}
-                ]
-            },
-            'google_ads': {
-                patterns: ['google ads', 'google'],
-                responses: [
-                    "Google Ads service: Comprehensive setup, keyword research, smart bidding, reporting. Starts at $349/month. Interested in an estimate?"
-                ],
-                followUps: [
-                    {text: "Estimate cost", message: "Calculate cost for Google Ads"},
-                    {text: "Book consultation", action: "scrollToBooking"}
-                ]
-            },
-            'facebook_ads': {
-                patterns: ['facebook ads', 'facebook', 'meta ads'],
-                responses: [
-                    "Facebook Ads: Funnel strategy, lookalike audiences, creative optimization. From $349/month. Need a custom quote?"
-                ],
-                followUps: [
-                    {text: "Estimate cost", message: "Calculate cost for Facebook Ads"},
-                    {text: "See examples", action: "scrollToPortfolio"}
-                ]
-            },
-            'video_editing': {
-                patterns: ['video editing', 'video', 'editing'],
-                responses: [
-                    "Video Editing: For Reels, Shorts, TikTok with effects, subtitles, grading. Base $349 + per video length. Tell me more for cost calc."
-                ],
-                followUps: [
-                    {text: "Estimate cost", message: "Calculate cost for video editing"},
-                    {text: "Contact for custom", action: "scrollToContact"}
-                ]
-            },
-            'pricing': {
-                patterns: ['pricing', 'prices', 'cost', 'how much', 'plans'],
-                responses: [
-                    "Pricing plans: Basic $349/mo (1 campaign), Pro $799/mo (3 campaigns), Premium $1499/mo (unlimited). Custom? Let's calculate."
-                ],
-                followUps: [
-                    {text: "Basic details", message: "Tell me about basic plan"},
-                    {text: "Pro details", message: "Tell me about pro plan"},
-                    {text: "Custom estimate", message: "Calculate custom cost"}
-                ]
-            },
-            'booking': {
-                patterns: ['book', 'consultation', 'schedule', 'appointment'],
-                responses: [
-                    "To book a consultation, I can scroll to the booking section or open Calendly. Free 30-min call available."
-                ],
-                followUps: [
-                    {text: "Scroll to booking", action: "scrollToBooking"},
-                    {text: "Call now", action: "callNumber"}
-                ]
-            },
-            'default': {
-                responses: [
-                    "Sorry, I didn't catch that. Ask about me, services, pricing, or booking. Or say 'calculate cost' for estimates."
-                ],
-                followUps: [
-                    {text: "About you", message: "Who are you?"},
-                    {text: "Services", message: "What services do you offer?"},
-                    {text: "Calculate cost", message: "Estimate cost"}
-                ]
-            }
-        };
-
-        function handleAction(action) {
-            switch(action) {
-                case 'callNumber':
-                    addMessage("Initiating call to Rudraksh at +91 7878383739...", false);
-                    window.location.href = 'tel:+917878383739';
-                    break;
-                case 'openWhatsApp':
-                    addMessage("Opening WhatsApp to message Rudraksh...", false);
-                    window.open('https://wa.me/+917878383739', '_blank');
-                    break;
-                case 'openEmail':
-                    addMessage("Opening email to info.itsboyrudra@gmail.com...", false);
-                    window.location.href = 'mailto:info.itsboyrudra@gmail.com';
-                    break;
-                case 'scrollToBooking':
-                    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Scrolled to booking section!", false);
-                    break;
-                case 'scrollToPortfolio':
-                    document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Scrolled to portfolio!", false);
-                    break;
-                case 'scrollToContact':
-                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Scrolled to contact section!", false);
-                    break;
-                default:
-                    addMessage("Action not recognized.", false);
-            }
+    function removeTypingIndicator(indicator) {
+        if (indicator && indicator.parentNode) {
+            indicator.parentNode.removeChild(indicator);
         }
+    }
 
-        function showTypingIndicator() {
-            const indicator = document.createElement('div');
-            indicator.className = 'message bot-message typing-indicator';
-            indicator.innerHTML = '<span></span><span></span><span></span>';
-            chatbotMessages.appendChild(indicator);
+    function addMessage(message, isUser = false, delay = 0) {
+        setTimeout(() => {
+            const div = document.createElement('div');
+            div.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            div.textContent = message;
+            chatbotMessages.appendChild(div);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            return indicator;
-        }
+        }, delay);
+    }
 
-        function removeTypingIndicator(indicator) {
-            if (indicator) chatbotMessages.removeChild(indicator);
-        }
+    function addQuickReplies(replies) {
+        const container = document.createElement('div');
+        container.className = 'quick-replies';
+        replies.forEach(reply => {
+            const btn = document.createElement('div');
+            btn.className = 'quick-reply';
+            btn.textContent = reply.text;
+            if (reply.action) btn.dataset.action = reply.action;
+            if (reply.message) btn.dataset.message = reply.message;
+            container.appendChild(btn);
+        });
+        chatbotMessages.appendChild(container);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-        function addMessage(message, isUser = false, delay = 0) {
-            setTimeout(() => {
-                const div = document.createElement('div');
-                div.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-                div.textContent = message;
-                chatbotMessages.appendChild(div);
-                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-            }, delay);
-        }
-
-        function addQuickReplies(replies) {
-            const container = document.createElement('div');
-            container.className = 'quick-replies';
-            replies.forEach(reply => {
-                const btn = document.createElement('div');
-                btn.className = 'quick-reply';
-                btn.textContent = reply.text;
-                if (reply.action) btn.dataset.action = reply.action;
-                if (reply.message) btn.dataset.message = reply.message;
-                container.appendChild(btn);
-            });
-            chatbotMessages.appendChild(container);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-
-            container.querySelectorAll('.quick-reply').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (btn.dataset.action) handleAction(btn.dataset.action);
-                    else if (btn.dataset.message) {
-                        chatbotInput.value = btn.dataset.message;
-                        handleUserInput();
-                    }
-                });
-            });
-        }
-
-        function generateResponse(message) {
-            const lower = message.toLowerCase();
-            for (const [key, value] of Object.entries(chatbotResponses)) {
-                if (value.patterns.some(p => lower.includes(p))) {
-                    return {
-                        response: value.responses[Math.floor(Math.random() * value.responses.length)],
-                        followUps: value.followUps || []
-                    };
+        container.querySelectorAll('.quick-reply').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (btn.dataset.action) handleAction(btn.dataset.action);
+                else if (btn.dataset.message) {
+                    chatbotInput.value = btn.dataset.message;
+                    handleUserInput();
                 }
-            }
-            return {
-                response: chatbotResponses.default.responses[Math.floor(Math.random() * chatbotResponses.default.responses.length)],
-                followUps: chatbotResponses.default.followUps || []
-            };
-        }
+            });
+        });
+    }
 
-        function handleCostCalculation(message) {
-            if (!chatContext.serviceInterest) {
-                chatContext.serviceInterest = message.toLowerCase().includes('google') ? 'google-ads' : message.toLowerCase().includes('facebook') ? 'facebook-ads' : 'video-editing';
-                addMessage("Got it! For " + chatContext.serviceInterest + ". What's your estimated ad spend or video length (e.g., 1000 for $1000 spend, or 5 for 5-min video)?", false);
+    function generateResponse(message) {
+        const lower = message.toLowerCase();
+        for (const [key, value] of Object.entries(chatbotResponses)) {
+            if (value.patterns.some(p => lower.includes(p))) {
+                return {
+                    response: value.responses[Math.floor(Math.random() * value.responses.length)],
+                    followUps: value.followUps || []
+                };
+            }
+        }
+        return {
+            response: chatbotResponses.default.responses[Math.floor(Math.random() * chatbotResponses.default.responses.length)],
+            followUps: chatbotResponses.default.followUps || []
+        };
+    }
+
+    function handleCostCalculation(message) {
+        if (!chatContext.serviceInterest) {
+            chatContext.serviceInterest = message.toLowerCase().includes('google') ? 'google-ads' : message.toLowerCase().includes('facebook') ? 'facebook-ads' : 'video-editing';
+            addMessage("Got it! For " + chatContext.serviceInterest + ". What's your estimated ad spend or video length (e.g., 1000 for $1000 spend, or 5 for 5-min video)?", false);
+            chatContext.calculatingCost = true;
+            return;
+        }
+        const num = parseInt(message);
+        if (!isNaN(num)) {
+            let cost = 349; // base
+            if (chatContext.serviceInterest === 'google-ads' || chatContext.serviceInterest === 'facebook-ads') {
+                cost += num * 0.1; // 10% of ad spend
+                addMessage(`Estimated cost for ${chatContext.serviceInterest}: $${cost.toFixed(2)} (base $349 + 10% of $${num} spend). Contact for exact quote?`, false);
+            } else {
+                cost += num * 50; // $50 per min
+                addMessage(`Estimated cost for video editing: $${cost.toFixed(2)} (base $349 + $50/min for ${num} min). Need more details?`, false);
+            }
+            chatContext.calculatingCost = false;
+            addQuickReplies([{text: "Contact now", action: "callNumber"}, {text: "Message", action: "openWhatsApp"}]);
+        } else {
+            addMessage("Please provide a number for spend or length.", false);
+        }
+    }
+
+    function handleUserInput() {
+        const message = chatbotInput.value.trim();
+        if (!message) return;
+        addMessage(message, true);
+        chatbotInput.value = '';
+
+        const typing = showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator(typing);
+            if (chatContext.calculatingCost) {
+                handleCostCalculation(message);
+            } else if (message.toLowerCase().includes('calculate cost') || message.toLowerCase().includes('estimate cost')) {
                 chatContext.calculatingCost = true;
-                return;
-            }
-            const num = parseInt(message);
-            if (!isNaN(num)) {
-                let cost = 349; // base
-                if (chatContext.serviceInterest === 'google-ads' || chatContext.serviceInterest === 'facebook-ads') {
-                    cost += num * 0.1; // 10% of ad spend
-                    addMessage(`Estimated cost for ${chatContext.serviceInterest}: $${cost.toFixed(2)} (base $349 + 10% of $${num} spend). Contact for exact quote?`, false);
-                } else {
-                    cost += num * 50; // $50 per min
-                    addMessage(`Estimated cost for video editing: $${cost.toFixed(2)} (base $349 + $50/min for ${num} min). Need more details?`, false);
-                }
-                chatContext.calculatingCost = false;
-                addQuickReplies([{text: "Contact now", action: "callNumber"}, {text: "Message", action: "openWhatsApp"}]);
+                addMessage("Sure! Which service? (Google Ads, Facebook Ads, Video Editing)", false);
             } else {
-                addMessage("Please provide a number for spend or length.", false);
+                const {response, followUps} = generateResponse(message);
+                addMessage(response);
+                if (followUps.length) addQuickReplies(followUps);
             }
-        }
+        }, 1000 + Math.random() * 1000);
+    }
 
-        function handleUserInput() {
-            const message = chatbotInput.value.trim();
-            if (!message) return;
-            addMessage(message, true);
-            chatbotInput.value = '';
-
-            const typing = showTypingIndicator();
-            setTimeout(() => {
-                removeTypingIndicator(typing);
-                if (chatContext.calculatingCost) {
-                    handleCostCalculation(message);
-                } else if (message.toLowerCase().includes('calculate cost') || message.toLowerCase().includes('estimate cost')) {
-                    chatContext.calculatingCost = true;
-                    addMessage("Sure! Which service? (Google Ads, Facebook Ads, Video Editing)", false);
-                } else {
-                    const {response, followUps} = generateResponse(message);
-                    addMessage(response);
-                    if (followUps.length) addQuickReplies(followUps);
-                }
-            }, 1000 + Math.random() * 1000);
-        }
-
-        chatbotSend.addEventListener('click', handleUserInput);
-        chatbotInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleUserInput(); });
-    </script>
+    chatbotSend.addEventListener('click', handleUserInput);
+    chatbotInput.addEventListener('keypress', e => { if (e.key === 'Enter') handleUserInput(); });
+</script>
 </body>
 </html>
