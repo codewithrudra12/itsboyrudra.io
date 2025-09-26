@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Advertising Best Practices | Rudraksh Sharma</title>
+    <meta name="description" content="Master TikTok advertising with Rudraksh Sharma’s expert guide. Learn best practices to create engaging ads, target audiences, and maximize ROI on TikTok." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-tiktok-advertising" />
+    <meta property="og:title" content="TikTok Advertising Best Practices | Rudraksh Sharma" />
+    <meta property="og:description" content="Master TikTok advertising with Rudraksh Sharma’s expert guide. Learn best practices to create engaging ads, target audiences, and maximize ROI on TikTok." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/tiktok-advertising.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-tiktok-advertising" />
+    <meta property="twitter:title" content="TikTok Advertising Best Practices | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Master TikTok advertising with Rudraksh Sharma’s expert guide. Learn best practices to create engaging ads, target audiences, and maximize ROI on TikTok." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/tiktok-advertising.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">TikTok Advertising Best Practices</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>January 25, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>12 min read</span>
+                </div>
+            </div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWG4LQLBIbGIMzE2jsXk-72UE3dBSyhuSpBQ&s" alt="TikTok Advertising Best Practices" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to TikTok Advertising</h2>
+                <p>TikTok has become a powerhouse for advertising, offering brands a unique platform to engage with a young, creative audience through short-form video content. With its algorithm-driven content discovery, TikTok ads can achieve viral reach and high engagement. In this guide, I’ll share best practices to create effective TikTok ad campaigns that maximize ROI and resonate with audiences.</p>
+                <p>Studies show that TikTok ads can achieve up to 20% higher engagement rates compared to other social platforms. Whether you’re a small business or a global brand, these strategies will help you succeed on TikTok.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">20%</div>
+                        <div class="stat-label">Higher engagement rates for TikTok ads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">70%</div>
+                        <div class="stat-label">Of TikTok users discover brands via ads</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Of TikTok ads drive brand recall</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Understanding TikTok’s Audience</h2>
+                <p>TikTok’s user base is predominantly Gen Z and Millennials, making it ideal for brands targeting younger demographics. Understanding their preferences is key to creating effective ads.</p>
+                
+                <h3>Audience Insights:</h3>
+                <ul>
+                    <li><strong>Demographics:</strong> 60% of users are aged 16-34</li>
+                    <li><strong>Behavior:</strong> Users value authenticity, creativity, and humor</li>
+                    <li><strong>Content Preferences:</strong> Short, engaging, and trend-driven videos</li>
+                    <li><strong>Engagement:</strong> High interaction with challenges and hashtags</li>
+                </ul>
+                
+                <p>Tailor your ads to align with TikTok’s fun and creative culture for better results.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use TikTok’s Analytics to study audience behavior and refine your targeting strategy.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Choosing the Right Ad Format</h2>
+                <p>TikTok offers various ad formats to suit different campaign goals. Selecting the right one is critical for success.</p>
+                
+                <h3>Popular Ad Formats:</h3>
+                <ul>
+                    <li><strong>In-Feed Ads:</strong> Native ads that blend into users’ feeds</li>
+                    <li><strong>TopView Ads:</strong> Prominent ads shown when users open TikTok</li>
+                    <li><strong>Branded Hashtag Challenges:</strong> Encourage user-generated content</li>
+                    <li><strong>Branded Effects:</strong> Custom filters or AR effects for engagement</li>
+                    <li><strong>Spark Ads:</strong> Amplify existing organic content</li>
+                </ul>
+                
+                <p>Choose formats based on your goals, such as awareness (TopView) or engagement (Hashtag Challenges).</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Start with In-Feed Ads for cost-effective testing before scaling to premium formats like TopView.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Creating Engaging Ad Content</h2>
+                <p>TikTok ads thrive on authenticity and creativity. Avoid overly polished content and focus on relatable, trend-driven videos.</p>
+                
+                <h3>Content Creation Tips:</h3>
+                <ul>
+                    <li><strong>Hook in 3 Seconds:</strong> Grab attention with a strong opening</li>
+                    <li><strong>Use Trends:</strong> Incorporate popular sounds, effects, or challenges</li>
+                    <li><strong>Keep It Short:</strong> Aim for 15-30 second ads</li>
+                    <li><strong>Authentic Voice:</strong> Use casual, relatable language</li>
+                    <li><strong>Strong Visuals:</strong> Prioritize vibrant colors and dynamic edits</li>
+                </ul>
+                
+                <p>Engaging content can increase click-through rates by up to 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Browse TikTok’s For You Page to identify trending sounds and formats to inspire your ad creative.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Targeting and Optimization</h2>
+                <p>Effective targeting ensures your ads reach the right audience, while optimization maximizes performance.</p>
+                
+                <h3>Targeting and Optimization Strategies:</h3>
+                <ul>
+                    <li><strong>Interest-Based Targeting:</strong> Target users based on their interests</li>
+                    <li><strong>Lookalike Audiences:</strong> Reach users similar to your existing customers</li>
+                    <li><strong>A/B Testing:</strong> Test different creatives and audiences</li>
+                    <li><strong>Bid Optimization:</strong> Use automated bidding for cost efficiency</li>
+                    <li><strong>Retargeting:</strong> Re-engage users who interacted with your ads</li>
+                </ul>
+                
+                <p>Precise targeting can reduce ad spend waste by up to 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use TikTok’s Pixel to track user interactions and create retargeting campaigns for higher conversions.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Leveraging TikTok Trends</h2>
+                <p>TikTok’s algorithm favors content that aligns with current trends, making trend-driven ads highly effective.</p>
+                
+                <h3>Trend Strategies:</h3>
+                <ul>
+                    <li><strong>Hashtag Challenges:</strong> Create or join branded challenges</li>
+                    <li><strong>Popular Sounds:</strong> Use trending audio tracks for relatability</li>
+                    <li><strong>Influencer Collabs:</strong> Partner with creators to amplify reach</li>
+                    <li><strong>Viral Formats:</strong> Replicate popular video styles or memes</li>
+                </ul>
+                
+                <p>Trend-based ads can boost engagement by up to 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Monitor TikTok’s Creative Center to stay updated on trending hashtags and sounds for your ads.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Budgeting for TikTok Ads</h2>
+                <p>Effective budgeting ensures you maximize ROI without overspending.</p>
+                
+                <h3>Budgeting Tips:</h3>
+                <ul>
+                    <li><strong>Test Small:</strong> Start with a low daily budget to test performance</li>
+                    <li><strong>Scale Gradually:</strong> Increase budgets for high-performing ads</li>
+                    <li><strong>Use CPM/CPV:</strong> Opt for cost-per-mille or cost-per-view for awareness goals</li>
+                    <li><strong>Seasonal Adjustments:</strong> Boost budgets during peak seasons</li>
+                </ul>
+                
+                <p>Strategic budgeting can improve ad efficiency by up to 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use TikTok’s Ads Manager to set budget caps and monitor spend in real-time.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Measuring Ad Performance</h2>
+                <p>Tracking key metrics helps you evaluate and optimize your TikTok ad campaigns.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Impressions:</strong> Number of times your ad is viewed</li>
+                    <li><strong>Click-Through Rate (CTR):</strong> Percentage of users clicking your ad</li>
+                    <li><strong>Engagement Rate:</strong> Likes, comments, and shares</li>
+                    <li><strong>Conversion Rate:</strong> Actions taken (e.g., purchases, sign-ups)</li>
+                    <li><strong>Cost-Per-Action (CPA):</strong> Cost of each conversion</li>
+                </ul>
+                
+                <p>Use TikTok’s Ads Manager to track these metrics and refine your strategy.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Integrate TikTok Pixel with Google Analytics for deeper insights into user behavior post-ad interaction.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Avoiding Common TikTok Ad Mistakes</h2>
+                <p>Avoid these pitfalls to ensure your TikTok ads are effective and engaging.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Overly Polished Content:</strong> Avoid ads that feel too corporate</li>
+                    <li><strong>Ignoring Trends:</strong> Missing out on viral sounds or formats</li>
+                    <li><strong>Poor Targeting:</strong> Targeting too broad or irrelevant audiences</li>
+                    <li><strong>Long Videos:</strong> Ads longer than 30 seconds lose engagement</li>
+                    <li><strong>Weak CTAs:</strong> Unclear calls-to-action reduce conversions</li>
+                </ul>
+                
+                <p>Addressing these issues ensures your ads resonate with TikTok’s audience.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test multiple ad variations with different CTAs to identify what drives the most conversions.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>TikTok advertising offers brands a unique opportunity to connect with a young, engaged audience through creative and trend-driven content. By understanding your audience, choosing the right ad formats, leveraging trends, and optimizing budgets, you can create impactful campaigns that drive engagement and conversions. Avoiding common mistakes and tracking performance ensures your TikTok ads remain effective and scalable.</p>
+                <p>Whether you’re launching a new product or building brand awareness, these best practices will help you succeed on TikTok. Start implementing these strategies today to elevate your advertising game.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert TikTok Advertising?</h2>
+                <p>Looking to create viral TikTok ad campaigns that drive results? I specialize in crafting high-performance ads tailored to your brand. Let’s boost your TikTok presence together.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
