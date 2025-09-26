@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storyboarding for Video Projects | Rudraksh Sharma</title>
+    <meta name="description" content="Master storyboarding for video projects with Rudraksh Sharma’s expert guide. Learn techniques, tools, and best practices to create compelling video narratives." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-storyboarding-for-video-projects" />
+    <meta property="og:title" content="Storyboarding for Video Projects | Rudraksh Sharma" />
+    <meta property="og:description" content="Master storyboarding for video projects with Rudraksh Sharma’s expert guide. Learn techniques, tools, and best practices to create compelling video narratives." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/storyboarding-for-video-projects.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-storyboarding-for-video-projects" />
+    <meta property="twitter:title" content="Storyboarding for Video Projects | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Master storyboarding for video projects with Rudraksh Sharma’s expert guide. Learn techniques, tools, and best practices to create compelling video narratives." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/storyboarding-for-video-projects.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Storyboarding for Video Projects</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>November 10, 2024</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>8 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg" alt="Storyboarding for Video Projects" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Storyboarding</h2>
+                <p>Storyboarding is the blueprint for video projects, guiding creators from concept to execution with clear visuals and narrative structure. This guide covers techniques, tools, and best practices to create effective storyboards for compelling videos.</p>
+                <p>Effective storyboarding can reduce production time by up to 20%. Mastering this skill is essential for filmmakers, marketers, and content creators aiming to streamline their video projects.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">20%</div>
+                        <div class="stat-label">Reduction in production time</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">75%</div>
+                        <div class="stat-label">Of directors use storyboards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Increase in team alignment</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. What is Storyboarding?</h2>
+                <p>Storyboarding is the process of visually planning a video through sketches or digital drawings, outlining shots, angles, and transitions to tell a cohesive story.</p>
+                
+                <h3>Key Components:</h3>
+                <ul>
+                    <li><strong>Visual Frames:</strong> Sketches of each shot or scene</li>
+                    <li><strong>Camera Angles:</strong> Notes on perspectives and movements</li>
+                    <li><strong>Dialogue and Narration:</strong> Key audio elements</li>
+                    <li><strong>Timing and Transitions:</strong> Pacing and flow between shots</li>
+                </ul>
+                
+                <p>Storyboarding improves project clarity by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Include notes on camera angles to guide cinematographers effectively.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Benefits of Storyboarding</h2>
+                <p>Storyboarding streamlines production, enhances communication, and ensures creative vision alignment.</p>
+                
+                <h3>Key Benefits:</h3>
+                <ul>
+                    <li><strong>Clear Vision:</strong> Aligns team on creative direction</li>
+                    <li><strong>Time Savings:</strong> Reduces on-set improvisation</li>
+                    <li><strong>Cost Efficiency:</strong> Minimizes reshoots and edits</li>
+                    <li><strong>Creative Control:</strong> Ensures story consistency</li>
+                </ul>
+                
+                <p>Storyboarding can cut production costs by 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Share storyboards with stakeholders early to get feedback.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Tools for Storyboarding</h2>
+                <p>Modern tools make storyboarding accessible for both beginners and professionals.</p>
+                
+                <h3>Popular Tools:</h3>
+                <ul>
+                    <li><strong>Adobe Photoshop:</strong> For detailed digital storyboards</li>
+                    <li><strong>Storyboard That:</strong> User-friendly online platform</li>
+                    <li><strong>Canva:</strong> Templates for quick storyboards</li>
+                    <li><strong>Boords:</strong> Collaborative tool with animatic features</li>
+                    <li><strong>Procreate:</strong> Ideal for hand-drawn digital boards</li>
+                </ul>
+                
+                <p>Using digital tools can speed up storyboarding by 30%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Try Boords for collaborative storyboarding with real-time updates.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Creating an Effective Storyboard</h2>
+                <p>Effective storyboards balance visuals, narrative, and technical details.</p>
+                
+                <h3>Creation Tips:</h3>
+                <ul>
+                    <li><strong>Start with a Script:</strong> Base your storyboard on a clear script</li>
+                    <li><strong>Sketch Key Shots:</strong> Focus on pivotal scenes first</li>
+                    <li><strong>Use Arrows:</strong> Indicate camera or character movement</li>
+                    <li><strong>Add Notes:</strong> Include details on lighting, sound, or effects</li>
+                </ul>
+                
+                <p>Well-crafted storyboards improve production efficiency by 20%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use simple sketches to convey ideas; perfection isn’t necessary.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Storyboarding for Different Video Types</h2>
+                <p>Storyboarding varies depending on the video’s purpose and format.</p>
+                
+                <h3>Video Type Tips:</h3>
+                <ul>
+                    <li><strong>Commercials:</strong> Focus on brand message and quick pacing</li>
+                    <li><strong>Films:</strong> Emphasize narrative flow and emotional beats</li>
+                    <li><strong>Social Media:</strong> Prioritize short, attention-grabbing visuals</li>
+                    <li><strong>Animations:</strong> Detail character movements and transitions</li>
+                </ul>
+                
+                <p>Tailored storyboards increase project success by 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Adjust storyboard complexity based on the video’s runtime.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Collaborating with Teams</h2>
+                <p>Storyboarding fosters collaboration among directors, cinematographers, and editors.</p>
+                
+                <h3>Collaboration Tips:</h3>
+                <ul>
+                    <li><strong>Share Early:</strong> Distribute drafts for team input</li>
+                    <li><strong>Use Digital Platforms:</strong> Enable real-time feedback</li>
+                    <li><strong>Clarify Roles:</strong> Assign tasks based on storyboard elements</li>
+                    <li><strong>Iterate:</strong> Revise based on team suggestions</li>
+                </ul>
+                
+                <p>Collaborative storyboarding boosts team alignment by 25%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use cloud-based tools like Boords for seamless team collaboration.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Storyboarding Mistakes to Avoid</h2>
+                <p>Avoid these pitfalls to create effective and actionable storyboards.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>Overcomplicating Visuals:</strong> Too many details slow production</li>
+                    <li><strong>Ignoring Timing:</strong> Not accounting for scene duration</li>
+                    <li><strong>Lack of Clarity:</strong> Vague sketches or missing notes</li>
+                    <li><strong>Skipping Feedback:</strong> Not consulting the production team</li>
+                </ul>
+                
+                <p>Avoiding these mistakes can streamline production by 15%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Keep storyboards simple and focused for maximum clarity.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Measuring Storyboard Effectiveness</h2>
+                <p>Evaluating storyboards ensures they meet project goals and streamline production.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Team Alignment:</strong> Feedback on clarity and usability</li>
+                    <li><strong>Production Efficiency:</strong> Time saved during filming</li>
+                    <li><strong>Revision Rate:</strong> Frequency of storyboard changes</li>
+                    <li><strong>Final Output Quality:</strong> Alignment with creative vision</li>
+                </ul>
+                
+                <p>Use feedback loops to refine storyboards for future projects.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Review storyboards post-production to identify improvement areas.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Storyboarding is a vital step in video production, providing a clear roadmap for creative and technical teams. By using the right tools, following best practices, and collaborating effectively, you can create storyboards that streamline production and enhance video quality. Avoid common mistakes and measure effectiveness to keep improving. Start storyboarding today to bring your video projects to life.</p>
+                <p>Whether you’re crafting commercials or films, these strategies will elevate your work. Let’s create compelling video narratives together.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Professional Storyboarding?</h2>
+                <p>Looking to create impactful video storyboards? I specialize in crafting storyboards that align teams and bring visions to life. Let’s get started.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
