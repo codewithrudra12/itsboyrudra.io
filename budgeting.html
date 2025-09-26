@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budgeting for Digital Marketing Campaigns | Rudraksh Sharma</title>
+    <meta name="description" content="Learn how to budget effectively for digital marketing campaigns with Rudraksh Sharma’s expert guide. Discover strategies to allocate funds, optimize ad spend, and maximize ROI." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-budgeting-digital-marketing" />
+    <meta property="og:title" content="Budgeting for Digital Marketing Campaigns | Rudraksh Sharma" />
+    <meta property="og:description" content="Learn how to budget effectively for digital marketing campaigns with Rudraksh Sharma’s expert guide. Discover strategies to allocate funds, optimize ad spend, and maximize ROI." />
+    <meta property="og:image" content="https://i.ibb.co/6nLbM8c/digital-marketing-budgeting.jpg" />
+
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/blog-budgeting-digital-marketing" />
+    <meta property="twitter:title" content="Budgeting for Digital Marketing Campaigns | Rudraksh Sharma" />
+    <meta property="twitter:description" content="Learn how to budget effectively for digital marketing campaigns with Rudraksh Sharma’s expert guide. Discover strategies to allocate funds, optimize ad spend, and maximize ROI." />
+    <meta property="twitter:image" content="https://i.ibb.co/6nLbM8c/digital-marketing-budgeting.jpg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/hRMdbksS/IMG-20250530-180250.jpg" style="border: 2px solid black; border-radius: 100%;">
+    
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Blog Content */
+        .blog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .blog-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-size: 2.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .blog-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .blog-content {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 3rem;
+            border: 1px solid var(--card-border);
+        }
+
+        .blog-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .blog-section h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .blog-section h3 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+        }
+
+        .blog-section p {
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section ul, .blog-section ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-section li {
+            margin-bottom: 0.8rem;
+        }
+
+        .key-takeaway {
+            background: rgba(58, 134, 255, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .key-takeaway h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+            background: var(--bg-darker);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--card-border);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .conclusion {
+            background: rgba(58, 134, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--card-border);
+        }
+
+        .conclusion h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(58, 134, 255, 0.05));
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 5% 2rem;
+            border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-col p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+
+        /* Improved Social Media Icons */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+
+        .social-link:hover {
+            background: var(--accent);
+            color: var(--bg-darker);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Notification Pop-up Styling */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent);
+            color: var(--text-primary);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            font-size: 0.9rem;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .notification::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            right: 20px;
+            border: 8px solid transparent;
+            border-top-color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-title {
+                font-size: 2rem;
+            }
+            
+            .blog-content {
+                padding: 1.5rem;
+            }
+            
+            .stat-box {
+                flex-direction: column;
+            }
+            
+            .blog-hero-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .blog-container {
+                padding: 1rem;
+            }
+            
+            .blog-title {
+                font-size: 1.8rem;
+            }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
+        <ul class="nav-links">
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+            <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1 class="blog-title">Budgeting for Digital Marketing Campaigns</h1>
+            <div class="blog-meta">
+                <div class="blog-meta-item">
+                    <i class="fas fa-user"></i>
+                    <span>Rudraksh Sharma</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-calendar"></i>
+                    <span>February 10, 2025</span>
+                </div>
+                <div class="blog-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>15 min read</span>
+                </div>
+            </div>
+            <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg" alt="Budgeting for Digital Marketing Campaigns" class="blog-hero-image">
+        </div>
+
+        <div class="blog-content">
+            <div class="blog-section">
+                <h2>Introduction to Budgeting for Digital Marketing</h2>
+                <p>Effective budgeting is the backbone of successful digital marketing campaigns. Whether you're running ads on Google, Facebook, or TikTok, a well-planned budget ensures optimal resource allocation and maximum return on investment (ROI). In this guide, I’ll walk you through strategies to create, manage, and optimize your digital marketing budget to achieve your brand’s goals.</p>
+                <p>Studies show that businesses with structured digital marketing budgets see up to 30% higher ROI compared to those without. From small startups to large enterprises, understanding how to allocate funds strategically can make or break your campaign’s success.</p>
+                
+                <div class="stat-box">
+                    <div class="stat-item">
+                        <div class="stat-number">30%</div>
+                        <div class="stat-label">Higher ROI with structured budgets</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">65%</div>
+                        <div class="stat-label">Of marketers prioritize budget optimization</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">80%</div>
+                        <div class="stat-label">Of campaigns fail without clear budgeting</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>1. Setting Clear Campaign Goals</h2>
+                <p>Before allocating funds, define clear objectives for your campaign. Are you aiming for brand awareness, lead generation, or direct sales? Your goals will shape your budget priorities.</p>
+                
+                <h3>Common Goals and Budget Implications:</h3>
+                <ul>
+                    <li><strong>Brand Awareness:</strong> Focus on reach and impressions (e.g., video ads, social media)</li>
+                    <li><strong>Lead Generation:</strong> Invest in targeted ads and landing pages</li>
+                    <li><strong>Sales/Conversions:</strong> Prioritize retargeting and conversion-optimized campaigns</li>
+                    <li><strong>Engagement:</strong> Allocate funds for interactive content like polls or stories</li>
+                </ul>
+                
+                <p>Aligning your budget with specific goals ensures efficient spending and measurable results.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use SMART goals (Specific, Measurable, Achievable, Relevant, Time-bound) to define your campaign objectives and guide budget allocation.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>2. Understanding Your Audience</h2>
+                <p>Knowing your target audience is critical for budgeting. Detailed audience research helps you allocate funds to the most effective platforms and ad formats.</p>
+                
+                <h3>Audience Research Tips:</h3>
+                <ul>
+                    <li><strong>Demographics:</strong> Age, gender, location, and income level</li>
+                    <li><strong>Behavior:</strong> Online habits, purchasing patterns, and interests</li>
+                    <li><strong>Platform Preferences:</strong> Where does your audience spend time? (e.g., Instagram, LinkedIn)</li>
+                    <li><strong>Device Usage:</strong> Mobile vs. desktop for ad optimization</li>
+                </ul>
+                
+                <p>For example, a Gen Z audience may require a larger budget for TikTok ads, while B2B campaigns might focus on LinkedIn.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use tools like Google Analytics or Facebook Audience Insights to gather data and refine your audience targeting.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>3. Choosing the Right Platforms</h2>
+                <p>Not all platforms deliver the same results. Your budget should prioritize platforms that align with your audience and goals.</p>
+                
+                <h3>Popular Platforms and Budget Considerations:</h3>
+                <ul>
+                    <li><strong>Google Ads:</strong> Great for search and display ads, higher cost-per-click (CPC)</li>
+                    <li><strong>Facebook/Instagram:</strong> Cost-effective for social engagement and retargeting</li>
+                    <li><strong>TikTok:</strong> Ideal for viral, short-form content with younger audiences</li>
+                    <li><strong>LinkedIn:</strong> Higher costs but effective for B2B and professional targeting</li>
+                    <li><strong>YouTube:</strong> Strong for video ads and storytelling</li>
+                </ul>
+                
+                <p>Start with 1-2 platforms and scale as you analyze performance.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Test small budgets on multiple platforms to identify which delivers the best ROI before scaling up.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>4. Allocating Your Budget</h2>
+                <p>A balanced budget covers creative production, ad spend, and analytics. A common approach is the 70-20-10 rule.</p>
+                
+                <h3>70-20-10 Budget Allocation:</h3>
+                <ul>
+                    <li><strong>70% Ad Spend:</strong> Core advertising costs (e.g., CPC, CPM)</li>
+                    <li><strong>20% Creative Production:</strong> Content creation (e.g., video editing, graphics)</li>
+                    <li><strong>10% Tools and Analytics:</strong> Tracking and optimization tools</li>
+                </ul>
+                
+                <p>Adjust this ratio based on your campaign’s needs and scale.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use budget calculators like Google Ads’ Keyword Planner to estimate ad spend and optimize allocations.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>5. Optimizing Ad Spend for ROI</h2>
+                <p>Maximizing ROI requires continuous monitoring and optimization of your ad spend.</p>
+                
+                <h3>Optimization Strategies:</h3>
+                <ul>
+                    <li><strong>A/B Testing:</strong> Test different ad creatives and audiences</li>
+                    <li><strong>Bid Adjustments:</strong> Optimize bids for high-performing keywords or placements</li>
+                    <li><strong>Retargeting:</strong> Re-engage users who interacted but didn’t convert</li>
+                    <li><strong>Negative Keywords:</strong> Exclude irrelevant terms to reduce wasted spend</li>
+                    <li><strong>Frequency Capping:</strong> Limit ad impressions to avoid overspending</li>
+                </ul>
+                
+                <p>Regular optimization can improve campaign performance by up to 40%.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Use Google Ads’ automated bidding strategies like Target CPA to optimize for conversions within your budget.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>6. Tracking and Measuring Success</h2>
+                <p>Tracking performance is essential to ensure your budget is well-spent.</p>
+                
+                <h3>Key Metrics to Monitor:</h3>
+                <ul>
+                    <li><strong>Cost-Per-Click (CPC):</strong> Cost of each ad click</li>
+                    <li><strong>Cost-Per-Mille (CPM):</strong> Cost per thousand impressions</li>
+                    <li><strong>Conversion Rate:</strong> Percentage of users taking desired actions</li>
+                    <li><strong>Return on Ad Spend (ROAS):</strong> Revenue generated per dollar spent</li>
+                    <li><strong>Click-Through Rate (CTR):</strong> Percentage of users clicking your ad</li>
+                </ul>
+                
+                <p>Use tools like Google Analytics, Facebook Ads Manager, or HubSpot to track these metrics.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Set up conversion tracking in Google Ads or Facebook Pixel to measure ROAS accurately.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>7. Common Budgeting Mistakes to Avoid</h2>
+                <p>Avoid these pitfalls to ensure your budget is used effectively.</p>
+                
+                <h3>Common Mistakes:</h3>
+                <ul>
+                    <li><strong>No Clear Goals:</strong> Vague objectives lead to wasted spend</li>
+                    <li><strong>Over-Spending Early:</strong> Exhausting budget before optimizing</li>
+                    <li><strong>Ignoring Analytics:</strong> Failing to track performance metrics</li>
+                    <li><strong>Neglecting Creative Quality:</strong> Poor creatives reduce ad effectiveness</li>
+                    <li><strong>Spreading Budget Too Thin:</strong> Diluting funds across too many platforms</li>
+                </ul>
+                
+                <p>Addressing these issues ensures your budget drives meaningful results.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Start with a small test budget to validate your strategy before committing to larger spends.</p>
+                </div>
+            </div>
+
+            <div class="blog-section">
+                <h2>8. Scaling Your Budget</h2>
+                <p>Once you’ve optimized your campaign, scaling your budget can amplify results.</p>
+                
+                <h3>Scaling Tips:</h3>
+                <ul>
+                    <li><strong>Increase High-Performing Ads:</strong> Allocate more to top-performing campaigns</li>
+                    <li><strong>Expand Audiences:</strong> Target lookalike audiences for broader reach</li>
+                    <li><strong>Diversify Platforms:</strong> Add new platforms once core campaigns succeed</li>
+                    <li><strong>Seasonal Adjustments:</strong> Boost budgets during peak seasons</li>
+                    <li><strong>Reinvest Profits:</strong> Use revenue from campaigns to fund scaling</li>
+                </ul>
+                
+                <p>Gradual scaling prevents overspending while maximizing growth.</p>
+                
+                <div class="key-takeaway">
+                    <h4>Pro Tip</h4>
+                    <p>Monitor ROAS closely when scaling to ensure increased budgets maintain profitability.</p>
+                </div>
+            </div>
+
+            <div class="conclusion">
+                <h2>Conclusion</h2>
+                <p>Effective budgeting for digital marketing campaigns requires clear goals, audience understanding, and strategic allocation. By choosing the right platforms, optimizing ad spend, and tracking performance, you can maximize ROI and drive meaningful results. Avoiding common mistakes and scaling strategically will keep your campaigns competitive in a dynamic digital landscape.</p>
+                <p>Whether you’re a small business or a large brand, these budgeting strategies will help you create impactful campaigns. Start implementing these tips today to elevate your digital marketing game.</p>
+            </div>
+
+            <div class="cta-section">
+                <h2>Need Expert Digital Marketing?</h2>
+                <p>Looking to optimize your ad campaigns for maximum ROI? I specialize in crafting high-performance digital marketing strategies tailored to your brand. Let’s grow your business together.</p>
+                <a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact" class="cta-button">Get in Touch</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>About Rudraksh</h3>
+                <p>Performance marketer and video editor helping brands grow with effective ad campaigns and engaging visuals.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/">Home</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Services</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#portfolio">Portfolio</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Google Ads Management</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Facebook Ads</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#services">Video Editing</a></li>
+                    <li><a href="https://codewithrudra12.github.io/itsboyrudra.io/#pricing">Pricing Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <div class="social-links">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Disable right-click
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            showNotification('Right-click is disabled to protect content.');
+        });
+
+        // Disable common inspect tool shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Prevent Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, F12
+            if (
+                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J')) ||
+                (e.ctrlKey && e.key === 'u') ||
+                e.key === 'F12'
+            ) {
+                e.preventDefault();
+                showNotification('Developer tools and view source are disabled on this page.');
+            }
+        });
+    </script>
+</body>
+</html>
