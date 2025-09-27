@@ -442,6 +442,16 @@
             margin-right: 0.5rem;
         }
 
+        .legal-popup-content li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .legal-popup-content li a:hover {
+            color: var(--accent);
+        }
+
         .legal-popup-close {
             position: absolute;
             top: 20px;
@@ -1828,6 +1838,175 @@
             margin-bottom: 1rem;
         }
 
+        /* Custom Context Menu */
+        #custom-context-menu {
+            position: fixed;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            z-index: 9999;
+            display: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        #custom-context-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #custom-context-menu li {
+            padding: 0.5rem 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #custom-context-menu li:hover {
+            background: rgba(58, 134, 255, 0.1);
+        }
+
+        /* New Embed Popup */
+        .embed-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1005;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .embed-popup.active {
+            display: block;
+        }
+
+        .embed-popup textarea {
+            width: 100%;
+            height: 100px;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            resize: none;
+        }
+
+        .embed-popup button {
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* New Share Popup */
+        .share-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1005;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .share-popup.active {
+            display: block;
+        }
+
+        .share-popup .social-links {
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        /* New Make Blog Popup */
+        .make-blog-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            padding: 2rem;
+            z-index: 1004;
+            display: none;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .make-blog-popup.active {
+            display: block;
+        }
+
+        .make-blog-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .make-blog-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .make-blog-content input, .make-blog-content textarea {
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+        }
+
+        .make-blog-content button {
+            padding: 0.8rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            cursor: pointer;
+        }
+
+        #blog-preview {
+            margin-top: 2rem;
+            border: 1px solid var(--card-border);
+            padding: 1rem;
+        }
+
+        #blog-embed-code {
+            margin-top: 1rem;
+            width: 100%;
+            height: 100px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 1rem;
+            resize: none;
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
@@ -1955,6 +2134,30 @@
         .delay-1 { animation-delay: 0.2s; }
         .delay-2 { animation-delay: 0.4s; }
         .delay-3 { animation-delay: 0.6s; }
+
+        .blog-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .blog-item:last-child {
+            border-bottom: none;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .blog-read-more {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .blog-read-more:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -1981,7 +2184,7 @@
                     <a href="#" data-popup="notifications-popup">Notifications</a>
                     <a href="#" data-popup="download-popup">Download App</a>
                     <a href="dashboard.html" target="_blank">Dashboard</a>
-                    <a href="#" id="start-tour">Take a Tour</a>
+                    <a href="#" data-popup="make-blog-popup">Make a Blog</a>
                 </div>
             </li>
         </ul>
@@ -2003,7 +2206,7 @@
                 <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications</a></li>
                 <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
                 <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
-                <li><a href="#" id="sidebar-start-tour" class="sidebar-link">Take a Tour</a></li>
+                <li><a href="#" data-popup="make-blog-popup" class="sidebar-link">Make a Blog</a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -2114,13 +2317,21 @@
             <button class="legal-popup-close" aria-label="Close Notifications Popup">×</button>
             <i class="fas fa-bell"></i>
             <h2>Notifications</h2>
-            <p>Still No Notifications</p>
+            <p>NEW BLOGS ARE OUT</p>
+            <ul>
+                <li><a href="#" data-popup="blogs-popup">How to Maximize ROI with Google Ads</a></li>
+                <li><a href="#" data-popup="blogs-popup">Video Editing Tips for Social Media Success</a></li>
+                <li><a href="#" data-popup="blogs-popup">Facebook Ads vs. Google Ads: Which is Right for You?</a></li>
+                <li><a href="#" data-popup="blogs-popup">10 Essential Tools for Performance Marketers</a></li>
+                <li><a href="#" data-popup="blogs-popup">How to Create Engaging Video Content That Converts</a></li>
+            </ul>
         </div>
     </div>
     <div class="legal-popup" id="blogs-popup">
         <div class="legal-popup-content">
             <button class="legal-popup-close" aria-label="Close Blogs Popup">×</button>
             <h2>Latest Blogs</h2>
+            <input type="text" id="blog-search" placeholder="Search blogs..." style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 4px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.05); color: var(--text-primary);">
             <div class="blog-item">
                 <h3>How to Maximize ROI with Google Ads</h3>
                 <p class="blog-date">June 15, 2025</p>
@@ -2390,7 +2601,7 @@
             <div class="download-options">
                 <h3>Available for:</h3>
                 <div class="download-platforms">
-                    <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="download-platform" download="ITSBOYRUDRA.APK">
+                    <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA.5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="download-platform" download="ITSBOYRUDRA.APK">
                         <i class="fab fa-android"></i>
                         <span>Android</span>
                     </a>
@@ -2464,6 +2675,45 @@
             <p>Stand out with viral-ready content, increase viewer retention, and elevate your brand's visual storytelling.</p>
         </div>
     </div>
+    <div class="legal-popup" id="make-blog-popup">
+        <div class="make-blog-content">
+            <button class="legal-popup-close" aria-label="Close Make Blog Popup">×</button>
+            <h2>Make a Blog</h2>
+            <form id="make-blog-form">
+                <input type="text" id="blog-title" placeholder="Blog Title" required>
+                <textarea id="blog-content" placeholder="Blog Content" required></textarea>
+                <input type="file" id="blog-image" accept="image/*">
+                <button type="submit">Generate Blog</button>
+            </form>
+            <div id="blog-preview"></div>
+            <textarea id="blog-embed-code" placeholder="Embed code will appear here" readonly></textarea>
+        </div>
+    </div>
+    <div class="embed-popup" id="embed-popup">
+        <h2>Embed This Page</h2>
+        <p>Copy the code below to embed this website on your page:</p>
+        <textarea readonly><iframe src="https://codewithrudra12.github.io/itsboyrudra.io/" width="800" height="600" frameborder="0"></iframe></textarea>
+        <button id="copy-embed-code">Copy Code</button>
+        <button class="legal-popup-close">Close</button>
+    </div>
+    <div class="share-popup" id="share-popup">
+        <h2>Share This Page</h2>
+        <div class="social-links">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://codewithrudra12.github.io/itsboyrudra.io/" target="_blank" class="social-link">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://codewithrudra12.github.io/itsboyrudra.io/&text=Check out Rudraksh Sharma's website!" target="_blank" class="social-link">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://codewithrudra12.github.io/itsboyrudra.io/" target="_blank" class="social-link">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/?text=Check out this website: https://codewithrudra12.github.io/itsboyrudra.io/" target="_blank" class="social-link">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <button class="legal-popup-close">Close</button>
+    </div>
     <div class="legal-popup-backdrop" id="legal-popup-backdrop"></div>
 
     <!-- Payment Popup -->
@@ -2481,22 +2731,19 @@
     </div>
     <div class="payment-popup-backdrop" id="payment-popup-backdrop"></div>
 
-    <!-- Website Tour Elements -->
-    <div class="tour-overlay" id="tour-overlay"></div>
-    <div class="tour-popup" id="tour-popup">
-        <div class="tour-content">
-            <h3 id="tour-title">Welcome to My Website</h3>
-            <p id="tour-description">Let me show you around to help you find what you need.</p>
-            <div class="tour-buttons">
-                <button id="tour-prev" class="tour-btn prev" style="display: none;">Previous</button>
-                <button id="tour-next" class="tour-btn next">Next</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Custom Notification -->
     <div class="custom-notification" id="custom-notification">
         <p>Right-click and inspect are disabled for security. Contact support if needed!</p>
+    </div>
+
+    <!-- Custom Context Menu -->
+    <div id="custom-context-menu">
+        <ul>
+            <li id="context-embed">Embed Page</li>
+            <li id="context-share">Share on Social</li>
+            <li id="context-contact">Contact Us</li>
+            <li id="context-blogs">View Blogs</li>
+        </ul>
     </div>
 
     <!-- Chatbot -->
@@ -2739,21 +2986,21 @@
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Get In Touch</h2>
         <div class="contact-container">
             <div class="contact-info" data-aos="fade-right" data-aos-duration="800">
-                <div class="contact-method">
+                <div class="contact-method" data-aos="fade-right" data-aos-duration="800" data-aos-delay="100">
                     <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                     <div class="contact-text">
                         <h3>Email</h3>
                         <a href="mailto:info.itsboyrudra@gmail.com">info.itsboyrudra@gmail.com</a>
                     </div>
                 </div>
-                <div class="contact-method">
+                <div class="contact-method" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
                     <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="contact-text">
                         <h3>WhatsApp</h3>
                         <a href="https://wa.me/+91787838379" target="_blank">+91 7878383739</a>
                     </div>
                 </div>
-                <div class="contact-method">
+                <div class="contact-method" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
                     <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
                     <div class="contact-text">
                         <h3>Location</h3>
@@ -2777,19 +3024,20 @@
             </div>
             <div class="contact-form" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
                 <form id="contact-form" action="https://formspree.io/f/mnnbaprr" method="POST">
-                    <div class="form-group">
+                    <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required placeholder="Your Name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" class="form-control" required placeholder="Your Email">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
                         <label for="message">Message</label>
-                        <textarea id="message" name="message" class="form-control" required placeholder="Your Message"></textarea>
+                        <textarea id="message" name="message" class="form-control" required placeholder="Your Message" maxlength="10000"></textarea>
+                        <p class="error-message" id="message-error" style="display:none; color:#ef4444;">Message exceeds 10000 characters limit.</p>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Send Message</button>
                 </form>
                 <p class="success-message">Message sent successfully!</p>
                 <p class="error-message">Failed to send message. Please try again.</p>
@@ -2828,16 +3076,16 @@
             <div class="footer-col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
                 <h3>Connect</h3>
                 <div class="social-links">
-                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link" aria-label="Facebook">
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link" aria-label="Instagram">
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X">
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link">
                         <i class="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -2899,13 +3147,14 @@
         // Disable Right-Click and Inspect
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
-            showCustomNotification('Right-click disabled for security.');
+            showCustomContextMenu(e);
         });
 
+        // Block View Source (Ctrl+U)
         document.addEventListener('keydown', (e) => {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
-                showCustomNotification('Inspect tools are disabled for security.');
+                showCustomNotification('Inspect tools and view source are disabled for security.');
             }
         });
 
@@ -2917,6 +3166,47 @@
                 notification.style.display = 'none';
             }, 3000);
         }
+
+        // Custom Context Menu
+        const customContextMenu = document.getElementById('custom-context-menu');
+
+        function showCustomContextMenu(e) {
+            customContextMenu.style.left = `${e.pageX}px`;
+            customContextMenu.style.top = `${e.pageY}px`;
+            customContextMenu.style.display = 'block';
+        }
+
+        document.addEventListener('click', () => {
+            customContextMenu.style.display = 'none';
+        });
+
+        document.getElementById('context-embed').addEventListener('click', () => {
+            document.getElementById('embed-popup').classList.add('active');
+            customContextMenu.style.display = 'none';
+        });
+
+        document.getElementById('context-share').addEventListener('click', () => {
+            document.getElementById('share-popup').classList.add('active');
+            customContextMenu.style.display = 'none';
+        });
+
+        document.getElementById('context-contact').addEventListener('click', () => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            customContextMenu.style.display = 'none';
+        });
+
+        document.getElementById('context-blogs').addEventListener('click', () => {
+            document.querySelector('[data-popup="blogs-popup"]').click();
+            customContextMenu.style.display = 'none';
+        });
+
+        // Copy Embed Code
+        document.getElementById('copy-embed-code').addEventListener('click', () => {
+            const embedCode = document.querySelector('#embed-popup textarea');
+            embedCode.select();
+            document.execCommand('copy');
+            showCustomNotification('Embed code copied to clipboard!');
+        });
 
         // Sidebar Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -2969,7 +3259,7 @@
             clearTimeout(autoCloseTimeout);
         });
 
-        // Legal Popups
+        // Legal Popups (including new ones)
         const legalPopupTriggers = document.querySelectorAll('[data-popup]');
         const legalPopupBackdrop = document.getElementById('legal-popup-backdrop');
 
@@ -2987,7 +3277,7 @@
 
         document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
-                document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+                document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .make-blog-popup').forEach(popup => {
                     popup.classList.remove('active');
                 });
                 legalPopupBackdrop.classList.remove('active');
@@ -2995,10 +3285,38 @@
         });
 
         legalPopupBackdrop.addEventListener('click', () => {
-            document.querySelectorAll('.legal-popup, .service-details-popup').forEach(popup => {
+            document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .make-blog-popup').forEach(popup => {
                 popup.classList.remove('active');
             });
             legalPopupBackdrop.classList.remove('active');
+        });
+
+        // Make Blog Functionality
+        const makeBlogForm = document.getElementById('make-blog-form');
+        const blogPreview = document.getElementById('blog-preview');
+        const blogEmbedCode = document.getElementById('blog-embed-code');
+
+        makeBlogForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('blog-title').value;
+            const content = document.getElementById('blog-content').value;
+            const imageFile = document.getElementById('blog-image').files[0];
+
+            let imageSrc = '';
+            if (imageFile) {
+                imageSrc = URL.createObjectURL(imageFile);
+            }
+
+            const blogHTML = `
+                <h3>${title}</h3>
+                ${imageSrc ? `<img src="${imageSrc}" alt="${title}" style="width:100%; margin-bottom:1rem;">` : ''}
+                <p>${content}</p>
+            `;
+
+            blogPreview.innerHTML = blogHTML;
+
+            const embedCode = `<div style="border:1px solid #ccc; padding:1rem;">${blogHTML}</div>`;
+            blogEmbedCode.value = embedCode;
         });
 
         // Typed.js for Hero Section with Fixed Backspace
@@ -3033,6 +3351,37 @@
                 });
             });
         });
+
+        // Blogs Search Functionality
+        const blogSearch = document.getElementById('blog-search');
+        if (blogSearch) {
+            blogSearch.addEventListener('input', () => {
+                const searchTerm = blogSearch.value.toLowerCase();
+                document.querySelectorAll('.blog-item').forEach(item => {
+                    const title = item.querySelector('h3').textContent.toLowerCase();
+                    const desc = item.querySelector('p:not(.blog-date)').textContent.toLowerCase();
+                    if (title.includes(searchTerm) || desc.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Contact Form Message Limit
+        const messageInput = document.getElementById('message');
+        const messageError = document.getElementById('message-error');
+        if (messageInput && messageError) {
+            messageInput.addEventListener('input', () => {
+                if (messageInput.value.length > 10000) {
+                    messageError.style.display = 'block';
+                    messageInput.value = messageInput.value.substring(0, 10000);
+                } else {
+                    messageError.style.display = 'none';
+                }
+            });
+        }
 
         // Geolocation for Payment Gateways with Fallback
         const paymentPopup = document.getElementById('payment-popup');
@@ -3271,113 +3620,6 @@
                 }
             });
         });
-
-        // Website Tour Functionality - Fixed
-        const startTourBtn = document.getElementById('start-tour');
-        const sidebarStartTourBtn = document.getElementById('sidebar-start-tour');
-        const tourOverlay = document.getElementById('tour-overlay');
-        const tourPopup = document.getElementById('tour-popup');
-        const tourTitle = document.getElementById('tour-title');
-        const tourDescription = document.getElementById('tour-description');
-        const tourPrevBtn = document.getElementById('tour-prev');
-        const tourNextBtn = document.getElementById('tour-next');
-
-        const tourSteps = [
-            {
-                title: "Welcome to My Website",
-                description: "Let me show you around to help you find what you need.",
-                element: null
-            },
-            {
-                title: "Services Section",
-                description: "Here you can explore my Google Ads, Facebook Ads, and Video Editing services.",
-                element: document.getElementById('services')
-            },
-            {
-                title: "Portfolio Section",
-                description: "Check out my previous work and successful campaigns.",
-                element: document.getElementById('portfolio')
-            },
-            {
-                title: "Pricing Plans",
-                description: "Choose the plan that best fits your needs and budget.",
-                element: document.getElementById('pricing')
-            },
-            {
-                title: "Booking Section",
-                description: "Schedule a free consultation to discuss your project.",
-                element: document.getElementById('booking')
-            },
-            {
-                title: "Contact Information",
-                description: "Get in touch with me via email, WhatsApp, or the contact form.",
-                element: document.getElementById('contact')
-            }
-        ];
-
-        let currentTourStep = 0;
-
-        function startTour() {
-            currentTourStep = 0;
-            showTourStep();
-            tourOverlay.style.display = 'block';
-            tourPopup.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-            tourPopup.style.zIndex = '2001'; // Ensure popup is above everything
-        }
-
-        function showTourStep() {
-            const step = tourSteps[currentTourStep];
-            tourTitle.textContent = step.title;
-            tourDescription.textContent = step.description;
-
-            // Update button states - Fixed for first step
-            tourPrevBtn.style.display = currentTourStep === 0 ? 'none' : 'block';
-            tourNextBtn.style.display = 'block'; // Always show Next except on last
-            tourNextBtn.textContent = currentTourStep === tourSteps.length - 1 ? 'Finish' : 'Next';
-
-            // Remove previous highlight
-            document.querySelectorAll('.tour-highlight').forEach(el => {
-                el.classList.remove('tour-highlight');
-            });
-
-            // Highlight current element if exists
-            if (step.element) {
-                step.element.classList.add('tour-highlight');
-                step.element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
-        function nextTourStep() {
-            if (currentTourStep < tourSteps.length - 1) {
-                currentTourStep++;
-                showTourStep();
-            } else {
-                endTour();
-            }
-        }
-
-        function prevTourStep() {
-            if (currentTourStep > 0) {
-                currentTourStep--;
-                showTourStep();
-            }
-        }
-
-        function endTour() {
-            tourOverlay.style.display = 'none';
-            tourPopup.style.display = 'none';
-            document.body.style.overflow = '';
-            document.querySelectorAll('.tour-highlight').forEach(el => {
-                el.classList.remove('tour-highlight');
-            });
-        }
-
-        startTourBtn.addEventListener('click', startTour);
-        sidebarStartTourBtn.addEventListener('click', startTour);
-        tourNextBtn.addEventListener('click', nextTourStep);
-        tourPrevBtn.addEventListener('click', prevTourStep);
-        tourOverlay.addEventListener('click', endTour);
 
         // Enhanced Chatbot with New Features
         const chatbotToggle = document.getElementById('chatbot-toggle');
