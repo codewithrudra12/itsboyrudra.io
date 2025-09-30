@@ -108,6 +108,21 @@
             100% { transform: rotate(360deg); }
         }
 
+        .3d-name {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            animation: rotate3d 5s linear infinite;
+            text-shadow: 0 0 10px rgba(58, 134, 255, 0.5);
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
         #verify-button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -2012,6 +2027,22 @@
             background: #2a75e6;
         }
 
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .popup-close:hover {
+            transform: rotate(180deg);
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
@@ -2168,8 +2199,8 @@
 <body>
     <div id="security-splash" class="security-splash">
         <div class="spinner"></div>
+        <div class="3d-name">Rudraksh Sharma</div>
         <p>Checking your browser security...</p>
-        <button id="verify-button">Verify</button>
     </div>
 
     <nav class="navbar">
@@ -3100,6 +3131,33 @@
         </div>
     </div>
 
+    <!-- Embed Popup -->
+    <div class="embed-popup" id="embed-popup">
+        <button class="popup-close">x</button>
+        <textarea>&lt;iframe src="https://codewithrudra12.github.io/itsboyrudra.io/" width="800" height="600"&gt;&lt;/iframe&gt;</textarea>
+        <button>Copy Code</button>
+    </div>
+
+    <!-- Share Popup -->
+    <div class="share-popup" id="share-popup">
+        <button class="popup-close">x</button>
+        <h2>Share this Page</h2>
+        <div class="social-links">
+            <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+    </div>
+
     <!-- AOS Library Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -3117,16 +3175,9 @@
         // Security Splash Screen - Manual Verify
         window.addEventListener('load', () => {
             const splash = document.getElementById('security-splash');
-            const verifyButton = document.getElementById('verify-button');
-
             setTimeout(() => {
-                splash.querySelector('p').textContent = 'Click to verify you are human...';
-                verifyButton.style.display = 'block';
-            }, 2000);
-
-            verifyButton.addEventListener('click', () => {
                 splash.classList.add('hidden');
-            });
+            }, 3000);
         });
 
         // Disable Right-Click and Inspect
@@ -3271,7 +3322,7 @@
             });
         });
 
-        document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
+        document.querySelectorAll('.legal-popup-close, .service-details-close, .popup-close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
                 document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .newsletter-popup').forEach(popup => {
                     popup.classList.remove('active');
