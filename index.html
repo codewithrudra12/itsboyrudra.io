@@ -108,6 +108,22 @@
             100% { transform: rotate(360deg); }
         }
 
+        #verify-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            display: none;
+        }
+
+        #verify-button:hover {
+            background: #2a75e6;
+        }
+
         /* Navbar */
         .navbar {
             position: fixed;
@@ -1939,72 +1955,61 @@
             margin-top: 1rem;
         }
 
-        /* New Make Blog Popup */
-        .make-blog-popup {
+        /* New Newsletter Popup */
+        .newsletter-popup {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
+            max-width: 500px;
             background: var(--glass-effect);
             backdrop-filter: blur(12px);
             border: 1px solid var(--card-border);
             border-radius: 10px;
             padding: 2rem;
-            z-index: 1004;
+            z-index: 1005;
             display: none;
-            overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
-        .make-blog-popup.active {
+        .newsletter-popup.active {
             display: block;
         }
 
-        .make-blog-content h2 {
+        .newsletter-popup h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
         }
 
-        .make-blog-content form {
+        .newsletter-popup form {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
 
-        .make-blog-content input, .make-blog-content textarea {
+        .newsletter-popup input {
             padding: 0.8rem;
             background: rgba(255,255,255,0.05);
             border: 1px solid var(--card-border);
             color: var(--text-primary);
+            border-radius: 4px;
         }
 
-        .make-blog-content button {
+        .newsletter-popup button {
             padding: 0.8rem;
             background: var(--accent);
             color: var(--text-primary);
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-weight: 600;
         }
 
-        #blog-preview {
-            margin-top: 2rem;
-            border: 1px solid var(--card-border);
-            padding: 1rem;
-        }
-
-        #blog-embed-code {
-            margin-top: 1rem;
-            width: 100%;
-            height: 100px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--card-border);
-            color: var(--text-primary);
-            padding: 1rem;
-            resize: none;
+        .newsletter-popup button:hover {
+            background: #2a75e6;
         }
 
         /* Responsive Design */
@@ -2164,6 +2169,7 @@
     <div id="security-splash" class="security-splash">
         <div class="spinner"></div>
         <p>Checking your browser security...</p>
+        <button id="verify-button">Verify</button>
     </div>
 
     <nav class="navbar">
@@ -2184,7 +2190,7 @@
                     <a href="#" data-popup="notifications-popup">Notifications</a>
                     <a href="#" data-popup="download-popup">Download App</a>
                     <a href="dashboard.html" target="_blank">Dashboard</a>
-                    <a href="#" data-popup="make-blog-popup">Make a Blog</a>
+                    <a href="make-blog.html" target="_blank">Make a Blog</a>
                 </div>
             </li>
         </ul>
@@ -2206,7 +2212,7 @@
                 <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications</a></li>
                 <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
                 <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
-                <li><a href="#" data-popup="make-blog-popup" class="sidebar-link">Make a Blog</a></li>
+                <li><a href="make-blog.html" target="_blank" class="sidebar-link">Make a Blog</a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -2675,44 +2681,14 @@
             <p>Stand out with viral-ready content, increase viewer retention, and elevate your brand's visual storytelling.</p>
         </div>
     </div>
-    <div class="legal-popup" id="make-blog-popup">
-        <div class="make-blog-content">
-            <button class="legal-popup-close" aria-label="Close Make Blog Popup">×</button>
-            <h2>Make a Blog</h2>
-            <form id="make-blog-form">
-                <input type="text" id="blog-title" placeholder="Blog Title" required>
-                <textarea id="blog-content" placeholder="Blog Content" required></textarea>
-                <input type="file" id="blog-image" accept="image/*">
-                <button type="submit">Generate Blog</button>
-            </form>
-            <div id="blog-preview"></div>
-            <textarea id="blog-embed-code" placeholder="Embed code will appear here" readonly></textarea>
-        </div>
-    </div>
-    <div class="embed-popup" id="embed-popup">
-        <h2>Embed This Page</h2>
-        <p>Copy the code below to embed this website on your page:</p>
-        <textarea readonly><iframe src="https://codewithrudra12.github.io/itsboyrudra.io/" width="800" height="600" frameborder="0"></iframe></textarea>
-        <button id="copy-embed-code">Copy Code</button>
-        <button class="legal-popup-close">Close</button>
-    </div>
-    <div class="share-popup" id="share-popup">
-        <h2>Share This Page</h2>
-        <div class="social-links">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://codewithrudra12.github.io/itsboyrudra.io/" target="_blank" class="social-link">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://codewithrudra12.github.io/itsboyrudra.io/&text=Check out Rudraksh Sharma's website!" target="_blank" class="social-link">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://codewithrudra12.github.io/itsboyrudra.io/" target="_blank" class="social-link">
-                <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="https://wa.me/?text=Check out this website: https://codewithrudra12.github.io/itsboyrudra.io/" target="_blank" class="social-link">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-        <button class="legal-popup-close">Close</button>
+    <div class="newsletter-popup" id="newsletter-popup">
+        <button class="legal-popup-close" aria-label="Close Newsletter Popup">×</button>
+        <h2>Subscribe to Newsletter</h2>
+        <form id="newsletter-form">
+            <input type="email" placeholder="Your Email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        <p class="success-message" style="display:none;">Subscribed successfully!</p>
     </div>
     <div class="legal-popup-backdrop" id="legal-popup-backdrop"></div>
 
@@ -2743,6 +2719,7 @@
             <li id="context-share">Share on Social</li>
             <li id="context-contact">Contact Us</li>
             <li id="context-blogs">View Blogs</li>
+            <li id="context-newsletter">Newsletter</li>
         </ul>
     </div>
 
@@ -3137,11 +3114,19 @@
             delay: 100
         });
 
-        // Security Splash Screen
+        // Security Splash Screen - Manual Verify
         window.addEventListener('load', () => {
+            const splash = document.getElementById('security-splash');
+            const verifyButton = document.getElementById('verify-button');
+
             setTimeout(() => {
-                document.getElementById('security-splash').classList.add('hidden');
-            }, 2000); // 2 seconds delay
+                splash.querySelector('p').textContent = 'Click to verify you are human...';
+                verifyButton.style.display = 'block';
+            }, 2000);
+
+            verifyButton.addEventListener('click', () => {
+                splash.classList.add('hidden');
+            });
         });
 
         // Disable Right-Click and Inspect
@@ -3150,7 +3135,7 @@
             showCustomContextMenu(e);
         });
 
-        // Block View Source (Ctrl+U)
+        // Block View Source (Ctrl+U) and Inspect
         document.addEventListener('keydown', (e) => {
             if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'C') || (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
@@ -3200,13 +3185,24 @@
             customContextMenu.style.display = 'none';
         });
 
-        // Copy Embed Code
-        document.getElementById('copy-embed-code').addEventListener('click', () => {
-            const embedCode = document.querySelector('#embed-popup textarea');
-            embedCode.select();
-            document.execCommand('copy');
-            showCustomNotification('Embed code copied to clipboard!');
+        document.getElementById('context-newsletter').addEventListener('click', () => {
+            document.getElementById('newsletter-popup').classList.add('active');
+            customContextMenu.style.display = 'none';
         });
+
+        // Newsletter Form Submission (example)
+        const newsletterForm = document.getElementById('newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Handle subscription logic here
+                newsletterForm.nextElementSibling.style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('newsletter-popup').classList.remove('active');
+                    newsletterForm.nextElementSibling.style.display = 'none';
+                }, 3000);
+            });
+        }
 
         // Sidebar Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -3277,7 +3273,7 @@
 
         document.querySelectorAll('.legal-popup-close, .service-details-close').forEach(closeBtn => {
             closeBtn.addEventListener('click', () => {
-                document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .make-blog-popup').forEach(popup => {
+                document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .newsletter-popup').forEach(popup => {
                     popup.classList.remove('active');
                 });
                 legalPopupBackdrop.classList.remove('active');
@@ -3285,38 +3281,10 @@
         });
 
         legalPopupBackdrop.addEventListener('click', () => {
-            document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .make-blog-popup').forEach(popup => {
+            document.querySelectorAll('.legal-popup, .service-details-popup, .embed-popup, .share-popup, .newsletter-popup').forEach(popup => {
                 popup.classList.remove('active');
             });
             legalPopupBackdrop.classList.remove('active');
-        });
-
-        // Make Blog Functionality
-        const makeBlogForm = document.getElementById('make-blog-form');
-        const blogPreview = document.getElementById('blog-preview');
-        const blogEmbedCode = document.getElementById('blog-embed-code');
-
-        makeBlogForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const title = document.getElementById('blog-title').value;
-            const content = document.getElementById('blog-content').value;
-            const imageFile = document.getElementById('blog-image').files[0];
-
-            let imageSrc = '';
-            if (imageFile) {
-                imageSrc = URL.createObjectURL(imageFile);
-            }
-
-            const blogHTML = `
-                <h3>${title}</h3>
-                ${imageSrc ? `<img src="${imageSrc}" alt="${title}" style="width:100%; margin-bottom:1rem;">` : ''}
-                <p>${content}</p>
-            `;
-
-            blogPreview.innerHTML = blogHTML;
-
-            const embedCode = `<div style="border:1px solid #ccc; padding:1rem;">${blogHTML}</div>`;
-            blogEmbedCode.value = embedCode;
         });
 
         // Typed.js for Hero Section with Fixed Backspace
