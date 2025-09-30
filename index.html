@@ -104,6 +104,16 @@
             border-color: rgba(255, 58, 58, 0.7);
         }
 
+        /* Disable custom cursor on mobile (phones) */
+        @media (max-width: 768px) {
+            .custom-cursor, .custom-cursor-follower {
+                display: none;
+            }
+            * {
+                cursor: auto !important;
+            }
+        }
+
         /* Hollywood Intro */
         .hollywood-intro {
             position: fixed;
@@ -3735,6 +3745,20 @@
         document.getElementById('context-newsletter').addEventListener('click', () => {
             document.getElementById('newsletter-popup').classList.add('active');
             customContextMenu.style.display = 'none';
+        });
+
+        // Copy to Clipboard for Embed Popup
+        const copyButton = document.querySelector('#embed-popup button');
+        copyButton.addEventListener('click', () => {
+            const textarea = document.querySelector('#embed-popup textarea');
+            navigator.clipboard.writeText(textarea.value).then(() => {
+                copyButton.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyButton.textContent = 'Copy Code';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
         });
 
         // Newsletter Form Submission (example)
