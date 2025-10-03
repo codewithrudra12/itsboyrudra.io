@@ -114,6 +114,159 @@
             }
         }
 
+        /* Country Block Page */
+        .country-block {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .country-block.hidden {
+            display: none;
+        }
+
+        .country-block-content {
+            max-width: 600px;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .country-block h1 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .country-block p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Offline Page */
+        .offline-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .offline-page.hidden {
+            display: none;
+        }
+
+        .offline-content {
+            max-width: 600px;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .offline-page h1 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .offline-page p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Blue Popup from Right Side */
+        .blue-popup {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 350px;
+            height: 100vh;
+            background: var(--accent);
+            z-index: 1003;
+            padding: 3rem 2rem;
+            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blue-popup.active {
+            right: 0;
+        }
+
+        .blue-popup-content {
+            text-align: center;
+            color: white;
+        }
+
+        .blue-popup-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blue-popup-content p {
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .blue-popup-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blue-popup-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .blue-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blue-popup-close:hover {
+            transform: rotate(180deg);
+        }
+
         /* Hollywood Intro */
         .hollywood-intro {
             position: fixed;
@@ -2379,6 +2532,10 @@
                 max-width: 90%;
                 padding: 1.5rem;
             }
+            .blue-popup {
+                width: 80%;
+                max-width: 280px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -2416,6 +2573,13 @@
             }
             .tour-buttons {
                 flex-direction: column;
+            }
+            .blue-popup {
+                width: 90%;
+                max-width: 250px;
+            }
+            .blue-popup-content h3 {
+                font-size: 1.4rem;
             }
         }
 
@@ -2464,6 +2628,34 @@
     <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YPPVQNPTZ"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-9YPPVQNPTZ'); </script>
 </head>
 <body>
+    <!-- Country Block Page -->
+    <div class="country-block" id="country-block">
+        <div class="country-block-content">
+            <h1>Access Restricted</h1>
+            <p>This website is not available in your region. If you believe this is an error, please contact support.</p>
+            <p>For inquiries, email: info.itsboyrudra@gmail.com</p>
+        </div>
+    </div>
+
+    <!-- Offline Page -->
+    <div class="offline-page" id="offline-page">
+        <div class="offline-content">
+            <h1>No Internet Connection</h1>
+            <p>Please check your internet connection and try again.</p>
+            <p>If the problem persists, the website might be temporarily unavailable.</p>
+        </div>
+    </div>
+
+    <!-- Blue Popup from Right Side -->
+    <div class="blue-popup" id="blue-popup">
+        <div class="blue-popup-content">
+            <button class="blue-popup-close" aria-label="Close Blue Popup">×</button>
+            <h3>Special Offer!</h3>
+            <p>Get 20% off on your first service booking. Limited time offer!</p>
+            <a href="#booking" class="blue-popup-cta">Book Now</a>
+        </div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="custom-cursor"></div>
     <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
@@ -3516,6 +3708,62 @@
             delay: 100
         });
 
+        // Country Blocking for Pakistan
+        function checkCountry() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const country = data.country_name;
+                    if (country === 'Pakistan') {
+                        document.getElementById('country-block').classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.getElementById('country-block').classList.add('hidden');
+                        document.body.style.overflow = 'auto';
+                    }
+                })
+                .catch(error => {
+                    console.error('Country check failed:', error);
+                    // If API fails, allow access
+                    document.getElementById('country-block').classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                });
+        }
+
+        // Offline Detection
+        function checkOnlineStatus() {
+            if (!navigator.onLine) {
+                document.getElementById('offline-page').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.getElementById('offline-page').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Check both country and online status on page load
+        window.addEventListener('load', () => {
+            checkCountry();
+            checkOnlineStatus();
+            
+            // Add event listeners for online/offline status
+            window.addEventListener('online', checkOnlineStatus);
+            window.addEventListener('offline', checkOnlineStatus);
+        });
+
+        // Blue Popup from Right Side
+        const bluePopup = document.getElementById('blue-popup');
+        const bluePopupClose = document.querySelector('.blue-popup-close');
+        
+        // Show blue popup after 5 seconds
+        setTimeout(() => {
+            bluePopup.classList.add('active');
+        }, 5000);
+        
+        bluePopupClose.addEventListener('click', () => {
+            bluePopup.classList.remove('active');
+        });
+
         // Custom Cursor
         const cursor = document.getElementById('custom-cursor');
         const cursorFollower = document.getElementById('custom-cursor-follower');
@@ -3531,7 +3779,7 @@
         });
 
         // Add hover effects for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, .portfolio-item, .pricing-card, .filter-btn, .social-link, .download-platform, .chatbot-toggle, .floating-logo');
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .portfolio-item, .pricing-card, .filter-btn, .social-link, .download-platform, .chatbot-toggle, .floating-logo, img');
         
         interactiveElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -3686,7 +3934,6 @@
             });
         });
 
-        // Rest of your existing JavaScript remains exactly the same
         // Disable Right-Click and Inspect
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
