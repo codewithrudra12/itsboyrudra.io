@@ -194,6 +194,79 @@
             font-size: 1.2rem;
         }
 
+        /* Blue Popup from Right Side */
+        .blue-popup {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 350px;
+            height: 100vh;
+            background: var(--accent);
+            z-index: 1003;
+            padding: 3rem 2rem;
+            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blue-popup.active {
+            right: 0;
+        }
+
+        .blue-popup-content {
+            text-align: center;
+            color: white;
+        }
+
+        .blue-popup-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .blue-popup-content p {
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .blue-popup-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .blue-popup-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .blue-popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blue-popup-close:hover {
+            transform: rotate(180deg);
+        }
+
         /* Hollywood Intro */
         .hollywood-intro {
             position: fixed;
@@ -2459,6 +2532,10 @@
                 max-width: 90%;
                 padding: 1.5rem;
             }
+            .blue-popup {
+                width: 80%;
+                max-width: 280px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -2496,6 +2573,13 @@
             }
             .tour-buttons {
                 flex-direction: column;
+            }
+            .blue-popup {
+                width: 90%;
+                max-width: 250px;
+            }
+            .blue-popup-content h3 {
+                font-size: 1.4rem;
             }
         }
 
@@ -2559,6 +2643,16 @@
             <h1>No Internet Connection</h1>
             <p>Please check your internet connection and try again.</p>
             <p>If the problem persists, the website might be temporarily unavailable.</p>
+        </div>
+    </div>
+
+    <!-- Blue Popup from Right Side -->
+    <div class="blue-popup" id="blue-popup">
+        <div class="blue-popup-content">
+            <button class="blue-popup-close" aria-label="Close Blue Popup">×</button>
+            <h3>Special Offer!</h3>
+            <p>Get 20% off on your first service booking. Limited time offer!</p>
+            <a href="#booking" class="blue-popup-cta">Book Now</a>
         </div>
     </div>
 
@@ -3337,7 +3431,7 @@
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="facebook-ads" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="100">
-                    <img src="https://images.pexels.com/photos/7350906/pexels-photo-7350906.jpeg" alt="Facebook Ads Dashboard">
+                    <img src="https://images.pexels.com/photos/267371/pexels-photo-267371.jpeg" alt="Facebook Ads Dashboard">
                     <div class="portfolio-overlay">
                         <h3>Lead Generation Funnel</h3>
                         <p>$2.50 cost per lead for B2B service</p>
@@ -3655,6 +3749,19 @@
             // Add event listeners for online/offline status
             window.addEventListener('online', checkOnlineStatus);
             window.addEventListener('offline', checkOnlineStatus);
+        });
+
+        // Blue Popup from Right Side
+        const bluePopup = document.getElementById('blue-popup');
+        const bluePopupClose = document.querySelector('.blue-popup-close');
+        
+        // Show blue popup after 5 seconds
+        setTimeout(() => {
+            bluePopup.classList.add('active');
+        }, 5000);
+        
+        bluePopupClose.addEventListener('click', () => {
+            bluePopup.classList.remove('active');
         });
 
         // Custom Cursor
