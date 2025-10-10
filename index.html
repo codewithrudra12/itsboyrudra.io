@@ -3751,19 +3751,6 @@
             window.addEventListener('offline', checkOnlineStatus);
         });
 
-        // Blue Popup from Right Side
-        const bluePopup = document.getElementById('blue-popup');
-        const bluePopupClose = document.querySelector('.blue-popup-close');
-        
-        // Show blue popup after 5 seconds
-        setTimeout(() => {
-            bluePopup.classList.add('active');
-        }, 5000);
-        
-        bluePopupClose.addEventListener('click', () => {
-            bluePopup.classList.remove('active');
-        });
-
         // Custom Cursor
         const cursor = document.getElementById('custom-cursor');
         const cursorFollower = document.getElementById('custom-cursor-follower');
