@@ -425,6 +425,115 @@
             margin-top: 1rem;
         }
 
+        /* NEW SLIDESHOW STYLES */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: none;
+            margin: 0;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transform: translateY(0);
+            transition: transform 0.5s ease;
+        }
+
+        .slide:hover .slide-content {
+            transform: translateY(-10px);
+        }
+
+        .slide-title {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .slide-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .slideshow-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .slideshow-control-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideshow-control-btn:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .slideshow-control-btn i {
+            font-size: 1.2rem;
+        }
+
+        .slideshow-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .slideshow-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
         /* Rest of your existing CSS remains exactly the same */
         /* Navbar */
         .navbar {
@@ -1153,91 +1262,14 @@
             50% { transform: translateY(-50%) translateY(-8px); }
         }
 
-        /* Hero Section */
-        .hero {
+        /* Hero Section - REMOVED */
+        /* .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(14, 14, 14, 0.7), rgba(14, 14, 14, 0.9));
-            z-index: 1;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            animation: fadeInText 1.5s ease-out;
-            opacity: 1; /* Ensure visibility */
-        }
-
-        @keyframes fadeInText {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2.5rem;
-            max-width: 800px;
-        }
-
-        .typed-cursor {
-            opacity: 0;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--accent);
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
-        }
+        } */
 
         /* Section Styles */
         .section {
@@ -2795,6 +2827,59 @@
         </div>
     </div>
 
+    <!-- NEW SLIDESHOW SECTION - REPLACING HERO SECTION -->
+    <section class="section" id="home" style="padding: 0;">
+        <div class="slideshow-container">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')">
+                <div class="slide-content">
+                    <h2 class="slide-title">Performance Marketing Expert</h2>
+                    <p class="slide-description">Maximize your ROI with targeted Google Ads and Facebook Ads campaigns designed to drive clicks, leads, and conversions.</p>
+                    <a href="#services" class="slideshow-cta">Explore Services</a>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80')">
+                <div class="slide-content">
+                    <h2 class="slide-title">Creative Video Editing</h2>
+                    <p class="slide-description">Create engaging and professional video content for social media, YouTube, and more with expert editing.</p>
+                    <a href="#services" class="slideshow-cta">View Portfolio</a>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80')">
+                <div class="slide-content">
+                    <h2 class="slide-title">Data-Driven Results</h2>
+                    <p class="slide-description">My approach combines data-driven strategies with creative storytelling to deliver measurable results.</p>
+                    <a href="#pricing" class="slideshow-cta">See Pricing</a>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')">
+                <div class="slide-content">
+                    <h2 class="slide-title">Let's Grow Your Business</h2>
+                    <p class="slide-description">Book a free consultation to discuss your marketing or video editing needs.</p>
+                    <a href="#booking" class="slideshow-cta">Book Consultation</a>
+                </div>
+            </div>
+            
+            <div class="slideshow-controls">
+                <button class="slideshow-control-btn" id="prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slideshow-control-btn" id="play-pause-btn">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <button class="slideshow-control-btn" id="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Legal Popups -->
     <div class="legal-popup" id="terms-popup">
         <div class="legal-popup-content">
@@ -3318,16 +3403,7 @@
     </div>
 
     <!-- AOS Animated Sections -->
-    <section class="hero" id="home">
-        <video autoplay muted loop class="hero-bg">
-            <source src="https://www.pexels.com/download/video/3971609/" type="video/mp4">
-        </video>
-        <div class="hero-content">
-            <h1 data-aos="fade-up" data-aos-duration="1000">I Deliver Results with Ads & Visuals</h1>
-            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><span id="typed-text"></span><span class="typed-cursor">|</span></p>
-            <a href="#services" class="cta-button" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Explore Services</a>
-        </div>
-    </section>
+    <!-- Hero section removed and replaced with slideshow above -->
 
     <section class="section" id="about">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">About Me</h2>
@@ -3706,6 +3782,63 @@
             once: true,
             offset: 100,
             delay: 100
+        });
+
+        // NEW SLIDESHOW FUNCTIONALITY
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+            const playPauseIcon = playPauseBtn.querySelector('i');
+            
+            let currentSlide = 0;
+            let slideInterval;
+            let isPlaying = true;
+            
+            // Initialize slideshow
+            function initSlideshow() {
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            // Go to specific slide
+            function goToSlide(n) {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+            
+            // Next slide
+            function nextSlide() {
+                goToSlide(currentSlide + 1);
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                goToSlide(currentSlide - 1);
+            }
+            
+            // Play/Pause functionality
+            function togglePlayPause() {
+                if (isPlaying) {
+                    clearInterval(slideInterval);
+                    playPauseIcon.classList.remove('fa-pause');
+                    playPauseIcon.classList.add('fa-play');
+                } else {
+                    initSlideshow();
+                    playPauseIcon.classList.remove('fa-play');
+                    playPauseIcon.classList.add('fa-pause');
+                }
+                isPlaying = !isPlaying;
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            
+            // Start the slideshow
+            initSlideshow();
         });
 
         // Country Blocking for Pakistan
@@ -4091,18 +4224,6 @@
                 popup.classList.remove('active');
             });
             legalPopupBackdrop.classList.remove('active');
-        });
-
-        // Typed.js for Hero Section with Fixed Backspace
-        new Typed('#typed-text', {
-            strings: ['Performance Marketing | Creative Storytelling | ROI-Driven Campaigns'],
-            typeSpeed: 50,
-            backSpeed: 20,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|',
-            smartBackspace: false
         });
 
         // Portfolio Filter
