@@ -231,6 +231,93 @@
             }
         }
 
+        /* Country Selection */
+        .country-selection {
+            position: relative;
+        }
+
+        .country-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .country-selector:hover {
+            border-color: var(--accent);
+        }
+
+        .country-flag {
+            width: 24px;
+            height: 16px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .country-name {
+            flex: 1;
+        }
+
+        .country-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            backdrop-filter: blur(10px);
+        }
+
+        .country-dropdown.active {
+            display: block;
+        }
+
+        .country-search {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .country-search input {
+            width: 100%;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+
+        .country-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .country-option {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .country-option:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .country-option.active {
+            background: rgba(58, 134, 255, 0.2);
+        }
+
         /* Phone Input with Country Code */
         .phone-input-container {
             display: flex;
@@ -238,7 +325,7 @@
         }
 
         .country-code-select {
-            flex: 0 0 100px;
+            flex: 0 0 120px;
             position: relative;
         }
 
@@ -259,26 +346,6 @@
 
         .phone-number-input {
             flex: 1;
-        }
-
-        /* Custom Country Selector */
-        .custom-select {
-            position: relative;
-        }
-
-        .custom-select select {
-            width: 100%;
-            padding: 0.8rem;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--card-border);
-            border-radius: 4px;
-            color: var(--text-primary);
-            font-family: inherit;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23b0b0b0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 0.8rem center;
-            background-size: 16px;
         }
 
         /* Privacy Policy */
@@ -595,6 +662,21 @@
             left: 0;
             color: var(--accent);
         }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--text-primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -671,20 +753,31 @@
                     </div>
                     
                     <div class="form-group">
+                        <label for="country">Country *</label>
+                        <div class="country-selection">
+                            <div class="country-selector" id="country-selector">
+                                <div class="loading-spinner" id="country-loading"></div>
+                                <img id="selected-country-flag" class="country-flag" src="" alt="" style="display: none;">
+                                <div id="selected-country-name" class="country-name">Detecting your country...</div>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="country-dropdown" id="country-dropdown">
+                                <div class="country-search">
+                                    <input type="text" id="country-search" placeholder="Search countries...">
+                                </div>
+                                <div class="country-list" id="country-list">
+                                    <!-- Country options will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="phone">Phone Number *</label>
                         <div class="phone-input-container">
                             <div class="country-code-select">
                                 <select id="country-code" name="country-code">
-                                    <option value="+1">+1 (US)</option>
-                                    <option value="+44">+44 (UK)</option>
-                                    <option value="+91" selected>+91 (IN)</option>
-                                    <option value="+61">+61 (AU)</option>
-                                    <option value="+49">+49 (DE)</option>
-                                    <option value="+33">+33 (FR)</option>
-                                    <option value="+81">+81 (JP)</option>
-                                    <option value="+86">+86 (CN)</option>
-                                    <option value="+971">+971 (AE)</option>
-                                    <option value="+65">+65 (SG)</option>
+                                    <!-- Country codes will be populated based on selected country -->
                                 </select>
                             </div>
                             <div class="phone-number-input">
@@ -695,43 +788,22 @@
                     
                     <div class="form-row">
                         <div class="form-group">
-                            <label for="country">Country *</label>
-                            <div class="custom-select">
-                                <select id="country" name="country" class="form-control" required>
-                                    <option value="">Select Country</option>
-                                    <option value="India">India</option>
-                                    <option value="USA">United States</option>
-                                    <option value="UK">United Kingdom</option>
-                                    <option value="Canada">Canada</option>
-                                    <option value="Australia">Australia</option>
-                                    <option value="Germany">Germany</option>
-                                    <option value="France">France</option>
-                                    <option value="Japan">Japan</option>
-                                    <option value="China">China</option>
-                                    <option value="UAE">United Arab Emirates</option>
-                                    <option value="Singapore">Singapore</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
                             <label for="company">Company / Organization</label>
                             <input type="text" id="company" name="company" class="form-control" placeholder="Individual / Business Name">
                         </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Customer Type</label>
-                        <div style="display: flex; gap: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="customerType" value="individual" checked>
-                                Individual
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="customerType" value="business">
-                                Business
-                            </label>
+                        
+                        <div class="form-group">
+                            <label>Customer Type</label>
+                            <div style="display: flex; gap: 1rem;">
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="radio" name="customerType" value="individual" checked>
+                                    Individual
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <input type="radio" name="customerType" value="business">
+                                    Business
+                                </label>
+                            </div>
                         </div>
                     </div>
                     
@@ -838,6 +910,93 @@
     </div>
 
     <script>
+        // Country data with flags, codes, and payment methods
+        const countriesData = [
+            { code: 'IN', name: 'India', flag: 'https://flagcdn.com/w40/in.png', phoneCode: '+91', paymentMethods: ['gpay', 'phonepe', 'razorpay'] },
+            { code: 'US', name: 'United States', flag: 'https://flagcdn.com/w40/us.png', phoneCode: '+1', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'GB', name: 'United Kingdom', flag: 'https://flagcdn.com/w40/gb.png', phoneCode: '+44', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'CA', name: 'Canada', flag: 'https://flagcdn.com/w40/ca.png', phoneCode: '+1', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'AU', name: 'Australia', flag: 'https://flagcdn.com/w40/au.png', phoneCode: '+61', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'DE', name: 'Germany', flag: 'https://flagcdn.com/w40/de.png', phoneCode: '+49', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'FR', name: 'France', flag: 'https://flagcdn.com/w40/fr.png', phoneCode: '+33', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'JP', name: 'Japan', flag: 'https://flagcdn.com/w40/jp.png', phoneCode: '+81', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'CN', name: 'China', flag: 'https://flagcdn.com/w40/cn.png', phoneCode: '+86', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'AE', name: 'United Arab Emirates', flag: 'https://flagcdn.com/w40/ae.png', phoneCode: '+971', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'SG', name: 'Singapore', flag: 'https://flagcdn.com/w40/sg.png', phoneCode: '+65', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'BR', name: 'Brazil', flag: 'https://flagcdn.com/w40/br.png', phoneCode: '+55', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'MX', name: 'Mexico', flag: 'https://flagcdn.com/w40/mx.png', phoneCode: '+52', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'ZA', name: 'South Africa', flag: 'https://flagcdn.com/w40/za.png', phoneCode: '+27', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'KR', name: 'South Korea', flag: 'https://flagcdn.com/w40/kr.png', phoneCode: '+82', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'IT', name: 'Italy', flag: 'https://flagcdn.com/w40/it.png', phoneCode: '+39', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'ES', name: 'Spain', flag: 'https://flagcdn.com/w40/es.png', phoneCode: '+34', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'NL', name: 'Netherlands', flag: 'https://flagcdn.com/w40/nl.png', phoneCode: '+31', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'SE', name: 'Sweden', flag: 'https://flagcdn.com/w40/se.png', phoneCode: '+46', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'CH', name: 'Switzerland', flag: 'https://flagcdn.com/w40/ch.png', phoneCode: '+41', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'NO', name: 'Norway', flag: 'https://flagcdn.com/w40/no.png', phoneCode: '+47', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'DK', name: 'Denmark', flag: 'https://flagcdn.com/w40/dk.png', phoneCode: '+45', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'FI', name: 'Finland', flag: 'https://flagcdn.com/w40/fi.png', phoneCode: '+358', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'BE', name: 'Belgium', flag: 'https://flagcdn.com/w40/be.png', phoneCode: '+32', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'AT', name: 'Austria', flag: 'https://flagcdn.com/w40/at.png', phoneCode: '+43', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'IE', name: 'Ireland', flag: 'https://flagcdn.com/w40/ie.png', phoneCode: '+353', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'PT', name: 'Portugal', flag: 'https://flagcdn.com/w40/pt.png', phoneCode: '+351', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'PL', name: 'Poland', flag: 'https://flagcdn.com/w40/pl.png', phoneCode: '+48', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'CZ', name: 'Czech Republic', flag: 'https://flagcdn.com/w40/cz.png', phoneCode: '+420', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'HU', name: 'Hungary', flag: 'https://flagcdn.com/w40/hu.png', phoneCode: '+36', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'RO', name: 'Romania', flag: 'https://flagcdn.com/w40/ro.png', phoneCode: '+40', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'GR', name: 'Greece', flag: 'https://flagcdn.com/w40/gr.png', phoneCode: '+30', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'IL', name: 'Israel', flag: 'https://flagcdn.com/w40/il.png', phoneCode: '+972', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'SA', name: 'Saudi Arabia', flag: 'https://flagcdn.com/w40/sa.png', phoneCode: '+966', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'TR', name: 'Turkey', flag: 'https://flagcdn.com/w40/tr.png', phoneCode: '+90', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'TH', name: 'Thailand', flag: 'https://flagcdn.com/w40/th.png', phoneCode: '+66', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'MY', name: 'Malaysia', flag: 'https://flagcdn.com/w40/my.png', phoneCode: '+60', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'ID', name: 'Indonesia', flag: 'https://flagcdn.com/w40/id.png', phoneCode: '+62', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'PH', name: 'Philippines', flag: 'https://flagcdn.com/w40/ph.png', phoneCode: '+63', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'VN', name: 'Vietnam', flag: 'https://flagcdn.com/w40/vn.png', phoneCode: '+84', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'AR', name: 'Argentina', flag: 'https://flagcdn.com/w40/ar.png', phoneCode: '+54', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'CL', name: 'Chile', flag: 'https://flagcdn.com/w40/cl.png', phoneCode: '+56', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'CO', name: 'Colombia', flag: 'https://flagcdn.com/w40/co.png', phoneCode: '+57', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'PE', name: 'Peru', flag: 'https://flagcdn.com/w40/pe.png', phoneCode: '+51', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'NZ', name: 'New Zealand', flag: 'https://flagcdn.com/w40/nz.png', phoneCode: '+64', paymentMethods: ['paypal', 'payoneer', 'razorpay', 'stripe'] },
+            { code: 'EG', name: 'Egypt', flag: 'https://flagcdn.com/w40/eg.png', phoneCode: '+20', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'NG', name: 'Nigeria', flag: 'https://flagcdn.com/w40/ng.png', phoneCode: '+234', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'KE', name: 'Kenya', flag: 'https://flagcdn.com/w40/ke.png', phoneCode: '+254', paymentMethods: ['paypal', 'payoneer', 'razorpay'] },
+            { code: 'GH', name: 'Ghana', flag: 'https://flagcdn.com/w40/gh.png', phoneCode: '+233', paymentMethods: ['paypal', 'payoneer', 'razorpay'] }
+        ];
+
+        // Payment Methods Configuration with Logos
+        const paymentMethods = {
+            gpay: { 
+                id: 'gpay', 
+                name: 'GPay', 
+                logo: 'https://brandlogos.net/wp-content/uploads/2022/08/google_pay_mark-logo_brandlogos.net_vcitv.png'
+            },
+            phonepe: { 
+                id: 'phonepe', 
+                name: 'PhonePe', 
+                logo: 'https://download.logo.wine/logo/PhonePe/PhonePe-Logo.wine.png'
+            },
+            razorpay: { 
+                id: 'razorpay', 
+                name: 'Razorpay', 
+                logo: 'https://razorpay.com/assets/razorpay-glyph.svg'
+            },
+            paypal: { 
+                id: 'paypal', 
+                name: 'PayPal', 
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg'
+            },
+            payoneer: { 
+                id: 'payoneer', 
+                name: 'Payoneer', 
+                logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbX3fncu75sc7f1ZP8DRyZFNlnexX3rFW4gw&s'
+            },
+            stripe: { 
+                id: 'stripe', 
+                name: 'Stripe', 
+                logo: 'https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg'
+            }
+        };
+
         // Custom Cursor
         const cursor = document.getElementById('custom-cursor');
         const cursorFollower = document.getElementById('custom-cursor-follower');
@@ -853,7 +1012,7 @@
         });
 
         // Add hover effects for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, input, select, .payment-option, .checkbox-group');
+        const interactiveElements = document.querySelectorAll('a, button, input, select, .payment-option, .checkbox-group, .country-option, .country-selector');
         
         interactiveElements.forEach(element => {
             element.addEventListener('mouseenter', () => {
@@ -890,62 +1049,102 @@
             }, 3000);
         }
 
-        // Payment Methods Configuration with Logos
-        const paymentMethods = {
-            international: [
-                { 
-                    id: 'paypal', 
-                    name: 'PayPal', 
-                    logo: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg'
-                },
-                { 
-                    id: 'payoneer', 
-                    name: 'Payoneer', 
-                    logo: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Old_Payoneer_Logo.svg'
-                },
-                { 
-                    id: 'razorpay', 
-                    name: 'Razorpay', 
-                    logo: 'https://razorpay.com/assets/razorpay-glyph.svg'
-                }
-            ],
-            india: [
-                { 
-                    id: 'gpay', 
-                    name: 'GPay', 
-                    logo: 'https://brandlogos.net/wp-content/uploads/2022/08/google_pay_mark-logo_brandlogos.net_vcitv.png'
-                },
-                { 
-                    id: 'phonepe', 
-                    name: 'PhonePe', 
-                    logo: 'https://download.logo.wine/logo/PhonePe/PhonePe-Logo.wine.png'
-                },
-                { 
-                    id: 'razorpay', 
-                    name: 'Razorpay', 
-                    logo: 'https://razorpay.com/assets/razorpay-glyph.svg'
-                }
-            ]
-        };
-
-        // Initialize payment options based on country
-        const countrySelect = document.getElementById('country');
+        // Country Selection Logic
+        const countrySelector = document.getElementById('country-selector');
+        const countryDropdown = document.getElementById('country-dropdown');
+        const countrySearch = document.getElementById('country-search');
+        const countryList = document.getElementById('country-list');
+        const selectedCountryFlag = document.getElementById('selected-country-flag');
+        const selectedCountryName = document.getElementById('selected-country-name');
+        const countryLoading = document.getElementById('country-loading');
+        const countryCodeSelect = document.getElementById('country-code');
         const paymentOptionsContainer = document.getElementById('payment-options');
         const submitBtn = document.getElementById('submit-btn');
         const privacyCheckbox = document.getElementById('privacy-agreement');
+        let selectedCountry = null;
         let selectedPaymentMethod = null;
 
+        // Initialize country list
+        function initializeCountryList() {
+            countryList.innerHTML = '';
+            
+            countriesData.forEach(country => {
+                const option = document.createElement('div');
+                option.className = 'country-option';
+                option.dataset.countryCode = country.code;
+                option.innerHTML = `
+                    <img src="${country.flag}" alt="${country.name}" class="country-flag">
+                    <div class="country-name">${country.name}</div>
+                `;
+                
+                option.addEventListener('click', () => {
+                    selectCountry(country);
+                    countryDropdown.classList.remove('active');
+                });
+                
+                countryList.appendChild(option);
+            });
+        }
+
+        // Select a country
+        function selectCountry(country) {
+            selectedCountry = country;
+            
+            // Update selected country display
+            selectedCountryFlag.src = country.flag;
+            selectedCountryFlag.alt = country.name;
+            selectedCountryFlag.style.display = 'block';
+            selectedCountryName.textContent = country.name;
+            countryLoading.style.display = 'none';
+            
+            // Update country code dropdown
+            updateCountryCodeDropdown(country.phoneCode);
+            
+            // Update payment options
+            updatePaymentOptions();
+            
+            // Update form validation
+            updateSubmitButton();
+            
+            // Highlight selected country in dropdown
+            document.querySelectorAll('.country-option').forEach(opt => {
+                if (opt.dataset.countryCode === country.code) {
+                    opt.classList.add('active');
+                } else {
+                    opt.classList.remove('active');
+                }
+            });
+        }
+
+        // Update country code dropdown
+        function updateCountryCodeDropdown(phoneCode) {
+            countryCodeSelect.innerHTML = '';
+            
+            // Add all country codes for the selected country
+            const countryCodes = countriesData.filter(c => c.code === selectedCountry.code);
+            
+            countryCodes.forEach(country => {
+                const option = document.createElement('option');
+                option.value = country.phoneCode;
+                option.textContent = `${country.phoneCode} (${country.code})`;
+                option.selected = country.phoneCode === phoneCode;
+                countryCodeSelect.appendChild(option);
+            });
+        }
+
+        // Update payment options based on selected country
         function updatePaymentOptions() {
-            const country = countrySelect.value;
             paymentOptionsContainer.innerHTML = '';
             selectedPaymentMethod = null;
-            submitBtn.disabled = true;
-
-            if (!country) return;
-
-            const methods = country === 'India' ? paymentMethods.india : paymentMethods.international;
             
-            methods.forEach(method => {
+            if (!selectedCountry) return;
+
+            const methods = selectedCountry.paymentMethods;
+            
+            methods.forEach(methodId => {
+                const method = paymentMethods[methodId];
+                if (!method) return;
+                
                 const option = document.createElement('div');
                 option.className = 'payment-option';
                 option.dataset.method = method.id;
@@ -967,13 +1166,39 @@
             });
         }
 
+        // Update submit button state
         function updateSubmitButton() {
             const form = document.getElementById('payment-form');
             const isFormValid = form.checkValidity();
             const isPrivacyAgreed = privacyCheckbox.checked;
             const hasPaymentMethod = selectedPaymentMethod !== null;
+            const hasCountry = selectedCountry !== null;
             
-            submitBtn.disabled = !(isFormValid && isPrivacyAgreed && hasPaymentMethod);
+            submitBtn.disabled = !(isFormValid && isPrivacyAgreed && hasPaymentMethod && hasCountry);
+        }
+
+        // Detect user's country by IP
+        function detectUserCountry() {
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => {
+                    const countryCode = data.country_code;
+                    const country = countriesData.find(c => c.code === countryCode);
+                    
+                    if (country) {
+                        selectCountry(country);
+                    } else {
+                        // Default to India if country not found
+                        const defaultCountry = countriesData.find(c => c.code === 'IN');
+                        selectCountry(defaultCountry);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error detecting country:', error);
+                    // Default to India if detection fails
+                    const defaultCountry = countriesData.find(c => c.code === 'IN');
+                    selectCountry(defaultCountry);
+                });
         }
 
         // Privacy Policy Popup
@@ -998,7 +1223,32 @@
         });
 
         // Event Listeners
-        countrySelect.addEventListener('change', updatePaymentOptions);
+        countrySelector.addEventListener('click', function() {
+            countryDropdown.classList.toggle('active');
+            if (countryDropdown.classList.contains('active')) {
+                countrySearch.focus();
+            }
+        });
+
+        countrySearch.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            document.querySelectorAll('.country-option').forEach(option => {
+                const countryName = option.querySelector('.country-name').textContent.toLowerCase();
+                if (countryName.includes(searchTerm)) {
+                    option.style.display = 'flex';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!countrySelector.contains(e.target) && !countryDropdown.contains(e.target)) {
+                countryDropdown.classList.remove('active');
+            }
+        });
+
         privacyCheckbox.addEventListener('change', updateSubmitButton);
         
         document.querySelectorAll('#payment-form input, #payment-form select').forEach(element => {
@@ -1022,19 +1272,26 @@
                 // In a real implementation, you would redirect to the payment gateway
                 // based on the selected payment method
                 console.log('Selected payment method:', selectedPaymentMethod);
+                console.log('Selected country:', selectedCountry);
                 console.log('Form data:', {
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
                     phone: document.getElementById('country-code').value + document.getElementById('phone').value,
-                    country: document.getElementById('country').value,
+                    country: selectedCountry.name,
                     company: document.getElementById('company').value,
                     customerType: document.querySelector('input[name="customerType"]:checked').value
                 });
             }, 2000);
         });
 
-        // Initialize payment options
-        updatePaymentOptions();
+        // Initialize the page
+        function initializePage() {
+            initializeCountryList();
+            detectUserCountry();
+        }
+
+        // Initialize when page loads
+        window.addEventListener('DOMContentLoaded', initializePage);
     </script>
 </body>
 </html>
