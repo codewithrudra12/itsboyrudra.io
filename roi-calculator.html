@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROI Calculator | Rudraksh Sharma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --accent-light: #5a9cff;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(58, 134, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calculator-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculator-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .calculator-card h2 i {
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .input-with-icon input {
+            padding-left: 2.5rem;
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 600px) {
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-option {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-option:hover {
+            background: rgba(58, 134, 255, 0.1);
+            border-color: var(--accent);
+        }
+
+        .service-option.selected {
+            background: rgba(58, 134, 255, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(58, 134, 255, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .service-name {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .service-price {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .slider-container {
+            margin-top: 0.5rem;
+        }
+
+        .slider-value {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .slider-value span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            background: var(--accent-light);
+            transform: scale(1.2);
+        }
+
+        .calculate-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .calculate-btn:hover {
+            background: var(--accent-light);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .results-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-header h2 {
+            font-size: 1.8rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .roi-badge {
+            background: var(--success);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .roi-badge.negative {
+            background: var(--danger);
+        }
+
+        .roi-badge.moderate {
+            background: var(--warning);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .result-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-value.positive {
+            color: var(--success);
+        }
+
+        .result-value.negative {
+            color: var(--danger);
+        }
+
+        .result-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .chart-container {
+            height: 250px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .chart-tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .chart-tab {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .chart-tab.active {
+            color: var(--accent);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .chart-tab:hover {
+            color: var(--accent-light);
+        }
+
+        .recommendations {
+            background: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .recommendations h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recommendations ul {
+            list-style: none;
+        }
+
+        .recommendations li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .recommendations li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+
+        .comparison-section {
+            margin-top: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .comparison-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .comparison-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .comparison-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .comparison-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .comparison-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .comparison-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-stat {
+            text-align: center;
+        }
+
+        .comparison-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .comparison-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+        }
+
+        .save-report {
+            display: inline-block;
+            margin-left: 1rem;
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s;
+        }
+
+        .save-report:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Custom graph animations */
+        .graph-container {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+
+        .graph-line {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .graph-area {
+            fill: url(#areaGradient);
+            opacity: 0.3;
+        }
+
+        .graph-point {
+            fill: var(--accent);
+            stroke: var(--bg-dark);
+            stroke-width: 2;
+            transition: all 0.3s;
+        }
+
+        .graph-point:hover {
+            fill: var(--accent-light);
+            r: 6;
+        }
+
+        .graph-axis line {
+            stroke: var(--text-secondary);
+            stroke-width: 1;
+            opacity: 0.3;
+        }
+
+        .graph-axis path {
+            stroke: var(--text-secondary);
+            stroke-width: 1;
+        }
+
+        .graph-axis text {
+            fill: var(--text-secondary);
+            font-size: 10px;
+        }
+
+        .graph-tooltip {
+            position: absolute;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            padding: 0.5rem;
+            font-size: 0.8rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">ROI Calculator</div>
+            <p class="tagline">Calculate your potential return on investment for performance marketing and video editing services</p>
+            
+            <div class="calculator-container">
+                <div class="calculator-card">
+                    <h2><i class="fas fa-calculator"></i> Input Parameters</h2>
+                    
+                    <div class="service-options">
+                        <div class="service-option" data-service="google-ads">
+                            <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="service-name">Google Ads</div>
+                            <div class="service-price">From $349/month</div>
+                        </div>
+                        <div class="service-option" data-service="facebook-ads">
+                            <div class="service-icon"><i class="fas fa-bullseye"></i></div>
+                            <div class="service-name">Facebook Ads</div>
+                            <div class="service-price">From $349/month</div>
+                        </div>
+                        <div class="service-option" data-service="video-editing">
+                            <div class="service-icon"><i class="fas fa-video"></i></div>
+                            <div class="service-name">Video Editing</div>
+                            <div class="service-price">From $349/month</div>
+                        </div>
+                        <div class="service-option" data-service="all-services">
+                            <div class="service-icon"><i class="fas fa-star"></i></div>
+                            <div class="service-name">All Services</div>
+                            <div class="service-price">From $799/month</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="monthly-budget">Monthly Ad Budget</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="monthly-budget" min="0" value="1000" step="100">
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-value">
+                                <span>$0</span>
+                                <span>$10,000</span>
+                            </div>
+                            <input type="range" min="0" max="10000" value="1000" step="100" class="slider" id="budget-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="conversion-rate">Current Conversion Rate (%)</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-percentage"></i>
+                            <input type="number" id="conversion-rate" min="0" max="100" value="2" step="0.1">
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-value">
+                                <span>0%</span>
+                                <span>20%</span>
+                            </div>
+                            <input type="range" min="0" max="20" value="2" step="0.1" class="slider" id="conversion-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="average-order">Average Order Value</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="average-order" min="0" value="50" step="5">
+                        </div>
+                        <div class="slider-container">
+                            <div class="slider-value">
+                                <span>$0</span>
+                                <span>$500</span>
+                            </div>
+                            <input type="range" min="0" max="500" value="50" step="5" class="slider" id="order-slider">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service-cost">Service Cost</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                            <input type="number" id="service-cost" min="0" value="349" step="50">
+                        </div>
+                    </div>
+                    
+                    <button class="calculate-btn" id="calculate-btn">
+                        <i class="fas fa-calculator"></i> Calculate ROI
+                    </button>
+                </div>
+                
+                <div class="results-card">
+                    <div class="results-header">
+                        <h2><i class="fas fa-chart-bar"></i> ROI Results</h2>
+                        <div class="roi-badge" id="roi-badge">0%</div>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-value" id="monthly-revenue">$0</div>
+                            <div class="result-label">Monthly Revenue</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="monthly-profit">$0</div>
+                            <div class="result-label">Monthly Profit</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="customer-acquisition">$0</div>
+                            <div class="result-label">Customer Acquisition Cost</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-value" id="break-even">0</div>
+                            <div class="result-label">Break-even (months)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-tabs">
+                        <button class="chart-tab active" data-chart="roi-trend">ROI Trend</button>
+                        <button class="chart-tab" data-chart="profit-distribution">Profit Distribution</button>
+                        <button class="chart-tab" data-chart="revenue-growth">Revenue Growth</button>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <div class="graph-container" id="roi-trend-chart">
+                            <!-- Dynamic ROI trend graph will be rendered here -->
+                        </div>
+                        <div class="graph-container" id="profit-distribution-chart" style="display: none;">
+                            <!-- Dynamic profit distribution graph will be rendered here -->
+                        </div>
+                        <div class="graph-container" id="revenue-growth-chart" style="display: none;">
+                            <!-- Dynamic revenue growth graph will be rendered here -->
+                        </div>
+                        <div class="graph-tooltip" id="graph-tooltip"></div>
+                    </div>
+                    
+                    <div class="recommendations">
+                        <h3><i class="fas fa-lightbulb"></i> Recommendations</h3>
+                        <ul id="recommendations-list">
+                            <li>Select a service and input your parameters to see personalized recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <section class="comparison-section">
+            <h2 class="section-title">Service Comparison</h2>
+            
+            <div class="comparison-cards">
+                <div class="comparison-card">
+                    <div class="comparison-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Google Ads</h3>
+                    <p>Target users actively searching for your products or services with precise keyword targeting.</p>
+                    <div class="comparison-stats">
+                        <div class="comparison-stat">
+                            <span class="comparison-value">300%</span>
+                            <span class="comparison-label">Avg. ROI</span>
+                        </div>
+                        <div class="comparison-stat">
+                            <span class="comparison-value">2.1%</span>
+                            <span class="comparison-label">Avg. CTR</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Facebook Ads</h3>
+                    <p>Reach your ideal audience with demographic and interest-based targeting on social media.</p>
+                    <div class="comparison-stats">
+                        <div class="comparison-stat">
+                            <span class="comparison-value">250%</span>
+                            <span class="comparison-label">Avg. ROI</span>
+                        </div>
+                        <div class="comparison-stat">
+                            <span class="comparison-value">1.8%</span>
+                            <span class="comparison-label">Avg. CTR</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-card">
+                    <div class="comparison-icon"><i class="fas fa-video"></i></div>
+                    <h3>Video Editing</h3>
+                    <p>Create engaging video content that converts viewers into customers across platforms.</p>
+                    <div class="comparison-stats">
+                        <div class="comparison-stat">
+                            <span class="comparison-value">40%</span>
+                            <span class="comparison-label">Conv. Increase</span>
+                        </div>
+                        <div class="comparison-stat">
+                            <span class="comparison-value">3.5x</span>
+                            <span class="comparison-label">Engagement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+            <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="back-link">← Back to Main Website</a>
+            <button class="save-report" id="save-report"><i class="fas fa-download"></i> Save Report</button>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize variables
+            let selectedService = 'google-ads';
+            let currentChart = 'roi-trend';
+            
+            // Service selection
+            document.querySelectorAll('.service-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.service-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    this.classList.add('selected');
+                    selectedService = this.getAttribute('data-service');
+                    
+                    // Update service cost based on selection
+                    updateServiceCost();
+                });
+            });
+            
+            // Set default selected service
+            document.querySelector('.service-option[data-service="google-ads"]').classList.add('selected');
+            
+            // Chart tabs
+            document.querySelectorAll('.chart-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.chart-tab').forEach(t => {
+                        t.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    currentChart = this.getAttribute('data-chart');
+                    
+                    // Show selected chart, hide others
+                    document.querySelectorAll('.graph-container').forEach(container => {
+                        container.style.display = 'none';
+                    });
+                    document.getElementById(`${currentChart}-chart`).style.display = 'block';
+                    
+                    // Redraw the current chart if we have data
+                    if (window.calculatedData) {
+                        drawChart(currentChart, window.calculatedData);
+                    }
+                });
+            });
+            
+            // Sync sliders with input fields
+            const budgetInput = document.getElementById('monthly-budget');
+            const budgetSlider = document.getElementById('budget-slider');
+            
+            budgetInput.addEventListener('input', function() {
+                budgetSlider.value = this.value;
+                updateServiceCost();
+            });
+            
+            budgetSlider.addEventListener('input', function() {
+                budgetInput.value = this.value;
+                updateServiceCost();
+            });
+            
+            const conversionInput = document.getElementById('conversion-rate');
+            const conversionSlider = document.getElementById('conversion-slider');
+            
+            conversionInput.addEventListener('input', function() {
+                conversionSlider.value = this.value;
+            });
+            
+            conversionSlider.addEventListener('input', function() {
+                conversionInput.value = this.value;
+            });
+            
+            const orderInput = document.getElementById('average-order');
+            const orderSlider = document.getElementById('order-slider');
+            
+            orderInput.addEventListener('input', function() {
+                orderSlider.value = this.value;
+            });
+            
+            orderSlider.addEventListener('input', function() {
+                orderInput.value = this.value;
+            });
+            
+            // Update service cost based on selected service and budget
+            function updateServiceCost() {
+                const budget = parseFloat(budgetInput.value) || 0;
+                let serviceCost = 349; // Base cost
+                
+                switch(selectedService) {
+                    case 'google-ads':
+                        serviceCost = 349 + (budget * 0.05); // 5% of ad spend
+                        break;
+                    case 'facebook-ads':
+                        serviceCost = 349 + (budget * 0.05); // 5% of ad spend
+                        break;
+                    case 'video-editing':
+                        serviceCost = 349; // Fixed cost for video editing
+                        break;
+                    case 'all-services':
+                        serviceCost = 799 + (budget * 0.08); // 8% of ad spend for all services
+                        break;
+                }
+                
+                document.getElementById('service-cost').value = Math.round(serviceCost);
+            }
+            
+            // Calculate ROI
+            document.getElementById('calculate-btn').addEventListener('click', calculateROI);
+            
+            function calculateROI() {
+                const adSpend = parseFloat(document.getElementById('monthly-budget').value) || 0;
+                const conversionRate = parseFloat(document.getElementById('conversion-rate').value) || 0;
+                const averageOrder = parseFloat(document.getElementById('average-order').value) || 0;
+                const serviceCost = parseFloat(document.getElementById('service-cost').value) || 0;
+                
+                // Calculate metrics
+                const clicks = adSpend / 1.5; // Assuming $1.5 CPC
+                const conversions = (clicks * conversionRate) / 100;
+                const monthlyRevenue = conversions * averageOrder;
+                const monthlyProfit = monthlyRevenue - adSpend - serviceCost;
+                const customerAcquisitionCost = conversions > 0 ? (adSpend + serviceCost) / conversions : 0;
+                const roiPercentage = ((monthlyProfit / (adSpend + serviceCost)) * 100);
+                const breakEvenMonths = monthlyProfit > 0 ? (serviceCost / monthlyProfit).toFixed(1) : 'N/A';
+                
+                // Update UI
+                document.getElementById('monthly-revenue').textContent = `$${monthlyRevenue.toFixed(2)}`;
+                document.getElementById('monthly-profit').textContent = `$${monthlyProfit.toFixed(2)}`;
+                document.getElementById('customer-acquisition').textContent = `$${customerAcquisitionCost.toFixed(2)}`;
+                document.getElementById('break-even').textContent = breakEvenMonths;
+                
+                // Update ROI badge
+                const roiBadge = document.getElementById('roi-badge');
+                roiBadge.textContent = `${roiPercentage.toFixed(0)}%`;
+                
+                if (roiPercentage > 100) {
+                    roiBadge.className = 'roi-badge';
+                } else if (roiPercentage > 0) {
+                    roiBadge.className = 'roi-badge moderate';
+                } else {
+                    roiBadge.className = 'roi-badge negative';
+                }
+                
+                // Update profit color
+                const profitElement = document.getElementById('monthly-profit');
+                if (monthlyProfit > 0) {
+                    profitElement.className = 'result-value positive';
+                } else {
+                    profitElement.className = 'result-value negative';
+                }
+                
+                // Store calculated data for charts
+                window.calculatedData = {
+                    adSpend,
+                    serviceCost,
+                    monthlyRevenue,
+                    monthlyProfit,
+                    roiPercentage,
+                    conversions,
+                    customerAcquisitionCost
+                };
+                
+                // Update charts
+                drawChart(currentChart, window.calculatedData);
+                
+                // Update recommendations
+                updateRecommendations(roiPercentage, conversionRate, customerAcquisitionCost, averageOrder);
+            }
+            
+            // Draw dynamic charts
+            function drawChart(chartType, data) {
+                const container = document.getElementById(`${chartType}-chart`);
+                container.innerHTML = '';
+                
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                
+                // Create SVG element
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.setAttribute("width", "100%");
+                svg.setAttribute("height", "100%");
+                svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+                
+                // Create gradient for area charts
+                const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+                const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+                gradient.setAttribute("id", "areaGradient");
+                gradient.setAttribute("x1", "0%");
+                gradient.setAttribute("y1", "0%");
+                gradient.setAttribute("x2", "0%");
+                gradient.setAttribute("y2", "100%");
+                
+                const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+                stop1.setAttribute("offset", "0%");
+                stop1.setAttribute("stop-color", "rgba(58, 134, 255, 0.5)");
+                
+                const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+                stop2.setAttribute("offset", "100%");
+                stop2.setAttribute("stop-color", "rgba(58, 134, 255, 0)");
+                
+                gradient.appendChild(stop1);
+                gradient.appendChild(stop2);
+                defs.appendChild(gradient);
+                svg.appendChild(defs);
+                
+                // Draw chart based on type
+                switch(chartType) {
+                    case 'roi-trend':
+                        drawROITrend(svg, width, height, data);
+                        break;
+                    case 'profit-distribution':
+                        drawProfitDistribution(svg, width, height, data);
+                        break;
+                    case 'revenue-growth':
+                        drawRevenueGrowth(svg, width, height, data);
+                        break;
+                }
+                
+                container.appendChild(svg);
+            }
+            
+            // Draw ROI Trend chart
+            function drawROITrend(svg, width, height, data) {
+                const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+                const chartWidth = width - margin.left - margin.right;
+                const chartHeight = height - margin.top - margin.bottom;
+                
+                // Create scales
+                const xScale = (value) => margin.left + (value / 11) * chartWidth;
+                const yScale = (value) => margin.top + chartHeight - (value / (data.monthlyRevenue * 1.2)) * chartHeight;
+                
+                // Generate data points for 12 months
+                const months = Array.from({ length: 12 }, (_, i) => i + 1);
+                const revenueData = months.map(month => {
+                    // Simulate growth over time
+                    const growthFactor = 1 + (month * 0.05);
+                    return {
+                        month,
+                        revenue: data.monthlyRevenue * growthFactor,
+                        profit: data.monthlyProfit * growthFactor
+                    };
+                });
+                
+                // Create line for revenue
+                const revenueLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                let revenuePath = `M ${xScale(1)} ${yScale(revenueData[0].revenue)}`;
+                revenueData.forEach((point, i) => {
+                    if (i > 0) {
+                        revenuePath += ` L ${xScale(point.month)} ${yScale(point.revenue)}`;
+                    }
+                });
+                revenueLine.setAttribute("d", revenuePath);
+                revenueLine.setAttribute("class", "graph-line");
+                revenueLine.setAttribute("stroke", "#3a86ff");
+                svg.appendChild(revenueLine);
+                
+                // Create area under revenue line
+                const revenueArea = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                let areaPath = revenuePath;
+                areaPath += ` L ${xScale(12)} ${yScale(0)}`;
+                areaPath += ` L ${xScale(1)} ${yScale(0)}`;
+                areaPath += " Z";
+                revenueArea.setAttribute("d", areaPath);
+                revenueArea.setAttribute("class", "graph-area");
+                svg.appendChild(revenueArea);
+                
+                // Create line for profit
+                const profitLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                let profitPath = `M ${xScale(1)} ${yScale(revenueData[0].profit)}`;
+                revenueData.forEach((point, i) => {
+                    if (i > 0) {
+                        profitPath += ` L ${xScale(point.month)} ${yScale(point.profit)}`;
+                    }
+                });
+                profitLine.setAttribute("d", profitPath);
+                profitLine.setAttribute("class", "graph-line");
+                profitLine.setAttribute("stroke", data.monthlyProfit > 0 ? "#22c55e" : "#ef4444");
+                svg.appendChild(profitLine);
+                
+                // Add data points
+                revenueData.forEach(point => {
+                    const pointCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    pointCircle.setAttribute("cx", xScale(point.month));
+                    pointCircle.setAttribute("cy", yScale(point.revenue));
+                    pointCircle.setAttribute("r", "4");
+                    pointCircle.setAttribute("class", "graph-point");
+                    pointCircle.setAttribute("fill", "#3a86ff");
+                    pointCircle.setAttribute("data-value", `Month ${point.month}: $${point.revenue.toFixed(0)} Revenue`);
+                    svg.appendChild(pointCircle);
+                    
+                    const profitCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    profitCircle.setAttribute("cx", xScale(point.month));
+                    profitCircle.setAttribute("cy", yScale(point.profit));
+                    profitCircle.setAttribute("r", "4");
+                    profitCircle.setAttribute("class", "graph-point");
+                    profitCircle.setAttribute("fill", data.monthlyProfit > 0 ? "#22c55e" : "#ef4444");
+                    profitCircle.setAttribute("data-value", `Month ${point.month}: $${point.profit.toFixed(0)} Profit`);
+                    svg.appendChild(profitCircle);
+                });
+                
+                // Add X axis
+                const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                xAxis.setAttribute("class", "graph-axis");
+                xAxis.setAttribute("transform", `translate(0, ${height - margin.bottom})`);
+                
+                months.forEach(month => {
+                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    tick.setAttribute("x1", xScale(month));
+                    tick.setAttribute("x2", xScale(month));
+                    tick.setAttribute("y1", 0);
+                    tick.setAttribute("y2", 5);
+                    xAxis.appendChild(tick);
+                    
+                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    label.setAttribute("x", xScale(month));
+                    label.setAttribute("y", 20);
+                    label.setAttribute("text-anchor", "middle");
+                    label.textContent = month;
+                    xAxis.appendChild(label);
+                });
+                
+                svg.appendChild(xAxis);
+                
+                // Add Y axis
+                const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                yAxis.setAttribute("class", "graph-axis");
+                yAxis.setAttribute("transform", `translate(${margin.left}, 0)`);
+                
+                const yTicks = 5;
+                for (let i = 0; i <= yTicks; i++) {
+                    const value = (i / yTicks) * data.monthlyRevenue * 1.2;
+                    const yPos = yScale(value);
+                    
+                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    tick.setAttribute("x1", 0);
+                    tick.setAttribute("x2", -5);
+                    tick.setAttribute("y1", yPos);
+                    tick.setAttribute("y2", yPos);
+                    yAxis.appendChild(tick);
+                    
+                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    label.setAttribute("x", -10);
+                    label.setAttribute("y", yPos);
+                    label.setAttribute("text-anchor", "end");
+                    label.setAttribute("dominant-baseline", "middle");
+                    label.textContent = `$${value.toFixed(0)}`;
+                    yAxis.appendChild(label);
+                }
+                
+                svg.appendChild(yAxis);
+                
+                // Add legend
+                const legend = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                legend.setAttribute("transform", `translate(${width - 150}, ${margin.top})`);
+                
+                const revenueLegend = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                revenueLegend.setAttribute("transform", "translate(0, 0)");
+                
+                const revenueLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                revenueLegendLine.setAttribute("x1", 0);
+                revenueLegendLine.setAttribute("x2", 20);
+                revenueLegendLine.setAttribute("y1", 5);
+                revenueLegendLine.setAttribute("y2", 5);
+                revenueLegendLine.setAttribute("stroke", "#3a86ff");
+                revenueLegendLine.setAttribute("stroke-width", "2");
+                revenueLegend.appendChild(revenueLegendLine);
+                
+                const revenueLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                revenueLegendText.setAttribute("x", 25);
+                revenueLegendText.setAttribute("y", 8);
+                revenueLegendText.setAttribute("font-size", "12");
+                revenueLegendText.setAttribute("fill", "white");
+                revenueLegendText.textContent = "Revenue";
+                revenueLegend.appendChild(revenueLegendText);
+                
+                const profitLegend = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                profitLegend.setAttribute("transform", "translate(0, 20)");
+                
+                const profitLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                profitLegendLine.setAttribute("x1", 0);
+                profitLegendLine.setAttribute("x2", 20);
+                profitLegendLine.setAttribute("y1", 5);
+                profitLegendLine.setAttribute("y2", 5);
+                profitLegendLine.setAttribute("stroke", data.monthlyProfit > 0 ? "#22c55e" : "#ef4444");
+                profitLegendLine.setAttribute("stroke-width", "2");
+                profitLegend.appendChild(profitLegendLine);
+                
+                const profitLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                profitLegendText.setAttribute("x", 25);
+                profitLegendText.setAttribute("y", 8);
+                profitLegendText.setAttribute("font-size", "12");
+                profitLegendText.setAttribute("fill", "white");
+                profitLegendText.textContent = "Profit";
+                profitLegend.appendChild(profitLegendText);
+                
+                legend.appendChild(revenueLegend);
+                legend.appendChild(profitLegend);
+                svg.appendChild(legend);
+                
+                // Add interactivity
+                addChartInteractivity(svg);
+            }
+            
+            // Draw Profit Distribution chart
+            function drawProfitDistribution(svg, width, height, data) {
+                const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+                const chartWidth = width - margin.left - margin.right;
+                const chartHeight = height - margin.top - margin.bottom;
+                
+                const centerX = width / 2;
+                const centerY = height / 2;
+                const radius = Math.min(chartWidth, chartHeight) / 2 - 10;
+                
+                // Calculate values for the pie chart
+                const total = data.adSpend + data.serviceCost + data.monthlyProfit;
+                const adSpendPercent = (data.adSpend / total) * 100;
+                const serviceCostPercent = (data.serviceCost / total) * 100;
+                const profitPercent = (data.monthlyProfit / total) * 100;
+                
+                const segments = [
+                    { label: "Ad Spend", value: adSpendPercent, color: "#ef4444" },
+                    { label: "Service Cost", value: serviceCostPercent, color: "#f59e0b" },
+                    { label: "Profit", value: profitPercent, color: data.monthlyProfit > 0 ? "#22c55e" : "#ef4444" }
+                ];
+                
+                let currentAngle = 0;
+                
+                segments.forEach(segment => {
+                    if (segment.value > 0) {
+                        const segmentAngle = (segment.value / 100) * 360;
+                        const startAngle = (currentAngle * Math.PI) / 180;
+                        const endAngle = ((currentAngle + segmentAngle) * Math.PI) / 180;
+                        
+                        // Create path for segment
+                        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                        const x1 = centerX + radius * Math.cos(startAngle);
+                        const y1 = centerY + radius * Math.sin(startAngle);
+                        const x2 = centerX + radius * Math.cos(endAngle);
+                        const y2 = centerY + radius * Math.sin(endAngle);
+                        
+                        const largeArcFlag = segmentAngle > 180 ? 1 : 0;
+                        
+                        const pathData = [
+                            `M ${centerX} ${centerY}`,
+                            `L ${x1} ${y1}`,
+                            `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
+                            "Z"
+                        ].join(" ");
+                        
+                        path.setAttribute("d", pathData);
+                        path.setAttribute("fill", segment.color);
+                        path.setAttribute("stroke", "var(--bg-dark)");
+                        path.setAttribute("stroke-width", "2");
+                        path.setAttribute("data-value", `${segment.label}: ${segment.value.toFixed(1)}%`);
+                        svg.appendChild(path);
+                        
+                        // Add label
+                        const labelAngle = currentAngle + segmentAngle / 2;
+                        const labelRadius = radius * 0.7;
+                        const labelX = centerX + labelRadius * Math.cos(labelAngle * Math.PI / 180);
+                        const labelY = centerY + labelRadius * Math.sin(labelAngle * Math.PI / 180);
+                        
+                        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                        label.setAttribute("x", labelX);
+                        label.setAttribute("y", labelY);
+                        label.setAttribute("text-anchor", "middle");
+                        label.setAttribute("dominant-baseline", "middle");
+                        label.setAttribute("font-size", "12");
+                        label.setAttribute("fill", "white");
+                        label.textContent = `${segment.value.toFixed(1)}%`;
+                        svg.appendChild(label);
+                        
+                        currentAngle += segmentAngle;
+                    }
+                });
+                
+                // Add legend
+                const legend = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                legend.setAttribute("transform", `translate(${width - 120}, ${margin.top})`);
+                
+                segments.forEach((segment, i) => {
+                    const legendItem = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                    legendItem.setAttribute("transform", `translate(0, ${i * 20})`);
+                    
+                    const colorBox = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    colorBox.setAttribute("x", 0);
+                    colorBox.setAttribute("y", 0);
+                    colorBox.setAttribute("width", 15);
+                    colorBox.setAttribute("height", 15);
+                    colorBox.setAttribute("fill", segment.color);
+                    legendItem.appendChild(colorBox);
+                    
+                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    label.setAttribute("x", 20);
+                    label.setAttribute("y", 12);
+                    label.setAttribute("font-size", "12");
+                    label.setAttribute("fill", "white");
+                    label.textContent = segment.label;
+                    legendItem.appendChild(label);
+                    
+                    legend.appendChild(legendItem);
+                });
+                
+                svg.appendChild(legend);
+                
+                // Add interactivity
+                addChartInteractivity(svg);
+            }
+            
+            // Draw Revenue Growth chart
+            function drawRevenueGrowth(svg, width, height, data) {
+                const margin = { top: 20, right: 30, bottom: 40, left: 50 };
+                const chartWidth = width - margin.left - margin.right;
+                const chartHeight = height - margin.top - margin.bottom;
+                
+                // Create scales
+                const xScale = (value) => margin.left + (value / 5) * chartWidth;
+                const yScale = (value) => margin.top + chartHeight - (value / (data.monthlyRevenue * 2)) * chartHeight;
+                
+                // Generate data points for different conversion rates
+                const conversionRates = [1, 2, 3, 4, 5];
+                const revenueData = conversionRates.map(rate => {
+                    const clicks = data.adSpend / 1.5;
+                    const conversions = (clicks * rate) / 100;
+                    return {
+                        conversionRate: rate,
+                        revenue: conversions * data.averageOrder
+                    };
+                });
+                
+                // Create line
+                const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                let path = `M ${xScale(1)} ${yScale(revenueData[0].revenue)}`;
+                revenueData.forEach((point, i) => {
+                    if (i > 0) {
+                        path += ` L ${xScale(point.conversionRate)} ${yScale(point.revenue)}`;
+                    }
+                });
+                line.setAttribute("d", path);
+                line.setAttribute("class", "graph-line");
+                line.setAttribute("stroke", "#3a86ff");
+                svg.appendChild(line);
+                
+                // Create area under line
+                const area = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                let areaPath = path;
+                areaPath += ` L ${xScale(5)} ${yScale(0)}`;
+                areaPath += ` L ${xScale(1)} ${yScale(0)}`;
+                areaPath += " Z";
+                area.setAttribute("d", areaPath);
+                area.setAttribute("class", "graph-area");
+                svg.appendChild(area);
+                
+                // Add data points
+                revenueData.forEach(point => {
+                    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                    circle.setAttribute("cx", xScale(point.conversionRate));
+                    circle.setAttribute("cy", yScale(point.revenue));
+                    circle.setAttribute("r", "4");
+                    circle.setAttribute("class", "graph-point");
+                    circle.setAttribute("fill", "#3a86ff");
+                    circle.setAttribute("data-value", `${point.conversionRate}% CR: $${point.revenue.toFixed(0)} Revenue`);
+                    svg.appendChild(circle);
+                });
+                
+                // Add X axis
+                const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                xAxis.setAttribute("class", "graph-axis");
+                xAxis.setAttribute("transform", `translate(0, ${height - margin.bottom})`);
+                
+                conversionRates.forEach(rate => {
+                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    tick.setAttribute("x1", xScale(rate));
+                    tick.setAttribute("x2", xScale(rate));
+                    tick.setAttribute("y1", 0);
+                    tick.setAttribute("y2", 5);
+                    xAxis.appendChild(tick);
+                    
+                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    label.setAttribute("x", xScale(rate));
+                    label.setAttribute("y", 20);
+                    label.setAttribute("text-anchor", "middle");
+                    label.textContent = `${rate}%`;
+                    xAxis.appendChild(label);
+                });
+                
+                svg.appendChild(xAxis);
+                
+                // Add Y axis
+                const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                yAxis.setAttribute("class", "graph-axis");
+                yAxis.setAttribute("transform", `translate(${margin.left}, 0)`);
+                
+                const yTicks = 5;
+                for (let i = 0; i <= yTicks; i++) {
+                    const value = (i / yTicks) * data.monthlyRevenue * 2;
+                    const yPos = yScale(value);
+                    
+                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    tick.setAttribute("x1", 0);
+                    tick.setAttribute("x2", -5);
+                    tick.setAttribute("y1", yPos);
+                    tick.setAttribute("y2", yPos);
+                    yAxis.appendChild(tick);
+                    
+                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                    label.setAttribute("x", -10);
+                    label.setAttribute("y", yPos);
+                    label.setAttribute("text-anchor", "end");
+                    label.setAttribute("dominant-baseline", "middle");
+                    label.textContent = `$${value.toFixed(0)}`;
+                    yAxis.appendChild(label);
+                }
+                
+                svg.appendChild(yAxis);
+                
+                // Add title
+                const title = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                title.setAttribute("x", width / 2);
+                title.setAttribute("y", margin.top);
+                title.setAttribute("text-anchor", "middle");
+                title.setAttribute("font-size", "14");
+                title.setAttribute("fill", "white");
+                title.textContent = "Revenue vs Conversion Rate";
+                svg.appendChild(title);
+                
+                // Add interactivity
+                addChartInteractivity(svg);
+            }
+            
+            // Add interactivity to charts
+            function addChartInteractivity(svg) {
+                const tooltip = document.getElementById('graph-tooltip');
+                
+                svg.querySelectorAll('.graph-point, path[data-value]').forEach(element => {
+                    element.addEventListener('mouseover', function(e) {
+                        const value = this.getAttribute('data-value');
+                        if (value) {
+                            tooltip.textContent = value;
+                            tooltip.style.opacity = '1';
+                            
+                            const rect = this.getBoundingClientRect();
+                            const svgRect = svg.getBoundingClientRect();
+                            tooltip.style.left = `${rect.left - svgRect.left + rect.width / 2}px`;
+                            tooltip.style.top = `${rect.top - svgRect.top - 30}px`;
+                        }
+                    });
+                    
+                    element.addEventListener('mouseout', function() {
+                        tooltip.style.opacity = '0';
+                    });
+                });
+            }
+            
+            // Update recommendations
+            function updateRecommendations(roi, conversionRate, cac, aov) {
+                const recommendationsList = document.getElementById('recommendations-list');
+                recommendationsList.innerHTML = '';
+                
+                let recommendations = [];
+                
+                if (roi < 50) {
+                    recommendations.push('Consider increasing your conversion rate through better landing page optimization');
+                    recommendations.push('Test different ad creatives to improve click-through rates');
+                }
+                
+                if (conversionRate < 3) {
+                    recommendations.push('Optimize your landing pages for higher conversion rates');
+                    recommendations.push('Implement retargeting campaigns to capture lost visitors');
+                }
+                
+                if (cac > aov * 0.5) {
+                    recommendations.push('Focus on improving customer lifetime value to justify higher acquisition costs');
+                    recommendations.push('Test different audience segments to find more cost-effective targeting');
+                }
+                
+                if (roi > 100) {
+                    recommendations.push('Consider scaling your campaigns with increased budget');
+                    recommendations.push('Explore additional services to further maximize your ROI');
+                }
+                
+                if (recommendations.length === 0) {
+                    recommendations.push('Your current setup looks good! Consider A/B testing to find further optimizations');
+                }
+                
+                recommendations.forEach(rec => {
+                    const li = document.createElement('li');
+                    li.textContent = rec;
+                    recommendationsList.appendChild(li);
+                });
+            }
+            
+            // Save report functionality
+            document.getElementById('save-report').addEventListener('click', function() {
+                const monthlyRevenue = document.getElementById('monthly-revenue').textContent;
+                const monthlyProfit = document.getElementById('monthly-profit').textContent;
+                const roi = document.getElementById('roi-badge').textContent;
+                
+                const report = `
+ROI CALCULATION REPORT
+======================
+Monthly Revenue: ${monthlyRevenue}
+Monthly Profit: ${monthlyProfit}
+ROI: ${roi}
+Service: ${selectedService}
+Date: ${new Date().toLocaleDateString()}
+                `;
+                
+                const blob = new Blob([report], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'roi-report.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // Show confirmation
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Report Saved!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+            
+            // Initialize with a calculation
+            calculateROI();
+        });
+    </script>
+</body>
+</html>
