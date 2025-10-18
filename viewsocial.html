@@ -22,6 +22,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none;
         }
 
         body {
@@ -243,6 +244,8 @@
         .tiktok .social-icon { color: #000000; }
         .whatsapp .social-icon { color: #25D366; }
         .telegram .social-icon { color: #0088cc; }
+        .twitch .social-icon { color: #9146FF; }
+        .kick .social-icon { color: #53fc18; }
 
         .facebook .social-link { background: #1877F2; }
         .instagram .social-link { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
@@ -252,6 +255,8 @@
         .tiktok .social-link { background: #000000; }
         .whatsapp .social-link { background: #25D366; }
         .telegram .social-link { background: #0088cc; }
+        .twitch .social-link { background: #9146FF; }
+        .kick .social-link { background: #53fc18; }
 
         .social-card.facebook:hover { box-shadow: 0 15px 30px rgba(24, 119, 242, 0.2); }
         .social-card.instagram:hover { box-shadow: 0 15px 30px rgba(220, 39, 67, 0.2); }
@@ -261,6 +266,8 @@
         .social-card.tiktok:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
         .social-card.whatsapp:hover { box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2); }
         .social-card.telegram:hover { box-shadow: 0 15px 30px rgba(0, 136, 204, 0.2); }
+        .social-card.twitch:hover { box-shadow: 0 15px 30px rgba(145, 70, 255, 0.2); }
+        .social-card.kick:hover { box-shadow: 0 15px 30px rgba(83, 252, 24, 0.2); }
 
         .recent-content {
             margin-top: 4rem;
@@ -375,6 +382,56 @@
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
         }
 
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--accent);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--accent);
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.15s ease;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            color: var(--text-primary);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+            transform: translateX(150%);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification i {
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
         @media (max-width: 768px) {
             .profile-section {
                 flex-direction: column;
@@ -392,10 +449,24 @@
             .content-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .cursor, .cursor-follower {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Notification -->
+    <div class="notification" id="securityNotification">
+        <i class="fas fa-shield-alt"></i>
+        <span>Security features are active. Page inspection is restricted.</span>
+    </div>
+    
     <div class="container">
         <header>
             <div class="logo">Rudraksh Sharma</div>
@@ -553,6 +624,48 @@
                     </a>
                 </div>
                 
+                <div class="social-card twitch">
+                    <i class="fab fa-twitch social-icon"></i>
+                    <h3>Twitch</h3>
+                    <p>Live streaming for gaming, creative sessions, and Q&A.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">1.2K</span>
+                            <span class="social-stat-label">Followers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">45</span>
+                            <span class="social-stat-label">Streams</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.twitch.tv/itsboyrudra" target="_blank" class="social-link">
+                        <i class="fab fa-twitch"></i> Follow on Twitch
+                    </a>
+                </div>
+                
+                <div class="social-card kick">
+                    <i class="fas fa-fist-raised social-icon"></i>
+                    <h3>Kick</h3>
+                    <p>Live streaming platform for gaming and creative content.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">850</span>
+                            <span class="social-stat-label">Followers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">30</span>
+                            <span class="social-stat-label">Streams</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://kick.com/itsboyrudra" target="_blank" class="social-link">
+                        <i class="fas fa-fist-raised"></i> Follow on Kick
+                    </a>
+                </div>
+                
                 <div class="social-card whatsapp">
                     <i class="fab fa-whatsapp social-icon"></i>
                     <h3>WhatsApp</h3>
@@ -650,6 +763,40 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Twitch Streaming Setup" class="content-image">
+                        <div class="content-info">
+                            <span class="content-platform" style="background: #9146FF;">Twitch</span>
+                            <h3>My Streaming Setup Tour</h3>
+                            <p>Take a look at my complete streaming setup for gaming and creative content.</p>
+                            <div class="content-stats">
+                                <div class="content-stat">
+                                    <i class="far fa-eye"></i> 5.2K views
+                                </div>
+                                <div class="content-stat">
+                                    <i class="far fa-heart"></i> 320 likes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1633617477271-d4f351ff7c7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kick Streaming" class="content-image">
+                        <div class="content-info">
+                            <span class="content-platform" style="background: #53fc18;">Kick</span>
+                            <h3>First Stream on Kick</h3>
+                            <p>Join me for my first official stream on the Kick platform with special guests.</p>
+                            <div class="content-stats">
+                                <div class="content-stat">
+                                    <i class="far fa-eye"></i> 3.8K views
+                                </div>
+                                <div class="content-stat">
+                                    <i class="far fa-heart"></i> 210 likes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -688,6 +835,70 @@
                     console.log(`Clicked on ${platform} link`);
                     // In a real implementation, you would send this data to your analytics
                 });
+            });
+            
+            // Custom Cursor
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                
+                setTimeout(() => {
+                    cursorFollower.style.left = e.clientX + 'px';
+                    cursorFollower.style.top = e.clientY + 'px';
+                }, 100);
+            });
+            
+            document.addEventListener('mousedown', () => {
+                cursor.style.transform = 'scale(0.8)';
+                cursorFollower.style.transform = 'scale(1.2)';
+            });
+            
+            document.addEventListener('mouseup', () => {
+                cursor.style.transform = 'scale(1)';
+                cursorFollower.style.transform = 'scale(1)';
+            });
+            
+            // Security features
+            const notification = document.getElementById('securityNotification');
+            
+            // Show notification
+            setTimeout(() => {
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 5000);
+            }, 1000);
+            
+            // Disable right-click
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                notification.classList.add('show');
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            });
+            
+            // Disable keyboard shortcuts for dev tools
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'F12' || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+                    (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    notification.classList.add('show');
+                    setTimeout(() => {
+                        notification.classList.remove('show');
+                    }, 3000);
+                    return false;
+                }
+            });
+            
+            // Disable text selection
+            document.addEventListener('selectstart', (e) => {
+                e.preventDefault();
             });
         });
     </script>
