@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View My Social | Rudraksh Sharma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0e0e0e;
+            --bg-darker: #070707;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent: #3a86ff;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --glass-effect: rgba(20, 20, 20, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(58, 134, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            padding: 3px;
+            background: var(--bg-dark);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .profile-info {
+            max-width: 500px;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .profile-info p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+        }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.2);
+        }
+
+        .social-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .social-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .social-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .social-stat {
+            text-align: center;
+        }
+
+        .social-stat-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        .social-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+
+        /* Platform-specific colors */
+        .facebook .social-icon { color: #1877F2; }
+        .instagram .social-icon { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .twitter .social-icon { color: #1DA1F2; }
+        .linkedin .social-icon { color: #0077B5; }
+        .youtube .social-icon { color: #FF0000; }
+        .tiktok .social-icon { color: #000000; }
+        .whatsapp .social-icon { color: #25D366; }
+        .telegram .social-icon { color: #0088cc; }
+
+        .facebook .social-link { background: #1877F2; }
+        .instagram .social-link { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .twitter .social-link { background: #1DA1F2; }
+        .linkedin .social-link { background: #0077B5; }
+        .youtube .social-link { background: #FF0000; }
+        .tiktok .social-link { background: #000000; }
+        .whatsapp .social-link { background: #25D366; }
+        .telegram .social-link { background: #0088cc; }
+
+        .social-card.facebook:hover { box-shadow: 0 15px 30px rgba(24, 119, 242, 0.2); }
+        .social-card.instagram:hover { box-shadow: 0 15px 30px rgba(220, 39, 67, 0.2); }
+        .social-card.twitter:hover { box-shadow: 0 15px 30px rgba(29, 161, 242, 0.2); }
+        .social-card.linkedin:hover { box-shadow: 0 15px 30px rgba(0, 119, 181, 0.2); }
+        .social-card.youtube:hover { box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2); }
+        .social-card.tiktok:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
+        .social-card.whatsapp:hover { box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2); }
+        .social-card.telegram:hover { box-shadow: 0 15px 30px rgba(0, 136, 204, 0.2); }
+
+        .recent-content {
+            margin-top: 4rem;
+            padding: 3rem 0;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            color: var(--accent);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .content-info {
+            padding: 1.5rem;
+        }
+
+        .content-platform {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--accent);
+            color: var(--text-primary);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .content-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-stats {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .content-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Rudraksh Sharma</div>
+            <p class="tagline">Performance Marketing & Video Editing</p>
+            
+            <div class="profile-section">
+                <img src="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg" alt="Rudraksh Sharma" class="profile-image">
+                <div class="profile-info">
+                    <h1>Connect With Me</h1>
+                    <p>Follow me across platforms to stay updated with my latest work, insights, and content. Let's grow together!</p>
+                    
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="stat-number">10K+</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Clients</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <main>
+            <div class="social-grid">
+                <div class="social-card facebook">
+                    <i class="fab fa-facebook-f social-icon"></i>
+                    <h3>Facebook</h3>
+                    <p>Follow for marketing tips, industry insights, and project updates.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">2.5K</span>
+                            <span class="social-stat-label">Followers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">150</span>
+                            <span class="social-stat-label">Posts</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link">
+                        <i class="fab fa-facebook-f"></i> Follow on Facebook
+                    </a>
+                </div>
+                
+                <div class="social-card instagram">
+                    <i class="fab fa-instagram social-icon"></i>
+                    <h3>Instagram</h3>
+                    <p>Visual content, behind-the-scenes, and creative video edits.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">5.2K</span>
+                            <span class="social-stat-label">Followers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">320</span>
+                            <span class="social-stat-label">Posts</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i> Follow on Instagram
+                    </a>
+                </div>
+                
+                <div class="social-card twitter">
+                    <i class="fab fa-x-twitter social-icon"></i>
+                    <h3>X (Twitter)</h3>
+                    <p>Quick marketing insights, industry news, and daily thoughts.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">1.8K</span>
+                            <span class="social-stat-label">Followers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">890</span>
+                            <span class="social-stat-label">Tweets</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link">
+                        <i class="fab fa-x-twitter"></i> Follow on X
+                    </a>
+                </div>
+                
+                <div class="social-card linkedin">
+                    <i class="fab fa-linkedin-in social-icon"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Professional network, case studies, and business insights.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">1.2K</span>
+                            <span class="social-stat-label">Connections</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">45</span>
+                            <span class="social-stat-label">Posts</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i> Connect on LinkedIn
+                    </a>
+                </div>
+                
+                <div class="social-card youtube">
+                    <i class="fab fa-youtube social-icon"></i>
+                    <h3>YouTube</h3>
+                    <p>Video tutorials, campaign breakdowns, and editing techniques.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">3.5K</span>
+                            <span class="social-stat-label">Subscribers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">75</span>
+                            <span class="social-stat-label">Videos</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.youtube.com/@ITSBOYRUDRA" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i> Subscribe on YouTube
+                    </a>
+                </div>
+                
+                <div class="social-card tiktok">
+                    <i class="fab fa-tiktok social-icon"></i>
+                    <h3>TikTok</h3>
+                    <p>Short-form video content, trends, and quick marketing tips.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">8.7K</span>
+                            <span class="social-stat-label">Followers</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">210</span>
+                            <span class="social-stat-label">Videos</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.tiktok.com/@itsboyrudra1?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">
+                        <i class="fab fa-tiktok"></i> Follow on TikTok
+                    </a>
+                </div>
+                
+                <div class="social-card whatsapp">
+                    <i class="fab fa-whatsapp social-icon"></i>
+                    <h3>WhatsApp</h3>
+                    <p>Direct communication for quick queries and consultations.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">24/7</span>
+                            <span class="social-stat-label">Available</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">Fast</span>
+                            <span class="social-stat-label">Response</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://wa.me/+917878383739" target="_blank" class="social-link">
+                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
+                    </a>
+                </div>
+                
+                <div class="social-card telegram">
+                    <i class="fab fa-telegram social-icon"></i>
+                    <h3>Telegram</h3>
+                    <p>Join my channel for exclusive content and updates.</p>
+                    
+                    <div class="social-stats">
+                        <div class="social-stat">
+                            <span class="social-stat-number">850</span>
+                            <span class="social-stat-label">Members</span>
+                        </div>
+                        <div class="social-stat">
+                            <span class="social-stat-number">Daily</span>
+                            <span class="social-stat-label">Updates</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://t.me/itsboyrudra" target="_blank" class="social-link">
+                        <i class="fab fa-telegram"></i> Join on Telegram
+                    </a>
+                </div>
+            </div>
+            
+            <div class="recent-content">
+                <h2 class="section-title">Recent Content</h2>
+                
+                <div class="content-grid">
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Facebook Ad Strategy" class="content-image">
+                        <div class="content-info">
+                            <span class="content-platform" style="background: #1877F2;">Facebook</span>
+                            <h3>5 Facebook Ad Strategies That Actually Work</h3>
+                            <p>Learn how to optimize your Facebook ads for maximum ROI with these proven strategies.</p>
+                            <div class="content-stats">
+                                <div class="content-stat">
+                                    <i class="far fa-eye"></i> 2.4K views
+                                </div>
+                                <div class="content-stat">
+                                    <i class="far fa-heart"></i> 189 likes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Instagram Reels Tutorial" class="content-image">
+                        <div class="content-info">
+                            <span class="content-platform" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">Instagram</span>
+                            <h3>Creating Viral Instagram Reels</h3>
+                            <p>Step-by-step guide to creating engaging Reels that get millions of views.</p>
+                            <div class="content-stats">
+                                <div class="content-stat">
+                                    <i class="far fa-eye"></i> 15.7K views
+                                </div>
+                                <div class="content-stat">
+                                    <i class="far fa-heart"></i> 1.2K likes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="YouTube Video Editing" class="content-image">
+                        <div class="content-info">
+                            <span class="content-platform" style="background: #FF0000;">YouTube</span>
+                            <h3>Advanced Video Editing Techniques</h3>
+                            <p>Learn professional editing techniques used in high-performing YouTube videos.</p>
+                            <div class="content-stats">
+                                <div class="content-stat">
+                                    <i class="far fa-eye"></i> 8.3K views
+                                </div>
+                                <div class="content-stat">
+                                    <i class="far fa-heart"></i> 420 likes
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
+            <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="back-link">← Back to Main Website</a>
+        </footer>
+    </div>
+    
+    <script>
+        // Add animation to social cards on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialCards = document.querySelectorAll('.social-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            socialCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Add click tracking for analytics
+            document.querySelectorAll('.social-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    const platform = this.closest('.social-card').classList[1];
+                    console.log(`Clicked on ${platform} link`);
+                    // In a real implementation, you would send this data to your analytics
+                });
+            });
+        });
+    </script>
+</body>
+</html>
