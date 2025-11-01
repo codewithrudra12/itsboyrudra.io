@@ -33,10 +33,6 @@
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg">
 
-<!-- Three.js for 3D showcase -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-
 <style>
     /* All existing CSS remains the same */
     :root {
@@ -2933,129 +2929,6 @@
         color: var(--accent);
     }
 
-    /* ROI Calculator Styles */
-    .roi-calculator {
-        background: var(--card-bg);
-        border-radius: 10px;
-        padding: 2rem;
-        margin-top: 2rem;
-        border: 1px solid var(--card-border);
-    }
-
-    .roi-calculator h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--accent);
-        text-align: center;
-    }
-
-    .calculator-form {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-    }
-
-    .form-group {
-        margin-bottom: 1rem;
-    }
-
-    .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        color: var(--text-primary);
-    }
-
-    .form-group input {
-        width: 100%;
-        padding: 0.8rem;
-        background: rgba(255,255,255,0.05);
-        border: 1px solid var(--card-border);
-        border-radius: 4px;
-        color: var(--text-primary);
-        font-family: inherit;
-    }
-
-    .calculator-results {
-        margin-top: 2rem;
-        padding: 1.5rem;
-        background: rgba(58, 134, 255, 0.1);
-        border-radius: 8px;
-        border: 1px solid rgba(58, 134, 255, 0.2);
-    }
-
-    .calculator-results h4 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        color: var(--accent);
-    }
-
-    .result-item {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 0.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .result-item:last-child {
-        border-bottom: none;
-    }
-
-    .result-label {
-        color: var(--text-secondary);
-    }
-
-    .result-value {
-        color: var(--text-primary);
-        font-weight: 600;
-    }
-
-    /* Availability Slots Styles */
-    .availability-slots {
-        margin-top: 2rem;
-    }
-
-    .availability-slots h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--accent);
-        text-align: center;
-    }
-
-    .slot-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
-    }
-
-    .slot {
-        background: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 8px;
-        padding: 1rem;
-        text-align: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .slot:hover {
-        background: rgba(58, 134, 255, 0.1);
-        border-color: var(--accent);
-    }
-
-    .slot.selected {
-        background: var(--accent);
-        color: var(--text-primary);
-    }
-
-    .slot.unavailable {
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--text-secondary);
-        cursor: not-allowed;
-        opacity: 0.5;
-    }
-
     /* Voice Integration Styles */
     .voice-control {
         position: fixed;
@@ -3110,45 +2983,6 @@
 
     .voice-feedback.active {
         display: block;
-    }
-
-    /* 3D Showcase Styles */
-    .showcase-3d {
-        height: 400px;
-        width: 100%;
-        margin: 2rem 0;
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .showcase-controls {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        display: flex;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .showcase-btn {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(96, 165, 250, 0.3);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .showcase-btn:hover {
-        background: rgba(30, 41, 59, 0.8);
-        transform: scale(1.1);
     }
 
     /* Real-time Notifications */
@@ -3238,18 +3072,6 @@
     @media (max-width: 768px) {
         .features-container {
             grid-template-columns: 1fr;
-        }
-        
-        .calculator-form {
-            grid-template-columns: 1fr;
-        }
-        
-        .slot-grid {
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        }
-        
-        .showcase-3d {
-            height: 300px;
         }
     }
 </style>
@@ -3989,32 +3811,32 @@
             </div>
         </div>
 
-        <!-- Recent Showcase Section -->
+        <!-- Recent Showcase Section - UPDATED -->
         <div class="recent-showcase">
-            <h2>Recent Showcase</h2>
+            <h2>OUR SHOWCASE</h2>
             <div class="features-container">
                 <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>ROI Calculator</h3>
-                    <p>Calculate your potential return on investment with our advanced calculator</p>
+                    <h3>Performance Marketing</h3>
+                    <p>Data-driven campaigns that deliver measurable results and maximize ROI</p>
                     <ul class="feature-points">
-                        <li>Real-time calculations</li>
-                        <li>Customizable parameters</li>
-                        <li>Detailed breakdown</li>
+                        <li>Google Ads optimization</li>
+                        <li>Facebook Ads management</li>
+                        <li>Conversion tracking</li>
                     </ul>
                 </div>
                 <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                     <div class="feature-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                        <i class="fas fa-video"></i>
                     </div>
-                    <h3>Availability Slots</h3>
-                    <p>Book your consultation at your convenience with our availability system</p>
+                    <h3>Video Editing</h3>
+                    <p>Professional video content that engages audiences and drives conversions</p>
                     <ul class="feature-points">
-                        <li>Real-time availability</li>
-                        <li>Easy booking process</li>
-                        <li>Calendar integration</li>
+                        <li>Social media content</li>
+                        <li>Motion graphics</li>
+                        <li>Color grading</li>
                     </ul>
                 </div>
                 <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
@@ -4031,113 +3853,47 @@
                 </div>
             </div>
 
-            <!-- ROI Calculator -->
-            <div class="roi-calculator" data-aos="fade-up" data-aos-duration="800">
-                <h3>ROI Calculator</h3>
-                <div class="calculator-form">
-                    <div class="form-group">
-                        <label for="ad-spend">Monthly Ad Spend ($)</label>
-                        <input type="number" id="ad-spend" min="0" value="1000">
-                    </div>
-                    <div class="form-group">
-                        <label for="conversion-rate">Conversion Rate (%)</label>
-                        <input type="number" id="conversion-rate" min="0" max="100" value="3">
-                    </div>
-                    <div class="form-group">
-                        <label for="average-order">Average Order Value ($)</label>
-                        <input type="number" id="average-order" min="0" value="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="service-cost">Service Cost ($)</label>
-                        <input type="number" id="service-cost" min="0" value="349">
+            <!-- SLIDESHOW MOVED UNDER ABOUT ME -->
+            <div class="slideshow-container">
+                <!-- Slide 1 -->
+                <div class="slide active" style="background-image: url('https://i.ibb.co/x8D1FVL4/Chat-GPT-Image-Oct-10-2025-10-46-48-AM.png')">
+                    <div class="slide-content">
+                        <!-- Text removed -->
                     </div>
                 </div>
-                <div class="calculator-results">
-                    <h4>ROI Analysis</h4>
-                    <div class="result-item">
-                        <span class="result-label">Monthly Revenue:</span>
-                        <span class="result-value" id="monthly-revenue">$1,500</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Monthly Profit:</span>
-                        <span class="result-value" id="monthly-profit">$1,151</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">ROI:</span>
-                        <span class="result-value" id="roi-percentage">329%</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Break-even Point:</span>
-                        <span class="result-value" id="break-even">0.3 months</span>
+                
+                <!-- Slide 2 -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80')">
+                    <div class="slide-content">
+                        <!-- Text removed -->
                     </div>
                 </div>
-            </div>
-
-            <!-- Availability Slots -->
-            <div class="availability-slots" data-aos="fade-up" data-aos-duration="800">
-                <h3>My Availability</h3>
-                <div class="slot-grid" id="slot-grid">
-                    <!-- Slots will be populated by JavaScript -->
+                
+                <!-- Slide 3 -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80')">
+                    <div class="slide-content">
+                        <!-- Text removed -->
+                    </div>
                 </div>
-            </div>
-
-            <!-- 3D Showcase -->
-            <div class="showcase-3d" id="showcase-3d" data-aos="fade-up" data-aos-duration="800">
-                <!-- 3D content will be rendered here by Three.js -->
-                <div class="showcase-controls">
-                    <button class="showcase-btn" id="rotate-btn">
-                        <i class="fas fa-sync-alt"></i>
+                
+                <!-- Slide 4 -->
+                <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')">
+                    <div class="slide-content">
+                        <!-- Text removed -->
+                    </div>
+                </div>
+                
+                <div class="slideshow-controls">
+                    <button class="slideshow-control-btn" id="prev-btn">
+                        <i class="fas fa-chevron-left"></i>
                     </button>
-                    <button class="showcase-btn" id="zoom-in-btn">
-                        <i class="fas fa-search-plus"></i>
+                    <button class="slideshow-control-btn" id="play-pause-btn">
+                        <i class="fas fa-pause"></i>
                     </button>
-                    <button class="showcase-btn" id="zoom-out-btn">
-                        <i class="fas fa-search-minus"></i>
+                    <button class="slideshow-control-btn" id="next-btn">
+                        <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>
-            </div>
-        </div>
-
-        <!-- Moved Slideshow under About Me (text removed from slides) -->
-        <div class="slideshow-container">
-            <!-- Slide 1 -->
-            <div class="slide active" style="background-image: url('https://i.ibb.co/x8D1FVL4/Chat-GPT-Image-Oct-10-2025-10-46-48-AM.png')">
-                <div class="slide-content">
-                    <!-- Text removed -->
-                </div>
-            </div>
-            
-            <!-- Slide 2 -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80')">
-                <div class="slide-content">
-                    <!-- Text removed -->
-                </div>
-            </div>
-            
-            <!-- Slide 3 -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80')">
-                <div class="slide-content">
-                    <!-- Text removed -->
-                </div>
-            </div>
-            
-            <!-- Slide 4 -->
-            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80')">
-                <div class="slide-content">
-                    <!-- Text removed -->
-                </div>
-            </div>
-            
-            <div class="slideshow-controls">
-                <button class="slideshow-control-btn" id="prev-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="slideshow-control-btn" id="play-pause-btn">
-                    <i class="fas fa-pause"></i>
-                </button>
-                <button class="slideshow-control-btn" id="next-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
             </div>
         </div>
     </section>
@@ -4215,7 +3971,7 @@
                 <button class="filter-btn" data-filter="video-editing">Video Editing</button>
             </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="google-ads" data-aos="zoom-in" data-aos-duration="800" data-yt-link="https://youtu.be/UFMUdBIhMUo?si=5PD1hIZmYkO1SOAj">
+                <div class="portfolio-item" data-category="google-ads" data-aos="zoom-in" data-aos-duration="800" data-yt-link="https://youtu.be/6hJceeRoVvg">
                     <video autoplay muted loop>
                         <source src="https://www.pexels.com/download/video/5584722/" type="video/mp4">
                     </video>
@@ -5479,161 +5235,6 @@
             }
         });
 
-        // ROI Calculator
-        function calculateROI() {
-            const adSpend = parseFloat(document.getElementById('ad-spend').value) || 0;
-            const conversionRate = parseFloat(document.getElementById('conversion-rate').value) || 0;
-            const averageOrder = parseFloat(document.getElementById('average-order').value) || 0;
-            const serviceCost = parseFloat(document.getElementById('service-cost').value) || 0;
-            
-            const conversions = (adSpend / 100) * conversionRate;
-            const monthlyRevenue = conversions * averageOrder;
-            const monthlyProfit = monthlyRevenue - adSpend - serviceCost;
-            const roiPercentage = ((monthlyProfit / (adSpend + serviceCost)) * 100).toFixed(0);
-            const breakEven = (serviceCost / monthlyProfit).toFixed(1);
-            
-            document.getElementById('monthly-revenue').textContent = `$${monthlyRevenue.toFixed(2)}`;
-            document.getElementById('monthly-profit').textContent = `$${monthlyProfit.toFixed(2)}`;
-            document.getElementById('roi-percentage').textContent = `${roiPercentage}%`;
-            document.getElementById('break-even').textContent = `${breakEven} months`;
-        }
-
-        // Initialize ROI calculator
-        document.querySelectorAll('.calculator-form input').forEach(input => {
-            input.addEventListener('input', calculateROI);
-        });
-        calculateROI();
-
-        // Availability Slots with Formspree Integration
-        function generateAvailabilitySlots() {
-            const slotGrid = document.getElementById('slot-grid');
-            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-            const timeSlots = ['9:00 AM', '11:00 AM', '2:00 PM', '4:00 PM'];
-            
-            slotGrid.innerHTML = '';
-            
-            days.forEach(day => {
-                timeSlots.forEach(time => {
-                    const slot = document.createElement('div');
-                    slot.className = 'slot';
-                    // Randomly mark some slots as unavailable
-                    if (Math.random() > 0.7) {
-                        slot.classList.add('unavailable');
-                    }
-                    slot.textContent = `${day} ${time}`;
-                    
-                    slot.addEventListener('click', function() {
-                        if (!this.classList.contains('unavailable')) {
-                            document.querySelectorAll('.slot').forEach(s => s.classList.remove('selected'));
-                            this.classList.add('selected');
-                            
-                            // Send booking data to Formspree
-                            const formData = new FormData();
-                            formData.append('slot', this.textContent);
-                            formData.append('date', new Date().toISOString());
-                            
-                            fetch('https://formspree.io/f/mnnbaprr', {
-                                method: 'POST',
-                                body: formData,
-                                headers: {
-                                    'Accept': 'application/json'
-                                }
-                            }).then(response => {
-                                if (response.ok) {
-                                    showNotification('Booking', `You selected ${this.textContent}. Proceed to booking?`);
-                                }
-                            });
-                        }
-                    });
-                    
-                    slotGrid.appendChild(slot);
-                });
-            });
-        }
-
-        // Initialize availability slots
-        generateAvailabilitySlots();
-
-        // 3D Showcase with Three.js
-        function init3DShowcase() {
-            const container = document.getElementById('showcase-3d');
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-            
-            // Create scene
-            const scene = new THREE.Scene();
-            scene.background = new THREE.Color(0x0e0e0e);
-            
-            // Create camera
-            const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-            camera.position.z = 5;
-            
-            // Create renderer
-            const renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(width, height);
-            container.appendChild(renderer.domElement);
-            
-            // Add controls
-            const controls = new THREE.OrbitControls(camera, renderer.domElement);
-            controls.enableDamping = true;
-            controls.dampingFactor = 0.25;
-            
-            // Add lights
-            const ambientLight = new THREE.AmbientLight(0x404040);
-            scene.add(ambientLight);
-            
-            const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-            directionalLight.position.set(1, 1, 1);
-            scene.add(directionalLight);
-            
-            // Create a simple 3D object (you can replace this with your own model)
-            const geometry = new THREE.BoxGeometry(2, 2, 2);
-            const material = new THREE.MeshPhongMaterial({ 
-                color: 0x3a86ff,
-                shininess: 100
-            });
-            const cube = new THREE.Mesh(geometry, material);
-            scene.add(cube);
-            
-            // Animation loop
-            function animate() {
-                requestAnimationFrame(animate);
-                
-                // Rotate cube slowly
-                cube.rotation.x += 0.005;
-                cube.rotation.y += 0.01;
-                
-                controls.update();
-                renderer.render(scene, camera);
-            }
-            
-            animate();
-            
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                camera.aspect = container.clientWidth / container.clientHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(container.clientWidth, container.clientHeight);
-            });
-            
-            // Control buttons
-            document.getElementById('rotate-btn').addEventListener('click', function() {
-                cube.rotation.x = 0;
-                cube.rotation.y = 0;
-            });
-            
-            document.getElementById('zoom-in-btn').addEventListener('click', function() {
-                camera.position.z -= 0.5;
-            });
-            
-            document.getElementById('zoom-out-btn').addEventListener('click', function() {
-                camera.position.z += 0.5;
-            });
-        }
-
-        // Initialize 3D showcase when page loads
-        window.addEventListener('load', init3DShowcase);
-
         // Voice Integration - MOVED TO CHATBOT
         let recognition;
         if ('webkitSpeechRecognition' in window) {
@@ -5737,7 +5338,7 @@
 
         // Show welcome notification
         setTimeout(() => {
-            showNotification('Welcome!', 'Explore our new features: ROI calculator, voice control, and 3D showcase');
+            showNotification('Welcome!', 'Explore our new features: Voice control and showcase');
         }, 2000);
 
         // Advanced Image Optimization
