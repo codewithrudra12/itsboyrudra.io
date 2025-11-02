@@ -2844,7 +2844,7 @@
 
     /* NEW FEATURES STYLES */
 
-    /* Recent Showcase */
+    /* Recent Showcase - REMOVED CARDS */
     .recent-showcase {
         margin-top: 4rem;
         padding: 3rem 0;
@@ -2870,64 +2870,7 @@
         background: var(--accent);
     }
 
-    .features-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .feature-card {
-        background: var(--card-bg);
-        border-radius: 10px;
-        padding: 2rem;
-        border: 1px solid var(--card-border);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        text-align: center;
-    }
-
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .feature-icon {
-        font-size: 3rem;
-        margin-bottom: 1.5rem;
-        color: var(--accent);
-    }
-
-    .feature-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--accent);
-    }
-
-    .feature-card p {
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-    }
-
-    .feature-points {
-        list-style: none;
-        text-align: left;
-        margin-top: 1.5rem;
-    }
-
-    .feature-points li {
-        margin-bottom: 0.8rem;
-        color: var(--text-secondary);
-        position: relative;
-        padding-left: 1.5rem;
-    }
-
-    .feature-points li::before {
-        content: '✓';
-        position: absolute;
-        left: 0;
-        color: var(--accent);
-    }
+    /* Features container removed */
 
     /* Voice Integration Styles */
     .voice-control {
@@ -3070,9 +3013,7 @@
 
     /* Responsive Design for new features */
     @media (max-width: 768px) {
-        .features-container {
-            grid-template-columns: 1fr;
-        }
+        /* Features container removed */
     }
 </style>
 <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YPPVQNPTZ"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-9YPPVQNPTZ'); </script>
@@ -3811,48 +3752,11 @@
             </div>
         </div>
 
-        <!-- Recent Showcase Section - UPDATED -->
+        <!-- Recent Showcase Section - UPDATED (CARDS REMOVED) -->
         <div class="recent-showcase">
             <h2>OUR SHOWCASE</h2>
-            <div class="features-container">
-                <div class="feature-card" data-aos="fade-up" data-aos-duration="800">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Performance Marketing</h3>
-                    <p>Data-driven campaigns that deliver measurable results and maximize ROI</p>
-                    <ul class="feature-points">
-                        <li>Google Ads optimization</li>
-                        <li>Facebook Ads management</li>
-                        <li>Conversion tracking</li>
-                    </ul>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="feature-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Video Editing</h3>
-                    <p>Professional video content that engages audiences and drives conversions</p>
-                    <ul class="feature-points">
-                        <li>Social media content</li>
-                        <li>Motion graphics</li>
-                        <li>Color grading</li>
-                    </ul>
-                </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-                    <div class="feature-icon">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <h3>Voice Integration</h3>
-                    <p>Interact with our platform using voice commands for a hands-free experience</p>
-                    <ul class="feature-points">
-                        <li>AI-powered voice recognition</li>
-                        <li>Natural language processing</li>
-                        <li>Multi-language support</li>
-                    </ul>
-                </div>
-            </div>
-
+            <!-- Features container removed - only slideshow remains -->
+            
             <!-- SLIDESHOW MOVED UNDER ABOUT ME -->
             <div class="slideshow-container">
                 <!-- Slide 1 -->
@@ -4744,7 +4648,7 @@
             });
         });
 
-        // Portfolio Item Click to Show YT Video Popup
+        // Portfolio Item Click to Show YT Video Popup - FIXED
         const videoPopup = document.getElementById('video-popup');
         const videoIframe = videoPopup.querySelector('iframe');
         const videoClose = videoPopup.querySelector('.close');
@@ -4752,8 +4656,10 @@
         portfolioItems.forEach(item => {
             item.addEventListener('click', () => {
                 const ytLink = item.getAttribute('data-yt-link');
-                videoIframe.src = ytLink;
-                videoPopup.classList.add('active');
+                if (ytLink) {
+                    videoIframe.src = ytLink;
+                    videoPopup.classList.add('active');
+                }
             });
         });
 
