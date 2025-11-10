@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROI Calculator | Rudraksh Sharma</title>
+    <title>Advanced ROI Calculator | Rudraksh Sharma</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --bg-dark: #0e0e0e;
@@ -532,71 +534,179 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Custom graph animations */
-        .graph-container {
-            position: relative;
-            height: 100%;
+        /* Advanced Report Modal */
+        .report-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
         }
 
-        .graph-line {
-            fill: none;
-            stroke-width: 3;
-            stroke-linecap: round;
+        .report-content {
+            position: relative;
+            background: var(--bg-dark);
+            margin: 2rem auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .graph-area {
-            fill: url(#areaGradient);
-            opacity: 0.3;
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--card-border);
         }
 
-        .graph-point {
-            fill: var(--accent);
-            stroke: var(--bg-dark);
-            stroke-width: 2;
-            transition: all 0.3s;
+        .report-header h2 {
+            color: var(--accent);
         }
 
-        .graph-point:hover {
-            fill: var(--accent-light);
-            r: 6;
+        .close-report {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
         }
 
-        .graph-axis line {
-            stroke: var(--text-secondary);
-            stroke-width: 1;
-            opacity: 0.3;
+        .close-report:hover {
+            color: var(--accent);
         }
 
-        .graph-axis path {
-            stroke: var(--text-secondary);
-            stroke-width: 1;
+        .report-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
         }
 
-        .graph-axis text {
-            fill: var(--text-secondary);
-            font-size: 10px;
+        @media (max-width: 900px) {
+            .report-sections {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .graph-tooltip {
-            position: absolute;
+        .report-section {
             background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
             border: 1px solid var(--card-border);
+        }
+
+        .report-section h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .report-chart {
+            height: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .report-table th, .report-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .report-table th {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .report-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .report-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
             border-radius: 4px;
-            padding: 0.5rem;
-            font-size: 0.8rem;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .report-btn:hover {
+            background: var(--accent-light);
+        }
+
+        .report-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--card-border);
+        }
+
+        .report-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--accent);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Print styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            .report-content, .report-content * {
+                visibility: visible;
+            }
+            .report-content {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+            }
+            .report-actions, .close-report {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="logo">ROI Calculator</div>
-            <p class="tagline">Calculate your potential return on investment for performance marketing and video editing services</p>
+            <div class="logo">Advanced ROI Calculator</div>
+            <p class="tagline">Calculate your potential return on investment for performance marketing and video editing services with comprehensive reporting</p>
             
             <div class="calculator-container">
                 <div class="calculator-card">
@@ -715,16 +825,9 @@
                     </div>
                     
                     <div class="chart-container">
-                        <div class="graph-container" id="roi-trend-chart">
-                            <!-- Dynamic ROI trend graph will be rendered here -->
-                        </div>
-                        <div class="graph-container" id="profit-distribution-chart" style="display: none;">
-                            <!-- Dynamic profit distribution graph will be rendered here -->
-                        </div>
-                        <div class="graph-container" id="revenue-growth-chart" style="display: none;">
-                            <!-- Dynamic revenue growth graph will be rendered here -->
-                        </div>
-                        <div class="graph-tooltip" id="graph-tooltip"></div>
+                        <canvas id="roi-trend-chart"></canvas>
+                        <canvas id="profit-distribution-chart" style="display: none;"></canvas>
+                        <canvas id="revenue-growth-chart" style="display: none;"></canvas>
                     </div>
                     
                     <div class="recommendations">
@@ -794,8 +897,124 @@
         <footer>
             <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
             <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="back-link">← Back to Main Website</a>
-            <button class="save-report" id="save-report"><i class="fas fa-download"></i> Save Report</button>
+            <button class="save-report" id="save-report"><i class="fas fa-download"></i> Generate Advanced Report</button>
         </footer>
+    </div>
+    
+    <!-- Advanced Report Modal -->
+    <div class="report-modal" id="report-modal">
+        <div class="report-content">
+            <div class="report-header">
+                <h2><i class="fas fa-chart-pie"></i> Advanced ROI Report</h2>
+                <button class="close-report" id="close-report">&times;</button>
+            </div>
+            
+            <div class="report-sections">
+                <div class="report-section">
+                    <h3><i class="fas fa-chart-line"></i> Executive Summary</h3>
+                    <div id="executive-summary">
+                        <p>This report provides a comprehensive analysis of your ROI potential based on the parameters you've provided.</p>
+                        <table class="report-table">
+                            <tr>
+                                <th>Metric</th>
+                                <th>Value</th>
+                            </tr>
+                            <tr>
+                                <td>Monthly Revenue</td>
+                                <td id="report-revenue">$0</td>
+                            </tr>
+                            <tr>
+                                <td>Monthly Profit</td>
+                                <td id="report-profit">$0</td>
+                            </tr>
+                            <tr>
+                                <td>ROI</td>
+                                <td id="report-roi">0%</td>
+                            </tr>
+                            <tr>
+                                <td>Break-even Period</td>
+                                <td id="report-break-even">0 months</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <h3><i class="fas fa-chart-bar"></i> ROI Projection</h3>
+                    <div class="report-chart">
+                        <canvas id="report-roi-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <h3><i class="fas fa-money-bill-wave"></i> Cost Analysis</h3>
+                    <div class="report-chart">
+                        <canvas id="report-cost-chart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="report-section">
+                    <h3><i class="fas fa-tachometer-alt"></i> Performance Metrics</h3>
+                    <table class="report-table">
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Customer Acquisition Cost</td>
+                            <td id="report-cac">$0</td>
+                        </tr>
+                        <tr>
+                            <td>Customer Lifetime Value</td>
+                            <td id="report-clv">$0</td>
+                        </tr>
+                        <tr>
+                            <td>Return on Ad Spend</td>
+                            <td id="report-roas">0</td>
+                        </tr>
+                        <tr>
+                            <td>Conversion Rate</td>
+                            <td id="report-cr">0%</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="report-section">
+                    <h3><i class="fas fa-calendar-alt"></i> 12-Month Forecast</h3>
+                    <table class="report-table">
+                        <tr>
+                            <th>Month</th>
+                            <th>Revenue</th>
+                            <th>Profit</th>
+                        </tr>
+                        <tbody id="forecast-table">
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="report-section">
+                    <h3><i class="fas fa-lightbulb"></i> Strategic Recommendations</h3>
+                    <div id="report-recommendations">
+                        <p>Based on your current metrics, here are our recommendations:</p>
+                        <ul id="report-recommendations-list">
+                            <li>Complete the ROI calculation to see personalized recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="report-actions">
+                <button class="report-btn" id="print-report">
+                    <i class="fas fa-print"></i> Print Report
+                </button>
+                <button class="report-btn" id="export-pdf">
+                    <i class="fas fa-file-pdf"></i> Export as PDF
+                </button>
+                <button class="report-btn secondary" id="export-csv">
+                    <i class="fas fa-file-csv"></i> Export as CSV
+                </button>
+            </div>
+        </div>
     </div>
     
     <script>
@@ -803,6 +1022,8 @@
             // Initialize variables
             let selectedService = 'google-ads';
             let currentChart = 'roi-trend';
+            let charts = {};
+            let reportCharts = {};
             
             // Service selection
             document.querySelectorAll('.service-option').forEach(option => {
@@ -832,14 +1053,14 @@
                     currentChart = this.getAttribute('data-chart');
                     
                     // Show selected chart, hide others
-                    document.querySelectorAll('.graph-container').forEach(container => {
-                        container.style.display = 'none';
+                    document.querySelectorAll('canvas').forEach(canvas => {
+                        canvas.style.display = 'none';
                     });
                     document.getElementById(`${currentChart}-chart`).style.display = 'block';
                     
                     // Redraw the current chart if we have data
-                    if (window.calculatedData) {
-                        drawChart(currentChart, window.calculatedData);
+                    if (window.calculatedData && charts[currentChart]) {
+                        updateChart(currentChart, window.calculatedData);
                     }
                 });
             });
@@ -920,6 +1141,8 @@
                 const customerAcquisitionCost = conversions > 0 ? (adSpend + serviceCost) / conversions : 0;
                 const roiPercentage = ((monthlyProfit / (adSpend + serviceCost)) * 100);
                 const breakEvenMonths = monthlyProfit > 0 ? (serviceCost / monthlyProfit).toFixed(1) : 'N/A';
+                const roas = monthlyRevenue / adSpend;
+                const clv = averageOrder * 3; // Assuming 3x AOV as CLV
                 
                 // Update UI
                 document.getElementById('monthly-revenue').textContent = `$${monthlyRevenue.toFixed(2)}`;
@@ -955,499 +1178,378 @@
                     monthlyProfit,
                     roiPercentage,
                     conversions,
-                    customerAcquisitionCost
+                    customerAcquisitionCost,
+                    conversionRate,
+                    averageOrder,
+                    roas,
+                    clv
                 };
                 
                 // Update charts
-                drawChart(currentChart, window.calculatedData);
+                updateCharts(window.calculatedData);
                 
                 // Update recommendations
                 updateRecommendations(roiPercentage, conversionRate, customerAcquisitionCost, averageOrder);
+                
+                // Update report data
+                updateReportData(window.calculatedData);
             }
             
-            // Draw dynamic charts
-            function drawChart(chartType, data) {
-                const container = document.getElementById(`${chartType}-chart`);
-                container.innerHTML = '';
+            // Initialize charts
+            function initializeCharts() {
+                // ROI Trend Chart
+                const roiTrendCtx = document.getElementById('roi-trend-chart').getContext('2d');
+                charts['roi-trend'] = new Chart(roiTrendCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6', 'Month 7', 'Month 8', 'Month 9', 'Month 10', 'Month 11', 'Month 12'],
+                        datasets: [
+                            {
+                                label: 'Revenue',
+                                data: [],
+                                borderColor: '#3a86ff',
+                                backgroundColor: 'rgba(58, 134, 255, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            },
+                            {
+                                label: 'Profit',
+                                data: [],
+                                borderColor: '#22c55e',
+                                backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#f5f5f5'
+                                }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0',
+                                    callback: function(value) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
                 
-                const width = container.clientWidth;
-                const height = container.clientHeight;
+                // Profit Distribution Chart
+                const profitDistributionCtx = document.getElementById('profit-distribution-chart').getContext('2d');
+                charts['profit-distribution'] = new Chart(profitDistributionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Ad Spend', 'Service Cost', 'Profit'],
+                        datasets: [{
+                            data: [],
+                            backgroundColor: [
+                                '#ef4444',
+                                '#f59e0b',
+                                '#22c55e'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#0e0e0e'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#f5f5f5',
+                                    padding: 20
+                                }
+                            }
+                        }
+                    }
+                });
                 
-                // Create SVG element
-                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-                svg.setAttribute("width", "100%");
-                svg.setAttribute("height", "100%");
-                svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+                // Revenue Growth Chart
+                const revenueGrowthCtx = document.getElementById('revenue-growth-chart').getContext('2d');
+                charts['revenue-growth'] = new Chart(revenueGrowthCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['1%', '2%', '3%', '4%', '5%'],
+                        datasets: [{
+                            label: 'Revenue at Different Conversion Rates',
+                            data: [],
+                            backgroundColor: 'rgba(58, 134, 255, 0.7)',
+                            borderColor: '#3a86ff',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0',
+                                    callback: function(value) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
                 
-                // Create gradient for area charts
-                const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-                const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
-                gradient.setAttribute("id", "areaGradient");
-                gradient.setAttribute("x1", "0%");
-                gradient.setAttribute("y1", "0%");
-                gradient.setAttribute("x2", "0%");
-                gradient.setAttribute("y2", "100%");
+                // Report ROI Chart
+                const reportRoiCtx = document.getElementById('report-roi-chart').getContext('2d');
+                reportCharts['roi'] = new Chart(reportRoiCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'],
+                        datasets: [
+                            {
+                                label: 'ROI %',
+                                data: [],
+                                borderColor: '#3a86ff',
+                                backgroundColor: 'rgba(58, 134, 255, 0.1)',
+                                tension: 0.4,
+                                fill: true,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Cumulative Profit',
+                                data: [],
+                                borderColor: '#22c55e',
+                                backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                                tension: 0.4,
+                                fill: true,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    color: '#f5f5f5'
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0'
+                                }
+                            },
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0',
+                                    callback: function(value) {
+                                        return value + '%';
+                                    }
+                                }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                grid: {
+                                    drawOnChartArea: false,
+                                },
+                                ticks: {
+                                    color: '#b0b0b0',
+                                    callback: function(value) {
+                                        return '$' + value;
+                                    }
+                                }
+                            },
+                        }
+                    }
+                });
                 
-                const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-                stop1.setAttribute("offset", "0%");
-                stop1.setAttribute("stop-color", "rgba(58, 134, 255, 0.5)");
-                
-                const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
-                stop2.setAttribute("offset", "100%");
-                stop2.setAttribute("stop-color", "rgba(58, 134, 255, 0)");
-                
-                gradient.appendChild(stop1);
-                gradient.appendChild(stop2);
-                defs.appendChild(gradient);
-                svg.appendChild(defs);
-                
-                // Draw chart based on type
-                switch(chartType) {
-                    case 'roi-trend':
-                        drawROITrend(svg, width, height, data);
-                        break;
-                    case 'profit-distribution':
-                        drawProfitDistribution(svg, width, height, data);
-                        break;
-                    case 'revenue-growth':
-                        drawRevenueGrowth(svg, width, height, data);
-                        break;
-                }
-                
-                container.appendChild(svg);
+                // Report Cost Chart
+                const reportCostCtx = document.getElementById('report-cost-chart').getContext('2d');
+                reportCharts['cost'] = new Chart(reportCostCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Ad Spend', 'Service Cost', 'Total Cost', 'Revenue', 'Profit'],
+                        datasets: [{
+                            label: 'Amount ($)',
+                            data: [],
+                            backgroundColor: [
+                                'rgba(239, 68, 68, 0.7)',
+                                'rgba(245, 158, 11, 0.7)',
+                                'rgba(156, 163, 175, 0.7)',
+                                'rgba(58, 134, 255, 0.7)',
+                                'rgba(34, 197, 94, 0.7)'
+                            ],
+                            borderColor: [
+                                '#ef4444',
+                                '#f59e0b',
+                                '#9ca3af',
+                                '#3a86ff',
+                                '#22c55e'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#b0b0b0',
+                                    callback: function(value) {
+                                        return '$' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
             }
             
-            // Draw ROI Trend chart
-            function drawROITrend(svg, width, height, data) {
-                const margin = { top: 20, right: 30, bottom: 40, left: 50 };
-                const chartWidth = width - margin.left - margin.right;
-                const chartHeight = height - margin.top - margin.bottom;
-                
-                // Create scales
-                const xScale = (value) => margin.left + (value / 11) * chartWidth;
-                const yScale = (value) => margin.top + chartHeight - (value / (data.monthlyRevenue * 1.2)) * chartHeight;
-                
-                // Generate data points for 12 months
+            // Update charts with data
+            function updateCharts(data) {
+                // ROI Trend Chart
                 const months = Array.from({ length: 12 }, (_, i) => i + 1);
                 const revenueData = months.map(month => {
-                    // Simulate growth over time
                     const growthFactor = 1 + (month * 0.05);
-                    return {
-                        month,
-                        revenue: data.monthlyRevenue * growthFactor,
-                        profit: data.monthlyProfit * growthFactor
-                    };
+                    return data.monthlyRevenue * growthFactor;
                 });
                 
-                // Create line for revenue
-                const revenueLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                let revenuePath = `M ${xScale(1)} ${yScale(revenueData[0].revenue)}`;
-                revenueData.forEach((point, i) => {
-                    if (i > 0) {
-                        revenuePath += ` L ${xScale(point.month)} ${yScale(point.revenue)}`;
-                    }
-                });
-                revenueLine.setAttribute("d", revenuePath);
-                revenueLine.setAttribute("class", "graph-line");
-                revenueLine.setAttribute("stroke", "#3a86ff");
-                svg.appendChild(revenueLine);
-                
-                // Create area under revenue line
-                const revenueArea = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                let areaPath = revenuePath;
-                areaPath += ` L ${xScale(12)} ${yScale(0)}`;
-                areaPath += ` L ${xScale(1)} ${yScale(0)}`;
-                areaPath += " Z";
-                revenueArea.setAttribute("d", areaPath);
-                revenueArea.setAttribute("class", "graph-area");
-                svg.appendChild(revenueArea);
-                
-                // Create line for profit
-                const profitLine = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                let profitPath = `M ${xScale(1)} ${yScale(revenueData[0].profit)}`;
-                revenueData.forEach((point, i) => {
-                    if (i > 0) {
-                        profitPath += ` L ${xScale(point.month)} ${yScale(point.profit)}`;
-                    }
-                });
-                profitLine.setAttribute("d", profitPath);
-                profitLine.setAttribute("class", "graph-line");
-                profitLine.setAttribute("stroke", data.monthlyProfit > 0 ? "#22c55e" : "#ef4444");
-                svg.appendChild(profitLine);
-                
-                // Add data points
-                revenueData.forEach(point => {
-                    const pointCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                    pointCircle.setAttribute("cx", xScale(point.month));
-                    pointCircle.setAttribute("cy", yScale(point.revenue));
-                    pointCircle.setAttribute("r", "4");
-                    pointCircle.setAttribute("class", "graph-point");
-                    pointCircle.setAttribute("fill", "#3a86ff");
-                    pointCircle.setAttribute("data-value", `Month ${point.month}: $${point.revenue.toFixed(0)} Revenue`);
-                    svg.appendChild(pointCircle);
-                    
-                    const profitCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                    profitCircle.setAttribute("cx", xScale(point.month));
-                    profitCircle.setAttribute("cy", yScale(point.profit));
-                    profitCircle.setAttribute("r", "4");
-                    profitCircle.setAttribute("class", "graph-point");
-                    profitCircle.setAttribute("fill", data.monthlyProfit > 0 ? "#22c55e" : "#ef4444");
-                    profitCircle.setAttribute("data-value", `Month ${point.month}: $${point.profit.toFixed(0)} Profit`);
-                    svg.appendChild(profitCircle);
+                const profitData = months.map(month => {
+                    const growthFactor = 1 + (month * 0.05);
+                    return data.monthlyProfit * growthFactor;
                 });
                 
-                // Add X axis
-                const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                xAxis.setAttribute("class", "graph-axis");
-                xAxis.setAttribute("transform", `translate(0, ${height - margin.bottom})`);
+                charts['roi-trend'].data.datasets[0].data = revenueData;
+                charts['roi-trend'].data.datasets[1].data = profitData;
+                charts['roi-trend'].update();
                 
-                months.forEach(month => {
-                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                    tick.setAttribute("x1", xScale(month));
-                    tick.setAttribute("x2", xScale(month));
-                    tick.setAttribute("y1", 0);
-                    tick.setAttribute("y2", 5);
-                    xAxis.appendChild(tick);
-                    
-                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                    label.setAttribute("x", xScale(month));
-                    label.setAttribute("y", 20);
-                    label.setAttribute("text-anchor", "middle");
-                    label.textContent = month;
-                    xAxis.appendChild(label);
-                });
-                
-                svg.appendChild(xAxis);
-                
-                // Add Y axis
-                const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                yAxis.setAttribute("class", "graph-axis");
-                yAxis.setAttribute("transform", `translate(${margin.left}, 0)`);
-                
-                const yTicks = 5;
-                for (let i = 0; i <= yTicks; i++) {
-                    const value = (i / yTicks) * data.monthlyRevenue * 1.2;
-                    const yPos = yScale(value);
-                    
-                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                    tick.setAttribute("x1", 0);
-                    tick.setAttribute("x2", -5);
-                    tick.setAttribute("y1", yPos);
-                    tick.setAttribute("y2", yPos);
-                    yAxis.appendChild(tick);
-                    
-                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                    label.setAttribute("x", -10);
-                    label.setAttribute("y", yPos);
-                    label.setAttribute("text-anchor", "end");
-                    label.setAttribute("dominant-baseline", "middle");
-                    label.textContent = `$${value.toFixed(0)}`;
-                    yAxis.appendChild(label);
-                }
-                
-                svg.appendChild(yAxis);
-                
-                // Add legend
-                const legend = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                legend.setAttribute("transform", `translate(${width - 150}, ${margin.top})`);
-                
-                const revenueLegend = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                revenueLegend.setAttribute("transform", "translate(0, 0)");
-                
-                const revenueLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                revenueLegendLine.setAttribute("x1", 0);
-                revenueLegendLine.setAttribute("x2", 20);
-                revenueLegendLine.setAttribute("y1", 5);
-                revenueLegendLine.setAttribute("y2", 5);
-                revenueLegendLine.setAttribute("stroke", "#3a86ff");
-                revenueLegendLine.setAttribute("stroke-width", "2");
-                revenueLegend.appendChild(revenueLegendLine);
-                
-                const revenueLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                revenueLegendText.setAttribute("x", 25);
-                revenueLegendText.setAttribute("y", 8);
-                revenueLegendText.setAttribute("font-size", "12");
-                revenueLegendText.setAttribute("fill", "white");
-                revenueLegendText.textContent = "Revenue";
-                revenueLegend.appendChild(revenueLegendText);
-                
-                const profitLegend = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                profitLegend.setAttribute("transform", "translate(0, 20)");
-                
-                const profitLegendLine = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                profitLegendLine.setAttribute("x1", 0);
-                profitLegendLine.setAttribute("x2", 20);
-                profitLegendLine.setAttribute("y1", 5);
-                profitLegendLine.setAttribute("y2", 5);
-                profitLegendLine.setAttribute("stroke", data.monthlyProfit > 0 ? "#22c55e" : "#ef4444");
-                profitLegendLine.setAttribute("stroke-width", "2");
-                profitLegend.appendChild(profitLegendLine);
-                
-                const profitLegendText = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                profitLegendText.setAttribute("x", 25);
-                profitLegendText.setAttribute("y", 8);
-                profitLegendText.setAttribute("font-size", "12");
-                profitLegendText.setAttribute("fill", "white");
-                profitLegendText.textContent = "Profit";
-                profitLegend.appendChild(profitLegendText);
-                
-                legend.appendChild(revenueLegend);
-                legend.appendChild(profitLegend);
-                svg.appendChild(legend);
-                
-                // Add interactivity
-                addChartInteractivity(svg);
-            }
-            
-            // Draw Profit Distribution chart
-            function drawProfitDistribution(svg, width, height, data) {
-                const margin = { top: 20, right: 30, bottom: 40, left: 50 };
-                const chartWidth = width - margin.left - margin.right;
-                const chartHeight = height - margin.top - margin.bottom;
-                
-                const centerX = width / 2;
-                const centerY = height / 2;
-                const radius = Math.min(chartWidth, chartHeight) / 2 - 10;
-                
-                // Calculate values for the pie chart
-                const total = data.adSpend + data.serviceCost + data.monthlyProfit;
-                const adSpendPercent = (data.adSpend / total) * 100;
-                const serviceCostPercent = (data.serviceCost / total) * 100;
-                const profitPercent = (data.monthlyProfit / total) * 100;
-                
-                const segments = [
-                    { label: "Ad Spend", value: adSpendPercent, color: "#ef4444" },
-                    { label: "Service Cost", value: serviceCostPercent, color: "#f59e0b" },
-                    { label: "Profit", value: profitPercent, color: data.monthlyProfit > 0 ? "#22c55e" : "#ef4444" }
+                // Profit Distribution Chart
+                const total = data.adSpend + data.serviceCost + Math.max(0, data.monthlyProfit);
+                charts['profit-distribution'].data.datasets[0].data = [
+                    data.adSpend,
+                    data.serviceCost,
+                    Math.max(0, data.monthlyProfit)
                 ];
+                charts['profit-distribution'].update();
                 
-                let currentAngle = 0;
-                
-                segments.forEach(segment => {
-                    if (segment.value > 0) {
-                        const segmentAngle = (segment.value / 100) * 360;
-                        const startAngle = (currentAngle * Math.PI) / 180;
-                        const endAngle = ((currentAngle + segmentAngle) * Math.PI) / 180;
-                        
-                        // Create path for segment
-                        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                        const x1 = centerX + radius * Math.cos(startAngle);
-                        const y1 = centerY + radius * Math.sin(startAngle);
-                        const x2 = centerX + radius * Math.cos(endAngle);
-                        const y2 = centerY + radius * Math.sin(endAngle);
-                        
-                        const largeArcFlag = segmentAngle > 180 ? 1 : 0;
-                        
-                        const pathData = [
-                            `M ${centerX} ${centerY}`,
-                            `L ${x1} ${y1}`,
-                            `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${x2} ${y2}`,
-                            "Z"
-                        ].join(" ");
-                        
-                        path.setAttribute("d", pathData);
-                        path.setAttribute("fill", segment.color);
-                        path.setAttribute("stroke", "var(--bg-dark)");
-                        path.setAttribute("stroke-width", "2");
-                        path.setAttribute("data-value", `${segment.label}: ${segment.value.toFixed(1)}%`);
-                        svg.appendChild(path);
-                        
-                        // Add label
-                        const labelAngle = currentAngle + segmentAngle / 2;
-                        const labelRadius = radius * 0.7;
-                        const labelX = centerX + labelRadius * Math.cos(labelAngle * Math.PI / 180);
-                        const labelY = centerY + labelRadius * Math.sin(labelAngle * Math.PI / 180);
-                        
-                        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                        label.setAttribute("x", labelX);
-                        label.setAttribute("y", labelY);
-                        label.setAttribute("text-anchor", "middle");
-                        label.setAttribute("dominant-baseline", "middle");
-                        label.setAttribute("font-size", "12");
-                        label.setAttribute("fill", "white");
-                        label.textContent = `${segment.value.toFixed(1)}%`;
-                        svg.appendChild(label);
-                        
-                        currentAngle += segmentAngle;
-                    }
-                });
-                
-                // Add legend
-                const legend = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                legend.setAttribute("transform", `translate(${width - 120}, ${margin.top})`);
-                
-                segments.forEach((segment, i) => {
-                    const legendItem = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                    legendItem.setAttribute("transform", `translate(0, ${i * 20})`);
-                    
-                    const colorBox = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                    colorBox.setAttribute("x", 0);
-                    colorBox.setAttribute("y", 0);
-                    colorBox.setAttribute("width", 15);
-                    colorBox.setAttribute("height", 15);
-                    colorBox.setAttribute("fill", segment.color);
-                    legendItem.appendChild(colorBox);
-                    
-                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                    label.setAttribute("x", 20);
-                    label.setAttribute("y", 12);
-                    label.setAttribute("font-size", "12");
-                    label.setAttribute("fill", "white");
-                    label.textContent = segment.label;
-                    legendItem.appendChild(label);
-                    
-                    legend.appendChild(legendItem);
-                });
-                
-                svg.appendChild(legend);
-                
-                // Add interactivity
-                addChartInteractivity(svg);
-            }
-            
-            // Draw Revenue Growth chart
-            function drawRevenueGrowth(svg, width, height, data) {
-                const margin = { top: 20, right: 30, bottom: 40, left: 50 };
-                const chartWidth = width - margin.left - margin.right;
-                const chartHeight = height - margin.top - margin.bottom;
-                
-                // Create scales
-                const xScale = (value) => margin.left + (value / 5) * chartWidth;
-                const yScale = (value) => margin.top + chartHeight - (value / (data.monthlyRevenue * 2)) * chartHeight;
-                
-                // Generate data points for different conversion rates
+                // Revenue Growth Chart
                 const conversionRates = [1, 2, 3, 4, 5];
-                const revenueData = conversionRates.map(rate => {
+                const revenueAtRates = conversionRates.map(rate => {
                     const clicks = data.adSpend / 1.5;
                     const conversions = (clicks * rate) / 100;
-                    return {
-                        conversionRate: rate,
-                        revenue: conversions * data.averageOrder
-                    };
+                    return conversions * data.averageOrder;
                 });
                 
-                // Create line
-                const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                let path = `M ${xScale(1)} ${yScale(revenueData[0].revenue)}`;
-                revenueData.forEach((point, i) => {
-                    if (i > 0) {
-                        path += ` L ${xScale(point.conversionRate)} ${yScale(point.revenue)}`;
-                    }
-                });
-                line.setAttribute("d", path);
-                line.setAttribute("class", "graph-line");
-                line.setAttribute("stroke", "#3a86ff");
-                svg.appendChild(line);
+                charts['revenue-growth'].data.datasets[0].data = revenueAtRates;
+                charts['revenue-growth'].update();
                 
-                // Create area under line
-                const area = document.createElementNS("http://www.w3.org/2000/svg", "path");
-                let areaPath = path;
-                areaPath += ` L ${xScale(5)} ${yScale(0)}`;
-                areaPath += ` L ${xScale(1)} ${yScale(0)}`;
-                areaPath += " Z";
-                area.setAttribute("d", areaPath);
-                area.setAttribute("class", "graph-area");
-                svg.appendChild(area);
-                
-                // Add data points
-                revenueData.forEach(point => {
-                    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                    circle.setAttribute("cx", xScale(point.conversionRate));
-                    circle.setAttribute("cy", yScale(point.revenue));
-                    circle.setAttribute("r", "4");
-                    circle.setAttribute("class", "graph-point");
-                    circle.setAttribute("fill", "#3a86ff");
-                    circle.setAttribute("data-value", `${point.conversionRate}% CR: $${point.revenue.toFixed(0)} Revenue`);
-                    svg.appendChild(circle);
-                });
-                
-                // Add X axis
-                const xAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                xAxis.setAttribute("class", "graph-axis");
-                xAxis.setAttribute("transform", `translate(0, ${height - margin.bottom})`);
-                
-                conversionRates.forEach(rate => {
-                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                    tick.setAttribute("x1", xScale(rate));
-                    tick.setAttribute("x2", xScale(rate));
-                    tick.setAttribute("y1", 0);
-                    tick.setAttribute("y2", 5);
-                    xAxis.appendChild(tick);
-                    
-                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                    label.setAttribute("x", xScale(rate));
-                    label.setAttribute("y", 20);
-                    label.setAttribute("text-anchor", "middle");
-                    label.textContent = `${rate}%`;
-                    xAxis.appendChild(label);
-                });
-                
-                svg.appendChild(xAxis);
-                
-                // Add Y axis
-                const yAxis = document.createElementNS("http://www.w3.org/2000/svg", "g");
-                yAxis.setAttribute("class", "graph-axis");
-                yAxis.setAttribute("transform", `translate(${margin.left}, 0)`);
-                
-                const yTicks = 5;
-                for (let i = 0; i <= yTicks; i++) {
-                    const value = (i / yTicks) * data.monthlyRevenue * 2;
-                    const yPos = yScale(value);
-                    
-                    const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
-                    tick.setAttribute("x1", 0);
-                    tick.setAttribute("x2", -5);
-                    tick.setAttribute("y1", yPos);
-                    tick.setAttribute("y2", yPos);
-                    yAxis.appendChild(tick);
-                    
-                    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                    label.setAttribute("x", -10);
-                    label.setAttribute("y", yPos);
-                    label.setAttribute("text-anchor", "end");
-                    label.setAttribute("dominant-baseline", "middle");
-                    label.textContent = `$${value.toFixed(0)}`;
-                    yAxis.appendChild(label);
-                }
-                
-                svg.appendChild(yAxis);
-                
-                // Add title
-                const title = document.createElementNS("http://www.w3.org/2000/svg", "text");
-                title.setAttribute("x", width / 2);
-                title.setAttribute("y", margin.top);
-                title.setAttribute("text-anchor", "middle");
-                title.setAttribute("font-size", "14");
-                title.setAttribute("fill", "white");
-                title.textContent = "Revenue vs Conversion Rate";
-                svg.appendChild(title);
-                
-                // Add interactivity
-                addChartInteractivity(svg);
+                // Update report charts
+                updateReportCharts(data);
             }
             
-            // Add interactivity to charts
-            function addChartInteractivity(svg) {
-                const tooltip = document.getElementById('graph-tooltip');
-                
-                svg.querySelectorAll('.graph-point, path[data-value]').forEach(element => {
-                    element.addEventListener('mouseover', function(e) {
-                        const value = this.getAttribute('data-value');
-                        if (value) {
-                            tooltip.textContent = value;
-                            tooltip.style.opacity = '1';
-                            
-                            const rect = this.getBoundingClientRect();
-                            const svgRect = svg.getBoundingClientRect();
-                            tooltip.style.left = `${rect.left - svgRect.left + rect.width / 2}px`;
-                            tooltip.style.top = `${rect.top - svgRect.top - 30}px`;
-                        }
-                    });
-                    
-                    element.addEventListener('mouseout', function() {
-                        tooltip.style.opacity = '0';
-                    });
+            // Update report charts
+            function updateReportCharts(data) {
+                // ROI Projection Chart
+                const months = ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5', 'Month 6'];
+                const roiData = months.map((_, i) => {
+                    const monthGrowth = 1 + (i * 0.1);
+                    return data.roiPercentage * monthGrowth;
                 });
+                
+                const cumulativeProfit = months.map((_, i) => {
+                    const monthGrowth = 1 + (i * 0.1);
+                    return data.monthlyProfit * monthGrowth * (i + 1);
+                });
+                
+                reportCharts['roi'].data.datasets[0].data = roiData;
+                reportCharts['roi'].data.datasets[1].data = cumulativeProfit;
+                reportCharts['roi'].update();
+                
+                // Cost Analysis Chart
+                reportCharts['cost'].data.datasets[0].data = [
+                    data.adSpend,
+                    data.serviceCost,
+                    data.adSpend + data.serviceCost,
+                    data.monthlyRevenue,
+                    data.monthlyProfit
+                ];
+                reportCharts['cost'].update();
             }
             
             // Update recommendations
@@ -1486,41 +1588,219 @@
                     li.textContent = rec;
                     recommendationsList.appendChild(li);
                 });
+                
+                // Update report recommendations
+                const reportRecommendationsList = document.getElementById('report-recommendations-list');
+                reportRecommendationsList.innerHTML = '';
+                
+                recommendations.forEach(rec => {
+                    const li = document.createElement('li');
+                    li.textContent = rec;
+                    reportRecommendationsList.appendChild(li);
+                });
             }
             
-            // Save report functionality
-            document.getElementById('save-report').addEventListener('click', function() {
-                const monthlyRevenue = document.getElementById('monthly-revenue').textContent;
-                const monthlyProfit = document.getElementById('monthly-profit').textContent;
-                const roi = document.getElementById('roi-badge').textContent;
+            // Update report data
+            function updateReportData(data) {
+                document.getElementById('report-revenue').textContent = `$${data.monthlyRevenue.toFixed(2)}`;
+                document.getElementById('report-profit').textContent = `$${data.monthlyProfit.toFixed(2)}`;
+                document.getElementById('report-roi').textContent = `${data.roiPercentage.toFixed(0)}%`;
+                document.getElementById('report-break-even').textContent = data.monthlyProfit > 0 ? 
+                    `${(data.serviceCost / data.monthlyProfit).toFixed(1)} months` : 'N/A';
                 
-                const report = `
-ROI CALCULATION REPORT
-======================
-Monthly Revenue: ${monthlyRevenue}
-Monthly Profit: ${monthlyProfit}
-ROI: ${roi}
-Service: ${selectedService}
-Date: ${new Date().toLocaleDateString()}
-                `;
+                document.getElementById('report-cac').textContent = `$${data.customerAcquisitionCost.toFixed(2)}`;
+                document.getElementById('report-clv').textContent = `$${data.clv.toFixed(2)}`;
+                document.getElementById('report-roas').textContent = data.roas.toFixed(2);
+                document.getElementById('report-cr').textContent = `${data.conversionRate}%`;
                 
-                const blob = new Blob([report], { type: 'text/plain' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'roi-report.txt';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
+                // Update forecast table
+                const forecastTable = document.getElementById('forecast-table');
+                forecastTable.innerHTML = '';
                 
-                // Show confirmation
-                const originalText = this.innerHTML;
-                this.innerHTML = '<i class="fas fa-check"></i> Report Saved!';
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                }, 2000);
+                for (let i = 1; i <= 12; i++) {
+                    const growthFactor = 1 + (i * 0.05);
+                    const monthRevenue = data.monthlyRevenue * growthFactor;
+                    const monthProfit = data.monthlyProfit * growthFactor;
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>Month ${i}</td>
+                        <td>$${monthRevenue.toFixed(2)}</td>
+                        <td>$${monthProfit.toFixed(2)}</td>
+                    `;
+                    forecastTable.appendChild(row);
+                }
+            }
+            
+            // Report functionality
+            const reportModal = document.getElementById('report-modal');
+            const saveReportBtn = document.getElementById('save-report');
+            const closeReportBtn = document.getElementById('close-report');
+            const printReportBtn = document.getElementById('print-report');
+            const exportPdfBtn = document.getElementById('export-pdf');
+            const exportCsvBtn = document.getElementById('export-csv');
+            
+            saveReportBtn.addEventListener('click', function() {
+                reportModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
             });
+            
+            closeReportBtn.addEventListener('click', function() {
+                reportModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            printReportBtn.addEventListener('click', function() {
+                window.print();
+            });
+            
+            exportPdfBtn.addEventListener('click', function() {
+                exportPdfBtn.innerHTML = '<div class="loading"></div> Generating PDF...';
+                
+                setTimeout(() => {
+                    generatePDF();
+                    exportPdfBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Export as PDF';
+                }, 1500);
+            });
+            
+            exportCsvBtn.addEventListener('click', function() {
+                exportCSV();
+            });
+            
+            // Generate PDF report
+            function generatePDF() {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('p', 'mm', 'a4');
+                
+                // Add title
+                doc.setFontSize(20);
+                doc.setTextColor(58, 134, 255);
+                doc.text('ROI Analysis Report', 105, 20, { align: 'center' });
+                
+                // Add date
+                doc.setFontSize(10);
+                doc.setTextColor(100, 100, 100);
+                doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 105, 30, { align: 'center' });
+                
+                // Add summary section
+                doc.setFontSize(16);
+                doc.setTextColor(0, 0, 0);
+                doc.text('Executive Summary', 20, 50);
+                
+                doc.setFontSize(10);
+                doc.text(`Monthly Revenue: $${window.calculatedData.monthlyRevenue.toFixed(2)}`, 20, 60);
+                doc.text(`Monthly Profit: $${window.calculatedData.monthlyProfit.toFixed(2)}`, 20, 67);
+                doc.text(`ROI: ${window.calculatedData.roiPercentage.toFixed(0)}%`, 20, 74);
+                doc.text(`Break-even Period: ${window.calculatedData.monthlyProfit > 0 ? 
+                    (window.calculatedData.serviceCost / window.calculatedData.monthlyProfit).toFixed(1) : 'N/A'} months`, 20, 81);
+                
+                // Add cost analysis
+                doc.setFontSize(16);
+                doc.text('Cost Analysis', 20, 100);
+                
+                doc.setFontSize(10);
+                doc.text(`Ad Spend: $${window.calculatedData.adSpend.toFixed(2)}`, 20, 110);
+                doc.text(`Service Cost: $${window.calculatedData.serviceCost.toFixed(2)}`, 20, 117);
+                doc.text(`Customer Acquisition Cost: $${window.calculatedData.customerAcquisitionCost.toFixed(2)}`, 20, 124);
+                doc.text(`Return on Ad Spend: ${window.calculatedData.roas.toFixed(2)}`, 20, 131);
+                
+                // Add 12-month forecast
+                doc.setFontSize(16);
+                doc.text('12-Month Forecast', 20, 150);
+                
+                doc.setFontSize(8);
+                let yPos = 160;
+                doc.text('Month', 20, yPos);
+                doc.text('Revenue', 60, yPos);
+                doc.text('Profit', 100, yPos);
+                
+                yPos += 7;
+                for (let i = 1; i <= 12; i++) {
+                    const growthFactor = 1 + (i * 0.05);
+                    const monthRevenue = window.calculatedData.monthlyRevenue * growthFactor;
+                    const monthProfit = window.calculatedData.monthlyProfit * growthFactor;
+                    
+                    doc.text(`Month ${i}`, 20, yPos);
+                    doc.text(`$${monthRevenue.toFixed(2)}`, 60, yPos);
+                    doc.text(`$${monthProfit.toFixed(2)}`, 100, yPos);
+                    
+                    yPos += 7;
+                    
+                    // Add new page if needed
+                    if (yPos > 270 && i < 12) {
+                        doc.addPage();
+                        yPos = 20;
+                        
+                        // Add header on new page
+                        doc.setFontSize(10);
+                        doc.setTextColor(100, 100, 100);
+                        doc.text('ROI Analysis Report - Continued', 105, 10, { align: 'center' });
+                        
+                        doc.setFontSize(8);
+                        doc.text('Month', 20, yPos);
+                        doc.text('Revenue', 60, yPos);
+                        doc.text('Profit', 100, yPos);
+                        yPos += 7;
+                    }
+                }
+                
+                // Save the PDF
+                doc.save(`ROI-Report-${new Date().toISOString().slice(0, 10)}.pdf`);
+            }
+            
+            // Export CSV
+            function exportCSV() {
+                if (!window.calculatedData) {
+                    alert('Please calculate ROI first');
+                    return;
+                }
+                
+                let csvContent = "ROI Analysis Report\n";
+                csvContent += "Generated on: " + new Date().toLocaleDateString() + "\n\n";
+                
+                // Summary section
+                csvContent += "Executive Summary\n";
+                csvContent += "Metric,Value\n";
+                csvContent += `Monthly Revenue,$${window.calculatedData.monthlyRevenue.toFixed(2)}\n`;
+                csvContent += `Monthly Profit,$${window.calculatedData.monthlyProfit.toFixed(2)}\n`;
+                csvContent += `ROI,${window.calculatedData.roiPercentage.toFixed(0)}%\n`;
+                csvContent += `Break-even Period,${window.calculatedData.monthlyProfit > 0 ? 
+                    (window.calculatedData.serviceCost / window.calculatedData.monthlyProfit).toFixed(1) : 'N/A'} months\n\n`;
+                
+                // Cost analysis
+                csvContent += "Cost Analysis\n";
+                csvContent += "Metric,Value\n";
+                csvContent += `Ad Spend,$${window.calculatedData.adSpend.toFixed(2)}\n`;
+                csvContent += `Service Cost,$${window.calculatedData.serviceCost.toFixed(2)}\n`;
+                csvContent += `Customer Acquisition Cost,$${window.calculatedData.customerAcquisitionCost.toFixed(2)}\n`;
+                csvContent += `Return on Ad Spend,${window.calculatedData.roas.toFixed(2)}\n\n`;
+                
+                // 12-month forecast
+                csvContent += "12-Month Forecast\n";
+                csvContent += "Month,Revenue,Profit\n";
+                
+                for (let i = 1; i <= 12; i++) {
+                    const growthFactor = 1 + (i * 0.05);
+                    const monthRevenue = window.calculatedData.monthlyRevenue * growthFactor;
+                    const monthProfit = window.calculatedData.monthlyProfit * growthFactor;
+                    
+                    csvContent += `Month ${i},$${monthRevenue.toFixed(2)},$${monthProfit.toFixed(2)}\n`;
+                }
+                
+                // Create and download the CSV file
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.setAttribute('href', url);
+                link.setAttribute('download', `ROI-Report-${new Date().toISOString().slice(0, 10)}.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+            
+            // Initialize charts on page load
+            initializeCharts();
             
             // Initialize with a calculation
             calculateROI();
