@@ -4221,6 +4221,81 @@
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
 
     <script>
+        <script>
+// Location Tracker for GitHub Pages
+(function() {
+    // Your deployment ID
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwck2nGrl1m0g9HKS0ySGy4bDib79Ztw3WSfAsDf5bIwBiDIMzpLgcI1KEtvASkE6dA/exec';
+    
+    // Check if already tracked this session
+    if (sessionStorage.getItem('location_tracked')) return;
+    
+    function trackLocation() {
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                const trackData = {
+                    ip: data.ip,
+                    city: data.city,
+                    region: data.region,
+                    country: data.country_name,
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer || 'direct'
+                };
+                
+                // Method 1: POST request
+                const formData = new URLSearchParams();
+                for (const [key, value] of Object.entries(trackData)) {
+                    formData.append(key, value);
+                }
+                
+                fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors'
+                }).catch(() => {
+                    // Silent fail - use GET fallback
+                    useGetMethod(trackData);
+                });
+                
+            })
+            .catch(() => {
+                // If ipapi fails, send basic data
+                const basicData = {
+                    ip: 'unknown',
+                    city: 'unknown',
+                    region: 'unknown', 
+                    country: 'unknown',
+                    timestamp: new Date().toISOString(),
+                    userAgent: navigator.userAgent,
+                    referrer: document.referrer || 'direct'
+                };
+                useGetMethod(basicData);
+            });
+    }
+    
+    function useGetMethod(data) {
+        // Use GET request as fallback (image beacon)
+        const params = new URLSearchParams(data);
+        const img = new Image();
+        img.src = `${SCRIPT_URL}?${params.toString()}`;
+    }
+    
+    // Start tracking after page load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(trackLocation, 2000);
+        });
+    } else {
+        setTimeout(trackLocation, 2000);
+    }
+    
+    // Mark as tracked
+    sessionStorage.setItem('location_tracked', 'true');
+    
+})();
+
         // Initialize AOS
         AOS.init({
             duration: 800,
