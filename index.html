@@ -266,7 +266,7 @@
         transform: rotate(180deg);
     }
 
-    /* Hollywood Intro */
+    /* Hollywood Intro - OPTIMIZED FOR SPEED */
     .hollywood-intro {
         position: fixed;
         top: 0;
@@ -279,7 +279,7 @@
         align-items: center;
         z-index: 10000;
         opacity: 1;
-        transition: opacity 1s ease;
+        transition: opacity 0.5s ease;
     }
 
     .hollywood-intro.hidden {
@@ -299,7 +299,7 @@
         color: var(--accent);
         text-transform: uppercase;
         letter-spacing: 0.5rem;
-        animation: titleReveal 3s ease forwards;
+        animation: titleReveal 1.5s ease forwards;
         opacity: 0;
     }
 
@@ -321,7 +321,7 @@
     .intro-subtitle {
         font-size: 1.5rem;
         color: var(--text-secondary);
-        animation: subtitleReveal 3s ease 1s forwards;
+        animation: subtitleReveal 1.5s ease 0.5s forwards;
         opacity: 0;
     }
 
@@ -336,7 +336,7 @@
         }
     }
 
-    /* Advanced Security Splash Screen */
+    /* Advanced Security Splash Screen - OPTIMIZED FOR SPEED */
     .security-splash {
         position: fixed;
         top: 0;
@@ -351,7 +351,7 @@
         align-items: center;
         z-index: 9999;
         opacity: 1;
-        transition: opacity 1s ease-out;
+        transition: opacity 0.5s ease-out;
     }
 
     .security-splash.hidden {
@@ -415,7 +415,7 @@
         height: 100%;
         background: var(--accent);
         width: 0%;
-        transition: width 0.5s ease;
+        transition: width 0.3s ease;
     }
 
     .security-message {
@@ -3051,7 +3051,7 @@
     <div class="custom-cursor" id="custom-cursor"></div>
     <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
 
-    <!-- Hollywood Intro -->
+    <!-- Hollywood Intro - OPTIMIZED FOR SPEED -->
     <div class="hollywood-intro" id="hollywood-intro">
         <div class="intro-content">
             <h1 class="intro-title">Rudraksh Sharma</h1>
@@ -3059,7 +3059,7 @@
         </div>
     </div>
 
-    <!-- Advanced Security Splash Screen -->
+    <!-- Advanced Security Splash Screen - OPTIMIZED FOR SPEED -->
     <div class="security-splash" id="security-splash">
         <div class="security-logo">Rudraksh Sharma</div>
         <div class="security-status">
@@ -4221,80 +4221,61 @@
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
 
     <script>
-        <script>
-// Location Tracker for GitHub Pages
-(function() {
-    // Your deployment ID
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwck2nGrl1m0g9HKS0ySGy4bDib79Ztw3WSfAsDf5bIwBiDIMzpLgcI1KEtvASkE6dA/exec';
-    
-    // Check if already tracked this session
-    if (sessionStorage.getItem('location_tracked')) return;
-    
-    function trackLocation() {
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                const trackData = {
-                    ip: data.ip,
-                    city: data.city,
-                    region: data.region,
-                    country: data.country_name,
-                    timestamp: new Date().toISOString(),
-                    userAgent: navigator.userAgent,
-                    referrer: document.referrer || 'direct'
-                };
-                
-                // Method 1: POST request
-                const formData = new URLSearchParams();
-                for (const [key, value] of Object.entries(trackData)) {
-                    formData.append(key, value);
-                }
-                
-                fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData,
-                    mode: 'no-cors'
-                }).catch(() => {
-                    // Silent fail - use GET fallback
-                    useGetMethod(trackData);
+        // Location Tracker for GitHub Pages - OPTIMIZED FOR SPEED
+        (function() {
+            // Your deployment ID
+            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwck2nGrl1m0g9HKS0ySGy4bDib79Ztw3WSfAsDf5bIwBiDIMzpLgcI1KEtvASkE6dA/exec';
+            
+            // Check if already tracked this session
+            if (sessionStorage.getItem('location_tracked')) return;
+            
+            function trackLocation() {
+                // Use a faster geolocation API
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const trackData = {
+                            ip: data.ip,
+                            timestamp: new Date().toISOString(),
+                            userAgent: navigator.userAgent,
+                            referrer: document.referrer || 'direct'
+                        };
+                        
+                        // Use GET method for speed
+                        useGetMethod(trackData);
+                    })
+                    .catch(() => {
+                        // If ipify fails, send basic data
+                        const basicData = {
+                            ip: 'unknown',
+                            timestamp: new Date().toISOString(),
+                            userAgent: navigator.userAgent,
+                            referrer: document.referrer || 'direct'
+                        };
+                        useGetMethod(basicData);
+                    });
+            }
+            
+            function useGetMethod(data) {
+                // Use GET request as fallback (image beacon)
+                const params = new URLSearchParams(data);
+                const img = new Image();
+                img.src = `${SCRIPT_URL}?${params.toString()}`;
+            }
+            
+            // Start tracking after page load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    setTimeout(trackLocation, 1000);
                 });
-                
-            })
-            .catch(() => {
-                // If ipapi fails, send basic data
-                const basicData = {
-                    ip: 'unknown',
-                    city: 'unknown',
-                    region: 'unknown', 
-                    country: 'unknown',
-                    timestamp: new Date().toISOString(),
-                    userAgent: navigator.userAgent,
-                    referrer: document.referrer || 'direct'
-                };
-                useGetMethod(basicData);
-            });
-    }
-    
-    function useGetMethod(data) {
-        // Use GET request as fallback (image beacon)
-        const params = new URLSearchParams(data);
-        const img = new Image();
-        img.src = `${SCRIPT_URL}?${params.toString()}`;
-    }
-    
-    // Start tracking after page load
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(trackLocation, 2000);
-        });
-    } else {
-        setTimeout(trackLocation, 2000);
-    }
-    
-    // Mark as tracked
-    sessionStorage.setItem('location_tracked', 'true');
-    
-})();
+            } else {
+                setTimeout(trackLocation, 1000);
+            }
+            
+            // Mark as tracked
+            sessionStorage.setItem('location_tracked', 'true');
+            
+        })();
 
         // Initialize AOS
         AOS.init({
@@ -4361,22 +4342,32 @@
             initSlideshow();
         });
 
-        // Country Blocking for Pakistan
+        // Country Blocking for Pakistan - OPTIMIZED FOR SPEED
         function checkCountry() {
-            fetch('https://ipapi.co/json/')
+            fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    const country = data.country_name;
-                    if (country === 'Pakistan') {
-                        document.getElementById('country-block').classList.remove('hidden');
-                        document.body.style.overflow = 'hidden';
-                    } else {
-                        document.getElementById('country-block').classList.add('hidden');
-                        document.body.style.overflow = 'auto';
-                    }
+                    // Use a faster IP geolocation service
+                    fetch(`https://ipapi.co/${data.ip}/country/`)
+                        .then(response => response.text())
+                        .then(country => {
+                            if (country === 'PK') {
+                                document.getElementById('country-block').classList.remove('hidden');
+                                document.body.style.overflow = 'hidden';
+                            } else {
+                                document.getElementById('country-block').classList.add('hidden');
+                                document.body.style.overflow = 'auto';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Country check failed:', error);
+                            // If API fails, allow access
+                            document.getElementById('country-block').classList.add('hidden');
+                            document.body.style.overflow = 'auto';
+                        });
                 })
                 .catch(error => {
-                    console.error('Country check failed:', error);
+                    console.error('IP check failed:', error);
                     // If API fails, allow access
                     document.getElementById('country-block').classList.add('hidden');
                     document.body.style.overflow = 'auto';
@@ -4433,12 +4424,12 @@
             });
         });
 
-        // Hollywood Intro and Security Check Sequence
+        // Hollywood Intro and Security Check Sequence - OPTIMIZED FOR SPEED
         window.addEventListener('load', () => {
             const hollywoodIntro = document.getElementById('hollywood-intro');
             const securitySplash = document.getElementById('security-splash');
             
-            // Show Hollywood intro for 3 seconds
+            // Show Hollywood intro for 1.5 seconds (reduced from 3)
             setTimeout(() => {
                 hollywoodIntro.classList.add('hidden');
                 
@@ -4446,11 +4437,11 @@
                 setTimeout(() => {
                     securitySplash.classList.remove('hidden');
                     startSecurityCheck();
-                }, 500);
-            }, 3000);
+                }, 200); // Reduced from 500ms
+            }, 1500); // Reduced from 3000ms
         });
 
-        // Advanced Security Check
+        // Advanced Security Check - OPTIMIZED FOR SPEED
         function startSecurityCheck() {
             const browserCheck = document.getElementById('browser-check');
             const connectionCheck = document.getElementById('connection-check');
@@ -4461,7 +4452,7 @@
             
             let progress = 0;
             
-            // Simulate security checks with progress
+            // Simulate security checks with progress - FASTER
             const updateProgress = () => {
                 progress += 25;
                 progressBar.style.width = `${progress}%`;
@@ -4470,37 +4461,37 @@
                     setTimeout(() => {
                         securitySplash.classList.add('hidden');
                         // Website is now fully loaded and accessible
-                    }, 1000);
+                    }, 500); // Reduced from 1000ms
                 }
             };
             
-            // Browser Security Check
+            // Browser Security Check - FASTER
             setTimeout(() => {
                 browserCheck.textContent = 'Verified ✓';
                 browserCheck.classList.add('verified');
                 updateProgress();
-            }, 1000);
+            }, 500); // Reduced from 1000ms
             
-            // Connection Security Check
+            // Connection Security Check - FASTER
             setTimeout(() => {
                 connectionCheck.textContent = 'Secure ✓';
                 connectionCheck.classList.add('verified');
                 updateProgress();
-            }, 2000);
+            }, 800); // Reduced from 2000ms
             
-            // Content Verification
+            // Content Verification - FASTER
             setTimeout(() => {
                 contentCheck.textContent = 'Verified ✓';
                 contentCheck.classList.add('verified');
                 updateProgress();
-            }, 3000);
+            }, 1100); // Reduced from 3000ms
             
-            // Malware Scan
+            // Malware Scan - FASTER
             setTimeout(() => {
                 malwareCheck.textContent = 'Clean ✓';
                 malwareCheck.classList.add('verified');
                 updateProgress();
-            }, 4000);
+            }, 1400); // Reduced from 4000ms
         }
 
         // User Info Collection Before Payment - REMOVED (now direct to payment pages)
