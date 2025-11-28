@@ -59,7 +59,7 @@
             line-height: 1.6;
         }
 
-        body.sidebar-open {
+        body.sidebar-open, body.popup-open {
             overflow: hidden;
         }
 
@@ -871,7 +871,7 @@
             background: var(--accent);
         }
 
-        /* Hero Section */
+        /* Hero Section with Video Background */
         .hero {
             height: 100vh;
             display: flex;
@@ -891,13 +891,13 @@
             z-index: 1;
         }
 
-        .hero-bg {
+        .hero-video {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, #0e0e0e, #1a1a2e, #16213e);
+            object-fit: cover;
             z-index: 0;
         }
 
@@ -1884,6 +1884,229 @@
             background: rgba(58, 134, 255, 0.2);
         }
 
+        /* App Download Links */
+        .app-download-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .app-download-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.2rem;
+            background: rgba(58, 134, 255, 0.1);
+            border: 1px solid rgba(58, 134, 255, 0.3);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .app-download-btn:hover {
+            background: rgba(58, 134, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+        }
+
+        .app-download-btn i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .app-download-btn .app-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-download-btn .app-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .app-download-btn .app-status {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .app-download-btn.coming-soon {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .app-download-btn.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Transparent Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1005;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: var(--glass-effect);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .popup-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .popup-text {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .popup-text h3 {
+            color: var(--accent);
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .popup-text p {
+            margin-bottom: 1rem;
+        }
+
+        .popup-text ul, .popup-text ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        .popup-text li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Enhanced Chatbot Styles */
+        .biography-card {
+            background: rgba(58, 134, 255, 0.1);
+            border: 1px solid rgba(58, 134, 255, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .biography-card h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-automation {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            padding: 0.4rem 0.8rem;
+            background: rgba(58, 134, 255, 0.2);
+            border: 1px solid rgba(58, 134, 255, 0.4);
+            border-radius: 16px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .contact-btn:hover {
+            background: rgba(58, 134, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .typing-indicator {
+            display: flex;
+            gap: 5px;
+            padding: 10px 15px;
+        }
+
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.6;
+            animation: typingPulse 1.5s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingPulse {
+            0%, 60%, 100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+            30% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
@@ -1944,6 +2167,12 @@
                 width: 80%;
                 max-width: 280px;
             }
+            .popup-content {
+                padding: 1.5rem;
+            }
+            .popup-title {
+                font-size: 1.5rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1975,6 +2204,9 @@
             }
             .blue-popup-content h3 {
                 font-size: 1.4rem;
+            }
+            .app-download-btn {
+                padding: 0.6rem 1rem;
             }
         }
 
@@ -2077,12 +2309,12 @@
             <li class="more-dropdown">
                 <a href="#">More From Us <i class="fas fa-chevron-down"></i></a>
                 <div class="more-dropdown-content">
-                    <a href="testonomial.html" target="_blank">Testimonials</a>
+                    <a href="#" data-popup="testimonials-popup">Testimonials</a>
                     <a href="#" data-popup="blogs-popup">Blogs</a>
                     <a href="#" data-popup="notifications-popup">Notifications</a>
                     <a href="#" data-popup="download-popup">Download App</a>
-                    <a href="dashboard.html" target="_blank">Dashboard</a>
-                    <a href="make-blog.html" target="_blank">Make a Blog</a>
+                    <a href="#" data-popup="dashboard-popup">Dashboard</a>
+                    <a href="#" data-popup="make-blog-popup">Make a Blog</a>
                 </div>
             </li>
         </ul>
@@ -2099,12 +2331,12 @@
                 <li><a href="#pricing" class="sidebar-link">Pricing</a></li>
                 <li><a href="#booking" class="sidebar-link">Booking</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
-                <li><a href="testonomial.html" target="_blank" class="sidebar-link">Testimonials</a></li>
+                <li><a href="#" data-popup="testimonials-popup" class="sidebar-link">Testimonials</a></li>
                 <li><a href="#" data-popup="blogs-popup" class="sidebar-link">Blogs</a></li>
                 <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications</a></li>
                 <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
-                <li><a href="dashboard.html" target="_blank" class="sidebar-link">Dashboard</a></li>
-                <li><a href="make-blog.html" target="_blank" class="sidebar-link">Make a Blog</a></li>
+                <li><a href="#" data-popup="dashboard-popup" class="sidebar-link">Dashboard</a></li>
+                <li><a href="#" data-popup="make-blog-popup" class="sidebar-link">Make a Blog</a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -2121,9 +2353,12 @@
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Video Background -->
     <section class="hero" id="home">
-        <div class="hero-bg"></div>
+        <video class="hero-video" autoplay muted loop>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-background-158-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="hero-content">
             <h1 data-aos="fade-up" data-aos-duration="1000">I Deliver Results with Google & Meta Ads</h1>
             <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><span id="typed-text"></span><span class="typed-cursor">|</span></p>
@@ -2220,7 +2455,7 @@
                     <li>Remarketing Campaigns</li>
                 </ul>
                 <div class="service-cta">
-                    <a href="googleadsplan.html" class="primary-cta" data-service="google-ads" data-amount="349">Get Started</a>
+                    <a href="#" class="primary-cta" data-service="google-ads" data-amount="349">Get Started</a>
                     <a href="#" class="secondary-cta" data-popup="google-ads-details-popup">View Details</a>
                 </div>
             </div>
@@ -2241,7 +2476,7 @@
                     <li>Performance Reporting</li>
                 </ul>
                 <div class="service-cta">
-                    <a href="facebookplan.html" class="primary-cta" data-service="meta-ads" data-amount="349">Get Started</a>
+                    <a href="#" class="primary-cta" data-service="meta-ads" data-amount="349">Get Started</a>
                     <a href="#" class="secondary-cta" data-popup="meta-ads-details-popup">View Details</a>
                 </div>
             </div>
@@ -2359,7 +2594,7 @@
                     <li>Up to $1,000 Ad Spend</li>
                     <li>Conversion Tracking Setup</li>
                 </ul>
-                <a href="starterplan.html" class="pricing-cta" data-plan="starter" data-amount="349">Get Started</a>
+                <a href="#" class="pricing-cta" data-plan="starter" data-amount="349">Get Started</a>
             </div>
             <div class="pricing-card popular" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                 <div class="popular-tag">Most Popular</div>
@@ -2374,7 +2609,7 @@
                     <li>Monthly Strategy Call</li>
                     <li>A/B Testing Implementation</li>
                 </ul>
-                <a href="professionalplan.html" class="pricing-cta" data-plan="professional" data-amount="799">Get Started</a>
+                <a href="#" class="pricing-cta" data-plan="professional" data-amount="799">Get Started</a>
             </div>
             <div class="pricing-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
                 <h3>Enterprise</h3>
@@ -2389,7 +2624,7 @@
                     <li>Advanced Audience Segmentation</li>
                     <li>Competitive Analysis</li>
                 </ul>
-                <a href="enterpriseplan.html" class="pricing-cta" data-plan="enterprise" data-amount="1499">Get Started</a>
+                <a href="#" class="pricing-cta" data-plan="enterprise" data-amount="1499">Get Started</a>
             </div>
         </div>
     </section>
@@ -2508,6 +2743,29 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
+                <div class="app-download-links">
+                    <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="app-download-btn" target="_blank">
+                        <i class="fab fa-android"></i>
+                        <div class="app-info">
+                            <span class="app-name">Android App</span>
+                            <span class="app-status">Download Now</span>
+                        </div>
+                    </a>
+                    <a href="#" class="app-download-btn coming-soon">
+                        <i class="fab fa-windows"></i>
+                        <div class="app-info">
+                            <span class="app-name">Windows App</span>
+                            <span class="app-status">Coming Soon</span>
+                        </div>
+                    </a>
+                    <a href="#" class="app-download-btn coming-soon">
+                        <i class="fab fa-linux"></i>
+                        <div class="app-info">
+                            <span class="app-name">Linux App</span>
+                            <span class="app-status">Coming Soon</span>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -2542,7 +2800,7 @@
                     <div class="quick-replies">
                         <div class="quick-reply" data-message="Tell me about Google Ads">Google Ads</div>
                         <div class="quick-reply" data-message="Tell me about Meta Ads">Meta Ads</div>
-                        <div class="quick-reply" data-message="What are your prices?">Pricing</div>
+                        <div class="quick-reply" data-message="Tell me about Rudraksh">About Rudraksh</div>
                         <div class="quick-reply" data-message="How can I book a consultation?">Booking</div>
                     </div>
                 </div>
@@ -2557,6 +2815,17 @@
         </div>
     </div>
 
+    <!-- Transparent Popup Overlay -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close" id="popup-close">×</button>
+            <h2 class="popup-title" id="popup-title">Terms of Use</h2>
+            <div class="popup-text" id="popup-text">
+                <!-- Popup content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
     <!-- External Scripts -->
     <script src="https://unpkg.com/aos@2.0.4/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -2565,6 +2834,203 @@
 
     <!-- Inline JavaScript -->
     <script>
+        // Popup Content Data
+        const popupContent = {
+            'terms-popup': {
+                title: 'Terms of Use',
+                content: `
+                    <h3>1. Acceptance of Terms</h3>
+                    <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
+                    
+                    <h3>2. Use License</h3>
+                    <p>Permission is granted to temporarily view the materials on Rudraksh Sharma's website for personal, non-commercial transitory viewing only.</p>
+                    
+                    <h3>3. Disclaimer</h3>
+                    <p>The materials on Rudraksh Sharma's website are provided on an 'as is' basis. Rudraksh Sharma makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+                    
+                    <h3>4. Limitations</h3>
+                    <p>In no event shall Rudraksh Sharma or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Rudraksh Sharma's website.</p>
+                    
+                    <h3>5. Revisions and Errata</h3>
+                    <p>The materials appearing on Rudraksh Sharma's website could include technical, typographical, or photographic errors. Rudraksh Sharma does not warrant that any of the materials on its website are accurate, complete, or current.</p>
+                    
+                    <h3>6. Governing Law</h3>
+                    <p>Any claim relating to Rudraksh Sharma's website shall be governed by the laws of India without regard to its conflict of law provisions.</p>
+                `
+            },
+            'privacy-popup': {
+                title: 'Privacy Policy',
+                content: `
+                    <h3>1. Information We Collect</h3>
+                    <p>We collect information you provide directly to us, such as when you create an account, subscribe to our updates, or contact us for support.</p>
+                    
+                    <h3>2. How We Use Your Information</h3>
+                    <p>We use the information we collect to provide, maintain, and improve our services, to develop new ones, and to protect Rudraksh Sharma and our users.</p>
+                    
+                    <h3>3. Information Sharing</h3>
+                    <p>We do not share personal information with companies, organizations, or individuals outside of Rudraksh Sharma except in the following cases:</p>
+                    <ul>
+                        <li>With your consent</li>
+                        <li>For external processing</li>
+                        <li>For legal reasons</li>
+                    </ul>
+                    
+                    <h3>4. Data Security</h3>
+                    <p>We work hard to protect our users from unauthorized access to or unauthorized alteration, disclosure, or destruction of information we hold.</p>
+                    
+                    <h3>5. Accessing and Updating Your Personal Information</h3>
+                    <p>Whenever you use our services, we aim to provide you with access to your personal information. If that information is wrong, we strive to give you ways to update it quickly or to delete it – unless we have to keep that information for legitimate business or legal purposes.</p>
+                    
+                    <h3>6. Changes to This Policy</h3>
+                    <p>We may change this privacy policy from time to time. We will post any privacy policy changes on this page and, if the changes are significant, we will provide a more prominent notice.</p>
+                `
+            },
+            'cookie-popup': {
+                title: 'Cookie Policy',
+                content: `
+                    <h3>1. What Are Cookies</h3>
+                    <p>Cookies are small text files that are placed on your computer by websites that you visit. They are widely used in order to make websites work, or work more efficiently, as well as to provide information to the owners of the site.</p>
+                    
+                    <h3>2. How We Use Cookies</h3>
+                    <p>We use cookies for a variety of reasons detailed below. Unfortunately, in most cases there are no industry standard options for disabling cookies without completely disabling the functionality and features they add to this site.</p>
+                    
+                    <h3>3. Disabling Cookies</h3>
+                    <p>You can prevent the setting of cookies by adjusting the settings on your browser (see your browser Help for how to do this). Be aware that disabling cookies will affect the functionality of this and many other websites that you visit.</p>
+                    
+                    <h3>4. The Cookies We Set</h3>
+                    <ul>
+                        <li>Account related cookies</li>
+                        <li>Login related cookies</li>
+                        <li>Email newsletters related cookies</li>
+                        <li>Forms related cookies</li>
+                        <li>Site preferences cookies</li>
+                    </ul>
+                    
+                    <h3>5. Third Party Cookies</h3>
+                    <p>In some special cases we also use cookies provided by trusted third parties. The following section details which third party cookies you might encounter through this site.</p>
+                    
+                    <h3>6. More Information</h3>
+                    <p>Hopefully that has clarified things for you and as was previously mentioned if there is something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case it does interact with one of the features you use on our site.</p>
+                `
+            },
+            'faqs-popup': {
+                title: 'Frequently Asked Questions',
+                content: `
+                    <h3>1. What services do you offer?</h3>
+                    <p>I specialize in Google Ads and Meta Ads management, including campaign strategy, optimization, tracking, and reporting.</p>
+                    
+                    <h3>2. How much do your services cost?</h3>
+                    <p>I offer three main pricing tiers: Starter ($349/month), Professional ($799/month), and Enterprise ($1499/month). Each plan includes different levels of service and support.</p>
+                    
+                    <h3>3. How long does it take to see results?</h3>
+                    <p>Most clients see initial results within 2-4 weeks, with significant improvements typically appearing within 3 months as we optimize campaigns based on performance data.</p>
+                    
+                    <h3>4. Do you work with businesses in my industry?</h3>
+                    <p>I have experience working with various industries including e-commerce, SaaS, B2B services, and consumer products. Contact me to discuss your specific industry needs.</p>
+                    
+                    <h3>5. What's included in your ads management service?</h3>
+                    <p>My services include campaign strategy, keyword/targeting research, ad creation, A/B testing, performance tracking, and regular reporting with optimization recommendations.</p>
+                    
+                    <h3>6. How do I get started?</h3>
+                    <p>You can book a free consultation through the booking section on this website, or contact me directly via email or WhatsApp to discuss your needs.</p>
+                `
+            },
+            'disclaimer-popup': {
+                title: 'Disclaimer',
+                content: `
+                    <h3>1. No Professional Advice</h3>
+                    <p>The information contained on this website is for general information purposes only. The information is provided by Rudraksh Sharma and while we endeavor to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
+                    
+                    <h3>2. Limitation of Liability</h3>
+                    <p>In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
+                    
+                    <h3>3. External Links</h3>
+                    <p>Through this website you are able to link to other websites which are not under the control of Rudraksh Sharma. We have no control over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.</p>
+                    
+                    <h3>4. Testimonials</h3>
+                    <p>The testimonials and examples used are exceptional results, which do not apply to the average purchaser and are not intended to represent or guarantee that anyone will achieve the same or similar results.</p>
+                    
+                    <h3>5. Earnings Disclaimer</h3>
+                    <p>There is no assurance that examples of past earnings can be duplicated in the future. We cannot guarantee your future results and/or success. There are some unknown risks in business and on the internet that we cannot foresee which can reduce results.</p>
+                `
+            },
+            'testimonials-popup': {
+                title: 'Client Testimonials',
+                content: `
+                    <h3>What Our Clients Say</h3>
+                    <p>Here are some testimonials from our satisfied clients:</p>
+                    
+                    <div class="testimonial-card" style="margin: 1.5rem 0;">
+                        <p>"Rudraksh's Google Ads campaign boosted our sales by 300%! His strategic approach to keyword targeting and ad optimization delivered exceptional ROI."</p>
+                        <span><strong>John Doe</strong>, CEO Fashion Brand</span>
+                    </div>
+                    
+                    <div class="testimonial-card" style="margin: 1.5rem 0;">
+                        <p>"Exceptional Meta Ads strategy. Our lead quality improved dramatically while reducing our cost per lead by 40%. Rudraksh's data-driven approach is impressive."</p>
+                        <span><strong>Jane Smith</strong>, Marketing Director</span>
+                    </div>
+                    
+                    <div class="testimonial-card" style="margin: 1.5rem 0;">
+                        <p>"Meta Ads delivered leads at half the cost we expected. Rudraksh's expertise in audience targeting and creative optimization transformed our advertising results."</p>
+                        <span><strong>Mike Johnson</strong>, Business Owner</span>
+                    </div>
+                    
+                    <div class="testimonial-card" style="margin: 1.5rem 0;">
+                        <p>"The comprehensive Google Ads strategy implemented by Rudraksh increased our website traffic by 200% and conversions by 150%. Highly recommended!"</p>
+                        <span><strong>Sarah Williams</strong>, E-commerce Manager</span>
+                    </div>
+                `
+            },
+            'google-ads-details-popup': {
+                title: 'Google Ads Management Details',
+                content: `
+                    <h3>Comprehensive Google Ads Management</h3>
+                    <p>My Google Ads management service provides end-to-end campaign management to maximize your advertising ROI across Search, Display, and YouTube networks.</p>
+                    
+                    <h3>What's Included:</h3>
+                    <ul>
+                        <li><strong>Campaign Strategy & Setup:</strong> Comprehensive planning and implementation of Google Ads campaigns tailored to your business goals</li>
+                        <li><strong>Keyword Research & Optimization:</strong> In-depth keyword analysis and ongoing optimization to target high-intent users</li>
+                        <li><strong>Smart Bidding & ROI Tracking:</strong> Implementation of automated bidding strategies with continuous ROI monitoring</li>
+                        <li><strong>Dashboard Reporting & Analytics:</strong> Custom dashboards with performance metrics and actionable insights</li>
+                        <li><strong>Conversion Tracking Setup:</strong> Implementation of conversion tracking to measure campaign effectiveness</li>
+                        <li><strong>Landing Page Optimization:</strong> Guidance on improving landing page performance for higher conversion rates</li>
+                        <li><strong>Remarketing Campaigns:</strong> Strategies to re-engage previous website visitors and increase conversions</li>
+                    </ul>
+                    
+                    <h3>Expected Results:</h3>
+                    <p>Most clients see a 30-50% reduction in cost per acquisition and 2-3x improvement in ROI within the first 3 months of campaign optimization.</p>
+                    
+                    <h3>Industries Served:</h3>
+                    <p>E-commerce, SaaS, B2B services, Local businesses, Education, Healthcare, and more.</p>
+                `
+            },
+            'meta-ads-details-popup': {
+                title: 'Meta Ads Management Details',
+                content: `
+                    <h3>Strategic Meta Ads Management</h3>
+                    <p>My Meta Ads management service focuses on creating high-converting campaigns across Facebook, Instagram, and the Audience Network to drive measurable business results.</p>
+                    
+                    <h3>What's Included:</h3>
+                    <ul>
+                        <li><strong>Funnel Strategy & Retargeting:</strong> Comprehensive funnel development with strategic retargeting to maximize conversions</li>
+                        <li><strong>Lookalike Audience Targeting:</strong> Creation of high-performing lookalike audiences based on your best customers</li>
+                        <li><strong>Ad Creative Testing & Optimization:</strong> Continuous testing and optimization of ad creatives, copy, and formats</li>
+                        <li><strong>Conversion Tracking & Analytics:</strong> Setup of advanced conversion tracking with detailed performance analytics</li>
+                        <li><strong>A/B Testing Frameworks:</strong> Systematic testing of audience segments, placements, and bidding strategies</li>
+                        <li><strong>Campaign Scaling Strategies:</strong> Methodical approaches to scale successful campaigns while maintaining efficiency</li>
+                        <li><strong>Performance Reporting:</strong> Regular comprehensive reports with insights and optimization recommendations</li>
+                    </ul>
+                    
+                    <h3>Expected Results:</h3>
+                    <p>Typical results include 40-60% lower cost per lead compared to previous efforts, and 3-5x return on ad spend for e-commerce clients.</p>
+                    
+                    <h3>Platform Expertise:</h3>
+                    <p>Facebook Ads, Instagram Ads, Messenger Ads, Audience Network, and advanced targeting options across the Meta ecosystem.</p>
+                `
+            }
+        };
+
         // Scroll Progress Indicator
         window.addEventListener('scroll', function() {
             const scrollProgress = document.getElementById('scroll-progress');
@@ -2999,7 +3465,43 @@
 
         window.addEventListener('load', checkCookieConsent);
 
-        // ENHANCED CHATBOT WITH CALCULATOR FUNCTIONALITY
+        // Transparent Popup Functionality
+        const popupOverlay = document.getElementById('popup-overlay');
+        const popupClose = document.getElementById('popup-close');
+        const popupTitle = document.getElementById('popup-title');
+        const popupText = document.getElementById('popup-text');
+
+        function openPopup(popupId) {
+            if (popupContent[popupId]) {
+                popupTitle.textContent = popupContent[popupId].title;
+                popupText.innerHTML = popupContent[popupId].content;
+                popupOverlay.classList.add('active');
+                body.classList.add('popup-open');
+            }
+        }
+
+        function closePopup() {
+            popupOverlay.classList.remove('active');
+            body.classList.remove('popup-open');
+        }
+
+        popupClose.addEventListener('click', closePopup);
+        popupOverlay.addEventListener('click', (e) => {
+            if (e.target === popupOverlay) {
+                closePopup();
+            }
+        });
+
+        // Add popup triggers to all elements with data-popup attribute
+        document.querySelectorAll('[data-popup]').forEach(element => {
+            element.addEventListener('click', (e) => {
+                e.preventDefault();
+                const popupId = element.getAttribute('data-popup');
+                openPopup(popupId);
+            });
+        });
+
+        // ENHANCED DYNAMIC CHATBOT WITH BIOGRAPHY KNOWLEDGE AND CONTACT AUTOMATION
         const chatbotResponses = {
             'greeting': {
                 patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
@@ -3011,8 +3513,34 @@
                 followUps: [
                     {text: "Google Ads", message: "Tell me about Google Ads"},
                     {text: "Meta Ads", message: "Tell me about Meta Ads"},
-                    {text: "Calculate ROI", message: "Calculate potential ROI"},
-                    {text: "View pricing", message: "What are your prices?"}
+                    {text: "About Rudraksh", message: "Tell me about Rudraksh"},
+                    {text: "Calculate ROI", message: "Calculate potential ROI"}
+                ]
+            },
+            'about_rudraksh': {
+                patterns: ['about rudraksh', 'who is rudraksh', 'rudraksh', 'biography', 'background', 'experience'],
+                responses: [
+                    "Rudraksh Sharma is a performance marketing specialist based in Rajasthan, India. He specializes in Google Ads and Meta Ads management, helping businesses achieve measurable results through data-driven strategies.",
+                    "Rudraksh Sharma is an expert in performance marketing with a focus on Google Ads and Meta Ads. He creates ROI-focused campaigns that drive real business outcomes for his clients."
+                ],
+                followUps: [
+                    {text: "Contact Rudraksh", message: "How can I contact Rudraksh?"},
+                    {text: "See portfolio", action: "scrollToPortfolio"},
+                    {text: "Book consultation", action: "scrollToBooking"},
+                    {text: "View services", message: "What services do you offer?"}
+                ]
+            },
+            'contact_rudraksh': {
+                patterns: ['contact', 'number', 'phone', 'call me', 'contact number', 'whatsapp', 'email', 'how to contact', 'reach'],
+                responses: [
+                    "You can contact Rudraksh Sharma directly through these channels:",
+                    "Here are the best ways to get in touch with Rudraksh:"
+                ],
+                followUps: [
+                    {text: "Call now", action: "callNumber"},
+                    {text: "WhatsApp message", action: "openWhatsApp"},
+                    {text: "Send email", action: "openEmail"},
+                    {text: "Book consultation", action: "scrollToBooking"}
                 ]
             },
             'google_ads': {
@@ -3106,19 +3634,6 @@
                     {text: "Send email", action: "openEmail"}
                 ]
             },
-            'contact': {
-                patterns: ['contact', 'number', 'phone', 'call me', 'contact number', 'whatsapp', 'email'],
-                responses: [
-                    "You can reach me at +91 7878383739 via call or WhatsApp, or email info.itsboyrudra@gmail.com. How would you prefer to connect?",
-                    "Contact details: Phone/WhatsApp: +91 7878383739, Email: info.itsboyrudra@gmail.com. I'm based in Rajasthan, India."
-                ],
-                followUps: [
-                    {text: "Call now", action: "callNumber"},
-                    {text: "WhatsApp message", action: "openWhatsApp"},
-                    {text: "Send email", action: "openEmail"},
-                    {text: "View services", message: "What services do you offer?"}
-                ]
-            },
             'default': {
                 responses: [
                     "I specialize in Google Ads and Meta Ads management. Ask me about services, pricing, ROI calculations, or booking a consultation.",
@@ -3127,13 +3642,13 @@
                 followUps: [
                     {text: "Google Ads", message: "Tell me about Google Ads"},
                     {text: "Meta Ads", message: "Tell me about Meta Ads"},
-                    {text: "Calculate ROI", message: "Calculate potential ROI"},
+                    {text: "About Rudraksh", message: "Tell me about Rudraksh"},
                     {text: "Contact via WhatsApp", action: "openWhatsApp"}
                 ]
             }
         };
 
-        // Chatbot functionality
+        // Enhanced chatbot functionality with biography and contact automation
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
@@ -3176,19 +3691,19 @@
                     break;
                 case 'openEmail':
                     addMessage("Opening email to info.itsboyrudra@gmail.com...", false);
-                    window.location.href = 'mailto:info.itsboyrudra@gmail.com';
+                    window.location.href = 'mailto:info.itsboyrudra@gmail.com?subject=Ads%20Management%20Inquiry&body=Hello%20Rudraksh%2C%0A%0AI%20would%20like%20to%20discuss%20ads%20management%20services.';
                     break;
                 case 'scrollToBooking':
                     document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Scrolled to booking section!", false);
+                    addMessage("Scrolled to booking section! You can schedule a consultation directly.", false);
                     break;
                 case 'scrollToPortfolio':
                     document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Scrolled to portfolio!", false);
+                    addMessage("Scrolled to portfolio! Check out my recent work and case studies.", false);
                     break;
                 case 'scrollToPricing':
                     document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
-                    addMessage("Scrolled to pricing section!", false);
+                    addMessage("Scrolled to pricing section! See all available plans and features.", false);
                     break;
                 default:
                     addMessage("Action not recognized.", false);
@@ -3214,7 +3729,41 @@
             setTimeout(() => {
                 const div = document.createElement('div');
                 div.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-                div.textContent = message;
+                
+                // Check if this is a biography/contact response
+                if (!isUser && (message.includes('Rudraksh Sharma') || message.includes('contact Rudraksh'))) {
+                    const biographyCard = document.createElement('div');
+                    biographyCard.className = 'biography-card';
+                    
+                    if (message.includes('contact Rudraksh')) {
+                        biographyCard.innerHTML = `
+                            <h4>Contact Rudraksh Sharma</h4>
+                            <p>Performance Marketing Specialist</p>
+                            <p><strong>Phone/WhatsApp:</strong> +91 7878383739</p>
+                            <p><strong>Email:</strong> info.itsboyrudra@gmail.com</p>
+                            <p><strong>Location:</strong> Rajasthan, India</p>
+                            <div class="contact-automation">
+                                <a href="tel:+917878383739" class="contact-btn"><i class="fas fa-phone"></i> Call Now</a>
+                                <a href="https://wa.me/+917878383739" target="_blank" class="contact-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                <a href="mailto:info.itsboyrudra@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+                                <a href="#booking" class="contact-btn"><i class="fas fa-calendar"></i> Book Meeting</a>
+                            </div>
+                        `;
+                    } else {
+                        biographyCard.innerHTML = `
+                            <h4>About Rudraksh Sharma</h4>
+                            <p>Performance Marketing Specialist specializing in Google Ads and Meta Ads management.</p>
+                            <p><strong>Expertise:</strong> Google Ads, Meta Ads, Conversion Tracking, ROI Optimization</p>
+                            <p><strong>Location:</strong> Rajasthan, India</p>
+                            <p><strong>Experience:</strong> Helping businesses achieve measurable results through data-driven advertising strategies.</p>
+                        `;
+                    }
+                    
+                    div.appendChild(biographyCard);
+                } else {
+                    div.textContent = message;
+                }
+                
                 chatbotMessages.appendChild(div);
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             }, delay);
@@ -3247,14 +3796,35 @@
 
         function generateResponse(message) {
             const lower = message.toLowerCase();
+            
+            // Special handling for biography/contact queries
+            if (lower.includes('about rudraksh') || lower.includes('who is rudraksh') || lower.includes('rudraksh') || 
+                lower.includes('biography') || lower.includes('background') || lower.includes('experience')) {
+                return {
+                    response: "Rudraksh Sharma is a performance marketing specialist based in Rajasthan, India. He specializes in Google Ads and Meta Ads management, helping businesses achieve measurable results through data-driven strategies.",
+                    followUps: chatbotResponses.about_rudraksh.followUps
+                };
+            }
+            
+            if (lower.includes('contact') || lower.includes('number') || lower.includes('phone') || 
+                lower.includes('whatsapp') || lower.includes('email') || lower.includes('how to contact') || 
+                lower.includes('reach')) {
+                return {
+                    response: "You can contact Rudraksh Sharma directly through these channels:",
+                    followUps: chatbotResponses.contact_rudraksh.followUps
+                };
+            }
+            
+            // Regular pattern matching for other queries
             for (const [key, value] of Object.entries(chatbotResponses)) {
-                if (value.patterns.some(p => lower.includes(p))) {
+                if (value.patterns && value.patterns.some(p => lower.includes(p))) {
                     return {
                         response: value.responses[Math.floor(Math.random() * value.responses.length)],
                         followUps: value.followUps || []
                     };
                 }
             }
+            
             return {
                 response: chatbotResponses.default.responses[Math.floor(Math.random() * chatbotResponses.default.responses.length)],
                 followUps: chatbotResponses.default.followUps || []
