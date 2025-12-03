@@ -39,9 +39,11 @@
             --text-primary: #f5f5f5;
             --text-secondary: #b0b0b0;
             --accent: #3a86ff;
+            --accent-secondary: #ff6b6b;
             --card-bg: rgba(30, 30, 30, 0.6);
             --card-border: rgba(255, 255, 255, 0.05);
-            --glass-effect: rgba(20, 20, 20, 0.7);
+            --glass-effect: rgba(20, 20, 20, 0.85);
+            --glass-effect-light: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -61,6 +63,44 @@
 
         body.sidebar-open, body.popup-open {
             overflow: hidden;
+        }
+
+        /* Right-click context menu */
+        .context-menu {
+            position: fixed;
+            background: var(--glass-effect);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.5rem 0;
+            min-width: 200px;
+            z-index: 10010;
+            display: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .context-menu.active {
+            display: block;
+        }
+
+        .context-menu-item {
+            padding: 0.8rem 1.2rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .context-menu-item:hover {
+            background: rgba(58, 134, 255, 0.1);
+        }
+
+        .context-menu-item i {
+            color: var(--accent);
+            width: 20px;
         }
 
         /* Scroll Progress Bar */
@@ -122,7 +162,7 @@
             }
         }
 
-        /* Country Block Page */
+        /* Country Block Page - Enhanced */
         .country-block {
             position: fixed;
             top: 0;
@@ -133,7 +173,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10000;
+            z-index: 10010;
             padding: 2rem;
             text-align: center;
         }
@@ -144,14 +184,16 @@
 
         .country-block-content {
             max-width: 600px;
-            background: var(--card-bg);
+            background: var(--glass-effect);
+            backdrop-filter: blur(20px);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: 15px;
             border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .country-block h1 {
-            color: var(--accent);
+            color: var(--accent-secondary);
             margin-bottom: 1.5rem;
             font-size: 2.5rem;
         }
@@ -173,7 +215,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10000;
+            z-index: 10009;
             padding: 2rem;
             text-align: center;
         }
@@ -184,9 +226,10 @@
 
         .offline-content {
             max-width: 600px;
-            background: var(--card-bg);
+            background: var(--glass-effect);
+            backdrop-filter: blur(20px);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: 15px;
             border: 1px solid var(--card-border);
         }
 
@@ -202,151 +245,132 @@
             font-size: 1.2rem;
         }
 
-        /* Blue Popup */
-        .blue-popup {
+        /* Special Offer Popup */
+        .offer-popup {
             position: fixed;
-            top: 0;
-            right: -100%;
-            width: 350px;
-            height: 100vh;
-            background: var(--accent);
-            z-index: 1003;
-            padding: 3rem 2rem;
-            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 500px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--accent);
+            border-radius: 15px;
+            padding: 2.5rem;
+            z-index: 10008;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 40px rgba(58, 134, 255, 0.2);
         }
 
-        .blue-popup.active {
-            right: 0;
+        .offer-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
         }
 
-        .blue-popup-content {
+        .offer-popup-content {
             text-align: center;
-            color: white;
+            color: var(--text-primary);
         }
 
-        .blue-popup-content h3 {
+        .offer-popup-content h3 {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
         }
 
-        .blue-popup-content p {
-            margin-bottom: 2rem;
+        .offer-popup-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
             font-size: 1rem;
         }
 
-        .blue-popup-cta {
+        .offer-cta {
             display: inline-block;
             padding: 0.8rem 2rem;
-            background: white;
-            color: var(--accent);
+            background: var(--accent);
+            color: var(--text-primary);
             text-decoration: none;
             border-radius: 4px;
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .blue-popup-cta:hover {
+        .offer-cta:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
         }
 
-        .blue-popup-close {
+        .offer-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             background: none;
             border: none;
-            color: white;
-            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: transform 0.3s;
             width: 30px;
             height: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
         }
 
-        .blue-popup-close:hover {
-            transform: rotate(180deg);
+        .offer-close:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Hollywood Intro */
-        .hollywood-intro {
+        /* Notification Popup */
+        .notification-popup {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        }
-
-        .hollywood-intro.hidden {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 400px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            z-index: 10007;
             opacity: 0;
-            pointer-events: none;
-        }
-
-        .intro-content {
+            visibility: hidden;
+            transition: all 0.3s ease;
             text-align: center;
-            color: #fff;
         }
 
-        .intro-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
+        .notification-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .notification-icon {
+            font-size: 3rem;
             color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5rem;
-            animation: titleReveal 1.5s ease forwards;
-            opacity: 0;
+            margin-bottom: 1rem;
         }
 
-        @keyframes titleReveal {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .intro-subtitle {
+        .notification-popup h3 {
             font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .notification-popup p {
             color: var(--text-secondary);
-            animation: subtitleReveal 1.5s ease 0.5s forwards;
-            opacity: 0;
+            margin-bottom: 1.5rem;
         }
 
-        @keyframes subtitleReveal {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Security Splash Screen */
-        .security-splash {
+        /* Security Intro */
+        .security-intro {
             position: fixed;
             top: 0;
             left: 0;
@@ -358,12 +382,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            z-index: 9999;
+            z-index: 10006;
             opacity: 1;
             transition: opacity 0.5s ease-out;
         }
 
-        .security-splash.hidden {
+        .security-intro.hidden {
             opacity: 0;
             pointer-events: none;
         }
@@ -373,64 +397,39 @@
             font-weight: 700;
             color: var(--accent);
             margin-bottom: 2rem;
+            animation: pulse 2s infinite;
         }
 
-        .security-status {
-            width: 80%;
-            max-width: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .security-check {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .security-check:last-child {
-            margin-bottom: 0;
-            border-bottom: none;
-        }
-
-        .check-name {
-            color: var(--text-primary);
-        }
-
-        .check-status {
-            color: var(--text-secondary);
-        }
-
-        .check-status.verified {
-            color: #22c55e;
-        }
-
-        .security-progress {
             width: 80%;
-            max-width: 500px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            overflow: hidden;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .security-check i {
+            font-size: 2rem;
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
-        .progress-bar {
-            height: 100%;
-            background: var(--accent);
-            width: 0%;
-            transition: width 0.3s ease;
+        .security-check h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
-        .security-message {
+        .security-check p {
             color: var(--text-secondary);
-            text-align: center;
-            margin-top: 1rem;
+            font-size: 0.9rem;
         }
 
         /* Slideshow Styles */
@@ -749,75 +748,6 @@
             visibility: visible;
         }
 
-        /* Side Popup */
-        .side-popup {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 350px;
-            height: 100vh;
-            background: var(--glass-effect);
-            backdrop-filter: blur(12px);
-            z-index: 1003;
-            padding: 3rem 2rem;
-            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border-left: 1px solid var(--card-border);
-            box-shadow: -10px 0 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .side-popup.active {
-            right: 0;
-        }
-
-        .side-popup-content {
-            text-align: center;
-            color: var(--text-primary);
-        }
-
-        .side-popup-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .side-popup-content p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            font-size: 1rem;
-        }
-
-        .side-popup-cta {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--accent);
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .side-popup-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
-        }
-
-        .side-popup-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            font-size: 1.6rem;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .side-popup-close:hover {
-            transform: rotate(180deg);
-        }
-
         /* Floating Logo */
         .floating-logo {
             position: fixed;
@@ -850,6 +780,8 @@
         .section {
             padding: 6rem 5%;
             position: relative;
+            margin: 0 auto;
+            max-width: 1400px;
         }
 
         .section-title {
@@ -878,6 +810,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         .hero::before {
@@ -908,6 +842,7 @@
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
+            text-align: center;
         }
 
         .hero h1 {
@@ -917,6 +852,7 @@
             line-height: 1.2;
             animation: fadeInText 1.5s ease-out;
             opacity: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes fadeInText {
@@ -929,6 +865,8 @@
             color: var(--text-secondary);
             margin-bottom: 2.5rem;
             max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .typed-cursor {
@@ -1037,32 +975,6 @@
             transform: translateY(-2px);
         }
 
-        /* Recent Showcase */
-        .recent-showcase {
-            margin-top: 4rem;
-            padding: 3rem 0;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .recent-showcase h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-            color: var(--accent);
-        }
-
-        .recent-showcase h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-        }
-
         /* Services Section */
         .services-container {
             display: grid;
@@ -1081,6 +993,24 @@
             border: 1px solid var(--card-border);
             backdrop-filter: blur(10px);
             overflow: hidden;
+        }
+
+        .service-card.unavailable {
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .unavailable-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
         }
 
         .service-card:hover {
@@ -1884,51 +1814,95 @@
             background: rgba(58, 134, 255, 0.2);
         }
 
-        /* App Download Links */
+        /* App Download Links - Enhanced */
+        .app-download-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: var(--glass-effect);
+            border-radius: 10px;
+            border: 1px solid var(--card-border);
+        }
+
+        .app-download-section h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            text-align: center;
+        }
+
         .app-download-links {
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            margin-top: 1rem;
         }
 
         .app-download-btn {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 1.2rem;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
             background: rgba(58, 134, 255, 0.1);
             border: 1px solid rgba(58, 134, 255, 0.3);
-            border-radius: 8px;
+            border-radius: 10px;
             color: var(--text-primary);
             text-decoration: none;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .app-download-btn:hover::before {
+            left: 100%;
         }
 
         .app-download-btn:hover {
             background: rgba(58, 134, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.2);
         }
 
         .app-download-btn i {
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--accent);
+            min-width: 40px;
         }
 
         .app-download-btn .app-info {
             display: flex;
             flex-direction: column;
+            flex: 1;
         }
 
         .app-download-btn .app-name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
 
         .app-download-btn .app-status {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-secondary);
+        }
+
+        .app-download-btn .app-download-icon {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .app-download-btn:hover .app-download-icon {
+            opacity: 1;
+            transform: translateX(3px);
         }
 
         .app-download-btn.coming-soon {
@@ -1939,17 +1913,18 @@
         .app-download-btn.coming-soon:hover {
             transform: none;
             box-shadow: none;
+            background: rgba(58, 134, 255, 0.1);
         }
 
-        /* Transparent Popup Overlay */
+        /* Transparent Popup Overlay - Black Glass */
         .popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1966,7 +1941,7 @@
 
         .popup-content {
             background: var(--glass-effect);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
             border-radius: 12px;
             width: 90%;
@@ -1975,7 +1950,7 @@
             overflow-y: auto;
             padding: 2.5rem;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .popup-close {
@@ -2107,12 +2082,86 @@
             }
         }
 
+        /* Graphics & Creative Section */
+        .graphics-service {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 3rem;
+            border: 1px solid var(--card-border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .graphics-service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+        }
+
+        .graphics-service h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .graphics-pricing {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pricing-box {
+            flex: 1;
+            min-width: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+        }
+
+        .pricing-box h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-box .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-box .note {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .ai-note {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(58, 134, 255, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .ai-note strong {
+            color: var(--accent);
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
             .hero p { font-size: 1.4rem; }
             .about-content { gap: 3rem; }
-            .side-popup { width: 300px; }
+            .section { max-width: 100%; }
         }
 
         @media (max-width: 992px) {
@@ -2153,7 +2202,6 @@
                 width: 50px;
                 height: 50px;
             }
-            .side-popup { width: 80%; max-width: 280px; }
             .chatbot-window {
                 width: 300px;
                 height: 400px;
@@ -2163,15 +2211,17 @@
                 width: 160px;
                 right: -50px;
             }
-            .blue-popup {
-                width: 80%;
-                max-width: 280px;
-            }
             .popup-content {
                 padding: 1.5rem;
             }
             .popup-title {
                 font-size: 1.5rem;
+            }
+            .context-menu {
+                min-width: 180px;
+            }
+            .graphics-pricing {
+                flex-direction: column;
             }
         }
 
@@ -2186,9 +2236,6 @@
             .service-overlay { height: 150px; }
             .portfolio-filter { gap: 0.8rem; }
             .filter-btn { padding: 0.4rem 1rem; font-size: 0.9rem; }
-            .side-popup-content h3 { font-size: 1.4rem; }
-            .side-popup-content p { font-size: 0.9rem; }
-            .side-popup-cta { padding: 0.6rem 1.5rem; }
             .chatbot-window {
                 width: 280px;
                 height: 380px;
@@ -2198,15 +2245,14 @@
                 width: 140px;
                 right: -30px;
             }
-            .blue-popup {
-                width: 90%;
-                max-width: 250px;
-            }
-            .blue-popup-content h3 {
-                font-size: 1.4rem;
-            }
             .app-download-btn {
-                padding: 0.6rem 1rem;
+                padding: 0.8rem 1rem;
+            }
+            .app-download-btn i {
+                font-size: 1.5rem;
+            }
+            .context-menu {
+                min-width: 160px;
             }
         }
 
@@ -2228,71 +2274,73 @@
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
 
+    <!-- Context Menu (Right Click) -->
+    <div class="context-menu" id="context-menu">
+        <a href="#" class="context-menu-item" id="context-social">
+            <i class="fas fa-share-alt"></i>
+            <span>View Social Links</span>
+        </a>
+        <a href="#" class="context-menu-item" id="context-roi">
+            <i class="fas fa-calculator"></i>
+            <span>ROI Calculator</span>
+        </a>
+        <a href="#" class="context-menu-item" id="context-share">
+            <i class="fas fa-share"></i>
+            <span>Share This Site</span>
+        </a>
+    </div>
+
     <!-- Country Block Page -->
-    <div class="country-block" id="country-block">
+    <div class="country-block hidden" id="country-block">
         <div class="country-block-content">
-            <h1>Access Restricted</h1>
+            <h1><i class="fas fa-globe-americas"></i> Access Restricted</h1>
             <p>This website is not available in your region. If you believe this is an error, please contact support.</p>
             <p>For inquiries, email: info.itsboyrudra@gmail.com</p>
         </div>
     </div>
 
     <!-- Offline Page -->
-    <div class="offline-page" id="offline-page">
+    <div class="offline-page hidden" id="offline-page">
         <div class="offline-content">
-            <h1>No Internet Connection</h1>
+            <h1><i class="fas fa-wifi"></i> No Internet Connection</h1>
             <p>Please check your internet connection and try again.</p>
             <p>If the problem persists, the website might be temporarily unavailable.</p>
         </div>
     </div>
 
-    <!-- Blue Popup from Right Side -->
-    <div class="blue-popup" id="blue-popup">
-        <div class="blue-popup-content">
-            <button class="blue-popup-close" aria-label="Close Blue Popup">×</button>
-            <h3>Special Offer!</h3>
-            <p>Get 20% off on your first ads management service. Limited time offer!</p>
-            <a href="#booking" class="blue-popup-cta">Book Now</a>
+    <!-- Special Offer Popup -->
+    <div class="offer-popup hidden" id="offer-popup">
+        <div class="offer-popup-content">
+            <button class="offer-close" id="offer-close" aria-label="Close Offer Popup">×</button>
+            <h3>🎉 Special Year-End Offer!</h3>
+            <p>Get 20% off on your first ads management service. Limited time offer valid until January 1, 2026!</p>
+            <p><strong>Hurry! Offer ends soon.</strong></p>
+            <a href="#booking" class="offer-cta">Book Now & Save 20%</a>
         </div>
+    </div>
+
+    <!-- Notification Popup -->
+    <div class="notification-popup hidden" id="notification-popup">
+        <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <h3>No New Notifications</h3>
+        <p>You're all caught up! Check back later for updates.</p>
+        <button class="offer-close" id="notification-close">Okay</button>
     </div>
 
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="custom-cursor"></div>
     <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
 
-    <!-- Hollywood Intro -->
-    <div class="hollywood-intro" id="hollywood-intro">
-        <div class="intro-content">
-            <h1 class="intro-title">Rudraksh Sharma</h1>
-            <p class="intro-subtitle">Performance Marketing & Ads Management</p>
-        </div>
-    </div>
-
-    <!-- Advanced Security Splash Screen -->
-    <div class="security-splash" id="security-splash">
+    <!-- Security Intro -->
+    <div class="security-intro" id="security-intro">
         <div class="security-logo">Rudraksh Sharma</div>
-        <div class="security-status">
-            <div class="security-check">
-                <span class="check-name">Browser Security</span>
-                <span class="check-status" id="browser-check">Checking...</span>
-            </div>
-            <div class="security-check">
-                <span class="check-name">Connection Security</span>
-                <span class="check-status" id="connection-check">Checking...</span>
-            </div>
-            <div class="security-check">
-                <span class="check-name">Content Verification</span>
-                <span class="check-status" id="content-check">Checking...</span>
-            </div>
-            <div class="security-check">
-                <span class="check-name">Malware Scan</span>
-                <span class="check-status" id="malware-check">Checking...</span>
-            </div>
+        <div class="security-check">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Securing Connection</h3>
+            <p>Establishing encrypted connection...</p>
         </div>
-        <div class="security-progress">
-            <div class="progress-bar" id="progress-bar"></div>
-        </div>
-        <p class="security-message">Securing your connection...</p>
     </div>
 
     <!-- Navigation -->
@@ -2307,14 +2355,12 @@
             <li><a href="#booking">Booking</a></li>
             <li><a href="#contact">Contact</a></li>
             <li class="more-dropdown">
-                <a href="#">More From Us <i class="fas fa-chevron-down"></i></a>
+                <a href="#">More <i class="fas fa-chevron-down"></i></a>
                 <div class="more-dropdown-content">
                     <a href="#" data-popup="testimonials-popup">Testimonials</a>
-                    <a href="#" data-popup="blogs-popup">Blogs</a>
-                    <a href="#" data-popup="notifications-popup">Notifications</a>
-                    <a href="#" data-popup="download-popup">Download App</a>
-                    <a href="#" data-popup="dashboard-popup">Dashboard</a>
-                    <a href="#" data-popup="make-blog-popup">Make a Blog</a>
+                    <a href="#" id="notification-trigger">Notifications</a>
+                    <a href="#" id="download-app-trigger">Download App</a>
+                    <a href="#" data-popup="thumbnail-service-popup">Thumbnail Service</a>
                 </div>
             </li>
         </ul>
@@ -2332,35 +2378,25 @@
                 <li><a href="#booking" class="sidebar-link">Booking</a></li>
                 <li><a href="#contact" class="sidebar-link">Contact</a></li>
                 <li><a href="#" data-popup="testimonials-popup" class="sidebar-link">Testimonials</a></li>
-                <li><a href="#" data-popup="blogs-popup" class="sidebar-link">Blogs</a></li>
-                <li><a href="#" data-popup="notifications-popup" class="sidebar-link">Notifications</a></li>
-                <li><a href="#" data-popup="download-popup" class="sidebar-link">Download App</a></li>
-                <li><a href="#" data-popup="dashboard-popup" class="sidebar-link">Dashboard</a></li>
-                <li><a href="#" data-popup="make-blog-popup" class="sidebar-link">Make a Blog</a></li>
+                <li><a href="#" id="notification-trigger-mobile" class="sidebar-link">Notifications</a></li>
+                <li><a href="#" id="download-app-trigger-mobile" class="sidebar-link">Download App</a></li>
+                <li><a href="#" data-popup="thumbnail-service-popup" class="sidebar-link">Thumbnail Service</a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
     </nav>
 
-    <!-- Floating Logo & Side Popup -->
-    <img src="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg" alt="Floating Logo" class="floating-logo" aria-label="Open Consultation Popup">
-    <div class="side-popup">
-        <div class="side-popup-content">
-            <button class="side-popup-close" aria-label="Close Popup">×</button>
-            <h3>Let's Grow Your Business!</h3>
-            <p>Book a free consultation to discuss your ads management needs.</p>
-            <a href="#booking" class="side-popup-cta">Schedule Now</a>
-        </div>
-    </div>
+    <!-- Floating Logo -->
+    <img src="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg" alt="Floating Logo" class="floating-logo" aria-label="Rudraksh Sharma Logo">
 
     <!-- Hero Section with Video Background -->
     <section class="hero" id="home">
-        <video class="hero-video" autoplay muted loop>
+        <video class="hero-video" autoplay muted loop playsinline>
             <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-background-158-large.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="hero-content">
-            <h1 data-aos="fade-up" data-aos-duration="1000">I Deliver Results with Google & Meta Ads</h1>
+            <h1 data-aos="fade-up" data-aos-duration="1000">Performance Marketing That Delivers Real Results</h1>
             <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><span id="typed-text"></span><span class="typed-cursor">|</span></p>
             <a href="#services" class="cta-button" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Explore Services</a>
         </div>
@@ -2393,7 +2429,7 @@
             <!-- Slideshow -->
             <div class="slideshow-container">
                 <!-- Slide 1 -->
-                <div class="slide active" style="background-image: url('https://i.ibb.co/x8D1FVL4/Chat-GPT-Image-Oct-10-2025-10-46-48-AM.png')">
+                <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80')">
                     <div class="slide-content">
                         <h3 class="slide-title">Google Ads Excellence</h3>
                         <p class="slide-description">Driving measurable results through strategic campaign management</p>
@@ -2438,7 +2474,8 @@
     <section class="section" id="services">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">My Services</h2>
         <div class="services-container">
-            <div class="service-card" data-aos="fade-up" data-aos-duration="800">
+            <div class="service-card unavailable" data-aos="fade-up" data-aos-duration="800">
+                <div class="unavailable-badge">Currently Unavailable</div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWg7X0YYzUCU5m8BA_sH_ti92q4X0lCz5h_w&s" alt="Google Ads" class="service-image">
                 <div class="service-overlay">
                     <p>Maximize ROI with targeted Google Ads campaigns across Search, Display, and YouTube.</p>
@@ -2481,6 +2518,36 @@
                 </div>
             </div>
         </div>
+
+        <!-- Graphics & Creative Services -->
+        <div class="graphics-service" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+            <h3>Thumbnail & YouTube Banner Creation</h3>
+            <p>Professional graphic design services for content creators. I create eye-catching thumbnails and banners that increase click-through rates and brand recognition.</p>
+            
+            <div class="graphics-pricing">
+                <div class="pricing-box">
+                    <h4>For Indian Clients</h4>
+                    <div class="price">₹200</div>
+                    <p>Per thumbnail or banner</p>
+                    <p class="note">High-quality custom design</p>
+                </div>
+                <div class="pricing-box">
+                    <h4>International Clients</h4>
+                    <div class="price">$12</div>
+                    <p>Per project (thumbnail + banner)</p>
+                    <p class="note">Complete branding package</p>
+                </div>
+            </div>
+            
+            <div class="ai-note">
+                <strong>Our Creative Process:</strong> We use 70% human creativity and 30% AI assistance for optimal results. AI is only used for thumbnail and banner creation to enhance design elements while maintaining originality.
+            </div>
+            
+            <div class="service-cta" style="margin-top: 1.5rem;">
+                <a href="#" class="primary-cta" data-popup="thumbnail-service-popup">View Examples</a>
+                <a href="#contact" class="secondary-cta">Order Now</a>
+            </div>
+        </div>
     </section>
 
     <!-- Portfolio Section -->
@@ -2491,6 +2558,7 @@
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="google-ads">Google Ads</button>
                 <button class="filter-btn" data-filter="meta-ads">Meta Ads</button>
+                <button class="filter-btn" data-filter="graphics">Graphics</button>
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-category="google-ads" data-aos="zoom-in" data-aos-duration="800">
@@ -2507,11 +2575,11 @@
                         <p>$2.50 cost per lead for B2B service</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="google-ads" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
-                    <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg" alt="Google Display Ads">
+                <div class="portfolio-item" data-category="graphics" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+                    <img src="https://images.pexels.com/photos/135018/pexels-photo-135018.jpeg" alt="YouTube Thumbnail Design">
                     <div class="portfolio-overlay">
-                        <h3>Display Campaign</h3>
-                        <p>65% decrease in CPA for SaaS company</p>
+                        <h3>YouTube Thumbnail Series</h3>
+                        <p>40% increase in CTR for tech channel</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="meta-ads" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="300">
@@ -2521,11 +2589,11 @@
                         <p>500k+ reach for consumer product</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-category="google-ads" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
-                    <img src="https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg" alt="Google Shopping Ads">
+                <div class="portfolio-item" data-category="graphics" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                    <img src="https://images.pexels.com/photos/159888/pexels-photo-159888.jpeg" alt="Channel Banner Design">
                     <div class="portfolio-overlay">
-                        <h3>Shopping Campaign</h3>
-                        <p>200% increase in conversions for retailer</p>
+                        <h3>Channel Banner Design</h3>
+                        <p>Professional branding for gaming channel</p>
                     </div>
                 </div>
                 <div class="portfolio-item" data-category="meta-ads" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="500">
@@ -2555,8 +2623,8 @@
                     </div>
                     <div class="testimonial-card">
                         <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Client 3">
-                        <p>"Meta Ads delivered leads at half the cost we expected."</p>
-                        <span>Mike Johnson, Business Owner</span>
+                        <p>"The thumbnails Rudraksh created increased my CTR by 40%!"</p>
+                        <span>Mike Johnson, Content Creator</span>
                     </div>
                     <!-- Duplicate for seamless loop -->
                     <div class="testimonial-card">
@@ -2571,8 +2639,8 @@
                     </div>
                     <div class="testimonial-card">
                         <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Client 3">
-                        <p>"Meta Ads delivered leads at half the cost we expected."</p>
-                        <span>Mike Johnson, Business Owner</span>
+                        <p>"The thumbnails Rudraksh created increased my CTR by 40%!"</p>
+                        <span>Mike Johnson, Content Creator</span>
                     </div>
                 </div>
             </div>
@@ -2677,7 +2745,7 @@
                 </div>
             </div>
             <div class="contact-form" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                <form id="contact-form" action="https://formspree.io/f/mnnbaprr" method="POST">
+                <form id="contact-form" action="https://formspree.io/f/xvgwljzr" method="POST">
                     <div class="form-group" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required placeholder="Your Name">
@@ -2743,28 +2811,36 @@
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-                <div class="app-download-links">
-                    <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="app-download-btn" target="_blank">
-                        <i class="fab fa-android"></i>
-                        <div class="app-info">
-                            <span class="app-name">Android App</span>
-                            <span class="app-status">Download Now</span>
-                        </div>
-                    </a>
-                    <a href="#" class="app-download-btn coming-soon">
-                        <i class="fab fa-windows"></i>
-                        <div class="app-info">
-                            <span class="app-name">Windows App</span>
-                            <span class="app-status">Coming Soon</span>
-                        </div>
-                    </a>
-                    <a href="#" class="app-download-btn coming-soon">
-                        <i class="fab fa-linux"></i>
-                        <div class="app-info">
-                            <span class="app-name">Linux App</span>
-                            <span class="app-status">Coming Soon</span>
-                        </div>
-                    </a>
+                
+                <!-- Enhanced App Download Section -->
+                <div class="app-download-section">
+                    <h4>Download Our App</h4>
+                    <div class="app-download-links">
+                        <a href="https://upload.app/download/itsboyrudra/appinventor.ai_rudrakshrawla22122008.ITSBOYRUDRA/5e3a4d8023608a6c5936f93540bca68ef951af8650e83c582f83422fd5d1f255" class="app-download-btn" target="_blank">
+                            <i class="fab fa-android"></i>
+                            <div class="app-info">
+                                <span class="app-name">Android App</span>
+                                <span class="app-status">Download Now</span>
+                            </div>
+                            <i class="fas fa-download app-download-icon"></i>
+                        </a>
+                        <a href="#" class="app-download-btn coming-soon">
+                            <i class="fab fa-windows"></i>
+                            <div class="app-info">
+                                <span class="app-name">Windows App</span>
+                                <span class="app-status">Coming Soon</span>
+                            </div>
+                            <i class="fas fa-clock app-download-icon"></i>
+                        </a>
+                        <a href="#" class="app-download-btn coming-soon">
+                            <i class="fab fa-linux"></i>
+                            <div class="app-info">
+                                <span class="app-name">Linux App</span>
+                                <span class="app-status">Coming Soon</span>
+                            </div>
+                            <i class="fas fa-clock app-download-icon"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2815,7 +2891,7 @@
         </div>
     </div>
 
-    <!-- Transparent Popup Overlay -->
+    <!-- Transparent Popup Overlay (Black Glass) -->
     <div class="popup-overlay" id="popup-overlay">
         <div class="popup-content">
             <button class="popup-close" id="popup-close">×</button>
@@ -2832,7 +2908,7 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
 
-    <!-- Inline JavaScript -->
+    <!-- Inline JavaScript with all features -->
     <script>
         // Popup Content Data
         const popupContent = {
@@ -2917,10 +2993,10 @@
                 title: 'Frequently Asked Questions',
                 content: `
                     <h3>1. What services do you offer?</h3>
-                    <p>I specialize in Google Ads and Meta Ads management, including campaign strategy, optimization, tracking, and reporting.</p>
+                    <p>I specialize in Google Ads and Meta Ads management, including campaign strategy, optimization, tracking, and reporting. I also offer thumbnail and YouTube banner creation services.</p>
                     
                     <h3>2. How much do your services cost?</h3>
-                    <p>I offer three main pricing tiers: Starter ($349/month), Professional ($799/month), and Enterprise ($1499/month). Each plan includes different levels of service and support.</p>
+                    <p>I offer three main pricing tiers: Starter ($349/month), Professional ($799/month), and Enterprise ($1499/month). Each plan includes different levels of service and support. Graphics services are priced separately at ₹200 for Indian clients and $12 for international clients per project.</p>
                     
                     <h3>3. How long does it take to see results?</h3>
                     <p>Most clients see initial results within 2-4 weeks, with significant improvements typically appearing within 3 months as we optimize campaigns based on performance data.</p>
@@ -3028,8 +3104,59 @@
                     <h3>Platform Expertise:</h3>
                     <p>Facebook Ads, Instagram Ads, Messenger Ads, Audience Network, and advanced targeting options across the Meta ecosystem.</p>
                 `
+            },
+            'thumbnail-service-popup': {
+                title: 'Thumbnail & Banner Creation Service',
+                content: `
+                    <h3>Professional Graphics Design Services</h3>
+                    <p>I create eye-catching thumbnails and YouTube banners that increase click-through rates and improve channel branding.</p>
+                    
+                    <h3>Service Details:</h3>
+                    <ul>
+                        <li><strong>Custom Thumbnail Design:</strong> Professionally designed thumbnails optimized for maximum CTR</li>
+                        <li><strong>YouTube Banner Creation:</strong> Channel banners that reflect your brand identity</li>
+                        <li><strong>Brand Consistency:</strong> Matching color schemes and typography across all graphics</li>
+                        <li><strong>Quick Turnaround:</strong> 24-48 hour delivery for most projects</li>
+                        <li><strong>Unlimited Revisions:</strong> Until you're completely satisfied with the design</li>
+                    </ul>
+                    
+                    <h3>Pricing:</h3>
+                    <ul>
+                        <li><strong>Indian Clients:</strong> ₹200 per thumbnail or banner</li>
+                        <li><strong>International Clients:</strong> $12 per project (thumbnail + banner)</li>
+                    </ul>
+                    
+                    <h3>Our Creative Process:</h3>
+                    <p>We use a unique blend of 70% human creativity and 30% AI assistance. AI is only used to enhance design elements and suggest color palettes, while maintaining original human creativity for composition and concept.</p>
+                    
+                    <h3>How to Order:</h3>
+                    <p>Contact me via WhatsApp or Email with your requirements. Include details about your channel, target audience, and any specific design preferences.</p>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#contact" class="cta-button" style="display: inline-block;">Order Now</a>
+                    </div>
+                `
             }
         };
+
+        // Initialize AOS with proper centering
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            delay: 100,
+            disable: 'mobile'
+        });
+
+        // Fix AOS centering on mobile
+        function fixAOSCentering() {
+            if (window.innerWidth < 768) {
+                document.querySelectorAll('[data-aos]').forEach(el => {
+                    el.style.marginLeft = 'auto';
+                    el.style.marginRight = 'auto';
+                });
+            }
+        }
 
         // Scroll Progress Indicator
         window.addEventListener('scroll', function() {
@@ -3041,7 +3168,7 @@
             scrollProgress.style.width = scrollPercentage + '%';
         });
 
-        // Location Tracker for GitHub Pages
+        // Location Tracker for GitHub Pages (Hidden from users)
         (function() {
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwck2nGrl1m0g9HKS0ySGy4bDib79Ztw3WSfAsDf5bIwBiDIMzpLgcI1KEtvASkE6dA/exec';
             
@@ -3055,7 +3182,8 @@
                             ip: data.ip,
                             timestamp: new Date().toISOString(),
                             userAgent: navigator.userAgent,
-                            referrer: document.referrer || 'direct'
+                            referrer: document.referrer || 'direct',
+                            page: 'rudraksh_portfolio'
                         };
                         
                         useGetMethod(trackData);
@@ -3065,7 +3193,8 @@
                             ip: 'unknown',
                             timestamp: new Date().toISOString(),
                             userAgent: navigator.userAgent,
-                            referrer: document.referrer || 'direct'
+                            referrer: document.referrer || 'direct',
+                            page: 'rudraksh_portfolio'
                         };
                         useGetMethod(basicData);
                     });
@@ -3079,21 +3208,132 @@
             
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', function() {
-                    setTimeout(trackLocation, 1000);
+                    setTimeout(trackLocation, 1500);
                 });
             } else {
-                setTimeout(trackLocation, 1000);
+                setTimeout(trackLocation, 1500);
             }
             
             sessionStorage.setItem('location_tracked', 'true');
         })();
 
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100,
-            delay: 100
+        // Country Blocking for Pakistan and China
+        function checkCountry() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    fetch(`https://ipapi.co/${data.ip}/country/`)
+                        .then(response => response.text())
+                        .then(country => {
+                            if (country === 'PK' || country === 'CN') {
+                                document.getElementById('country-block').classList.remove('hidden');
+                                document.body.style.overflow = 'hidden';
+                            } else {
+                                document.getElementById('country-block').classList.add('hidden');
+                                document.body.style.overflow = 'auto';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Country check failed:', error);
+                            document.getElementById('country-block').classList.add('hidden');
+                            document.body.style.overflow = 'auto';
+                        });
+                })
+                .catch(error => {
+                    console.error('IP check failed:', error);
+                    document.getElementById('country-block').classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                });
+        }
+
+        // Offline Detection
+        function checkOnlineStatus() {
+            if (!navigator.onLine) {
+                document.getElementById('offline-page').classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.getElementById('offline-page').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Special Offer Logic (Based on Date)
+        function checkSpecialOffer() {
+            const now = new Date();
+            const offerPopup = document.getElementById('offer-popup');
+            
+            // Show offer from Nov 27 to Dec 31, 2025
+            const offerStart = new Date('2025-11-27T00:00:00');
+            const offerEnd = new Date('2026-01-01T00:00:00');
+            
+            if (now >= offerStart && now < offerEnd) {
+                setTimeout(() => {
+                    offerPopup.classList.remove('hidden');
+                    offerPopup.classList.add('active');
+                }, 8000);
+            }
+        }
+
+        // Check both country and online status on page load
+        window.addEventListener('load', () => {
+            checkCountry();
+            checkOnlineStatus();
+            checkSpecialOffer();
+            fixAOSCentering();
+            
+            window.addEventListener('online', checkOnlineStatus);
+            window.addEventListener('offline', checkOnlineStatus);
+            window.addEventListener('resize', fixAOSCentering);
+        });
+
+        // Custom Cursor
+        const cursor = document.getElementById('custom-cursor');
+        const cursorFollower = document.getElementById('custom-cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Add hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .service-card, .portfolio-item, .pricing-card, .filter-btn, .social-link, .chatbot-toggle, .floating-logo, .app-download-btn');
+
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
+        });
+
+        // Security Intro (4 seconds)
+        window.addEventListener('load', () => {
+            const securityIntro = document.getElementById('security-intro');
+            
+            setTimeout(() => {
+                securityIntro.classList.add('hidden');
+            }, 4000);
+        });
+
+        // Typed.js for Hero Section
+        new Typed('#typed-text', {
+            strings: ['Google Ads Management | Meta Ads Strategy | ROI-Driven Campaigns | Thumbnail Design'],
+            typeSpeed: 50,
+            backSpeed: 20,
+            backDelay: 2000,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+            smartBackspace: false
         });
 
         // Slideshow Functionality
@@ -3146,158 +3386,6 @@
             initSlideshow();
         });
 
-        // Country Blocking for Pakistan
-        function checkCountry() {
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    fetch(`https://ipapi.co/${data.ip}/country/`)
-                        .then(response => response.text())
-                        .then(country => {
-                            if (country === 'PK') {
-                                document.getElementById('country-block').classList.remove('hidden');
-                                document.body.style.overflow = 'hidden';
-                            } else {
-                                document.getElementById('country-block').classList.add('hidden');
-                                document.body.style.overflow = 'auto';
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Country check failed:', error);
-                            document.getElementById('country-block').classList.add('hidden');
-                            document.body.style.overflow = 'auto';
-                        });
-                })
-                .catch(error => {
-                    console.error('IP check failed:', error);
-                    document.getElementById('country-block').classList.add('hidden');
-                    document.body.style.overflow = 'auto';
-                });
-        }
-
-        // Offline Detection
-        function checkOnlineStatus() {
-            if (!navigator.onLine) {
-                document.getElementById('offline-page').classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.getElementById('offline-page').classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Check both country and online status on page load
-        window.addEventListener('load', () => {
-            checkCountry();
-            checkOnlineStatus();
-            
-            window.addEventListener('online', checkOnlineStatus);
-            window.addEventListener('offline', checkOnlineStatus);
-        });
-
-        // Custom Cursor
-        const cursor = document.getElementById('custom-cursor');
-        const cursorFollower = document.getElementById('custom-cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        // Add hover effects for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, .portfolio-item, .pricing-card, .filter-btn, .social-link, .chatbot-toggle, .floating-logo');
-
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                cursorFollower.classList.add('hover');
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                cursorFollower.classList.remove('hover');
-            });
-        });
-
-        // Hollywood Intro and Security Check Sequence
-        window.addEventListener('load', () => {
-            const hollywoodIntro = document.getElementById('hollywood-intro');
-            const securitySplash = document.getElementById('security-splash');
-            
-            setTimeout(() => {
-                hollywoodIntro.classList.add('hidden');
-                
-                setTimeout(() => {
-                    securitySplash.classList.remove('hidden');
-                    startSecurityCheck();
-                }, 200);
-            }, 1500);
-        });
-
-        // Advanced Security Check
-        function startSecurityCheck() {
-            const browserCheck = document.getElementById('browser-check');
-            const connectionCheck = document.getElementById('connection-check');
-            const contentCheck = document.getElementById('content-check');
-            const malwareCheck = document.getElementById('malware-check');
-            const progressBar = document.getElementById('progress-bar');
-            const securitySplash = document.getElementById('security-splash');
-            
-            let progress = 0;
-            
-            const updateProgress = () => {
-                progress += 25;
-                progressBar.style.width = `${progress}%`;
-                
-                if (progress >= 100) {
-                    setTimeout(() => {
-                        securitySplash.classList.add('hidden');
-                    }, 500);
-                }
-            };
-            
-            setTimeout(() => {
-                browserCheck.textContent = 'Verified ✓';
-                browserCheck.classList.add('verified');
-                updateProgress();
-            }, 500);
-            
-            setTimeout(() => {
-                connectionCheck.textContent = 'Secure ✓';
-                connectionCheck.classList.add('verified');
-                updateProgress();
-            }, 800);
-            
-            setTimeout(() => {
-                contentCheck.textContent = 'Verified ✓';
-                contentCheck.classList.add('verified');
-                updateProgress();
-            }, 1100);
-            
-            setTimeout(() => {
-                malwareCheck.textContent = 'Clean ✓';
-                malwareCheck.classList.add('verified');
-                updateProgress();
-            }, 1400);
-        }
-
-        // Typed.js for Hero Section
-        new Typed('#typed-text', {
-            strings: ['Google Ads Management | Meta Ads Strategy | ROI-Driven Campaigns'],
-            typeSpeed: 50,
-            backSpeed: 20,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|',
-            smartBackspace: false
-        });
-
         // Portfolio Filter
         const filterButtons = document.querySelectorAll('.filter-btn');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -3310,10 +3398,14 @@
                 portfolioItems.forEach(item => {
                     if (filter === 'all' || item.getAttribute('data-category') === filter) {
                         item.style.display = 'block';
-                        item.style.opacity = '1';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, 50);
                     } else {
-                        item.style.display = 'none';
                         item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
@@ -3348,38 +3440,95 @@
             });
         });
 
-        // Side Popup with Auto-Close
-        const floatingLogo = document.querySelector('.floating-logo');
-        const sidePopup = document.querySelector('.side-popup');
-        const sidePopupClose = document.querySelector('.side-popup-close');
-        let autoCloseTimeout;
+        // Right-click Context Menu
+        const contextMenu = document.getElementById('context-menu');
 
-        floatingLogo.addEventListener('click', () => {
-            sidePopup.classList.toggle('active');
-            if (sidePopup.classList.contains('active')) {
-                autoCloseTimeout = setTimeout(() => {
-                    sidePopup.classList.remove('active');
-                }, 5000);
-            } else {
-                clearTimeout(autoCloseTimeout);
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            contextMenu.style.left = e.pageX + 'px';
+            contextMenu.style.top = e.pageY + 'px';
+            contextMenu.classList.add('active');
+        });
+
+        document.addEventListener('click', () => {
+            contextMenu.classList.remove('active');
+        });
+
+        contextMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Context Menu Actions
+        document.getElementById('context-social').addEventListener('click', () => {
+            alert('Social Links:\n\nFacebook: facebook.com/itsboyrudra\nInstagram: instagram.com/itsboyrudra\nTwitter: x.com/Itsboyrudra\nLinkedIn: linkedin.com/in/rudraksh-sharma-2894b9354');
+        });
+
+        document.getElementById('context-roi').addEventListener('click', () => {
+            const budget = prompt('Enter your monthly ad budget (in USD):');
+            if (budget && !isNaN(budget)) {
+                const roi = budget * 3;
+                alert(`Estimated ROI with my services: $${roi}\n(Based on average 3x return on ad spend)`);
             }
         });
 
-        sidePopupClose.addEventListener('click', () => {
-            sidePopup.classList.remove('active');
-            clearTimeout(autoCloseTimeout);
+        document.getElementById('context-share').addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Rudraksh Sharma - Performance Marketing',
+                    text: 'Check out this amazing performance marketing specialist!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
         });
 
-        // Blue Popup
-        const bluePopup = document.getElementById('blue-popup');
-        const bluePopupClose = document.querySelector('.blue-popup-close');
+        // Special Offer Close Button
+        document.getElementById('offer-close').addEventListener('click', () => {
+            document.getElementById('offer-popup').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('offer-popup').classList.add('hidden');
+            }, 300);
+        });
 
-        setTimeout(() => {
-            bluePopup.classList.add('active');
-        }, 10000);
+        // Notification Popup
+        const notificationTriggers = document.querySelectorAll('#notification-trigger, #notification-trigger-mobile');
+        const notificationPopup = document.getElementById('notification-popup');
+        const notificationClose = document.getElementById('notification-close');
 
-        bluePopupClose.addEventListener('click', () => {
-            bluePopup.classList.remove('active');
+        notificationTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                notificationPopup.classList.remove('hidden');
+                notificationPopup.classList.add('active');
+                body.classList.add('popup-open');
+            });
+        });
+
+        notificationClose.addEventListener('click', () => {
+            notificationPopup.classList.remove('active');
+            setTimeout(() => {
+                notificationPopup.classList.add('hidden');
+                body.classList.remove('popup-open');
+            }, 300);
+        });
+
+        // Download App Popup (Shows app download section)
+        const downloadAppTriggers = document.querySelectorAll('#download-app-trigger, #download-app-trigger-mobile');
+
+        downloadAppTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const appSection = document.querySelector('.app-download-section');
+                appSection.scrollIntoView({ behavior: 'smooth' });
+                
+                // Add highlight effect
+                appSection.style.boxShadow = '0 0 0 3px var(--accent)';
+                setTimeout(() => {
+                    appSection.style.boxShadow = '';
+                }, 2000);
+            });
         });
 
         // Smooth Scroll
@@ -3394,7 +3543,7 @@
             });
         });
 
-        // Contact Form Submission
+        // Contact Form Submission with new Formspree endpoint
         const contactForm = document.getElementById('contact-form');
         const successMessage = document.querySelector('.contact-form .success-message');
         const errorMessage = document.querySelector('.contact-form .error-message');
@@ -3482,7 +3631,9 @@
 
         function closePopup() {
             popupOverlay.classList.remove('active');
-            body.classList.remove('popup-open');
+            setTimeout(() => {
+                body.classList.remove('popup-open');
+            }, 300);
         }
 
         popupClose.addEventListener('click', closePopup);
@@ -3501,15 +3652,32 @@
             });
         });
 
-        // ENHANCED DYNAMIC CHATBOT WITH BIOGRAPHY KNOWLEDGE AND CONTACT AUTOMATION
+        // Enhanced chatbot with time-based greetings
         const chatbotResponses = {
+            'morning_greeting': {
+                patterns: ['morning'],
+                responses: [
+                    "Good morning! ☀️ Ready to boost your advertising performance today?",
+                    "Morning! It's a great day to optimize those ads and maximize ROI!"
+                ]
+            },
+            'afternoon_greeting': {
+                patterns: ['afternoon'],
+                responses: [
+                    "Good afternoon! 🌤️ How can I help with your ads management needs?",
+                    "Afternoon! Perfect time to discuss optimizing your advertising campaigns!"
+                ]
+            },
+            'evening_greeting': {
+                patterns: ['evening'],
+                responses: [
+                    "Good evening! 🌙 Still working on ads optimization? I'm here to help!",
+                    "Evening! Let's make sure your ads are performing their best!"
+                ]
+            },
             'greeting': {
                 patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
-                responses: [
-                    "Hello! I'm Rudraksh's ads management assistant. How can I help you with Google Ads or Meta Ads today?",
-                    "Hi there! Interested in boosting your business with strategic advertising?",
-                    "Hello! Ready to maximize your ROI with data-driven ads management?"
-                ],
+                responses: [],
                 followUps: [
                     {text: "Google Ads", message: "Tell me about Google Ads"},
                     {text: "Meta Ads", message: "Tell me about Meta Ads"},
@@ -3679,6 +3847,15 @@
             chatbotWindow.classList.remove('active');
         });
 
+        function getTimeBasedGreeting() {
+            const now = new Date();
+            const hours = now.getHours();
+            
+            if (hours < 12) return 'morning_greeting';
+            if (hours < 17) return 'afternoon_greeting';
+            return 'evening_greeting';
+        }
+
         function handleAction(action) {
             switch(action) {
                 case 'callNumber':
@@ -3796,6 +3973,16 @@
 
         function generateResponse(message) {
             const lower = message.toLowerCase();
+            
+            // Check for time-based greeting first
+            const timeGreeting = getTimeBasedGreeting();
+            if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
+                const greetingResponses = chatbotResponses[timeGreeting].responses;
+                return {
+                    response: greetingResponses[Math.floor(Math.random() * greetingResponses.length)],
+                    followUps: chatbotResponses.greeting.followUps
+                };
+            }
             
             // Special handling for biography/contact queries
             if (lower.includes('about rudraksh') || lower.includes('who is rudraksh') || lower.includes('rudraksh') || 
@@ -3989,7 +4176,7 @@
 
         optimizeImages();
 
-        console.log('Website loaded successfully!');
+        console.log('Enhanced website loaded successfully with all features!');
     </script>
 </body>
 </html>
