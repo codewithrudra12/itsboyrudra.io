@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View My Social | Rudraksh Sharma</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>Share Rudraksh Sharma - Performance Marketing</title>
+    <meta name="description" content="Share Rudraksh Sharma's performance marketing services with your network">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/share.html" />
+    <meta property="og:title" content="Rudraksh Sharma | Performance Marketing & Ads Management" />
+    <meta property="og:description" content="Share this amazing performance marketing specialist who helps businesses grow through Google Ads and Meta Ads management" />
+    <meta property="og:image" content="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" />
+    
+    <!-- X (Twitter) -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/share.html" />
+    <meta property="twitter:title" content="Rudraksh Sharma | Performance Marketing & Ads Management" />
+    <meta property="twitter:description" content="Share this amazing performance marketing specialist who helps businesses grow through Google Ads and Meta Ads management" />
+    <meta property="twitter:image" content="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" />
+    
+    <!-- Styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         :root {
             --bg-dark: #0e0e0e;
@@ -13,893 +32,787 @@
             --text-primary: #f5f5f5;
             --text-secondary: #b0b0b0;
             --accent: #3a86ff;
+            --accent-secondary: #ff6b6b;
             --card-bg: rgba(30, 30, 30, 0.6);
             --card-border: rgba(255, 255, 255, 0.05);
-            --glass-effect: rgba(20, 20, 20, 0.7);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
         }
-
+        
         body {
             font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--bg-dark);
+            background: linear-gradient(135deg, #0e0e0e 0%, #1a1a2e 100%);
             color: var(--text-primary);
-            overflow-x: hidden;
-            line-height: 1.6;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
             min-height: 100vh;
+            line-height: 1.6;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
-
-        header {
+        
+        /* Header */
+        .header {
             text-align: center;
             padding: 3rem 0;
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(to right, rgba(58, 134, 255, 0.1), rgba(255, 107, 107, 0.1));
+            border-radius: 15px;
+            margin-bottom: 3rem;
         }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(58, 134, 255, 0.1) 0%, transparent 70%);
-            z-index: -1;
-        }
-
+        
         .logo {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent);
+            text-decoration: none;
             margin-bottom: 1rem;
             display: inline-block;
         }
-
-        .tagline {
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .header p {
             font-size: 1.2rem;
             color: var(--text-secondary);
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
         }
-
-        .profile-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
         }
-
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent);
-            padding: 3px;
-            background: var(--bg-dark);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+        
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
         }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-
-        .profile-info {
-            max-width: 500px;
-        }
-
-        .profile-info h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent);
-        }
-
-        .profile-info p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .stats {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .stat {
+        
+        /* Profile Card */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
             text-align: center;
         }
-
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent);
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3);
+        }
+        
+        .profile-name {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .profile-title {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-desc {
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
-            display: block;
+            margin-bottom: 0.5rem;
         }
-
+        
         .stat-label {
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .social-card {
+        
+        /* Share Options */
+        .share-options {
             background: var(--card-bg);
-            border-radius: 10px;
-            padding: 2rem;
+            border-radius: 15px;
+            padding: 2.5rem;
             border: 1px solid var(--card-border);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+            backdrop-filter: blur(10px);
         }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
+        
+        .share-options h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            text-align: center;
+        }
+        
+        /* Social Share Buttons */
+        .social-share-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .social-share-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .share-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .share-btn i {
+            font-size: 1.5rem;
+        }
+        
+        .facebook {
+            background: #1877f2;
+        }
+        
+        .facebook:hover {
+            background: #166fe5;
+        }
+        
+        .twitter {
+            background: #1da1f2;
+        }
+        
+        .twitter:hover {
+            background: #1a91da;
+        }
+        
+        .whatsapp {
+            background: #25d366;
+        }
+        
+        .whatsapp:hover {
+            background: #22c35e;
+        }
+        
+        .linkedin {
+            background: #0077b5;
+        }
+        
+        .linkedin:hover {
+            background: #00669c;
+        }
+        
+        .telegram {
+            background: #0088cc;
+        }
+        
+        .telegram:hover {
+            background: #0077b3;
+        }
+        
+        .email {
+            background: #ea4335;
+        }
+        
+        .email:hover {
+            background: #d23c2e;
+        }
+        
+        .copy-link {
             background: var(--accent);
         }
-
-        .social-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        
+        .copy-link:hover {
+            background: #2a75e6;
         }
-
-        .social-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+        
+        /* Link Sharing */
+        .link-sharing {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .link-sharing h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .link-input-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .link-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+        
+        .copy-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #2a75e6;
+        }
+        
+        .copy-message {
+            text-align: center;
+            color: #22c55e;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        /* QR Code */
+        .qr-section {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--card-border);
+        }
+        
+        .qr-container {
+            display: inline-block;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+        
+        .qr-code {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .qr-text {
+            color: var(--text-secondary);
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            text-align: center;
             transition: transform 0.3s ease;
         }
-
-        .social-card:hover .social-icon {
-            transform: scale(1.2);
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
         }
-
-        .social-card h3 {
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--accent);
         }
-
-        .social-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .social-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .social-stat {
-            text-align: center;
-        }
-
-        .social-stat-number {
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: block;
-        }
-
-        .social-stat-label {
-            font-size: 0.8rem;
+        
+        .feature-card p {
             color: var(--text-secondary);
         }
-
-        .social-link {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--accent);
-            color: var(--text-primary);
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 600;
-            transition: transform 0.3s, box-shadow 0.3s;
-            width: 100%;
+        
+        /* Footer */
+        .footer {
             text-align: center;
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
-        }
-
-        /* Platform-specific colors */
-        .facebook .social-icon { color: #1877F2; }
-        .instagram .social-icon { 
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .twitter .social-icon { color: #1DA1F2; }
-        .linkedin .social-icon { color: #0077B5; }
-        .youtube .social-icon { color: #FF0000; }
-        .tiktok .social-icon { color: #000000; }
-        .whatsapp .social-icon { color: #25D366; }
-        .telegram .social-icon { color: #0088cc; }
-        .twitch .social-icon { color: #9146FF; }
-        .kick .social-icon { color: #53fc18; }
-
-        .facebook .social-link { background: #1877F2; }
-        .instagram .social-link { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .twitter .social-link { background: #1DA1F2; }
-        .linkedin .social-link { background: #0077B5; }
-        .youtube .social-link { background: #FF0000; }
-        .tiktok .social-link { background: #000000; }
-        .whatsapp .social-link { background: #25D366; }
-        .telegram .social-link { background: #0088cc; }
-        .twitch .social-link { background: #9146FF; }
-        .kick .social-link { background: #53fc18; }
-
-        .social-card.facebook:hover { box-shadow: 0 15px 30px rgba(24, 119, 242, 0.2); }
-        .social-card.instagram:hover { box-shadow: 0 15px 30px rgba(220, 39, 67, 0.2); }
-        .social-card.twitter:hover { box-shadow: 0 15px 30px rgba(29, 161, 242, 0.2); }
-        .social-card.linkedin:hover { box-shadow: 0 15px 30px rgba(0, 119, 181, 0.2); }
-        .social-card.youtube:hover { box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2); }
-        .social-card.tiktok:hover { box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); }
-        .social-card.whatsapp:hover { box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2); }
-        .social-card.telegram:hover { box-shadow: 0 15px 30px rgba(0, 136, 204, 0.2); }
-        .social-card.twitch:hover { box-shadow: 0 15px 30px rgba(145, 70, 255, 0.2); }
-        .social-card.kick:hover { box-shadow: 0 15px 30px rgba(83, 252, 24, 0.2); }
-
-        .recent-content {
-            margin-top: 4rem;
             padding: 3rem 0;
             border-top: 1px solid var(--card-border);
+            margin-top: 4rem;
         }
-
-        .section-title {
-            font-size: 2rem;
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
             margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
             color: var(--accent);
         }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent);
-        }
-
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .content-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            border: 1px solid var(--card-border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .content-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .content-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .content-info {
-            padding: 1.5rem;
-        }
-
-        .content-platform {
-            display: inline-block;
-            padding: 0.3rem 0.8rem;
-            background: var(--accent);
-            color: var(--text-primary);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .content-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .content-info p {
+        
+        .copyright {
             color: var(--text-secondary);
             font-size: 0.9rem;
-            margin-bottom: 1rem;
         }
-
-        .content-stats {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-        }
-
-        .content-stat {
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 0 2rem;
-            margin-top: 4rem;
-            border-top: 1px solid var(--card-border);
-            color: var(--text-secondary);
-        }
-
-        .back-link {
+        
+        .back-home {
             display: inline-block;
             margin-top: 2rem;
             padding: 0.8rem 2rem;
-            background: transparent;
+            background: var(--accent);
             color: var(--text-primary);
             text-decoration: none;
-            border-radius: 4px;
-            border: 1px solid var(--card-border);
-            transition: all 0.3s;
-        }
-
-        .back-link:hover {
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
-        }
-
-        /* Custom Cursor */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--accent);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-        }
-
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--accent);
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.15s ease;
-        }
-
-        /* Notification */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(20, 20, 20, 0.9);
-            color: var(--text-primary);
-            padding: 15px 20px;
             border-radius: 8px;
-            border-left: 4px solid var(--accent);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 10000;
-            transform: translateX(150%);
-            transition: transform 0.3s ease;
-            max-width: 300px;
+            font-weight: 600;
+            transition: all 0.3s ease;
         }
-
-        .notification.show {
-            transform: translateX(0);
+        
+        .back-home:hover {
+            background: #2a75e6;
+            transform: translateY(-3px);
         }
-
-        .notification i {
-            color: var(--accent);
-            margin-right: 10px;
+        
+        /* Share Preview */
+        .share-preview {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--card-border);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
-
+        
         @media (max-width: 768px) {
-            .profile-section {
+            .share-preview {
                 flex-direction: column;
                 text-align: center;
             }
+        }
+        
+        .preview-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+        }
+        
+        .preview-content h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .preview-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .profile-name {
+                font-size: 1.8rem;
+            }
             
             .stats {
-                justify-content: center;
-            }
-            
-            .social-grid {
                 grid-template-columns: 1fr;
             }
             
-            .content-grid {
-                grid-template-columns: 1fr;
+            .share-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
             }
             
-            .cursor, .cursor-follower {
-                display: none;
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .profile-image {
+                width: 150px;
+                height: 150px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-    
-    <!-- Notification -->
-    <div class="notification" id="securityNotification">
-        <i class="fas fa-shield-alt"></i>
-        <span>Security features are active. Page inspection is restricted.</span>
-    </div>
-    
     <div class="container">
-        <header>
-            <div class="logo">Rudraksh Sharma</div>
-            <p class="tagline">Performance Marketing & Video Editing</p>
-            
-            <div class="profile-section">
-                <img src="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg" alt="Rudraksh Sharma" class="profile-image">
-                <div class="profile-info">
-                    <h1>Connect With Me</h1>
-                    <p>Follow me across platforms to stay updated with my latest work, insights, and content. Let's grow together!</p>
-                    
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="stat-number">10K+</span>
-                            <span class="stat-label">Followers</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">500+</span>
-                            <span class="stat-label">Projects</span>
-                        </div>
-                        <div class="stat">
-                            <span class="stat-number">50+</span>
-                            <span class="stat-label">Clients</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Header -->
+        <header class="header">
+            <a href="index.html" class="logo">Rudraksh Sharma</a>
+            <h1>Share My Services</h1>
+            <p>Help spread the word about my performance marketing services. Share with your network who might benefit from Google Ads and Meta Ads expertise.</p>
         </header>
         
-        <main>
-            <div class="social-grid">
-                <div class="social-card facebook">
-                    <i class="fab fa-facebook-f social-icon"></i>
-                    <h3>Facebook</h3>
-                    <p>Follow for marketing tips, industry insights, and project updates.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">2.5K</span>
-                            <span class="social-stat-label">Followers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">150</span>
-                            <span class="social-stat-label">Posts</span>
-                        </div>
+        <!-- Share Preview -->
+        <div class="share-preview">
+            <img src="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" alt="Rudraksh Sharma" class="preview-image">
+            <div class="preview-content">
+                <h3>Rudraksh Sharma - Performance Marketing Specialist</h3>
+                <p>Helping businesses grow through strategic Google Ads and Meta Ads management. Driving measurable results with data-driven campaigns.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">300%</div>
+                        <div class="stat-label">Avg. ROAS</div>
                     </div>
-                    
-                    <a href="https://facebook.com/itsboyrudra" target="_blank" class="social-link">
-                        <i class="fab fa-facebook-f"></i> Follow on Facebook
-                    </a>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Cost Reduction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Campaigns</div>
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <img src="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" alt="Rudraksh Sharma" class="profile-image">
+                <h2 class="profile-name">Rudraksh Sharma</h2>
+                <p class="profile-title">Performance Marketing Specialist</p>
+                <p class="profile-desc">Expert in Google Ads and Meta Ads management. Helping businesses achieve measurable growth through data-driven advertising strategies, conversion optimization, and ROI-focused campaigns.</p>
                 
-                <div class="social-card instagram">
-                    <i class="fab fa-instagram social-icon"></i>
-                    <h3>Instagram</h3>
-                    <p>Visual content, behind-the-scenes, and creative video edits.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">5.2K</span>
-                            <span class="social-stat-label">Followers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">320</span>
-                            <span class="social-stat-label">Posts</span>
-                        </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
-                    
-                    <a href="https://instagram.com/itsboyrudra" target="_blank" class="social-link">
-                        <i class="fab fa-instagram"></i> Follow on Instagram
-                    </a>
-                </div>
-                
-                <div class="social-card twitter">
-                    <i class="fab fa-x-twitter social-icon"></i>
-                    <h3>X (Twitter)</h3>
-                    <p>Quick marketing insights, industry news, and daily thoughts.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">1.8K</span>
-                            <span class="social-stat-label">Followers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">890</span>
-                            <span class="social-stat-label">Tweets</span>
-                        </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Happy Clients</div>
                     </div>
-                    
-                    <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link">
-                        <i class="fab fa-x-twitter"></i> Follow on X
-                    </a>
-                </div>
-                
-                <div class="social-card linkedin">
-                    <i class="fab fa-linkedin-in social-icon"></i>
-                    <h3>LinkedIn</h3>
-                    <p>Professional network, case studies, and business insights.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">1.2K</span>
-                            <span class="social-stat-label">Connections</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">45</span>
-                            <span class="social-stat-label">Posts</span>
-                        </div>
+                    <div class="stat-item">
+                        <div class="stat-number">₹2Cr+</div>
+                        <div class="stat-label">Ad Spend Managed</div>
                     </div>
-                    
-                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin-in"></i> Connect on LinkedIn
-                    </a>
-                </div>
-                
-                <div class="social-card youtube">
-                    <i class="fab fa-youtube social-icon"></i>
-                    <h3>YouTube</h3>
-                    <p>Video tutorials, campaign breakdowns, and editing techniques.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">3.5K</span>
-                            <span class="social-stat-label">Subscribers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">75</span>
-                            <span class="social-stat-label">Videos</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://www.youtube.com/@ITSBOYRUDRA" target="_blank" class="social-link">
-                        <i class="fab fa-youtube"></i> Subscribe on YouTube
-                    </a>
-                </div>
-                
-                <div class="social-card tiktok">
-                    <i class="fab fa-tiktok social-icon"></i>
-                    <h3>TikTok</h3>
-                    <p>Short-form video content, trends, and quick marketing tips.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">8.7K</span>
-                            <span class="social-stat-label">Followers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">210</span>
-                            <span class="social-stat-label">Videos</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://www.tiktok.com/@itsboyrudra1?is_from_webapp=1&sender_device=pc" target="_blank" class="social-link">
-                        <i class="fab fa-tiktok"></i> Follow on TikTok
-                    </a>
-                </div>
-                
-                <div class="social-card twitch">
-                    <i class="fab fa-twitch social-icon"></i>
-                    <h3>Twitch</h3>
-                    <p>Live streaming for gaming, creative sessions, and Q&A.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">1.2K</span>
-                            <span class="social-stat-label">Followers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">45</span>
-                            <span class="social-stat-label">Streams</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://www.twitch.tv/itsboyrudra" target="_blank" class="social-link">
-                        <i class="fab fa-twitch"></i> Follow on Twitch
-                    </a>
-                </div>
-                
-                <div class="social-card kick">
-                    <i class="fas fa-fist-raised social-icon"></i>
-                    <h3>Kick</h3>
-                    <p>Live streaming platform for gaming and creative content.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">850</span>
-                            <span class="social-stat-label">Followers</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">30</span>
-                            <span class="social-stat-label">Streams</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://kick.com/itsboyrudra" target="_blank" class="social-link">
-                        <i class="fas fa-fist-raised"></i> Follow on Kick
-                    </a>
-                </div>
-                
-                <div class="social-card whatsapp">
-                    <i class="fab fa-whatsapp social-icon"></i>
-                    <h3>WhatsApp</h3>
-                    <p>Direct communication for quick queries and consultations.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">24/7</span>
-                            <span class="social-stat-label">Available</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">Fast</span>
-                            <span class="social-stat-label">Response</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://wa.me/+917878383739" target="_blank" class="social-link">
-                        <i class="fab fa-whatsapp"></i> Message on WhatsApp
-                    </a>
-                </div>
-                
-                <div class="social-card telegram">
-                    <i class="fab fa-telegram social-icon"></i>
-                    <h3>Telegram</h3>
-                    <p>Join my channel for exclusive content and updates.</p>
-                    
-                    <div class="social-stats">
-                        <div class="social-stat">
-                            <span class="social-stat-number">850</span>
-                            <span class="social-stat-label">Members</span>
-                        </div>
-                        <div class="social-stat">
-                            <span class="social-stat-number">Daily</span>
-                            <span class="social-stat-label">Updates</span>
-                        </div>
-                    </div>
-                    
-                    <a href="https://t.me/itsboyrudra" target="_blank" class="social-link">
-                        <i class="fab fa-telegram"></i> Join on Telegram
-                    </a>
                 </div>
             </div>
             
-            <div class="recent-content">
-                <h2 class="section-title">Recent Content</h2>
+            <!-- Share Options -->
+            <div class="share-options">
+                <h2>Share via Social Media</h2>
                 
-                <div class="content-grid">
-                    <div class="content-card">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Facebook Ad Strategy" class="content-image">
-                        <div class="content-info">
-                            <span class="content-platform" style="background: #1877F2;">Facebook</span>
-                            <h3>5 Facebook Ad Strategies That Actually Work</h3>
-                            <p>Learn how to optimize your Facebook ads for maximum ROI with these proven strategies.</p>
-                            <div class="content-stats">
-                                <div class="content-stat">
-                                    <i class="far fa-eye"></i> 2.4K views
-                                </div>
-                                <div class="content-stat">
-                                    <i class="far fa-heart"></i> 189 likes
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="social-share-grid">
+                    <button class="share-btn facebook" onclick="shareOnFacebook()">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </button>
                     
-                    <div class="content-card">
-                        <img src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Instagram Reels Tutorial" class="content-image">
-                        <div class="content-info">
-                            <span class="content-platform" style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);">Instagram</span>
-                            <h3>Creating Viral Instagram Reels</h3>
-                            <p>Step-by-step guide to creating engaging Reels that get millions of views.</p>
-                            <div class="content-stats">
-                                <div class="content-stat">
-                                    <i class="far fa-eye"></i> 15.7K views
-                                </div>
-                                <div class="content-stat">
-                                    <i class="far fa-heart"></i> 1.2K likes
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="share-btn twitter" onclick="shareOnTwitter()">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </button>
                     
-                    <div class="content-card">
-                        <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="YouTube Video Editing" class="content-image">
-                        <div class="content-info">
-                            <span class="content-platform" style="background: #FF0000;">YouTube</span>
-                            <h3>Advanced Video Editing Techniques</h3>
-                            <p>Learn professional editing techniques used in high-performing YouTube videos.</p>
-                            <div class="content-stats">
-                                <div class="content-stat">
-                                    <i class="far fa-eye"></i> 8.3K views
-                                </div>
-                                <div class="content-stat">
-                                    <i class="far fa-heart"></i> 420 likes
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="share-btn whatsapp" onclick="shareOnWhatsApp()">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </button>
                     
-                    <div class="content-card">
-                        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Twitch Streaming Setup" class="content-image">
-                        <div class="content-info">
-                            <span class="content-platform" style="background: #9146FF;">Twitch</span>
-                            <h3>My Streaming Setup Tour</h3>
-                            <p>Take a look at my complete streaming setup for gaming and creative content.</p>
-                            <div class="content-stats">
-                                <div class="content-stat">
-                                    <i class="far fa-eye"></i> 5.2K views
-                                </div>
-                                <div class="content-stat">
-                                    <i class="far fa-heart"></i> 320 likes
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <button class="share-btn linkedin" onclick="shareOnLinkedIn()">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>LinkedIn</span>
+                    </button>
                     
-                    <div class="content-card">
-                        <img src="https://images.unsplash.com/photo-1633617477271-d4f351ff7c7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kick Streaming" class="content-image">
-                        <div class="content-info">
-                            <span class="content-platform" style="background: #53fc18;">Kick</span>
-                            <h3>First Stream on Kick</h3>
-                            <p>Join me for my first official stream on the Kick platform with special guests.</p>
-                            <div class="content-stats">
-                                <div class="content-stat">
-                                    <i class="far fa-eye"></i> 3.8K views
-                                </div>
-                                <div class="content-stat">
-                                    <i class="far fa-heart"></i> 210 likes
-                                </div>
-                            </div>
-                        </div>
+                    <button class="share-btn telegram" onclick="shareOnTelegram()">
+                        <i class="fab fa-telegram"></i>
+                        <span>Telegram</span>
+                    </button>
+                    
+                    <button class="share-btn email" onclick="shareViaEmail()">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </button>
+                </div>
+                
+                <!-- Link Sharing -->
+                <div class="link-sharing">
+                    <h3>Copy Share Link</h3>
+                    <div class="link-input-group">
+                        <input type="text" class="link-input" id="share-link" value="https://codewithrudra12.github.io/itsboyrudra.io/" readonly>
+                        <button class="copy-btn" onclick="copyShareLink()">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
                     </div>
+                    <div class="copy-message" id="copy-message">Link copied to clipboard!</div>
+                    
+                    <button class="share-btn copy-link" onclick="shareViaNative()" style="width: 100%; margin-top: 1rem;">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Share via Native Share</span>
+                    </button>
+                </div>
+                
+                <!-- QR Code -->
+                <div class="qr-section">
+                    <h3>Scan QR Code to Share</h3>
+                    <div class="qr-container">
+                        <canvas id="qr-code" class="qr-code"></canvas>
+                    </div>
+                    <p class="qr-text">Scan this QR code to quickly visit my website</p>
                 </div>
             </div>
-        </main>
+        </div>
         
-        <footer>
-            <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
-            <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="back-link">← Back to Main Website</a>
+        <!-- Features -->
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Google Ads Expert</h3>
+                <p>Strategic campaign management across Search, Display, and YouTube networks</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-bullseye"></i>
+                </div>
+                <h3>Meta Ads Specialist</h3>
+                <p>Advanced targeting and optimization for Facebook and Instagram campaigns</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>Creative Design</h3>
+                <p>Professional thumbnail and banner design for YouTube and social media</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <h3>ROI Focused</h3>
+                <p>Data-driven strategies that deliver measurable business results</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#portfolio">Portfolio</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            
+            <p class="copyright">© 2025 Rudraksh Sharma. All rights reserved.</p>
+            
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
         </footer>
     </div>
     
+    <!-- QR Code Library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    
+    <!-- JavaScript -->
     <script>
-        // Add animation to social cards on scroll
+        // Website URL
+        const websiteUrl = 'https://codewithrudra12.github.io/itsboyrudra.io/';
+        const shareText = 'Check out Rudraksh Sharma - Performance Marketing Specialist who helps businesses grow through Google Ads and Meta Ads management!';
+        const hashtags = 'PerformanceMarketing, GoogleAds, MetaAds, DigitalMarketing, ROI';
+        
+        // Generate QR Code
         document.addEventListener('DOMContentLoaded', function() {
-            const socialCards = document.querySelectorAll('.social-card');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            socialCards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                observer.observe(card);
+            const canvas = document.getElementById('qr-code');
+            QRCode.toCanvas(canvas, websiteUrl, {
+                width: 180,
+                margin: 1,
+                color: {
+                    dark: '#000000',
+                    light: '#ffffff'
+                }
+            }, function(error) {
+                if (error) console.error(error);
             });
+        });
+        
+        // Share Functions
+        function shareOnFacebook() {
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(websiteUrl)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnTwitter() {
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(websiteUrl)}&hashtags=${encodeURIComponent(hashtags)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnWhatsApp() {
+            const url = `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + websiteUrl)}`;
+            window.open(url, '_blank');
+        }
+        
+        function shareOnLinkedIn() {
+            const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(websiteUrl)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        function shareOnTelegram() {
+            const url = `https://t.me/share/url?url=${encodeURIComponent(websiteUrl)}&text=${encodeURIComponent(shareText)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        function shareViaEmail() {
+            const subject = 'Check out this Performance Marketing Specialist';
+            const body = `${shareText}\n\n${websiteUrl}\n\nBest regards,\n[Your Name]`;
+            const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = url;
+        }
+        
+        function copyShareLink() {
+            const linkInput = document.getElementById('share-link');
+            const copyMessage = document.getElementById('copy-message');
             
-            // Add click tracking for analytics
-            document.querySelectorAll('.social-link').forEach(link => {
-                link.addEventListener('click', function() {
-                    const platform = this.closest('.social-card').classList[1];
-                    console.log(`Clicked on ${platform} link`);
-                    // In a real implementation, you would send this data to your analytics
-                });
-            });
+            linkInput.select();
+            linkInput.setSelectionRange(0, 99999); // For mobile devices
             
-            // Custom Cursor
-            const cursor = document.querySelector('.cursor');
-            const cursorFollower = document.querySelector('.cursor-follower');
-            
-            document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
+            try {
+                navigator.clipboard.writeText(linkInput.value);
+                copyMessage.style.display = 'block';
                 
                 setTimeout(() => {
-                    cursorFollower.style.left = e.clientX + 'px';
-                    cursorFollower.style.top = e.clientY + 'px';
-                }, 100);
-            });
-            
-            document.addEventListener('mousedown', () => {
-                cursor.style.transform = 'scale(0.8)';
-                cursorFollower.style.transform = 'scale(1.2)';
-            });
-            
-            document.addEventListener('mouseup', () => {
-                cursor.style.transform = 'scale(1)';
-                cursorFollower.style.transform = 'scale(1)';
-            });
-            
-            // Security features
-            const notification = document.getElementById('securityNotification');
-            
-            // Show notification
-            setTimeout(() => {
-                notification.classList.add('show');
-                setTimeout(() => {
-                    notification.classList.remove('show');
-                }, 5000);
-            }, 1000);
-            
-            // Disable right-click
-            document.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                notification.classList.add('show');
-                setTimeout(() => {
-                    notification.classList.remove('show');
+                    copyMessage.style.display = 'none';
                 }, 3000);
+            } catch (err) {
+                // Fallback for older browsers
+                document.execCommand('copy');
+                copyMessage.style.display = 'block';
+                
+                setTimeout(() => {
+                    copyMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        function shareViaNative() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Rudraksh Sharma - Performance Marketing',
+                    text: shareText,
+                    url: websiteUrl,
+                })
+                .then(() => console.log('Shared successfully'))
+                .catch((error) => console.log('Sharing failed:', error));
+            } else {
+                copyShareLink();
+                alert('Link copied to clipboard! You can now paste it anywhere.');
+            }
+        }
+        
+        // Track share events
+        function trackShare(platform) {
+            console.log(`Shared on ${platform}: ${websiteUrl}`);
+            // Here you can add analytics tracking
+            // Example: gtag('event', 'share', { 'method': platform, 'content_type': 'website' });
+        }
+        
+        // Add tracking to all share buttons
+        document.querySelectorAll('.share-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const platform = this.querySelector('span').textContent;
+                trackShare(platform);
             });
-            
-            // Disable keyboard shortcuts for dev tools
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'F12' || 
-                    (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-                    (e.ctrlKey && e.shiftKey && e.key === 'C') || 
-                    (e.ctrlKey && e.key === 'U')) {
-                    e.preventDefault();
-                    notification.classList.add('show');
-                    setTimeout(() => {
-                        notification.classList.remove('show');
-                    }, 3000);
-                    return false;
-                }
-            });
-            
-            // Disable text selection
-            document.addEventListener('selectstart', (e) => {
-                e.preventDefault();
-            });
+        });
+        
+        // Page load tracking
+        window.addEventListener('load', function() {
+            console.log('Share page loaded successfully');
+            // You can add pageview tracking here
         });
     </script>
 </body>
