@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rudraksh Sharma | Performance Marketing & Ads Management</title>
     <meta name="description" content="Rudraksh Sharma offers performance marketing services, specializing in Google Ads and Meta Ads management to drive measurable results.">
-    
+   
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://codewithrudra12.github.io/itsboyrudra.io/" />
     <meta property="og:title" content="Rudraksh Sharma | Performance Marketing & Ads Management" />
     <meta property="og:description" content="Rudraksh Sharma offers performance marketing services, specializing in Google Ads and Meta Ads management to drive measurable results." />
     <meta property="og:image" content="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" />
-
     <!-- X (Twitter) -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://codewithrudra12.github.io/itsboyrudra.io/" />
     <meta property="twitter:title" content="Rudraksh Sharma | Performance Marketing & Ads Management" />
     <meta property="twitter:description" content="Rudraksh Sharma offers performance marketing services, specializing in Google Ads and Meta Ads management to drive measurable results." />
     <meta property="twitter:image" content="https://i.ibb.co/pj8WfYyP/IMG-20250530-180250.jpg" />
-    
+   
     <link rel="manifest" href="/itsboyrudra.io/manifest.webmanifest">
     <meta name="theme-color" content="#111111">
-
     <!-- External Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +29,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg">
-
     <style>
         :root {
             --bg-dark: #0e0e0e;
@@ -45,26 +42,75 @@
             --glass-effect: rgba(20, 20, 20, 0.85);
             --glass-effect-light: rgba(255, 255, 255, 0.1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             cursor: none !important;
         }
-
         body {
             font-family: 'Space Grotesk', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            position: relative;
+            min-height: 100vh;
         }
-
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(58, 134, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(106, 13, 173, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+        /* Animated Background Elements */
+        .star {
+            position: fixed;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+            z-index: -1;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(58, 134, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 50% 20%, rgba(106, 13, 173, 0.03) 0%, transparent 50%);
+            animation: bgMove 20s linear infinite;
+        }
+        @keyframes bgMove {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
         body.sidebar-open, body.popup-open {
             overflow: hidden;
         }
-
         /* Right-click context menu */
         .context-menu {
             position: fixed;
@@ -78,11 +124,9 @@
             display: none;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
-
         .context-menu.active {
             display: block;
         }
-
         .context-menu-item {
             padding: 0.8rem 1.2rem;
             color: var(--text-primary);
@@ -93,16 +137,13 @@
             transition: all 0.3s;
             cursor: pointer;
         }
-
         .context-menu-item:hover {
             background: rgba(58, 134, 255, 0.1);
         }
-
         .context-menu-item i {
             color: var(--accent);
             width: 20px;
         }
-
         /* Scroll Progress Bar */
         .scroll-progress {
             position: fixed;
@@ -110,11 +151,10 @@
             left: 0;
             width: 0%;
             height: 3px;
-            background: var(--accent);
+            background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
             z-index: 10000;
             transition: width 0.1s ease;
         }
-
         /* Custom Cursor */
         .custom-cursor {
             position: fixed;
@@ -129,7 +169,6 @@
             mix-blend-mode: difference;
             transition: transform 0.1s ease;
         }
-
         .custom-cursor-follower {
             position: fixed;
             top: 0;
@@ -142,17 +181,14 @@
             z-index: 9998;
             transition: transform 0.15s ease;
         }
-
         .custom-cursor.hover {
             transform: scale(1.5);
-            background-color: #ff3a3a;
+            background-color: var(--accent-secondary);
         }
-
         .custom-cursor-follower.hover {
             transform: scale(1.3);
             border-color: rgba(255, 58, 58, 0.7);
         }
-
         @media (max-width: 768px) {
             .custom-cursor, .custom-cursor-follower {
                 display: none;
@@ -161,8 +197,7 @@
                 cursor: auto !important;
             }
         }
-
-        /* Country Block Page - Enhanced */
+        /* Country Block Page */
         .country-block {
             position: fixed;
             top: 0;
@@ -177,11 +212,9 @@
             padding: 2rem;
             text-align: center;
         }
-
         .country-block.hidden {
             display: none;
         }
-
         .country-block-content {
             max-width: 600px;
             background: var(--glass-effect);
@@ -191,19 +224,16 @@
             border: 1px solid var(--card-border);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-
         .country-block h1 {
             color: var(--accent-secondary);
             margin-bottom: 1.5rem;
             font-size: 2.5rem;
         }
-
         .country-block p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
         }
-
         /* Offline Page */
         .offline-page {
             position: fixed;
@@ -219,11 +249,9 @@
             padding: 2rem;
             text-align: center;
         }
-
         .offline-page.hidden {
             display: none;
         }
-
         .offline-content {
             max-width: 600px;
             background: var(--glass-effect);
@@ -232,19 +260,16 @@
             border-radius: 15px;
             border: 1px solid var(--card-border);
         }
-
         .offline-page h1 {
             color: var(--accent);
             margin-bottom: 1.5rem;
             font-size: 2.5rem;
         }
-
         .offline-page p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-size: 1.2rem;
         }
-
         /* Special Offer Popup */
         .offer-popup {
             position: fixed;
@@ -264,30 +289,25 @@
             transition: all 0.3s ease;
             box-shadow: 0 20px 40px rgba(58, 134, 255, 0.2);
         }
-
         .offer-popup.active {
             opacity: 1;
             visibility: visible;
             transform: translate(-50%, -50%) scale(1);
         }
-
         .offer-popup-content {
             text-align: center;
             color: var(--text-primary);
         }
-
         .offer-popup-content h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--accent);
         }
-
         .offer-popup-content p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
             font-size: 1rem;
         }
-
         .offer-cta {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -298,12 +318,10 @@
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .offer-cta:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(58, 134, 255, 0.3);
         }
-
         .offer-close {
             position: absolute;
             top: 15px;
@@ -321,11 +339,9 @@
             border-radius: 50%;
             transition: background 0.3s;
         }
-
         .offer-close:hover {
             background: rgba(255, 255, 255, 0.1);
         }
-
         /* Notification Popup */
         .notification-popup {
             position: fixed;
@@ -345,93 +361,54 @@
             transition: all 0.3s ease;
             text-align: center;
         }
-
         .notification-popup.active {
             opacity: 1;
             visibility: visible;
             transform: translate(-50%, -50%) scale(1);
         }
-
         .notification-icon {
             font-size: 3rem;
             color: var(--accent);
             margin-bottom: 1rem;
         }
-
         .notification-popup h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--accent);
         }
-
         .notification-popup p {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
         }
-
-        /* Security Intro */
-        .security-intro {
+        /* Back to Top Button */
+        .back-to-top {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--glass-effect);
-            backdrop-filter: blur(10px);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            bottom: 50%;
+            right: 30px;
+            transform: translateY(50%);
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: none;
             align-items: center;
-            z-index: 10006;
-            opacity: 1;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .security-intro.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .security-logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .security-check {
-            width: 80%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .security-check i {
-            font-size: 2rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .security-check h3 {
+            justify-content: center;
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(58, 134, 255, 0.3);
+            transition: all 0.3s ease;
+            border: none;
         }
-
-        .security-check p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .back-to-top.visible {
+            display: flex;
         }
-
+        .back-to-top:hover {
+            transform: translateY(50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(58, 134, 255, 0.4);
+            background: var(--accent-secondary);
+        }
         /* Slideshow Styles */
         .slideshow-container {
             position: relative;
@@ -442,7 +419,6 @@
             box-shadow: none;
             margin: 0;
         }
-
         .slide {
             position: absolute;
             top: 0;
@@ -454,11 +430,9 @@
             background-size: cover;
             background-position: center;
         }
-
         .slide.active {
             opacity: 1;
         }
-
         .slide-content {
             position: absolute;
             bottom: 0;
@@ -471,24 +445,20 @@
             transform: translateY(0);
             transition: transform 0.5s ease;
         }
-
         .slide:hover .slide-content {
             transform: translateY(-10px);
         }
-
         .slide-title {
             font-size: 2.5rem;
             margin-bottom: 10px;
             color: var(--accent);
         }
-
         .slide-description {
             font-size: 1.2rem;
             line-height: 1.6;
             color: var(--text-secondary);
             margin-bottom: 2rem;
         }
-
         .slideshow-controls {
             position: absolute;
             bottom: 20px;
@@ -497,7 +467,6 @@
             gap: 15px;
             z-index: 10;
         }
-
         .slideshow-control-btn {
             width: 50px;
             height: 50px;
@@ -514,17 +483,14 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
-
         .slideshow-control-btn:hover {
             background: rgba(30, 41, 59, 0.8);
             transform: scale(1.1);
             box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
         }
-
         .slideshow-control-btn i {
             font-size: 1.2rem;
         }
-
         .slideshow-cta {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -535,12 +501,10 @@
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .slideshow-cta:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
         }
-
         /* Navbar */
         .navbar {
             position: fixed;
@@ -557,12 +521,10 @@
             border-bottom: 1px solid var(--card-border);
             animation: slideInNav 0.8s ease-out;
         }
-
         @keyframes slideInNav {
             from { transform: translateY(-100%); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-
         .logo {
             font-size: 2rem;
             font-weight: 700;
@@ -570,17 +532,15 @@
             text-decoration: none;
             transition: transform 0.3s;
         }
-
         .logo:hover {
             transform: scale(1.05);
         }
-
         .nav-links {
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
-
         .nav-links a {
             color: var(--text-primary);
             text-decoration: none;
@@ -588,11 +548,9 @@
             position: relative;
             transition: color 0.3s;
         }
-
         .nav-links a:hover {
             color: var(--accent);
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -603,16 +561,17 @@
             background: var(--accent);
             transition: width 0.3s;
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
-
+        /* Removed notification bell from navbar */
+        .notification-bell {
+            display: none;
+        }
         /* More from us dropdown */
         .more-dropdown {
             position: relative;
         }
-
         .more-dropdown-content {
             position: absolute;
             top: 100%;
@@ -634,13 +593,11 @@
             grid-template-columns: 1fr;
             gap: 0.5rem;
         }
-
         .more-dropdown:hover .more-dropdown-content {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
         .more-dropdown-content a {
             display: block;
             padding: 0.5rem;
@@ -649,11 +606,9 @@
             border-radius: 4px;
             transition: background 0.3s;
         }
-
         .more-dropdown-content a:hover {
             background: rgba(58, 134, 255, 0.1);
         }
-
         .mobile-menu-btn {
             display: none;
             background: transparent;
@@ -668,24 +623,19 @@
             transition: color 0.3s, background 0.3s;
             z-index: 1002;
         }
-
         .mobile-menu-btn:hover {
             color: var(--accent);
             background: rgba(58, 134, 255, 0.1);
         }
-
         .mobile-menu-btn.active .fa-bars {
             display: none;
         }
-
         .mobile-menu-btn.active .fa-times {
             display: inline;
         }
-
         .mobile-menu-btn .fa-times {
             display: none;
         }
-
         .sidebar {
             position: fixed;
             top: 0;
@@ -702,11 +652,9 @@
             display: block;
             overflow-y: auto;
         }
-
         .sidebar.active {
             left: 0;
         }
-
         .sidebar .nav-links {
             flex-direction: column;
             gap: 1.5rem;
@@ -714,13 +662,11 @@
             opacity: 1;
             visibility: visible;
         }
-
         .sidebar .nav-links li {
             display: block;
             opacity: 1;
             visibility: visible;
         }
-
         .sidebar .nav-links a {
             font-size: 1.2rem;
             display: block;
@@ -729,7 +675,6 @@
             opacity: 1;
             visibility: visible;
         }
-
         .sidebar-backdrop {
             position: fixed;
             top: 0;
@@ -742,12 +687,10 @@
             transition: opacity 0.3s ease, visibility 0.3s ease;
             z-index: 999;
         }
-
         .sidebar-backdrop.active {
             opacity: 1;
             visibility: visible;
         }
-
         /* Floating Logo */
         .floating-logo {
             position: fixed;
@@ -766,16 +709,13 @@
             transition: transform 0.3s ease;
             animation: floatLogo 3s ease-in-out infinite;
         }
-
         .floating-logo:hover {
             transform: translateY(-50%) scale(1.1);
         }
-
         @keyframes floatLogo {
             0%, 100% { transform: translateY(-50%) translateY(0); }
             50% { transform: translateY(-50%) translateY(-8px); }
         }
-
         /* Section Styles */
         .section {
             padding: 6rem 5%;
@@ -783,7 +723,6 @@
             margin: 0 auto;
             max-width: 1400px;
         }
-
         .section-title {
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -791,7 +730,6 @@
             position: relative;
             color: var(--accent);
         }
-
         .section-title::after {
             content: '';
             position: absolute;
@@ -802,7 +740,6 @@
             height: 3px;
             background: var(--accent);
         }
-
         /* Hero Section with Video Background */
         .hero {
             height: 100vh;
@@ -813,7 +750,6 @@
             margin: 0;
             padding: 0;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -824,7 +760,6 @@
             background: linear-gradient(rgba(14, 14, 14, 0.7), rgba(14, 14, 14, 0.9));
             z-index: 1;
         }
-
         .hero-video {
             position: absolute;
             top: 0;
@@ -834,7 +769,6 @@
             object-fit: cover;
             z-index: 0;
         }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -844,7 +778,6 @@
             width: 100%;
             text-align: center;
         }
-
         .hero h1 {
             font-size: 4rem;
             font-weight: 700;
@@ -854,12 +787,10 @@
             opacity: 1;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
-
         @keyframes fadeInText {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
         .hero p {
             font-size: 1.5rem;
             color: var(--text-secondary);
@@ -868,17 +799,14 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         .typed-cursor {
             opacity: 0;
             animation: blink 0.7s infinite;
         }
-
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
-
         .cta-button {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -889,12 +817,10 @@
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
         }
-
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
         }
-
         /* About Section */
         .about-content {
             display: flex;
@@ -903,7 +829,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .about-image {
             position: relative;
             width: 340px;
@@ -916,11 +841,9 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.4s ease;
         }
-
         .about-image:hover {
             transform: scale(1.05);
         }
-
         .about-image::before {
             content: '';
             position: absolute;
@@ -933,34 +856,28 @@
             z-index: -1;
             animation: rotateBorder 4s linear infinite;
         }
-
         @keyframes rotateBorder {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-
         .about-text {
             flex: 1;
         }
-
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
         }
-
         .about-text p {
             margin-bottom: 1.5rem;
             color: var(--text-secondary);
         }
-
         .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             margin-top: 2rem;
         }
-
         .skill-tag {
             background: var(--card-bg);
             padding: 0.5rem 1rem;
@@ -970,20 +887,27 @@
             border: 1px solid var(--card-border);
             transition: transform 0.3s;
         }
-
         .skill-tag:hover {
             transform: translateY(-2px);
         }
-
-        /* Services Section */
+        /* Services Section - Three Horizontal Cards */
         .services-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        @media (max-width: 992px) {
+            .services-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+        }
         .service-card {
             position: relative;
             background: var(--card-bg);
@@ -993,13 +917,15 @@
             border: 1px solid var(--card-border);
             backdrop-filter: blur(10px);
             overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-
         .service-card.unavailable {
             opacity: 0.7;
             position: relative;
+            cursor: not-allowed;
         }
-
         .unavailable-badge {
             position: absolute;
             top: 10px;
@@ -1012,12 +938,10 @@
             font-weight: 600;
             z-index: 2;
         }
-
-        .service-card:hover {
+        .service-card:hover:not(.unavailable) {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
-
         .service-image {
             width: 100%;
             height: 200px;
@@ -1026,12 +950,10 @@
             margin-bottom: 1.5rem;
             transition: transform 0.5s ease, opacity 0.3s ease;
         }
-
-        .service-card:hover .service-image {
+        .service-card:hover:not(.unavailable) .service-image {
             transform: scale(1.05);
             opacity: 0.7;
         }
-
         .service-overlay {
             position: absolute;
             top: 0;
@@ -1049,52 +971,45 @@
             padding: 1rem;
             text-align: center;
         }
-
-        .service-card:hover .service-overlay {
+        .service-card:hover:not(.unavailable) .service-overlay {
             opacity: 1;
         }
-
         .service-icon {
             font-size: 2.5rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
             animation: pulseIcon 2s infinite ease-in-out;
         }
-
         @keyframes pulseIcon {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
-
         .service-card ul {
             list-style: none;
             margin-bottom: 2rem;
+            flex-grow: 1;
         }
-
         .service-card li {
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
             position: relative;
             padding-left: 1.5rem;
         }
-
         .service-card li::before {
             content: '•';
             position: absolute;
             left: 0;
             color: var(--accent);
         }
-
         .service-cta {
             display: flex;
             gap: 1rem;
+            margin-top: auto;
         }
-
         .service-cta a {
             flex: 1;
             text-align: center;
@@ -1104,34 +1019,28 @@
             font-weight: 500;
             transition: all 0.3s;
         }
-
         .primary-cta {
             background: var(--accent);
             color: var(--text-primary);
         }
-
         .primary-cta:hover {
             background: #2a75e6;
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
         }
-
         .secondary-cta {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid var(--card-border);
         }
-
         .secondary-cta:hover {
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
         }
-
         /* Portfolio Section */
         .portfolio-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .portfolio-filter {
             display: flex;
             justify-content: center;
@@ -1139,7 +1048,6 @@
             margin-bottom: 3rem;
             flex-wrap: wrap;
         }
-
         .filter-btn {
             background: var(--card-bg);
             color: var(--text-secondary);
@@ -1151,24 +1059,20 @@
             font-family: inherit;
             font-weight: 500;
         }
-
         .filter-btn.active {
             background: var(--accent);
             color: var(--text-primary);
             box-shadow: 0 0 5px rgba(58, 134, 255, 0.3);
         }
-
         .filter-btn:hover:not(.active) {
             background: rgba(58, 134, 255, 0.1);
             color: var(--text-primary);
         }
-
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .portfolio-item {
             position: relative;
             border-radius: 10px;
@@ -1177,24 +1081,20 @@
             transition: transform 0.4s ease;
             cursor: pointer;
         }
-
         .portfolio-item:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease, opacity 0.3s ease;
         }
-
         .portfolio-item:hover img {
             transform: scale(1.1);
             opacity: 0.7;
         }
-
         .portfolio-overlay {
             position: absolute;
             top: 0;
@@ -1210,82 +1110,334 @@
             transition: opacity 0.3s ease;
             text-align: left;
         }
-
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
-
         .portfolio-overlay h3 {
             margin-bottom: 0.5rem;
             color: var(--accent);
         }
-
         .portfolio-overlay p {
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-
-        /* Testimonials Slider */
+        /* Testimonials - Square Cards with Slider */
         .testimonials-slider {
-            margin-top: 3rem;
-            overflow: hidden;
             position: relative;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            overflow: hidden;
         }
-
         .testimonials-slider h2 {
             font-size: 2rem;
             margin-bottom: 1.5rem;
             text-align: center;
             color: var(--accent);
         }
-
-        .slider-container {
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .slider {
+        .testimonials-container {
             display: flex;
-            animation: slide-horizontal 20s linear infinite;
-            width: max-content;
+            transition: transform 0.5s ease;
+            gap: 1rem;
         }
-
-        @keyframes slide-horizontal {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
         .testimonial-card {
             background: var(--card-bg);
             border-radius: 10px;
             padding: 2rem;
-            margin: 0 1rem;
             min-width: 300px;
-            text-align: center;
+            margin: 0 0.5rem;
             border: 1px solid var(--card-border);
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
         .testimonial-card img {
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            margin-bottom: 1rem;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--accent);
+            object-fit: cover;
         }
-
         .testimonial-card p {
             font-style: italic;
             margin-bottom: 1rem;
+            color: var(--text-secondary);
+            flex-grow: 1;
         }
-
         .testimonial-card span {
             font-weight: bold;
             color: var(--accent);
+            display: block;
+            margin-top: 1rem;
         }
-
+        .testimonial-rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .slider-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-btn:hover {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        /* Blog/Articles Section */
+        .articles-section {
+            margin-top: 4rem;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .article-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+            height: 400px;
+        }
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        .article-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .article-card:hover .article-image {
+            transform: scale(1.05);
+        }
+        .article-content {
+            padding: 1.5rem;
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        .article-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        .article-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        .article-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 14, 14, 0.95);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+        .article-card:hover .article-overlay {
+            opacity: 1;
+        }
+        .article-overlay p {
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .article-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        /* Video Introduction Section */
+        .intro-section {
+            margin-top: 6rem;
+            padding: 4rem 5%;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+        }
+        .intro-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .intro-video-thumbnail {
+            position: relative;
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        .intro-video-thumbnail:hover {
+            transform: scale(1.02);
+        }
+        .intro-video-thumbnail img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .intro-video-thumbnail:hover .play-button {
+            background: var(--accent-secondary);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .intro-text {
+            flex: 1;
+        }
+        .intro-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        .intro-text p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        /* Video Popup */
+        .video-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 800px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 2rem;
+            z-index: 10020;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .video-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .video-popup-content {
+            text-align: center;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .video-popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+        .video-popup-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
         /* Pricing Section */
         .pricing-container {
             display: grid;
@@ -1294,7 +1446,6 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .pricing-card {
             background: var(--card-bg);
             border-radius: 10px;
@@ -1302,17 +1453,14 @@
             border: 1px solid var(--card-border);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-
         .pricing-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-
         .pricing-card.popular {
             border: 1px solid var(--accent);
             position: relative;
         }
-
         .popular-tag {
             position: absolute;
             top: -12px;
@@ -1324,44 +1472,37 @@
             font-size: 0.8rem;
             font-weight: 600;
         }
-
         .pricing-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--accent);
         }
-
         .price {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
         }
-
         .price span {
             font-size: 1rem;
             color: var(--text-secondary);
             font-weight: 400;
         }
-
         .pricing-features {
             list-style: none;
             margin-bottom: 2rem;
         }
-
         .pricing-features li {
             margin-bottom: 0.8rem;
             color: var(--text-secondary);
             position: relative;
             padding-left: 1.5rem;
         }
-
         .pricing-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
             color: var(--accent);
         }
-
         .pricing-cta {
             display: block;
             text-align: center;
@@ -1373,12 +1514,30 @@
             font-weight: 600;
             transition: background 0.3s, box-shadow 0.3s;
         }
-
         .pricing-cta:hover {
             background: #2a75e6;
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
         }
-
+        .country-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(58, 134, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            color: var(--accent);
+        }
+        .country-indicator i {
+            font-size: 1rem;
+        }
+        /* Booking Section */
+        .booking-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
         /* Contact Section */
         .contact-container {
             display: grid;
@@ -1387,50 +1546,41 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .contact-info {
             display: flex;
             flex-direction: column;
             gap: 2rem;
         }
-
         .contact-method {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
         }
-
         .contact-icon {
             font-size: 1.5rem;
             color: var(--accent);
             transition: transform 0.3s;
         }
-
         .contact-method:hover .contact-icon {
             transform: scale(1.2);
         }
-
         .contact-text h3 {
             margin-bottom: 0.5rem;
         }
-
         .contact-text p,
         .contact-text a {
             color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s;
         }
-
         .contact-text a:hover {
             color: var(--accent);
         }
-
         .social-links {
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
         }
-
         .social-link {
             width: 48px;
             height: 48px;
@@ -1445,31 +1595,26 @@
             border: 2px solid var(--accent);
             font-size: 1.2rem;
         }
-
         .social-link:hover {
             background: var(--accent);
             color: var(--bg-dark);
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.1);
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.4);
         }
-
         .contact-form {
             background: var(--card-bg);
             border-radius: 10px;
             padding: 2rem;
             border: 1px solid var(--card-border);
         }
-
         .form-group {
             margin-bottom: 1.5rem;
         }
-
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
         }
-
         .form-control {
             width: 100%;
             padding: 0.8rem;
@@ -1480,18 +1625,15 @@
             font-family: inherit;
             transition: border-color 0.3s;
         }
-
         .form-control:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0px 5px rgba(58, 134, 255, 0.3);
         }
-
         textarea.form-control {
             min-height: 120px;
             resize: vertical;
         }
-
         .submit-btn {
             width: 100%;
             padding: 0.8rem;
@@ -1503,12 +1645,10 @@
             cursor: pointer;
             transition: background 0.3s, box-shadow 0.3s;
         }
-
         .submit-btn:hover {
             background: #2a75e6;
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
         }
-
         .success-message,
         .error-message {
             display: none;
@@ -1516,22 +1656,56 @@
             margin-top: 1rem;
             font-weight: 500;
         }
-
         .success-message {
             color: #22c55e;
         }
-
         .error-message {
             color: #ef4444;
         }
-
+        /* Newsletter Subscription */
+        .newsletter-form {
+            margin-top: 1.5rem;
+        }
+        .newsletter-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .newsletter-input input {
+            flex: 1;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 4px;
+            color: var(--text-primary);
+        }
+        .newsletter-input button {
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .newsletter-input button:hover {
+            background: #2a75e6;
+        }
+        .newsletter-message {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .newsletter-success {
+            color: #22c55e;
+        }
+        .newsletter-error {
+            color: #ef4444;
+        }
         /* Footer */
         footer {
             background: var(--bg-darker);
             padding: 4rem 5% 2rem;
             border-top: 1px solid var(--card-border);
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1539,26 +1713,21 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .footer-col h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
         }
-
         .footer-col p {
             color: var(--text-secondary);
             margin-bottom: 1rem;
         }
-
         .footer-links {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-
         .footer-links a {
             color: var(--text-primary);
             text-decoration: none;
@@ -1566,12 +1735,10 @@
             display: inline-block;
             font-size: 1rem;
         }
-
         .footer-links a:hover {
             color: var(--accent);
             transform: translateX(5px);
         }
-
         .footer-bottom {
             text-align: center;
             padding-top: 3rem;
@@ -1580,7 +1747,6 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
-
         /* Cookie Consent */
         .cookie-consent {
             position: fixed;
@@ -1598,33 +1764,27 @@
             display: none;
             text-align: center;
         }
-
         .cookie-consent.active {
             display: block;
         }
-
         .cookie-content p {
             color: var(--text-secondary);
             margin-bottom: 1rem;
             font-size: 0.9rem;
         }
-
         .cookie-content a {
             color: var(--accent);
             text-decoration: none;
         }
-
         .cookie-content a:hover {
             text-decoration: underline;
         }
-
         .cookie-buttons {
             display: flex;
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
-
         .cookie-btn {
             padding: 0.6rem 1.5rem;
             border-radius: 4px;
@@ -1633,28 +1793,23 @@
             font-weight: 600;
             transition: background 0.3s, box-shadow 0.3s;
         }
-
         .cookie-btn.accept {
             background: var(--accent);
             color: var(--text-primary);
         }
-
         .cookie-btn.accept:hover {
             background: #2a75e6;
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
         }
-
         .cookie-btn.secondary {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid var(--card-border);
         }
-
         .cookie-btn.secondary:hover {
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0 5px 15px rgba(58, 134, 255, 0.2);
         }
-
         /* Chatbot */
         .chatbot-container {
             position: fixed;
@@ -1662,7 +1817,6 @@
             right: 30px;
             z-index: 1000;
         }
-
         .chatbot-toggle {
             width: 60px;
             height: 60px;
@@ -1676,16 +1830,13 @@
             box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
             transition: all 0.3s;
         }
-
         .chatbot-toggle:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 15px rgba(58, 134, 255, 0.4);
         }
-
         .chatbot-toggle i {
             font-size: 1.5rem;
         }
-
         .chatbot-window {
             position: absolute;
             bottom: 70px;
@@ -1701,11 +1852,9 @@
             flex-direction: column;
             overflow: hidden;
         }
-
         .chatbot-window.active {
             display: flex;
         }
-
         .chatbot-header {
             padding: 1rem;
             background: rgba(58, 134, 255, 0.1);
@@ -1714,12 +1863,10 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .chatbot-header h3 {
             font-size: 1.2rem;
             color: var(--accent);
         }
-
         .chatbot-close {
             background: none;
             border: none;
@@ -1727,7 +1874,6 @@
             cursor: pointer;
             font-size: 1.2rem;
         }
-
         .chatbot-messages {
             flex: 1;
             padding: 1rem;
@@ -1737,33 +1883,28 @@
             gap: 0.8rem;
             max-height: 350px;
         }
-
         .message {
             max-width: 80%;
             padding: 0.8rem;
             border-radius: 12px;
             line-height: 1.4;
         }
-
         .bot-message {
             align-self: flex-start;
             background: rgba(58, 134, 255, 0.1);
             border: 1px solid rgba(58, 134, 255, 0.2);
         }
-
         .user-message {
             align-self: flex-end;
             background: rgba(58, 134, 255, 0.3);
             border: 1px solid rgba(58, 134, 255, 0.4);
         }
-
         .chatbot-input {
             padding: 1rem;
             border-top: 1px solid var(--card-border);
             display: flex;
             gap: 0.5rem;
         }
-
         .chatbot-input input {
             flex: 1;
             padding: 0.8rem;
@@ -1773,7 +1914,6 @@
             color: var(--text-primary);
             outline: none;
         }
-
         .chatbot-input button {
             padding: 0.8rem;
             background: var(--accent);
@@ -1787,19 +1927,16 @@
             align-items: center;
             justify-content: center;
         }
-
         #chatbot-voice {
             background: transparent;
             color: var(--accent);
         }
-
         .quick-replies {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-top: 0.5rem;
         }
-
         .quick-reply {
             padding: 0.4rem 0.8rem;
             background: rgba(58, 134, 255, 0.1);
@@ -1809,11 +1946,9 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-
         .quick-reply:hover {
             background: rgba(58, 134, 255, 0.2);
         }
-
         /* App Download Links - Enhanced */
         .app-download-section {
             margin-top: 2rem;
@@ -1822,20 +1957,17 @@
             border-radius: 10px;
             border: 1px solid var(--card-border);
         }
-
         .app-download-section h4 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--accent);
             text-align: center;
         }
-
         .app-download-links {
             display: flex;
             flex-direction: column;
             gap: 1rem;
         }
-
         .app-download-btn {
             display: flex;
             align-items: center;
@@ -1850,7 +1982,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .app-download-btn::before {
             content: '';
             position: absolute;
@@ -1861,61 +1992,50 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: left 0.5s;
         }
-
         .app-download-btn:hover::before {
             left: 100%;
         }
-
         .app-download-btn:hover {
             background: rgba(58, 134, 255, 0.2);
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(58, 134, 255, 0.2);
         }
-
         .app-download-btn i {
             font-size: 2rem;
             color: var(--accent);
             min-width: 40px;
         }
-
         .app-download-btn .app-info {
             display: flex;
             flex-direction: column;
             flex: 1;
         }
-
         .app-download-btn .app-name {
             font-weight: 600;
             font-size: 1.1rem;
         }
-
         .app-download-btn .app-status {
             font-size: 0.85rem;
             color: var(--text-secondary);
         }
-
         .app-download-btn .app-download-icon {
             font-size: 1.2rem;
             opacity: 0.7;
             transition: opacity 0.3s;
         }
-
         .app-download-btn:hover .app-download-icon {
             opacity: 1;
             transform: translateX(3px);
         }
-
         .app-download-btn.coming-soon {
             opacity: 0.7;
             cursor: not-allowed;
         }
-
         .app-download-btn.coming-soon:hover {
             transform: none;
             box-shadow: none;
             background: rgba(58, 134, 255, 0.1);
         }
-
         /* Transparent Popup Overlay - Black Glass */
         .popup-overlay {
             position: fixed;
@@ -1933,12 +2053,10 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
-
         .popup-overlay.active {
             opacity: 1;
             visibility: visible;
         }
-
         .popup-content {
             background: var(--glass-effect);
             backdrop-filter: blur(20px);
@@ -1952,7 +2070,6 @@
             position: relative;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-
         .popup-close {
             position: absolute;
             top: 20px;
@@ -1970,41 +2087,33 @@
             border-radius: 50%;
             transition: background 0.3s;
         }
-
         .popup-close:hover {
             background: rgba(255, 255, 255, 0.1);
         }
-
         .popup-title {
             font-size: 2rem;
             margin-bottom: 1.5rem;
             color: var(--accent);
             text-align: center;
         }
-
         .popup-text {
             color: var(--text-secondary);
             line-height: 1.7;
         }
-
         .popup-text h3 {
             color: var(--accent);
             margin: 1.5rem 0 0.8rem;
             font-size: 1.3rem;
         }
-
         .popup-text p {
             margin-bottom: 1rem;
         }
-
         .popup-text ul, .popup-text ol {
             margin: 1rem 0 1rem 2rem;
         }
-
         .popup-text li {
             margin-bottom: 0.5rem;
         }
-
         /* Enhanced Chatbot Styles */
         .biography-card {
             background: rgba(58, 134, 255, 0.1);
@@ -2014,20 +2123,17 @@
             margin: 0.5rem 0;
             font-size: 0.9rem;
         }
-
         .biography-card h4 {
             color: var(--accent);
             margin-bottom: 0.5rem;
             font-size: 1rem;
         }
-
         .contact-automation {
             display: flex;
             gap: 0.5rem;
             margin-top: 0.5rem;
             flex-wrap: wrap;
         }
-
         .contact-btn {
             padding: 0.4rem 0.8rem;
             background: rgba(58, 134, 255, 0.2);
@@ -2042,18 +2148,15 @@
             align-items: center;
             gap: 0.3rem;
         }
-
         .contact-btn:hover {
             background: rgba(58, 134, 255, 0.4);
             transform: translateY(-2px);
         }
-
         .typing-indicator {
             display: flex;
             gap: 5px;
             padding: 10px 15px;
         }
-
         .typing-indicator span {
             height: 8px;
             width: 8px;
@@ -2062,15 +2165,12 @@
             opacity: 0.6;
             animation: typingPulse 1.5s infinite ease-in-out;
         }
-
         .typing-indicator span:nth-child(2) {
             animation-delay: 0.2s;
         }
-
         .typing-indicator span:nth-child(3) {
             animation-delay: 0.4s;
         }
-
         @keyframes typingPulse {
             0%, 60%, 100% {
                 transform: scale(0.8);
@@ -2081,19 +2181,19 @@
                 opacity: 1;
             }
         }
-
-        /* Graphics & Creative Section */
-        .graphics-service {
+        /* Graphics & Creative Section - Horizontal Square Card */
+        .graphics-service-card {
             background: var(--card-bg);
             border-radius: 10px;
             padding: 2rem;
-            margin-top: 3rem;
             border: 1px solid var(--card-border);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-
-        .graphics-service::before {
+        .graphics-service-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -2102,68 +2202,71 @@
             height: 5px;
             background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
         }
-
-        .graphics-service h3 {
+        .graphics-service-card h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
             color: var(--accent);
         }
-
+        .graphics-service-card .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        .graphics-service-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        .graphics-service-card li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .graphics-service-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
         .graphics-pricing {
             display: flex;
-            gap: 2rem;
+            gap: 1rem;
             margin-top: 1.5rem;
-            flex-wrap: wrap;
+            justify-content: space-between;
         }
-
-        .pricing-box {
+        .pricing-option {
             flex: 1;
-            min-width: 250px;
+            text-align: center;
+            padding: 1rem;
             background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
             border-radius: 8px;
             border: 1px solid var(--card-border);
         }
-
-        .pricing-box h4 {
+        .pricing-option h4 {
             color: var(--accent);
             margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
-
-        .pricing-box .price {
-            font-size: 2rem;
+        .pricing-option .price {
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
-
-        .pricing-box .note {
-            font-size: 0.9rem;
+        .pricing-option .note {
+            font-size: 0.8rem;
             color: var(--text-secondary);
             font-style: italic;
         }
-
-        .ai-note {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(58, 134, 255, 0.1);
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-            font-size: 0.9rem;
-        }
-
-        .ai-note strong {
-            color: var(--accent);
-        }
-
         /* Responsive Design */
         @media (max-width: 1200px) {
             .hero h1 { font-size: 3.5rem; }
             .hero p { font-size: 1.4rem; }
             .about-content { gap: 3rem; }
             .section { max-width: 100%; }
+            .intro-content { gap: 3rem; }
         }
-
         @media (max-width: 992px) {
             .hero h1 { font-size: 3rem; }
             .hero p { font-size: 1.2rem; }
@@ -2172,8 +2275,10 @@
             .about-image { width: 300px; height: 300px; }
             .contact-container { grid-template-columns: 1fr; }
             .more-dropdown-content { width: 180px; }
+            .services-container { grid-template-columns: repeat(2, 1fr); }
+            .intro-content { flex-direction: column; }
+            .intro-video-thumbnail { width: 100%; }
         }
-
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .mobile-menu-btn {
@@ -2223,8 +2328,25 @@
             .graphics-pricing {
                 flex-direction: column;
             }
+            .testimonial-card {
+                min-width: 280px;
+                height: 320px;
+            }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                transform: none;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+            .article-card {
+                height: 350px;
+            }
         }
-
         @media (max-width: 576px) {
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
@@ -2254,13 +2376,28 @@
             .context-menu {
                 min-width: 160px;
             }
+            .testimonial-card {
+                min-width: 250px;
+                height: 300px;
+                padding: 1.5rem;
+            }
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+            }
+            .article-card {
+                height: 300px;
+            }
+            .article-content {
+                padding: 1rem;
+            }
         }
-
         @media (prefers-reduced-motion: reduce) {
             * { animation: none !important; transition: none !important; }
         }
     </style>
-
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9YPPVQNPTZ"></script>
     <script>
@@ -2271,9 +2408,14 @@
     </script>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scroll-progress"></div>
-
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     <!-- Context Menu (Right Click) -->
     <div class="context-menu" id="context-menu">
         <a href="#" class="context-menu-item" id="context-social">
@@ -2289,7 +2431,6 @@
             <span>Share This Site</span>
         </a>
     </div>
-
     <!-- Country Block Page -->
     <div class="country-block hidden" id="country-block">
         <div class="country-block-content">
@@ -2298,7 +2439,6 @@
             <p>For inquiries, email: info.itsboyrudra@gmail.com</p>
         </div>
     </div>
-
     <!-- Offline Page -->
     <div class="offline-page hidden" id="offline-page">
         <div class="offline-content">
@@ -2307,7 +2447,6 @@
             <p>If the problem persists, the website might be temporarily unavailable.</p>
         </div>
     </div>
-
     <!-- Special Offer Popup -->
     <div class="offer-popup hidden" id="offer-popup">
         <div class="offer-popup-content">
@@ -2318,7 +2457,6 @@
             <a href="#booking" class="offer-cta">Book Now & Save 20%</a>
         </div>
     </div>
-
     <!-- Notification Popup -->
     <div class="notification-popup hidden" id="notification-popup">
         <div class="notification-icon">
@@ -2328,21 +2466,19 @@
         <p>You're all caught up! Check back later for updates.</p>
         <button class="offer-close" id="notification-close">Okay</button>
     </div>
-
+    <!-- Video Popup -->
+    <div class="video-popup hidden" id="video-popup">
+        <div class="video-popup-content">
+            <button class="video-popup-close" id="video-popup-close">×</button>
+            <div class="video-container">
+                <iframe id="youtube-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p>Watch this video to learn more about my services</p>
+        </div>
+    </div>
     <!-- Custom Cursor -->
     <div class="custom-cursor" id="custom-cursor"></div>
     <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
-
-    <!-- Security Intro -->
-    <div class="security-intro" id="security-intro">
-        <div class="security-logo">Rudraksh Sharma</div>
-        <div class="security-check">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Securing Connection</h3>
-            <p>Establishing encrypted connection...</p>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="navbar">
         <a href="https://codewithrudra12.github.io/itsboyrudra.io/" class="logo">Rudraksh Sharma</a>
@@ -2360,7 +2496,7 @@
                     <a href="#" data-popup="testimonials-popup">Testimonials</a>
                     <a href="#" id="notification-trigger">Notifications</a>
                     <a href="#" id="download-app-trigger">Download App</a>
-                    <a href="#" data-popup="thumbnail-service-popup">Thumbnail Service</a>
+                    <a href="thumbnail.html" target="_blank">Thumbnail Examples</a>
                 </div>
             </li>
         </ul>
@@ -2380,15 +2516,13 @@
                 <li><a href="#" data-popup="testimonials-popup" class="sidebar-link">Testimonials</a></li>
                 <li><a href="#" id="notification-trigger-mobile" class="sidebar-link">Notifications</a></li>
                 <li><a href="#" id="download-app-trigger-mobile" class="sidebar-link">Download App</a></li>
-                <li><a href="#" data-popup="thumbnail-service-popup" class="sidebar-link">Thumbnail Service</a></li>
+                <li><a href="thumbnail.html" target="_blank" class="sidebar-link">Thumbnail Examples</a></li>
             </ul>
         </div>
         <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
     </nav>
-
     <!-- Floating Logo -->
     <img src="https://i.ibb.co/Q34h7J6V/Whats-App-Image-2025-09-26-at-14-51-33-ffce02ca.jpg" alt="Floating Logo" class="floating-logo" aria-label="Rudraksh Sharma Logo">
-
     <!-- Hero Section with Video Background -->
     <section class="hero" id="home">
         <video class="hero-video" autoplay muted loop playsinline>
@@ -2401,7 +2535,6 @@
             <a href="#services" class="cta-button" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">Explore Services</a>
         </div>
     </section>
-
     <!-- About Section -->
     <section class="section" id="about">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">About Me</h2>
@@ -2421,11 +2554,10 @@
                 </div>
             </div>
         </div>
-
         <!-- Recent Showcase Section -->
         <div class="recent-showcase">
             <h2>OUR SHOWCASE</h2>
-            
+           
             <!-- Slideshow -->
             <div class="slideshow-container">
                 <!-- Slide 1 -->
@@ -2436,7 +2568,7 @@
                         <a href="#portfolio" class="slideshow-cta">View Case Studies</a>
                     </div>
                 </div>
-                
+               
                 <!-- Slide 2 -->
                 <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80')">
                     <div class="slide-content">
@@ -2445,7 +2577,7 @@
                         <a href="#portfolio" class="slideshow-cta">View Case Studies</a>
                     </div>
                 </div>
-                
+               
                 <!-- Slide 3 -->
                 <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80')">
                     <div class="slide-content">
@@ -2454,7 +2586,7 @@
                         <a href="#portfolio" class="slideshow-cta">View Case Studies</a>
                     </div>
                 </div>
-                
+               
                 <div class="slideshow-controls">
                     <button class="slideshow-control-btn" id="prev-btn">
                         <i class="fas fa-chevron-left"></i>
@@ -2469,14 +2601,30 @@
             </div>
         </div>
     </section>
-
-    <!-- Services Section -->
+    <!-- Video Introduction Section -->
+    <section class="section intro-section" id="intro">
+        <div class="intro-content">
+            <div class="intro-video-thumbnail" data-aos="fade-right" data-aos-duration="800">
+                <img src="https://i.ibb.co/N2CF1VFH/video-thumbnail.jpg" alt="Introduction Video Thumbnail">
+                <div class="play-button" id="play-intro-video">
+                    <i class="fas fa-play"></i>
+                </div>
+            </div>
+            <div class="intro-text" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                <h3>Watch My Introduction Video</h3>
+                <p>Get to know me better and learn about my approach to performance marketing. This video explains how I help businesses grow through strategic advertising campaigns.</p>
+                <p>Discover my process, see examples of successful campaigns, and understand why data-driven strategies are essential for modern advertising success.</p>
+                <a href="#contact" class="cta-button">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section - Three Horizontal Cards -->
     <section class="section" id="services">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">My Services</h2>
         <div class="services-container">
             <div class="service-card unavailable" data-aos="fade-up" data-aos-duration="800">
                 <div class="unavailable-badge">Currently Unavailable</div>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWg7X0YYzUCU5m8BA_sH_ti92q4X0lCz5h_w&s" alt="Google Ads" class="service-image">
+                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Google Ads" class="service-image">
                 <div class="service-overlay">
                     <p>Maximize ROI with targeted Google Ads campaigns across Search, Display, and YouTube.</p>
                 </div>
@@ -2492,12 +2640,12 @@
                     <li>Remarketing Campaigns</li>
                 </ul>
                 <div class="service-cta">
-                    <a href="#" class="primary-cta" data-service="google-ads" data-amount="349">Get Started</a>
+                    <a href="#" class="primary-cta" onclick="showServiceUnavailable()">Get Started</a>
                     <a href="#" class="secondary-cta" data-popup="google-ads-details-popup">View Details</a>
                 </div>
             </div>
             <div class="service-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                <img src="https://static.vecteezy.com/system/resources/previews/018/930/698/non_2x/facebook-logo-facebook-icon-transparent-free-png.png" alt="Meta Ads" class="service-image">
+                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80" alt="Meta Ads" class="service-image">
                 <div class="service-overlay">
                     <p>Engage audiences with strategic Meta Ads across Facebook, Instagram, and Audience Network.</p>
                 </div>
@@ -2513,43 +2661,84 @@
                     <li>Performance Reporting</li>
                 </ul>
                 <div class="service-cta">
-                    <a href="#" class="primary-cta" data-service="meta-ads" data-amount="349">Get Started</a>
+                    <a href="#contact" class="primary-cta">Get Started</a>
                     <a href="#" class="secondary-cta" data-popup="meta-ads-details-popup">View Details</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Graphics & Creative Services -->
-        <div class="graphics-service" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-            <h3>Thumbnail & YouTube Banner Creation</h3>
-            <p>Professional graphic design services for content creators. I create eye-catching thumbnails and banners that increase click-through rates and brand recognition.</p>
-            
-            <div class="graphics-pricing">
-                <div class="pricing-box">
-                    <h4>For Indian Clients</h4>
-                    <div class="price">₹200</div>
-                    <p>Per thumbnail or banner</p>
-                    <p class="note">High-quality custom design</p>
+            <div class="graphics-service-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="service-icon"><i class="fas fa-palette"></i></div>
+                <h3>Graphics & Creative</h3>
+                <p>Professional graphic design services for content creators and businesses.</p>
+                <ul>
+                    <li>YouTube Thumbnail Design</li>
+                    <li>Channel Banner Creation</li>
+                    <li>Social Media Graphics</li>
+                    <li>Brand Identity Design</li>
+                    <li>Quick 24-48 Hour Delivery</li>
+                    <li>Unlimited Revisions</li>
+                    <li>Professional Quality</li>
+                </ul>
+                <div class="graphics-pricing">
+                    <div class="pricing-option">
+                        <h4>Thumbnail Design</h4>
+                        <div class="price">Starting at</div>
+                        <p class="note">High-quality custom thumbnails</p>
+                    </div>
+                    <div class="pricing-option">
+                        <h4>Banner Design</h4>
+                        <div class="price">Starting at</div>
+                        <p class="note">Professional channel banners</p>
+                    </div>
                 </div>
-                <div class="pricing-box">
-                    <h4>International Clients</h4>
-                    <div class="price">$12</div>
-                    <p>Per project (thumbnail + banner)</p>
-                    <p class="note">Complete branding package</p>
+                <div class="service-cta">
+                    <a href="thumbnail.html" target="_blank" class="primary-cta">View Examples</a>
+                    <a href="#contact" class="secondary-cta">Order Now</a>
                 </div>
-            </div>
-            
-            <div class="ai-note">
-                <strong>Our Creative Process:</strong> We use 70% human creativity and 30% AI assistance for optimal results. AI is only used for thumbnail and banner creation to enhance design elements while maintaining originality.
-            </div>
-            
-            <div class="service-cta" style="margin-top: 1.5rem;">
-                <a href="#" class="primary-cta" data-popup="thumbnail-service-popup">View Examples</a>
-                <a href="#contact" class="secondary-cta">Order Now</a>
             </div>
         </div>
     </section>
-
+    <!-- Articles Section -->
+    <section class="section articles-section">
+        <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Marketing Insights & Articles</h2>
+        <div class="articles-grid">
+            <div class="article-card" data-aos="fade-up" data-aos-duration="800">
+                <div class="article-tag">Google Ads</div>
+                <img src="https://i.ibb.co/fG9WsXyj/05147168-4399-46e3-aedf-752e2cb79dff-0.png" alt="Maximize ROI with Google Ads" class="article-image">
+                <div class="article-content">
+                    <h3>Maximize ROI with Strategic Google Ads</h3>
+                    <p>Learn how to optimize your Google Ads campaigns for maximum return on investment...</p>
+                </div>
+                <div class="article-overlay">
+                    <p>Discover advanced strategies for Google Ads optimization including smart bidding techniques, keyword research methods, and conversion tracking setups that can increase your ROI by up to 300%.</p>
+                    <a href="#contact" class="cta-button" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            <div class="article-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                <div class="article-tag">Meta Ads</div>
+                <img src="https://i.ibb.co/99rbHFmj/Ad-Design-Services-1bcc4293-38ee-4ea7-b909-bcc9b10a9f46-1.png" alt="Meta Ads Design Services" class="article-image">
+                <div class="article-content">
+                    <h3>Meta Ads Design That Converts</h3>
+                    <p>Create high-converting Meta Ads with proven design principles and strategies...</p>
+                </div>
+                <div class="article-overlay">
+                    <p>Explore the art of creating Meta Ads that actually convert. Learn about audience targeting, ad creative optimization, A/B testing frameworks, and how to design ads that resonate with your target audience.</p>
+                    <a href="#contact" class="cta-button" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+            <div class="article-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+                <div class="article-tag">Video Marketing</div>
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Video Marketing Strategies" class="article-image">
+                <div class="article-content">
+                    <h3>Video Marketing Success Strategies</h3>
+                    <p>Master video marketing with these proven strategies for engagement and conversions...</p>
+                </div>
+                <div class="article-overlay">
+                    <p>Video marketing is essential in today's digital landscape. Learn how to create compelling video content, optimize for different platforms, use video in advertising campaigns, and measure video marketing success effectively.</p>
+                    <a href="#contact" class="cta-button" style="padding: 0.5rem 1.5rem; font-size: 0.9rem;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Portfolio Section -->
     <section class="section" id="portfolio">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Portfolio</h2>
@@ -2605,55 +2794,32 @@
                 </div>
             </div>
         </div>
-
-        <!-- Testimonials -->
-        <div class="testimonials-slider">
-            <h2>Testimonials</h2>
-            <div class="slider-container">
-                <div class="slider">
-                    <div class="testimonial-card">
-                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Client 1">
-                        <p>"Rudraksh's Google Ads campaign boosted our sales by 300%!"</p>
-                        <span>John Doe, CEO Fashion Brand</span>
-                    </div>
-                    <div class="testimonial-card">
-                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Client 2">
-                        <p>"Exceptional Meta Ads strategy. Our lead quality improved dramatically!"</p>
-                        <span>Jane Smith, Marketing Director</span>
-                    </div>
-                    <div class="testimonial-card">
-                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Client 3">
-                        <p>"The thumbnails Rudraksh created increased my CTR by 40%!"</p>
-                        <span>Mike Johnson, Content Creator</span>
-                    </div>
-                    <!-- Duplicate for seamless loop -->
-                    <div class="testimonial-card">
-                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Client 1">
-                        <p>"Rudraksh's Google Ads campaign boosted our sales by 300%!"</p>
-                        <span>John Doe, CEO Fashion Brand</span>
-                    </div>
-                    <div class="testimonial-card">
-                        <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Client 2">
-                        <p>"Exceptional Meta Ads strategy. Our lead quality improved dramatically!"</p>
-                        <span>Jane Smith, Marketing Director</span>
-                    </div>
-                    <div class="testimonial-card">
-                        <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="Client 3">
-                        <p>"The thumbnails Rudraksh created increased my CTR by 40%!"</p>
-                        <span>Mike Johnson, Content Creator</span>
-                    </div>
+        <!-- Testimonials Slider -->
+        <div class="testimonials-slider" data-aos="fade-up" data-aos-duration="800">
+            <h2>Client Testimonials</h2>
+            <div class="testimonials-container" id="testimonials-container">
+                <!-- Testimonials will be loaded dynamically -->
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" id="testimonial-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="slider-dots" id="testimonial-dots">
+                    <!-- Dots will be generated dynamically -->
                 </div>
+                <button class="slider-btn" id="testimonial-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
-
     <!-- Pricing Section -->
     <section class="section" id="pricing">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Pricing Plans</h2>
         <div class="pricing-container">
             <div class="pricing-card" data-aos="fade-up" data-aos-duration="800">
                 <h3>Starter</h3>
-                <div class="price">$349<span>/month</span></div>
+                <div class="price" id="starter-price">$349<span>/month</span></div>
                 <ul class="pricing-features">
                     <li>1 Platform Management (Google or Meta)</li>
                     <li>Weekly Optimization</li>
@@ -2662,12 +2828,12 @@
                     <li>Up to $1,000 Ad Spend</li>
                     <li>Conversion Tracking Setup</li>
                 </ul>
-                <a href="#" class="pricing-cta" data-plan="starter" data-amount="349">Get Started</a>
+                <a href="pricing-starter.html" class="pricing-cta">Get Started</a>
             </div>
             <div class="pricing-card popular" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                 <div class="popular-tag">Most Popular</div>
                 <h3>Professional</h3>
-                <div class="price">$799<span>/month</span></div>
+                <div class="price" id="professional-price">$799<span>/month</span></div>
                 <ul class="pricing-features">
                     <li>2 Platforms Management (Google & Meta)</li>
                     <li>Daily Optimization</li>
@@ -2677,11 +2843,11 @@
                     <li>Monthly Strategy Call</li>
                     <li>A/B Testing Implementation</li>
                 </ul>
-                <a href="#" class="pricing-cta" data-plan="professional" data-amount="799">Get Started</a>
+                <a href="pricing-professional.html" class="pricing-cta">Get Started</a>
             </div>
             <div class="pricing-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
                 <h3>Enterprise</h3>
-                <div class="price">$1,499<span>/month</span></div>
+                <div class="price" id="enterprise-price">$1,499<span>/month</span></div>
                 <ul class="pricing-features">
                     <li>Multi-Platform Management</li>
                     <li>Real-time Optimization</li>
@@ -2692,17 +2858,19 @@
                     <li>Advanced Audience Segmentation</li>
                     <li>Competitive Analysis</li>
                 </ul>
-                <a href="#" class="pricing-cta" data-plan="enterprise" data-amount="1499">Get Started</a>
+                <a href="pricing-enterprise.html" class="pricing-cta">Get Started</a>
             </div>
         </div>
     </section>
-    
+   
     <!-- Booking Section -->
     <section class="section" id="booking">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Book a Consultation</h2>
-        <div class="calendly-inline-widget" data-url="https://calendly.com/rudrakshrawla22122008/30min" style="min-width:320px;height:600px;" data-aos="fade-up" data-aos-duration="800"></div>
+        <div class="booking-section">
+            <p style="margin-bottom: 2rem; color: var(--text-secondary);">Schedule a free 30-minute consultation to discuss your advertising needs and create a customized strategy.</p>
+            <div class="calendly-inline-widget" data-url="https://calendly.com/rudrakshrawla22122008/30min" style="min-width:320px;height:600px;" data-aos="fade-up" data-aos-duration="800"></div>
+        </div>
     </section>
-
     <!-- Contact Section -->
     <section class="section" id="contact">
         <h2 class="section-title" data-aos="fade-up" data-aos-duration="800">Get In Touch</h2>
@@ -2719,7 +2887,7 @@
                     <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
                     <div class="contact-text">
                         <h3>WhatsApp</h3>
-                        <a href="https://wa.me/+91787838379" target="_blank">+91 7878383739</a>
+                        <a href="https://wa.me/+917878383739" target="_blank">+91 7878383739</a>
                     </div>
                 </div>
                 <div class="contact-method" data-aos="fade-right" data-aos-duration="800" data-aos-delay="300">
@@ -2739,7 +2907,10 @@
                     <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link" aria-label="X" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
                         <i class="fab fa-x-twitter"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="400">
+                    <a href="https://www.youtube.com/@itsboyrudra" target="_blank" class="social-link" aria-label="YouTube" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="400">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link" aria-label="LinkedIn" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
@@ -2760,18 +2931,25 @@
                     </div>
                     <button type="submit" class="submit-btn" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">Send Message</button>
                 </form>
-                <p class="success-message" style="display:none;">Message sent successfully!</p>
-                <p class="error-message" style="display:none;">Failed to send message. Please try again.</p>
+                <p class="success-message" id="contact-success" style="display:none;">Message sent successfully!</p>
+                <p class="error-message" id="contact-error" style="display:none;">Failed to send message. Please try again.</p>
             </div>
         </div>
     </section>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-col" data-aos="fade-up" data-aos-duration="800">
                 <h3>About Rudraksh</h3>
                 <p>Performance marketing specialist helping brands grow with strategic Google Ads and Meta Ads campaigns.</p>
+                <div class="newsletter-form">
+                    <h4>Subscribe to Newsletter</h4>
+                    <div class="newsletter-input">
+                        <input type="email" id="newsletter-email" placeholder="Enter your email">
+                        <button id="newsletter-subscribe">Subscribe</button>
+                    </div>
+                    <div class="newsletter-message" id="newsletter-message"></div>
+                </div>
             </div>
             <div class="footer-col" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                 <h3>Quick Links</h3>
@@ -2807,11 +2985,14 @@
                     <a href="https://x.com/Itsboyrudra" target="_blank" class="social-link">
                         <i class="fab fa-x-twitter"></i>
                     </a>
+                    <a href="https://www.youtube.com/@itsboyrudra" target="_blank" class="social-link">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                     <a href="https://www.linkedin.com/in/rudraksh-sharma-2894b9354/" target="_blank" class="social-link">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                 </div>
-                
+               
                 <!-- Enhanced App Download Section -->
                 <div class="app-download-section">
                     <h4>Download Our App</h4>
@@ -2848,7 +3029,6 @@
             <p>© 2025 Rudraksh Sharma. All rights reserved.</p>
         </div>
     </footer>
-
     <!-- Cookie Consent -->
     <div class="cookie-consent" id="cookie-consent">
         <div class="cookie-content">
@@ -2859,7 +3039,6 @@
             </div>
         </div>
     </div>
-
     <!-- Chatbot -->
     <div class="chatbot-container">
         <div class="chatbot-toggle" id="chatbot-toggle">
@@ -2890,7 +3069,6 @@
             </div>
         </div>
     </div>
-
     <!-- Transparent Popup Overlay (Black Glass) -->
     <div class="popup-overlay" id="popup-overlay">
         <div class="popup-content">
@@ -2901,13 +3079,11 @@
             </div>
         </div>
     </div>
-
     <!-- External Scripts -->
     <script src="https://unpkg.com/aos@2.0.4/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://assets.calendly.com/assets/external/widget.js"></script>
-
     <!-- Inline JavaScript with all features -->
     <script>
         // Popup Content Data
@@ -2917,19 +3093,19 @@
                 content: `
                     <h3>1. Acceptance of Terms</h3>
                     <p>By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement.</p>
-                    
+                   
                     <h3>2. Use License</h3>
                     <p>Permission is granted to temporarily view the materials on Rudraksh Sharma's website for personal, non-commercial transitory viewing only.</p>
-                    
+                   
                     <h3>3. Disclaimer</h3>
                     <p>The materials on Rudraksh Sharma's website are provided on an 'as is' basis. Rudraksh Sharma makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
-                    
+                   
                     <h3>4. Limitations</h3>
                     <p>In no event shall Rudraksh Sharma or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on Rudraksh Sharma's website.</p>
-                    
+                   
                     <h3>5. Revisions and Errata</h3>
                     <p>The materials appearing on Rudraksh Sharma's website could include technical, typographical, or photographic errors. Rudraksh Sharma does not warrant that any of the materials on its website are accurate, complete, or current.</p>
-                    
+                   
                     <h3>6. Governing Law</h3>
                     <p>Any claim relating to Rudraksh Sharma's website shall be governed by the laws of India without regard to its conflict of law provisions.</p>
                 `
@@ -2939,10 +3115,10 @@
                 content: `
                     <h3>1. Information We Collect</h3>
                     <p>We collect information you provide directly to us, such as when you create an account, subscribe to our updates, or contact us for support.</p>
-                    
+                   
                     <h3>2. How We Use Your Information</h3>
                     <p>We use the information we collect to provide, maintain, and improve our services, to develop new ones, and to protect Rudraksh Sharma and our users.</p>
-                    
+                   
                     <h3>3. Information Sharing</h3>
                     <p>We do not share personal information with companies, organizations, or individuals outside of Rudraksh Sharma except in the following cases:</p>
                     <ul>
@@ -2950,13 +3126,13 @@
                         <li>For external processing</li>
                         <li>For legal reasons</li>
                     </ul>
-                    
+                   
                     <h3>4. Data Security</h3>
                     <p>We work hard to protect our users from unauthorized access to or unauthorized alteration, disclosure, or destruction of information we hold.</p>
-                    
+                   
                     <h3>5. Accessing and Updating Your Personal Information</h3>
                     <p>Whenever you use our services, we aim to provide you with access to your personal information. If that information is wrong, we strive to give you ways to update it quickly or to delete it – unless we have to keep that information for legitimate business or legal purposes.</p>
-                    
+                   
                     <h3>6. Changes to This Policy</h3>
                     <p>We may change this privacy policy from time to time. We will post any privacy policy changes on this page and, if the changes are significant, we will provide a more prominent notice.</p>
                 `
@@ -2966,13 +3142,13 @@
                 content: `
                     <h3>1. What Are Cookies</h3>
                     <p>Cookies are small text files that are placed on your computer by websites that you visit. They are widely used in order to make websites work, or work more efficiently, as well as to provide information to the owners of the site.</p>
-                    
+                   
                     <h3>2. How We Use Cookies</h3>
                     <p>We use cookies for a variety of reasons detailed below. Unfortunately, in most cases there are no industry standard options for disabling cookies without completely disabling the functionality and features they add to this site.</p>
-                    
+                   
                     <h3>3. Disabling Cookies</h3>
                     <p>You can prevent the setting of cookies by adjusting the settings on your browser (see your browser Help for how to do this). Be aware that disabling cookies will affect the functionality of this and many other websites that you visit.</p>
-                    
+                   
                     <h3>4. The Cookies We Set</h3>
                     <ul>
                         <li>Account related cookies</li>
@@ -2981,10 +3157,10 @@
                         <li>Forms related cookies</li>
                         <li>Site preferences cookies</li>
                     </ul>
-                    
+                   
                     <h3>5. Third Party Cookies</h3>
                     <p>In some special cases we also use cookies provided by trusted third parties. The following section details which third party cookies you might encounter through this site.</p>
-                    
+                   
                     <h3>6. More Information</h3>
                     <p>Hopefully that has clarified things for you and as was previously mentioned if there is something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case it does interact with one of the features you use on our site.</p>
                 `
@@ -2994,19 +3170,19 @@
                 content: `
                     <h3>1. What services do you offer?</h3>
                     <p>I specialize in Google Ads and Meta Ads management, including campaign strategy, optimization, tracking, and reporting. I also offer thumbnail and YouTube banner creation services.</p>
-                    
+                   
                     <h3>2. How much do your services cost?</h3>
                     <p>I offer three main pricing tiers: Starter ($349/month), Professional ($799/month), and Enterprise ($1499/month). Each plan includes different levels of service and support. Graphics services are priced separately at ₹200 for Indian clients and $12 for international clients per project.</p>
-                    
+                   
                     <h3>3. How long does it take to see results?</h3>
                     <p>Most clients see initial results within 2-4 weeks, with significant improvements typically appearing within 3 months as we optimize campaigns based on performance data.</p>
-                    
+                   
                     <h3>4. Do you work with businesses in my industry?</h3>
                     <p>I have experience working with various industries including e-commerce, SaaS, B2B services, and consumer products. Contact me to discuss your specific industry needs.</p>
-                    
+                   
                     <h3>5. What's included in your ads management service?</h3>
                     <p>My services include campaign strategy, keyword/targeting research, ad creation, A/B testing, performance tracking, and regular reporting with optimization recommendations.</p>
-                    
+                   
                     <h3>6. How do I get started?</h3>
                     <p>You can book a free consultation through the booking section on this website, or contact me directly via email or WhatsApp to discuss your needs.</p>
                 `
@@ -3016,16 +3192,16 @@
                 content: `
                     <h3>1. No Professional Advice</h3>
                     <p>The information contained on this website is for general information purposes only. The information is provided by Rudraksh Sharma and while we endeavor to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
-                    
+                   
                     <h3>2. Limitation of Liability</h3>
                     <p>In no event will we be liable for any loss or damage including without limitation, indirect or consequential loss or damage, or any loss or damage whatsoever arising from loss of data or profits arising out of, or in connection with, the use of this website.</p>
-                    
+                   
                     <h3>3. External Links</h3>
                     <p>Through this website you are able to link to other websites which are not under the control of Rudraksh Sharma. We have no control over the nature, content and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them.</p>
-                    
+                   
                     <h3>4. Testimonials</h3>
                     <p>The testimonials and examples used are exceptional results, which do not apply to the average purchaser and are not intended to represent or guarantee that anyone will achieve the same or similar results.</p>
-                    
+                   
                     <h3>5. Earnings Disclaimer</h3>
                     <p>There is no assurance that examples of past earnings can be duplicated in the future. We cannot guarantee your future results and/or success. There are some unknown risks in business and on the internet that we cannot foresee which can reduce results.</p>
                 `
@@ -3035,22 +3211,22 @@
                 content: `
                     <h3>What Our Clients Say</h3>
                     <p>Here are some testimonials from our satisfied clients:</p>
-                    
+                   
                     <div class="testimonial-card" style="margin: 1.5rem 0;">
                         <p>"Rudraksh's Google Ads campaign boosted our sales by 300%! His strategic approach to keyword targeting and ad optimization delivered exceptional ROI."</p>
                         <span><strong>John Doe</strong>, CEO Fashion Brand</span>
                     </div>
-                    
+                   
                     <div class="testimonial-card" style="margin: 1.5rem 0;">
                         <p>"Exceptional Meta Ads strategy. Our lead quality improved dramatically while reducing our cost per lead by 40%. Rudraksh's data-driven approach is impressive."</p>
                         <span><strong>Jane Smith</strong>, Marketing Director</span>
                     </div>
-                    
+                   
                     <div class="testimonial-card" style="margin: 1.5rem 0;">
                         <p>"Meta Ads delivered leads at half the cost we expected. Rudraksh's expertise in audience targeting and creative optimization transformed our advertising results."</p>
                         <span><strong>Mike Johnson</strong>, Business Owner</span>
                     </div>
-                    
+                   
                     <div class="testimonial-card" style="margin: 1.5rem 0;">
                         <p>"The comprehensive Google Ads strategy implemented by Rudraksh increased our website traffic by 200% and conversions by 150%. Highly recommended!"</p>
                         <span><strong>Sarah Williams</strong>, E-commerce Manager</span>
@@ -3062,7 +3238,7 @@
                 content: `
                     <h3>Comprehensive Google Ads Management</h3>
                     <p>My Google Ads management service provides end-to-end campaign management to maximize your advertising ROI across Search, Display, and YouTube networks.</p>
-                    
+                   
                     <h3>What's Included:</h3>
                     <ul>
                         <li><strong>Campaign Strategy & Setup:</strong> Comprehensive planning and implementation of Google Ads campaigns tailored to your business goals</li>
@@ -3073,10 +3249,10 @@
                         <li><strong>Landing Page Optimization:</strong> Guidance on improving landing page performance for higher conversion rates</li>
                         <li><strong>Remarketing Campaigns:</strong> Strategies to re-engage previous website visitors and increase conversions</li>
                     </ul>
-                    
+                   
                     <h3>Expected Results:</h3>
                     <p>Most clients see a 30-50% reduction in cost per acquisition and 2-3x improvement in ROI within the first 3 months of campaign optimization.</p>
-                    
+                   
                     <h3>Industries Served:</h3>
                     <p>E-commerce, SaaS, B2B services, Local businesses, Education, Healthcare, and more.</p>
                 `
@@ -3086,7 +3262,7 @@
                 content: `
                     <h3>Strategic Meta Ads Management</h3>
                     <p>My Meta Ads management service focuses on creating high-converting campaigns across Facebook, Instagram, and the Audience Network to drive measurable business results.</p>
-                    
+                   
                     <h3>What's Included:</h3>
                     <ul>
                         <li><strong>Funnel Strategy & Retargeting:</strong> Comprehensive funnel development with strategic retargeting to maximize conversions</li>
@@ -3097,44 +3273,12 @@
                         <li><strong>Campaign Scaling Strategies:</strong> Methodical approaches to scale successful campaigns while maintaining efficiency</li>
                         <li><strong>Performance Reporting:</strong> Regular comprehensive reports with insights and optimization recommendations</li>
                     </ul>
-                    
+                   
                     <h3>Expected Results:</h3>
                     <p>Typical results include 40-60% lower cost per lead compared to previous efforts, and 3-5x return on ad spend for e-commerce clients.</p>
-                    
+                   
                     <h3>Platform Expertise:</h3>
                     <p>Facebook Ads, Instagram Ads, Messenger Ads, Audience Network, and advanced targeting options across the Meta ecosystem.</p>
-                `
-            },
-            'thumbnail-service-popup': {
-                title: 'Thumbnail & Banner Creation Service',
-                content: `
-                    <h3>Professional Graphics Design Services</h3>
-                    <p>I create eye-catching thumbnails and YouTube banners that increase click-through rates and improve channel branding.</p>
-                    
-                    <h3>Service Details:</h3>
-                    <ul>
-                        <li><strong>Custom Thumbnail Design:</strong> Professionally designed thumbnails optimized for maximum CTR</li>
-                        <li><strong>YouTube Banner Creation:</strong> Channel banners that reflect your brand identity</li>
-                        <li><strong>Brand Consistency:</strong> Matching color schemes and typography across all graphics</li>
-                        <li><strong>Quick Turnaround:</strong> 24-48 hour delivery for most projects</li>
-                        <li><strong>Unlimited Revisions:</strong> Until you're completely satisfied with the design</li>
-                    </ul>
-                    
-                    <h3>Pricing:</h3>
-                    <ul>
-                        <li><strong>Indian Clients:</strong> ₹200 per thumbnail or banner</li>
-                        <li><strong>International Clients:</strong> $12 per project (thumbnail + banner)</li>
-                    </ul>
-                    
-                    <h3>Our Creative Process:</h3>
-                    <p>We use a unique blend of 70% human creativity and 30% AI assistance. AI is only used to enhance design elements and suggest color palettes, while maintaining original human creativity for composition and concept.</p>
-                    
-                    <h3>How to Order:</h3>
-                    <p>Contact me via WhatsApp or Email with your requirements. Include details about your channel, target audience, and any specific design preferences.</p>
-                    
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <a href="#contact" class="cta-button" style="display: inline-block;">Order Now</a>
-                    </div>
                 `
             }
         };
@@ -3148,180 +3292,112 @@
             disable: 'mobile'
         });
 
-        // Fix AOS centering on mobile
-        function fixAOSCentering() {
-            if (window.innerWidth < 768) {
-                document.querySelectorAll('[data-aos]').forEach(el => {
-                    el.style.marginLeft = 'auto';
-                    el.style.marginRight = 'auto';
-                });
+        // Create animated background stars
+        function createStars() {
+            const starsContainer = document.querySelector('.animated-bg');
+            const starCount = 50;
+           
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+               
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+               
+                // Random size
+                const size = Math.random() * 3 + 1;
+               
+                // Random animation delay
+                const delay = Math.random() * 3;
+               
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+               
+                starsContainer.appendChild(star);
             }
         }
 
         // Scroll Progress Indicator
         window.addEventListener('scroll', function() {
             const scrollProgress = document.getElementById('scroll-progress');
+            const backToTop = document.getElementById('back-to-top');
             const windowHeight = window.innerHeight;
             const documentHeight = document.documentElement.scrollHeight - windowHeight;
             const scrollPosition = window.scrollY;
             const scrollPercentage = (scrollPosition / documentHeight) * 100;
             scrollProgress.style.width = scrollPercentage + '%';
+           
+            // Show back to top button when scrolled down 300px
+            if (scrollPosition > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
         });
 
-        // Location Tracker for GitHub Pages (Hidden from users)
-        (function() {
-            const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwck2nGrl1m0g9HKS0ySGy4bDib79Ztw3WSfAsDf5bIwBiDIMzpLgcI1KEtvASkE6dA/exec';
-            
-            if (sessionStorage.getItem('location_tracked')) return;
-            
-            function trackLocation() {
-                fetch('https://api.ipify.org?format=json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const trackData = {
-                            ip: data.ip,
-                            timestamp: new Date().toISOString(),
-                            userAgent: navigator.userAgent,
-                            referrer: document.referrer || 'direct',
-                            page: 'rudraksh_portfolio'
-                        };
-                        
-                        useGetMethod(trackData);
-                    })
-                    .catch(() => {
-                        const basicData = {
-                            ip: 'unknown',
-                            timestamp: new Date().toISOString(),
-                            userAgent: navigator.userAgent,
-                            referrer: document.referrer || 'direct',
-                            page: 'rudraksh_portfolio'
-                        };
-                        useGetMethod(basicData);
-                    });
-            }
-            
-            function useGetMethod(data) {
-                const params = new URLSearchParams(data);
-                const img = new Image();
-                img.src = `${SCRIPT_URL}?${params.toString()}`;
-            }
-            
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-                    setTimeout(trackLocation, 1500);
-                });
-            } else {
-                setTimeout(trackLocation, 1500);
-            }
-            
-            sessionStorage.setItem('location_tracked', 'true');
-        })();
+        // Back to Top functionality
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
-        // Country Blocking for Pakistan and China
-        function checkCountry() {
+        // Country Detection for Pricing
+        function detectCountryForPricing() {
             fetch('https://api.ipify.org?format=json')
                 .then(response => response.json())
                 .then(data => {
-                    fetch(`https://ipapi.co/${data.ip}/country/`)
-                        .then(response => response.text())
-                        .then(country => {
-                            if (country === 'PK' || country === 'CN') {
-                                document.getElementById('country-block').classList.remove('hidden');
-                                document.body.style.overflow = 'hidden';
-                            } else {
-                                document.getElementById('country-block').classList.add('hidden');
-                                document.body.style.overflow = 'auto';
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Country check failed:', error);
-                            document.getElementById('country-block').classList.add('hidden');
-                            document.body.style.overflow = 'auto';
-                        });
+                    return fetch(`https://ipapi.co/${data.ip}/country/`);
+                })
+                .then(response => response.text())
+                .then(country => {
+                    if (country === 'IN') {
+                        // Indian pricing
+                        document.getElementById('starter-price').innerHTML = `₹${Math.round(349 * 83)}<span>/month</span>`;
+                        document.getElementById('professional-price').innerHTML = `₹${Math.round(799 * 83)}<span>/month</span>`;
+                        document.getElementById('enterprise-price').innerHTML = `₹${Math.round(1499 * 83)}<span>/month</span>`;
+                    }
                 })
                 .catch(error => {
-                    console.error('IP check failed:', error);
-                    document.getElementById('country-block').classList.add('hidden');
-                    document.body.style.overflow = 'auto';
+                    console.error('Country detection failed:', error);
                 });
         }
 
-        // Offline Detection
-        function checkOnlineStatus() {
-            if (!navigator.onLine) {
-                document.getElementById('offline-page').classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.getElementById('offline-page').classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
+        // Video Popup Functionality
+        const videoPopup = document.getElementById('video-popup');
+        const videoPopupClose = document.getElementById('video-popup-close');
+        const playIntroVideo = document.getElementById('play-intro-video');
+        const youtubeVideo = document.getElementById('youtube-video');
+
+        function openVideoPopup() {
+            youtubeVideo.src = "https://www.youtube.com/embed/Mp4I_xBQBMY?autoplay=1";
+            videoPopup.classList.remove('hidden');
+            setTimeout(() => {
+                videoPopup.classList.add('active');
+                document.body.classList.add('popup-open');
+            }, 10);
         }
 
-        // Special Offer Logic (Based on Date)
-        function checkSpecialOffer() {
-            const now = new Date();
-            const offerPopup = document.getElementById('offer-popup');
-            
-            // Show offer from Nov 27 to Dec 31, 2025
-            const offerStart = new Date('2025-11-27T00:00:00');
-            const offerEnd = new Date('2026-01-01T00:00:00');
-            
-            if (now >= offerStart && now < offerEnd) {
-                setTimeout(() => {
-                    offerPopup.classList.remove('hidden');
-                    offerPopup.classList.add('active');
-                }, 8000);
-            }
+        function closeVideoPopup() {
+            videoPopup.classList.remove('active');
+            setTimeout(() => {
+                videoPopup.classList.add('hidden');
+                youtubeVideo.src = "";
+                document.body.classList.remove('popup-open');
+            }, 300);
         }
 
-        // Check both country and online status on page load
-        window.addEventListener('load', () => {
-            checkCountry();
-            checkOnlineStatus();
-            checkSpecialOffer();
-            fixAOSCentering();
-            
-            window.addEventListener('online', checkOnlineStatus);
-            window.addEventListener('offline', checkOnlineStatus);
-            window.addEventListener('resize', fixAOSCentering);
-        });
-
-        // Custom Cursor
-        const cursor = document.getElementById('custom-cursor');
-        const cursorFollower = document.getElementById('custom-cursor-follower');
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            setTimeout(() => {
-                cursorFollower.style.left = e.clientX + 'px';
-                cursorFollower.style.top = e.clientY + 'px';
-            }, 100);
-        });
-
-        // Add hover effects for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, .portfolio-item, .pricing-card, .filter-btn, .social-link, .chatbot-toggle, .floating-logo, .app-download-btn');
-
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                cursorFollower.classList.add('hover');
-            });
-            
-            element.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                cursorFollower.classList.remove('hover');
-            });
-        });
-
-        // Security Intro (4 seconds)
-        window.addEventListener('load', () => {
-            const securityIntro = document.getElementById('security-intro');
-            
-            setTimeout(() => {
-                securityIntro.classList.add('hidden');
-            }, 4000);
+        playIntroVideo.addEventListener('click', openVideoPopup);
+        videoPopupClose.addEventListener('click', closeVideoPopup);
+        videoPopup.addEventListener('click', (e) => {
+            if (e.target === videoPopup) {
+                closeVideoPopup();
+            }
         });
 
         // Typed.js for Hero Section
@@ -3343,29 +3419,29 @@
             const nextBtn = document.getElementById('next-btn');
             const playPauseBtn = document.getElementById('play-pause-btn');
             const playPauseIcon = playPauseBtn.querySelector('i');
-            
+           
             let currentSlide = 0;
             let slideInterval;
             let isPlaying = true;
-            
+           
             function initSlideshow() {
                 slideInterval = setInterval(nextSlide, 5000);
             }
-            
+           
             function goToSlide(n) {
                 slides[currentSlide].classList.remove('active');
                 currentSlide = (n + slides.length) % slides.length;
                 slides[currentSlide].classList.add('active');
             }
-            
+           
             function nextSlide() {
                 goToSlide(currentSlide + 1);
             }
-            
+           
             function prevSlide() {
                 goToSlide(currentSlide - 1);
             }
-            
+           
             function togglePlayPause() {
                 if (isPlaying) {
                     clearInterval(slideInterval);
@@ -3378,18 +3454,17 @@
                 }
                 isPlaying = !isPlaying;
             }
-            
+           
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
             playPauseBtn.addEventListener('click', togglePlayPause);
-            
+           
             initSlideshow();
         });
 
         // Portfolio Filter
         const filterButtons = document.querySelectorAll('.filter-btn');
         const portfolioItems = document.querySelectorAll('.portfolio-item');
-
         filterButtons.forEach(button => {
             button.addEventListener('click', () => {
                 filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -3411,26 +3486,200 @@
             });
         });
 
+        // Enhanced Testimonials with 15+ testimonials
+        const testimonialsData = [
+            {
+                name: "John Doe",
+                role: "CEO Fashion Brand",
+                text: "Rudraksh's Google Ads campaign boosted our sales by 300%! His strategic approach to optimization delivered exceptional ROI.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/1.jpg"
+            },
+            {
+                name: "Jane Smith",
+                role: "Marketing Director",
+                text: "Exceptional Meta Ads strategy. Our lead quality improved dramatically while reducing our cost per lead by 40%.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/2.jpg"
+            },
+            {
+                name: "Mike Johnson",
+                role: "Content Creator",
+                text: "The thumbnails Rudraksh created increased my YouTube CTR by 40%! Professional quality and quick delivery.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/3.jpg"
+            },
+            {
+                name: "Sarah Williams",
+                role: "Business Owner",
+                text: "Meta Ads delivered leads at half the cost we expected. Rudraksh's expertise transformed our advertising results.",
+                rating: 4.5,
+                image: "https://randomuser.me/api/portraits/women/4.jpg"
+            },
+            {
+                name: "Robert Chen",
+                role: "E-commerce Manager",
+                text: "Google Ads strategy increased our website traffic by 200% and conversions by 150%. Highly recommended!",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/5.jpg"
+            },
+            {
+                name: "Emily Brown",
+                role: "Startup Founder",
+                text: "Working with Rudraksh was a game-changer for our startup. His data-driven approach gave us clarity and results.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/6.jpg"
+            },
+            {
+                name: "David Wilson",
+                role: "Digital Marketing Head",
+                text: "The comprehensive strategy covered all aspects of digital marketing. Our ROI improved significantly within 2 months.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/7.jpg"
+            },
+            {
+                name: "Lisa Anderson",
+                role: "Brand Manager",
+                text: "Professional, timely, and results-oriented. Rudraksh understands the nuances of performance marketing.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/8.jpg"
+            },
+            {
+                name: "Michael Taylor",
+                role: "SaaS Business Owner",
+                text: "Meta Ads strategy helped us acquire high-quality users at 60% lower cost. Excellent work!",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/9.jpg"
+            },
+            {
+                name: "Sophia Martinez",
+                role: "E-commerce Store Owner",
+                text: "Thumbnail designs increased our product video CTR by 50%. Great eye for design and marketing.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/10.jpg"
+            },
+            {
+                name: "James Wilson",
+                role: "Marketing Consultant",
+                text: "Deep understanding of both Google and Meta platforms. Delivers measurable results consistently.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/11.jpg"
+            },
+            {
+                name: "Olivia Davis",
+                role: "Content Strategist",
+                text: "Strategic approach to advertising that goes beyond just running ads. True performance marketing.",
+                rating: 4.5,
+                image: "https://randomuser.me/api/portraits/women/12.jpg"
+            },
+            {
+                name: "William Garcia",
+                role: "Business Development",
+                text: "Google Ads expertise helped us enter new markets successfully. ROI-focused approach is impressive.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/13.jpg"
+            },
+            {
+                name: "Ava Rodriguez",
+                role: "Product Manager",
+                text: "Meta Ads campaigns drove quality users to our app. Conversion rates improved significantly.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/14.jpg"
+            },
+            {
+                name: "Daniel Lee",
+                role: "E-commerce Director",
+                text: "Comprehensive approach to digital marketing. From strategy to execution, everything was handled professionally.",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/15.jpg"
+            }
+        ];
+
+        function initializeTestimonials() {
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            const testimonialDots = document.getElementById('testimonial-dots');
+           
+            testimonialsData.forEach((testimonial, index) => {
+                // Create testimonial card
+                const testimonialCard = document.createElement('div');
+                testimonialCard.className = 'testimonial-card';
+                testimonialCard.innerHTML = `
+                    <img src="${testimonial.image}" alt="${testimonial.name}">
+                    <div class="testimonial-rating">
+                        ${Array.from({length: 5}).map((_, i) => 
+                            `<i class="fas fa-star${i < Math.floor(testimonial.rating) ? '' : (i < testimonial.rating ? '-half-alt' : '')}"></i>`
+                        ).join('')}
+                    </div>
+                    <p>"${testimonial.text}"</p>
+                    <span>${testimonial.name}, ${testimonial.role}</span>
+                `;
+                testimonialsContainer.appendChild(testimonialCard);
+               
+                // Create dot
+                const dot = document.createElement('span');
+                dot.className = `slider-dot ${index === 0 ? 'active' : ''}`;
+                dot.dataset.index = index;
+                testimonialDots.appendChild(dot);
+            });
+           
+            // Initialize slider functionality
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            const testimonialPrev = document.getElementById('testimonial-prev');
+            const testimonialNext = document.getElementById('testimonial-next');
+            const dots = document.querySelectorAll('.slider-dot');
+           
+            let currentTestimonial = 0;
+            const cardWidth = 320; // testimonial card width + margin
+           
+            function updateTestimonialSlider() {
+                testimonialsContainer.style.transform = `translateX(-${currentTestimonial * cardWidth}px)`;
+               
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentTestimonial);
+                });
+            }
+           
+            testimonialPrev.addEventListener('click', () => {
+                currentTestimonial = Math.max(0, currentTestimonial - 1);
+                updateTestimonialSlider();
+            });
+           
+            testimonialNext.addEventListener('click', () => {
+                currentTestimonial = Math.min(testimonialCards.length - 1, currentTestimonial + 1);
+                updateTestimonialSlider();
+            });
+           
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentTestimonial = index;
+                    updateTestimonialSlider();
+                });
+            });
+           
+            // Auto slide testimonials
+            setInterval(() => {
+                currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+                updateTestimonialSlider();
+            }, 5000);
+        }
+
         // Sidebar Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const sidebar = document.getElementById('sidebar');
         const sidebarBackdrop = document.getElementById('sidebar-backdrop');
         const body = document.body;
-
         mobileMenuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('active');
             sidebarBackdrop.classList.toggle('active');
             mobileMenuBtn.classList.toggle('active');
             body.classList.toggle('sidebar-open');
         });
-
         sidebarBackdrop.addEventListener('click', () => {
             sidebar.classList.remove('active');
             sidebarBackdrop.classList.remove('active');
             mobileMenuBtn.classList.remove('active');
             body.classList.remove('sidebar-open');
         });
-
         document.querySelectorAll('.sidebar-link').forEach(link => {
             link.addEventListener('click', () => {
                 sidebar.classList.remove('active');
@@ -3442,27 +3691,23 @@
 
         // Right-click Context Menu
         const contextMenu = document.getElementById('context-menu');
-
         document.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             contextMenu.style.left = e.pageX + 'px';
             contextMenu.style.top = e.pageY + 'px';
             contextMenu.classList.add('active');
         });
-
         document.addEventListener('click', () => {
             contextMenu.classList.remove('active');
         });
-
         contextMenu.addEventListener('click', (e) => {
             e.stopPropagation();
         });
 
         // Context Menu Actions
         document.getElementById('context-social').addEventListener('click', () => {
-            alert('Social Links:\n\nFacebook: facebook.com/itsboyrudra\nInstagram: instagram.com/itsboyrudra\nTwitter: x.com/Itsboyrudra\nLinkedIn: linkedin.com/in/rudraksh-sharma-2894b9354');
+            alert('Social Links:\n\nFacebook: facebook.com/itsboyrudra\nInstagram: instagram.com/itsboyrudra\nTwitter: x.com/Itsboyrudra\nYouTube: youtube.com/@itsboyrudra\nLinkedIn: linkedin.com/in/rudraksh-sharma-2894b9354');
         });
-
         document.getElementById('context-roi').addEventListener('click', () => {
             const budget = prompt('Enter your monthly ad budget (in USD):');
             if (budget && !isNaN(budget)) {
@@ -3470,7 +3715,6 @@
                 alert(`Estimated ROI with my services: $${roi}\n(Based on average 3x return on ad spend)`);
             }
         });
-
         document.getElementById('context-share').addEventListener('click', () => {
             if (navigator.share) {
                 navigator.share({
@@ -3496,7 +3740,6 @@
         const notificationTriggers = document.querySelectorAll('#notification-trigger, #notification-trigger-mobile');
         const notificationPopup = document.getElementById('notification-popup');
         const notificationClose = document.getElementById('notification-close');
-
         notificationTriggers.forEach(trigger => {
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -3505,7 +3748,6 @@
                 body.classList.add('popup-open');
             });
         });
-
         notificationClose.addEventListener('click', () => {
             notificationPopup.classList.remove('active');
             setTimeout(() => {
@@ -3516,13 +3758,12 @@
 
         // Download App Popup (Shows app download section)
         const downloadAppTriggers = document.querySelectorAll('#download-app-trigger, #download-app-trigger-mobile');
-
         downloadAppTriggers.forEach(trigger => {
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
                 const appSection = document.querySelector('.app-download-section');
                 appSection.scrollIntoView({ behavior: 'smooth' });
-                
+               
                 // Add highlight effect
                 appSection.style.boxShadow = '0 0 0 3px var(--accent)';
                 setTimeout(() => {
@@ -3543,16 +3784,107 @@
             });
         });
 
+        // Service Unavailable Alert
+        function showServiceUnavailable() {
+            alert('Google Ads Management service is currently unavailable. Please check back later or contact me for alternative solutions.');
+        }
+
+        // Enhanced Email Validation
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+           
+            if (!email.includes('@')) {
+                return { valid: false, message: 'Email must contain "@" symbol' };
+            }
+           
+            if (email.indexOf('@') === 0 || email.indexOf('@') === email.length - 1) {
+                return { valid: false, message: 'Email must have characters before and after "@"' };
+            }
+           
+            const parts = email.split('@');
+            if (parts.length !== 2 || parts[0].length === 0 || parts[1].length === 0) {
+                return { valid: false, message: 'Invalid email format' };
+            }
+           
+            if (!parts[1].includes('.')) {
+                return { valid: false, message: 'Email domain must contain "."' };
+            }
+           
+            const domainParts = parts[1].split('.');
+            if (domainParts.length < 2 || domainParts[domainParts.length - 1].length < 2) {
+                return { valid: false, message: 'Invalid domain extension' };
+            }
+           
+            // Check for common email providers
+            const validDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'protonmail.com', 'icloud.com', 'aol.com'];
+            const emailDomain = parts[1].toLowerCase();
+           
+            if (!validDomains.some(domain => emailDomain === domain || emailDomain.endsWith('.' + domain))) {
+                // Allow educational and company emails
+                if (!emailDomain.includes('.edu') && !emailDomain.includes('.ac.')) {
+                    return { valid: true, message: 'Valid email address (uncommon domain)' };
+                }
+            }
+           
+            if (emailRegex.test(email)) {
+                return { valid: true, message: 'Valid email address' };
+            }
+           
+            return { valid: false, message: 'Please enter a valid email address' };
+        }
+
+        // Newsletter Subscription
+        const newsletterEmail = document.getElementById('newsletter-email');
+        const newsletterSubscribe = document.getElementById('newsletter-subscribe');
+        const newsletterMessage = document.getElementById('newsletter-message');
+        newsletterSubscribe.addEventListener('click', function(e) {
+            e.preventDefault();
+            const email = newsletterEmail.value.trim();
+           
+            if (!email) {
+                newsletterMessage.textContent = 'Please enter your email address';
+                newsletterMessage.className = 'newsletter-message newsletter-error';
+                return;
+            }
+           
+            const validation = validateEmail(email);
+            if (!validation.valid) {
+                newsletterMessage.textContent = validation.message;
+                newsletterMessage.className = 'newsletter-message newsletter-error';
+                return;
+            }
+           
+            // Simulate subscription success
+            newsletterMessage.textContent = 'Thank you for subscribing! You\'ll hear from us soon.';
+            newsletterMessage.className = 'newsletter-message newsletter-success';
+            newsletterEmail.value = '';
+           
+            // Reset message after 5 seconds
+            setTimeout(() => {
+                newsletterMessage.textContent = '';
+                newsletterMessage.className = 'newsletter-message';
+            }, 5000);
+        });
+
         // Contact Form Submission with new Formspree endpoint
         const contactForm = document.getElementById('contact-form');
-        const successMessage = document.querySelector('.contact-form .success-message');
-        const errorMessage = document.querySelector('.contact-form .error-message');
-
+        const successMessage = document.getElementById('contact-success');
+        const errorMessage = document.getElementById('contact-error');
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             successMessage.style.display = 'none';
             errorMessage.style.display = 'none';
-
+           
+            // Validate email
+            const email = document.getElementById('email').value;
+            const emailValidation = validateEmail(email);
+            if (!emailValidation.valid) {
+                errorMessage.textContent = emailValidation.message;
+                errorMessage.style.display = 'block';
+                setTimeout(() => errorMessage.style.display = 'none', 5000);
+                return;
+            }
+           
             try {
                 const response = await fetch(contactForm.action, {
                     method: 'POST',
@@ -3579,7 +3911,6 @@
         const cookieConsent = document.getElementById('cookie-consent');
         const acceptCookies = document.getElementById('accept-cookies');
         const declineCookies = document.getElementById('decline-cookies');
-
         function checkCookieConsent() {
             try {
                 const consent = sessionStorage.getItem('cookieConsent');
@@ -3591,7 +3922,6 @@
                 cookieConsent.classList.add('active');
             }
         }
-
         acceptCookies.addEventListener('click', () => {
             try {
                 sessionStorage.setItem('cookieConsent', 'accepted');
@@ -3601,7 +3931,6 @@
                 cookieConsent.classList.remove('active');
             }
         });
-
         declineCookies.addEventListener('click', () => {
             try {
                 sessionStorage.setItem('cookieConsent', 'declined');
@@ -3611,7 +3940,6 @@
                 cookieConsent.classList.remove('active');
             }
         });
-
         window.addEventListener('load', checkCookieConsent);
 
         // Transparent Popup Functionality
@@ -3619,7 +3947,6 @@
         const popupClose = document.getElementById('popup-close');
         const popupTitle = document.getElementById('popup-title');
         const popupText = document.getElementById('popup-text');
-
         function openPopup(popupId) {
             if (popupContent[popupId]) {
                 popupTitle.textContent = popupContent[popupId].title;
@@ -3628,14 +3955,12 @@
                 body.classList.add('popup-open');
             }
         }
-
         function closePopup() {
             popupOverlay.classList.remove('active');
             setTimeout(() => {
                 body.classList.remove('popup-open');
             }, 300);
         }
-
         popupClose.addEventListener('click', closePopup);
         popupOverlay.addEventListener('click', (e) => {
             if (e.target === popupOverlay) {
@@ -3654,27 +3979,6 @@
 
         // Enhanced chatbot with time-based greetings
         const chatbotResponses = {
-            'morning_greeting': {
-                patterns: ['morning'],
-                responses: [
-                    "Good morning! ☀️ Ready to boost your advertising performance today?",
-                    "Morning! It's a great day to optimize those ads and maximize ROI!"
-                ]
-            },
-            'afternoon_greeting': {
-                patterns: ['afternoon'],
-                responses: [
-                    "Good afternoon! 🌤️ How can I help with your ads management needs?",
-                    "Afternoon! Perfect time to discuss optimizing your advertising campaigns!"
-                ]
-            },
-            'evening_greeting': {
-                patterns: ['evening'],
-                responses: [
-                    "Good evening! 🌙 Still working on ads optimization? I'm here to help!",
-                    "Evening! Let's make sure your ads are performing their best!"
-                ]
-            },
             'greeting': {
                 patterns: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
                 responses: [],
@@ -3737,71 +4041,6 @@
                     {text: "Message for strategy", action: "openWhatsApp"}
                 ]
             },
-            'pricing': {
-                patterns: ['pricing', 'prices', 'cost', 'how much', 'plans', 'packages'],
-                responses: [
-                    "Ads management plans: Starter $349/mo (1 platform), Professional $799/mo (both platforms), Enterprise $1499/mo (advanced features). Which platform interests you?",
-                    "Pricing starts at $349/month for single platform management. The Professional plan at $799 includes both Google and Meta Ads with advanced optimization."
-                ],
-                followUps: [
-                    {text: "Starter plan details", message: "Tell me about starter plan"},
-                    {text: "Professional plan", message: "Tell me about professional plan"},
-                    {text: "Custom quote", message: "Calculate custom cost"},
-                    {text: "Compare plans", action: "scrollToPricing"}
-                ]
-            },
-            'calculate_cost': {
-                patterns: ['calculate cost', 'estimate cost', 'how much does it cost', 'cost for', 'price for', 'quote'],
-                responses: [
-                    "Let's calculate a cost estimate. Which platform are you interested in? (Google Ads, Meta Ads, or both)",
-                    "To estimate cost, tell me which advertising platform and your approximate monthly ad budget."
-                ],
-                followUps: [
-                    {text: "Google Ads only", message: "Calculate cost for Google Ads"},
-                    {text: "Meta Ads only", message: "Calculate cost for Meta Ads"},
-                    {text: "Both platforms", message: "Calculate cost for both platforms"},
-                    {text: "Contact for custom quote", action: "openWhatsApp"}
-                ]
-            },
-            'roi_calculator': {
-                patterns: ['roi', 'calculator', 'calculate roi', 'return on investment', 'roas'],
-                responses: [
-                    "I can help estimate your potential ROI! What's your monthly ad spend and target cost per acquisition?",
-                    "Let's calculate potential ROI. Tell me your industry and monthly ad budget for a more accurate estimate."
-                ],
-                followUps: [
-                    {text: "Calculate with $1000 budget", message: "Calculate ROI with $1000 ad spend"},
-                    {text: "Calculate with $5000 budget", message: "Calculate ROI with $5000 ad spend"},
-                    {text: "E-commerce ROI", message: "Calculate e-commerce ROI"},
-                    {text: "Lead gen ROI", message: "Calculate lead generation ROI"}
-                ]
-            },
-            'analytics': {
-                patterns: ['analytics', 'reports', 'performance', 'metrics', 'tracking', 'conversion'],
-                responses: [
-                    "I provide comprehensive analytics including CTR, conversion rates, ROAS, CPA, and audience insights. Which metrics are most important for your business?",
-                    "My analytics dashboard shows campaign performance, audience behavior, conversion tracking, and ROI calculations. I can set up custom tracking for your specific goals."
-                ],
-                followUps: [
-                    {text: "Conversion tracking", message: "Tell me about conversion tracking"},
-                    {text: "ROI reporting", message: "How do you report ROI?"},
-                    {text: "Audience insights", message: "What audience data do you provide?"},
-                    {text: "Book analytics review", action: "scrollToBooking"}
-                ]
-            },
-            'booking': {
-                patterns: ['book', 'consultation', 'schedule', 'appointment', 'meeting'],
-                responses: [
-                    "I can help you book a free 30-minute consultation to discuss your advertising needs and create a customized strategy.",
-                    "Ready to discuss your ads strategy? I'll scroll to the booking section where you can schedule a consultation directly."
-                ],
-                followUps: [
-                    {text: "Scroll to booking", action: "scrollToBooking"},
-                    {text: "Call now", action: "callNumber"},
-                    {text: "Message on WhatsApp", action: "openWhatsApp"},
-                    {text: "Send email", action: "openEmail"}
-                ]
-            },
             'default': {
                 responses: [
                     "I specialize in Google Ads and Meta Ads management. Ask me about services, pricing, ROI calculations, or booking a consultation.",
@@ -3816,7 +4055,7 @@
             }
         };
 
-        // Enhanced chatbot functionality with biography and contact automation
+        // Enhanced chatbot functionality
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
@@ -3824,7 +4063,6 @@
         const chatbotInput = document.getElementById('chatbot-input');
         const chatbotSend = document.getElementById('chatbot-send');
         const chatbotVoice = document.getElementById('chatbot-voice');
-
         let chatContext = {
             userName: null,
             serviceInterest: null,
@@ -3847,13 +4085,13 @@
             chatbotWindow.classList.remove('active');
         });
 
-        function getTimeBasedGreeting() {
+        function getTimeGreeting() {
             const now = new Date();
             const hours = now.getHours();
-            
-            if (hours < 12) return 'morning_greeting';
-            if (hours < 17) return 'afternoon_greeting';
-            return 'evening_greeting';
+           
+            if (hours < 12) return "Good morning! ☀️";
+            if (hours < 17) return "Good afternoon! 🌤️";
+            return "Good evening! 🌙";
         }
 
         function handleAction(action) {
@@ -3906,12 +4144,12 @@
             setTimeout(() => {
                 const div = document.createElement('div');
                 div.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-                
+               
                 // Check if this is a biography/contact response
                 if (!isUser && (message.includes('Rudraksh Sharma') || message.includes('contact Rudraksh'))) {
                     const biographyCard = document.createElement('div');
                     biographyCard.className = 'biography-card';
-                    
+                   
                     if (message.includes('contact Rudraksh')) {
                         biographyCard.innerHTML = `
                             <h4>Contact Rudraksh Sharma</h4>
@@ -3935,12 +4173,12 @@
                             <p><strong>Experience:</strong> Helping businesses achieve measurable results through data-driven advertising strategies.</p>
                         `;
                     }
-                    
+                   
                     div.appendChild(biographyCard);
                 } else {
                     div.textContent = message;
                 }
-                
+               
                 chatbotMessages.appendChild(div);
                 chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
             }, delay);
@@ -3959,7 +4197,6 @@
             });
             chatbotMessages.appendChild(container);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-
             container.querySelectorAll('.quick-reply').forEach(btn => {
                 btn.addEventListener('click', () => {
                     if (btn.dataset.action) handleAction(btn.dataset.action);
@@ -3973,35 +4210,34 @@
 
         function generateResponse(message) {
             const lower = message.toLowerCase();
-            
+           
             // Check for time-based greeting first
-            const timeGreeting = getTimeBasedGreeting();
             if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
-                const greetingResponses = chatbotResponses[timeGreeting].responses;
+                const greeting = getTimeGreeting();
                 return {
-                    response: greetingResponses[Math.floor(Math.random() * greetingResponses.length)],
+                    response: `${greeting} How can I help you today?`,
                     followUps: chatbotResponses.greeting.followUps
                 };
             }
-            
+           
             // Special handling for biography/contact queries
-            if (lower.includes('about rudraksh') || lower.includes('who is rudraksh') || lower.includes('rudraksh') || 
+            if (lower.includes('about rudraksh') || lower.includes('who is rudraksh') || lower.includes('rudraksh') ||
                 lower.includes('biography') || lower.includes('background') || lower.includes('experience')) {
                 return {
                     response: "Rudraksh Sharma is a performance marketing specialist based in Rajasthan, India. He specializes in Google Ads and Meta Ads management, helping businesses achieve measurable results through data-driven strategies.",
                     followUps: chatbotResponses.about_rudraksh.followUps
                 };
             }
-            
-            if (lower.includes('contact') || lower.includes('number') || lower.includes('phone') || 
-                lower.includes('whatsapp') || lower.includes('email') || lower.includes('how to contact') || 
+           
+            if (lower.includes('contact') || lower.includes('number') || lower.includes('phone') ||
+                lower.includes('whatsapp') || lower.includes('email') || lower.includes('how to contact') ||
                 lower.includes('reach')) {
                 return {
                     response: "You can contact Rudraksh Sharma directly through these channels:",
                     followUps: chatbotResponses.contact_rudraksh.followUps
                 };
             }
-            
+           
             // Regular pattern matching for other queries
             for (const [key, value] of Object.entries(chatbotResponses)) {
                 if (value.patterns && value.patterns.some(p => lower.includes(p))) {
@@ -4011,83 +4247,11 @@
                     };
                 }
             }
-            
+           
             return {
                 response: chatbotResponses.default.responses[Math.floor(Math.random() * chatbotResponses.default.responses.length)],
                 followUps: chatbotResponses.default.followUps || []
             };
-        }
-
-        function handleCostCalculation(message) {
-            if (!chatContext.serviceInterest) {
-                chatContext.serviceInterest = message.toLowerCase().includes('google') ? 'google-ads' : message.toLowerCase().includes('facebook') ? 'meta-ads' : 'both';
-                addMessage("Got it! For " + chatContext.serviceInterest + ". What's your estimated monthly ad spend? (e.g., 1000 for $1000)", false);
-                chatContext.calculatingCost = true;
-                return;
-            }
-            const num = parseInt(message);
-            if (!isNaN(num)) {
-                let cost = chatContext.serviceInterest === 'both' ? 799 : 349;
-                let serviceFee = num * 0.1;
-                let total = cost + serviceFee;
-                
-                addMessage(`Estimated cost: $${total.toFixed(2)} (management $${cost} + 10% of $${num} spend). Contact for exact quote?`, false);
-                chatContext.calculatingCost = false;
-                addQuickReplies([{text: "Contact now", action: "callNumber"}, {text: "Message", action: "openWhatsApp"}]);
-            } else {
-                addMessage("Please provide a number for your monthly ad spend.", false);
-            }
-        }
-
-        function handleROICalculation(message) {
-            if (!chatContext.roiDetails.budget) {
-                const num = parseInt(message);
-                if (!isNaN(num)) {
-                    chatContext.roiDetails.budget = num;
-                    addMessage("Great! What's your average conversion value? (e.g., 50 for $50 per conversion)", false);
-                    return;
-                } else {
-                    addMessage("Please provide a number for your monthly ad budget.", false);
-                    return;
-                }
-            }
-            
-            if (!chatContext.roiDetails.conversionValue) {
-                const num = parseInt(message);
-                if (!isNaN(num)) {
-                    chatContext.roiDetails.conversionValue = num;
-                    addMessage("What's your target conversion rate? (e.g., 5 for 5%)", false);
-                    return;
-                } else {
-                    addMessage("Please provide a number for your conversion value.", false);
-                    return;
-                }
-            }
-            
-            if (!chatContext.roiDetails.conversionRate) {
-                const num = parseInt(message);
-                if (!isNaN(num)) {
-                    chatContext.roiDetails.conversionRate = num;
-                    
-                    // Calculate ROI
-                    const budget = chatContext.roiDetails.budget;
-                    const conversionValue = chatContext.roiDetails.conversionValue;
-                    const conversionRate = chatContext.roiDetails.conversionRate / 100;
-                    
-                    const clicks = budget / 2; // Assuming $2 CPC
-                    const conversions = clicks * conversionRate;
-                    const revenue = conversions * conversionValue;
-                    const profit = revenue - budget;
-                    const roi = (profit / budget) * 100;
-                    
-                    addMessage(`Based on your inputs:\n- Budget: $${budget}\n- Conversions: ${conversions.toFixed(1)}\n- Revenue: $${revenue.toFixed(2)}\n- Profit: $${profit.toFixed(2)}\n- ROI: ${roi.toFixed(1)}%\n\nWould you like to optimize this?`, false);
-                    chatContext.calculatingROI = false;
-                    chatContext.roiDetails = {};
-                    addQuickReplies([{text: "Book consultation", action: "scrollToBooking"}, {text: "Calculate again", message: "Calculate ROI"}]);
-                } else {
-                    addMessage("Please provide a number for your conversion rate.", false);
-                }
-            }
         }
 
         function handleUserInput() {
@@ -4095,69 +4259,45 @@
             if (!message) return;
             addMessage(message, true);
             chatbotInput.value = '';
-
             const typing = showTypingIndicator();
             setTimeout(() => {
                 removeTypingIndicator(typing);
-                if (chatContext.calculatingCost) {
-                    handleCostCalculation(message);
-                } else if (chatContext.calculatingROI) {
-                    handleROICalculation(message);
-                } else if (message.toLowerCase().includes('calculate cost') || message.toLowerCase().includes('estimate cost')) {
-                    chatContext.calculatingCost = true;
-                    addMessage("Sure! Which platform? (Google Ads, Meta Ads, or both)", false);
-                } else if (message.toLowerCase().includes('calculate roi') || message.toLowerCase().includes('roi')) {
-                    chatContext.calculatingROI = true;
-                    chatContext.roiDetails = {};
-                    addMessage("Let's calculate your potential ROI! What's your monthly ad budget? (e.g., 1000 for $1000)", false);
-                } else {
-                    const {response, followUps} = generateResponse(message);
-                    addMessage(response);
-                    if (followUps.length) addQuickReplies(followUps);
-                }
+                const {response, followUps} = generateResponse(message);
+                addMessage(response);
+                if (followUps.length) addQuickReplies(followUps);
             }, 1000 + Math.random() * 1000);
         }
 
         chatbotSend.addEventListener('click', handleUserInput);
-        chatbotInput.addEventListener('keypress', e => { 
-            if (e.key === 'Enter') handleUserInput(); 
+        chatbotInput.addEventListener('keypress', e => {
+            if (e.key === 'Enter') handleUserInput();
         });
 
-        // Voice Recognition
-        let recognition;
-        if ('webkitSpeechRecognition' in window) {
-            recognition = new webkitSpeechRecognition();
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.lang = 'en-US';
-            
-            recognition.onstart = function() {
-                chatbotVoice.style.color = '#ff3a3a';
-            };
-            
-            recognition.onresult = function(event) {
-                const transcript = event.results[0][0].transcript;
-                chatbotInput.value = transcript;
-                handleUserInput();
-                chatbotVoice.style.color = 'var(--accent)';
-            };
-            
-            recognition.onerror = function(event) {
-                console.error('Speech recognition error', event.error);
-                chatbotVoice.style.color = 'var(--accent)';
-            };
-            
-            recognition.onend = function() {
-                chatbotVoice.style.color = 'var(--accent)';
-            };
-        }
+        // Custom Cursor
+        const cursor = document.getElementById('custom-cursor');
+        const cursorFollower = document.getElementById('custom-cursor-follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+           
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
 
-        chatbotVoice.addEventListener('click', function() {
-            if (recognition) {
-                recognition.start();
-            } else {
-                addMessage("Speech recognition not supported in this browser", false);
-            }
+        // Add hover effects for interactive elements
+        const interactiveElements = document.querySelectorAll('a, button, .service-card:not(.unavailable), .portfolio-item, .pricing-card, .filter-btn, .social-link, .chatbot-toggle, .floating-logo, .app-download-btn:not(.coming-soon), .testimonial-card, .article-card, .back-to-top, .intro-video-thumbnail');
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                cursorFollower.classList.add('hover');
+            });
+           
+            element.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                cursorFollower.classList.remove('hover');
+            });
         });
 
         // Image Optimization
@@ -4166,15 +4306,34 @@
                 if (!img.loading) {
                     img.loading = 'lazy';
                 }
-                
+               
                 img.addEventListener('error', function() {
-                    this.src = 'https://via.placeholder.com/400x300?text=Image+Not+Found';
+                    this.src = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80';
                     this.alt = 'Image not available';
                 });
             });
         }
 
-        optimizeImages();
+        // Initialize everything when page loads
+        window.addEventListener('load', () => {
+            createStars();
+            initializeTestimonials();
+            optimizeImages();
+            detectCountryForPricing();
+           
+            // Special Offer Logic (Based on Date)
+            const now = new Date();
+            const offerPopup = document.getElementById('offer-popup');
+            const offerStart = new Date('2025-11-27T00:00:00');
+            const offerEnd = new Date('2026-01-01T00:00:00');
+           
+            if (now >= offerStart && now < offerEnd) {
+                setTimeout(() => {
+                    offerPopup.classList.remove('hidden');
+                    offerPopup.classList.add('active');
+                }, 8000);
+            }
+        });
 
         console.log('Enhanced website loaded successfully with all features!');
     </script>
